@@ -933,24 +933,46 @@ id="calendar-app"></div>
 // Robust sync copy-to-clipboard function
 // Robust copy-to-clipboard function (works in all browsers)
 function copyToClipboard(text) {
-    // Create temporary textarea element
+    // Use synchronous approach with temporary textarea
+    // This works in all browsers within user gesture context
     var ta = document.createElement('textarea');
     ta.value = text;
-    // Position off-screen
     ta.style.position = 'fixed';
     ta.style.left = '-9999px';
     ta.style.top = '0';
     ta.style.opacity = '0';
+    ta.style.pointerEvents = 'none';
     document.body.appendChild(ta);
+    
+    // Select and copy must happen synchronously
     ta.focus();
     ta.select();
-    // Use execCommand('copy') - works synchronously everywhere
     try {
-        var ok = document.execCommand('copy');
+        var success = document.execCommand('copy');
         document.body.removeChild(ta);
-        return ok;
+        if (success) return true;
     } catch(e) {
+        try { document.body.removeChild(ta); } catch(e2) {}
+    }
+    return false;
+}
+
+function _copyFallback(text) {
+    try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        ta.style.top = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        document.execCommand('copy');
         document.body.removeChild(ta);
+        return true;
+    } catch(e) {
+        try { document.body.removeChild(ta); } catch(e2) {}
         return false;
     }
 }
@@ -1107,10 +1129,11 @@ function onTeamChange() {
 
 function copyAllSubscribeLink() {
     var url = BASE_URL + 'worldcup2026.ics';
-    if (copyToClipboard(url)) {
+    var ok = copyToClipboard(url);
+    if (ok) {
         alert('✅ 全部赛程订阅链接已复制！\n\n' + url);
     } else {
-        prompt('请手动复制以下链接：', url);
+        alert('❌ 复制失败，请手动复制：\n' + url);
     }
 }
 
@@ -1299,11 +1322,12 @@ function getChipName(ds) {
 
 function generateAndCopyLink() {
     if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    const url = window.location.origin + window.location.pathname + '?teams=' + Array.from(selectedTeams).join(',');
-    if (copyToClipboard(url)) {
-        alert('✅ 订阅链接已复制！\n\n' + url + '\n\n分享给好友，打开后可看到选中球队的赛程。');
+    var url = window.location.origin + window.location.pathname + '?teams=' + Array.from(selectedTeams).join(',');
+    var ok = copyToClipboard(url);
+    if (ok) {
+        alert('✅ 订阅链接已复制！\n\n' + url);
     } else {
-        prompt('请手动复制：', url);
+        alert('❌ 复制失败，请手动复制：\n' + url);
     }
 }
 
