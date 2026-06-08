@@ -148,6 +148,16 @@
             gap: 4px;
             font-size: 0.85rem;
         }
+        /* Checkmark badge for selected teams */
+        .select-mark {
+            display: inline-block;
+            font-size: 0.85rem;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
         .team-chip:hover {
             background: rgba(200,168,78,0.15);
             border-color: var(--gold);
@@ -264,6 +274,16 @@
             gap: 4px;
             font-size: 0.85rem;
         }
+        /* Checkmark badge for selected teams */
+        .select-mark {
+            display: inline-block;
+            font-size: 0.85rem;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
         .team-chip:hover {
             background: rgba(200,168,78,0.15);
             border-color: var(--gold);
@@ -309,6 +329,7 @@
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Expires" content="0">
     
+
 
 </style>
 </head>
@@ -909,31 +930,32 @@ id="calendar-app"></div>
     </div>
     <script>
 // Robust copy-to-clipboard function (works everywhere)
+// Robust sync copy-to-clipboard function
+// Robust copy-to-clipboard function (works in all browsers)
 function copyToClipboard(text) {
-    // Method 1: Clipboard API (HTTPS context)
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function() {
-            return true;
-        }).catch(function() {
-            return false;
-        });
-    }
-    // Method 2: Fallback - create temporary textarea
+    // Create temporary textarea element
     var ta = document.createElement('textarea');
     ta.value = text;
+    // Position off-screen
     ta.style.position = 'fixed';
     ta.style.left = '-9999px';
+    ta.style.top = '0';
+    ta.style.opacity = '0';
     document.body.appendChild(ta);
+    ta.focus();
     ta.select();
+    // Use execCommand('copy') - works synchronously everywhere
     try {
-        document.execCommand('copy');
+        var ok = document.execCommand('copy');
         document.body.removeChild(ta);
-        return true;
+        return ok;
     } catch(e) {
         document.body.removeChild(ta);
         return false;
     }
 }
+
+
 
 
 // FIFA World Cup 2026 stadium coordinates for ICS GEO property
@@ -1155,9 +1177,19 @@ function toggleTeam(el, name) {
     if (selectedTeams.has(name)) {
         selectedTeams.delete(name);
         el.classList.remove('selected');
+        var mark = el.querySelector('.select-mark');
+        if (mark) mark.remove();
     } else {
         selectedTeams.add(name);
         el.classList.add('selected');
+        // Add checkmark badge to team-chip
+        var mark = document.createElement('span');
+        mark.className = 'select-mark';
+        mark.innerHTML = ' ✓';
+        mark.style.color = '#c8a84e';
+        mark.style.fontWeight = '700';
+        mark.style.marginLeft = '4px';
+        el.appendChild(mark);
     }
     updateChips();
     updateCalendar();
@@ -1182,7 +1214,11 @@ function updateChips() {
 function removeTeam(name) {
     selectedTeams.delete(name);
     document.querySelectorAll('.team-chip').forEach(el => {
-        if (el.dataset.team && el.dataset.team.includes(name)) el.classList.remove('selected');
+        if (el.dataset.team && el.dataset.team.includes(name)) {
+            el.classList.remove('selected');
+            var mark = el.querySelector('.select-mark');
+            if (mark) mark.remove();
+        }
     });
     updateChips();
     updateCalendar();
@@ -1190,32 +1226,68 @@ function removeTeam(name) {
 
 function selectAll() {
     Object.keys(FLAG_MAP).forEach(name => selectedTeams.add(name));
-    document.querySelectorAll('.team-chip').forEach(el => el.classList.add('selected'));
+    document.querySelectorAll('.team-chip').forEach(el => {
+        el.classList.add('selected');
+        if (!el.querySelector('.select-mark')) {
+            var mark = document.createElement('span');
+            mark.className = 'select-mark';
+            mark.innerHTML = ' ✓';
+            mark.style.color = '#c8a84e';
+            mark.style.fontWeight = '700';
+            mark.style.marginLeft = '4px';
+            el.appendChild(mark);
+        }
+    });
     updateChips(); updateCalendar();
 }
 
 function deselectAll() {
     selectedTeams.clear();
-    document.querySelectorAll('.team-chip').forEach(el => el.classList.remove('selected'));
+    document.querySelectorAll('.team-chip').forEach(el => {
+        el.classList.remove('selected');
+        var mark = el.querySelector('.select-mark');
+        if (mark) mark.remove();
+    });
     updateChips(); updateCalendar();
 }
 
 function selectAllHost() {
     selectedTeams.clear();
+    // Remove all existing marks first
+    document.querySelectorAll('.team-chip .select-mark').forEach(m => m.remove());
     HOST_TEAMS.forEach(name => selectedTeams.add(name));
     document.querySelectorAll('.team-chip').forEach(el => {
         const n = getChipName(el.dataset.team);
-        if (HOST_TEAMS.includes(n)) el.classList.add('selected');
+        if (HOST_TEAMS.includes(n)) {
+            el.classList.add('selected');
+            var mark = document.createElement('span');
+            mark.className = 'select-mark';
+            mark.innerHTML = ' ✓';
+            mark.style.color = '#c8a84e';
+            mark.style.fontWeight = '700';
+            mark.style.marginLeft = '4px';
+            el.appendChild(mark);
+        }
     });
     updateChips(); updateCalendar();
 }
 
 function selectAllFavorites() {
     selectedTeams.clear();
+    document.querySelectorAll('.team-chip .select-mark').forEach(m => m.remove());
     FAN_FAVORITES.forEach(name => selectedTeams.add(name));
     document.querySelectorAll('.team-chip').forEach(el => {
         const n = getChipName(el.dataset.team);
-        if (FAN_FAVORITES.includes(n)) el.classList.add('selected');
+        if (FAN_FAVORITES.includes(n)) {
+            el.classList.add('selected');
+            var mark = document.createElement('span');
+            mark.className = 'select-mark';
+            mark.innerHTML = ' ✓';
+            mark.style.color = '#c8a84e';
+            mark.style.fontWeight = '700';
+            mark.style.marginLeft = '4px';
+            el.appendChild(mark);
+        }
     });
     updateChips(); updateCalendar();
 }
@@ -1386,13 +1458,6 @@ function copyTeamSubscribeLink() {
     URL.revokeObjectURL(url);
     const flag = val.match(/^\S+/)?.[0] || '';
     const teamName = val.replace(/^\S+\s+/, '');
-    alert('✅ ' + flag + ' ' + teamName + ' 专属赛程已下载！\n\n📅 共 ' + filtered.length + ' 场比赛\n📄 文件名: ' + cleanName + '_worldcup26.ics\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置 → 从日历导入\n3. 电脑: 双击 .ics 文件导入系统日历');
-}
-
-initFromURL();
-    updateChips();
-    renderCalendar(null, 'all');renderCalendar(null, 'all');
-
-</script>
+    alert('✅ ' + flag + ' ' + teamName + ' 专属赛程已下载！\n\n📅 共 ' + filtered.length + ' 场比赛\n📄 文件名: ' + cleanName + '_worldcup26.ics\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置</script>
 </body>
 </html>
