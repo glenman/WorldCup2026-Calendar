@@ -1089,7 +1089,30 @@ function initFromURL() {
     const teamsParam = params.get('teams');
     if (teamsParam) {
         const names = teamsParam.split(',').map(s => s.trim()).filter(Boolean);
-        names.forEach(name => { if (FLAG_MAP[name]) selectedTeams.add(name); });
+        names.forEach(name => {
+            if (FLAG_MAP[name]) {
+                selectedTeams.add(name);
+                // Update UI marks for pre-selected teams
+                document.querySelectorAll('.team-chip').forEach(el => {
+                    if (el.dataset.team && el.dataset.team.includes(name)) {
+                        el.classList.add('selected');
+                        if (!el.querySelector('.select-mark')) {
+                            var mark = document.createElement('span');
+                            mark.className = 'select-mark';
+                            mark.innerHTML = ' \u2713';
+                            mark.style.color = '#c8a84e';
+                            mark.style.fontWeight = '700';
+                            mark.style.marginLeft = '4px';
+                            el.appendChild(mark);
+                        }
+                    }
+                });
+            }
+        });
+        if (selectedTeams.size > 0) {
+            updateChips();
+            updateCalendar();
+        }
     }
 }
 
