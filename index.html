@@ -74,6 +74,7 @@
             <div class="summary-actions">
                 <a href="worldcup2026.ics" class="btn" download>📥 下载 ICS 日历</a>
                 <a href="data/worldcup2026-matches.json" class="btn" download>📊 下载 JSON 数据</a>
+                <button class="btn" onclick="copySubscribeLink()">🔗 复制订阅链接</button>
             </div>
         </div>
 
@@ -219,6 +220,20 @@
         });
         
         document.getElementById('total-matches').textContent = total + ' 场';
+    }
+    
+    function copySubscribeLink() {
+        const url = 'https://glenman.github.io/WorldCup2026-Calendar/worldcup2026.ics';
+        navigator.clipboard.writeText(url).then(() => {
+            alert('✅ 订阅链接已复制！
+
+使用方法：
+1. iOS: 设置 → 日历 → 账户 → 添加账户 → 添加已订阅的日历 → 粘贴链接
+2. Android: 打开 Google Calendar → 设置 → 添加账户 → 从网址添加 → 粘贴链接
+3. Outlook: 订阅日历 → 输入粘贴的链接');
+        }).catch(() => {
+            prompt('请手动复制以下链接：', url);
+        });
     }
     
     function addToCalendar(matchName, dateTime) {
