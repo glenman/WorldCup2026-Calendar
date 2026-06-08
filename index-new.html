@@ -376,10 +376,6 @@
             <div class="summary-actions">
                 <a href="worldcup2026.ics" class="btn" download>📥 下载全部赛程 ICS</a>
                 <a href="data/worldcup2026-matches.json" class="btn btn-outline" download>📊 下载 JSON</a>
-                <div style="display:flex;gap:8px;align-items:center;margin:8px 0;">
-                    <input id="subscribe-url-input" type="text" readonly style="flex:1;min-width:0;background:rgba(0,0,0,0.3);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;color:var(--text-muted);font-size:0.85rem;font-family:monospace;"/>
-                    <button id="copy-subscribe-btn" onclick="copySubscribeUrl()" style="padding:8px 16px;background:var(--gold);color:#1a1a2e;border:none;border-radius:8px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">复制</button>
-                </div>
             </div>
         </div>
 
@@ -893,65 +889,6 @@ const STADIUM_GEO = {
     'BC广场': {'name':'BC Place','city':'Vancouver, Canada','lat':49.2766,'lng':-123.1119},
 };
 const BASE_URL = 'https://glenman.github.io/WorldCup2026-Calendar/';
-
-function updateSubscribeUrlInput() {
-    var input = document.getElementById('subscribe-url-input');
-    if (input) {
-        input.value = BASE_URL + 'worldcup2026.ics';
-    }
-}
-
-// Initialize subscribe URL input on page load
-document.addEventListener('DOMContentLoaded', function() {
-    updateSubscribeUrlInput();
-});
-
-function showToast(msg, type) {
-    var existing = document.getElementById('toast-notification');
-    if (existing) existing.remove();
-    var div = document.createElement('div');
-    div.id = 'toast-notification';
-    var bg = type === 'success' ? 'linear-gradient(135deg, #11998e, #38ef7d)' : 'linear-gradient(135deg, #eb3349, #f45c43)';
-    div.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:' + bg + ';color:#fff;padding:14px 28px;border-radius:12px;font-size:0.95rem;font-weight:600;z-index:10000;box-shadow:0 4px 20px rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s ease,transform 0.3s ease;pointer-events:none;max-width:90vw;text-align:center;';
-    div.textContent = msg;
-    document.body.appendChild(div);
-    requestAnimationFrame(function() {
-        div.style.opacity = '1';
-        div.style.transform = 'translateX(-50%) translateY(0)';
-    });
-    setTimeout(function() {
-        div.style.opacity = '0';
-        div.style.transform = 'translateX(-50%) translateY(-10px)';
-        setTimeout(function() { div.remove(); }, 300);
-    }, 2500);
-}
-
-function copySubscribeUrl() {
-    var input = document.getElementById('subscribe-url-input');
-    if (!input) return;
-    var url = input.value;
-    if (!url) {
-        showToast('❌ 暂无订阅链接，请先生成', 'error');
-        return;
-    }
-    var result = copyToClipboard(url);
-    if (result && typeof result.then === 'function') {
-        result.then(function(ok) {
-            if (ok) {
-                showToast('✅ 订阅链接已复制到剪贴板！', 'success');
-            } else {
-                showToast('❌ 复制失败，请手动复制：' + url, 'error');
-            }
-        });
-    } else {
-        if (result) {
-            showToast('✅ 订阅链接已复制到剪贴板！', 'success');
-        } else {
-            showToast('❌ 复制失败，请手动复制：' + url, 'error');
-        }
-    }
-}
-
 
 function getStadiumGeo(stadiumName, cityName) {
     if (!STADIUM_GEO[stadiumName]) return '';
