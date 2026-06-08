@@ -123,508 +123,68 @@
             </div>
         </div>
 
-        
         <div class="team-selector-section">
-            <h3>🎯 选择关注的球队</h3>
-            <div id="selected-chips"></div>
-            <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;">
-                <button class="btn btn-outline" onclick="selectAll()">全选</button>
-                <button class="btn btn-outline" onclick="deselectAll()">清空</button>
-                <button class="btn btn-outline" onclick="selectAllHost()">只看东道主 🇨🇦🇺🇸🇲🇽</button>
-                <button class="btn btn-outline" onclick="selectAllFavorites()">只看豪门 ⭐</button>
+            <h3>🔍 按球队筛选赛程</h3>
+            <div class="selector-row">
+                <select <select id="team-select" onchange="onTeamChange()">
+                    <option value="all-teams">📋 全部 72 场比赛</option>
+                    <option value="select-team" disabled>--- 选择球队 ---</option>
+                    <option value="🇦🇷 阿根廷">🇦🇷 阿根廷</option>
+                    <option value="🇩🇿 阿尔及利亚">🇩🇿 阿尔及利亚</option>
+                    <option value="🇦🇺 澳大利亚">🇦🇺 澳大利亚</option>
+                    <option value="🇦🇹 奥地利">🇦🇹 奥地利</option>
+                    <option value="🇵🇦 巴拿马">🇵🇦 巴拿马</option>
+                    <option value="🇧🇪 比利时">🇧🇪 比利时</option>
+                    <option value="🇧🇦 波黑">🇧🇦 波黑</option>
+                    <option value="🇧🇷 巴西">🇧🇷 巴西</option>
+                    <option value="🇨🇦 加拿大">🇨🇦 加拿大</option>
+                    <option value="🇨🇴 哥伦比亚">🇨🇴 哥伦比亚</option>
+                    <option value="🇨🇮 科特迪瓦">🇨🇮 科特迪瓦</option>
+                    <option value="🇭🇷 克罗地亚">🇭🇷 克罗地亚</option>
+                    <option value="🇨🇼 库拉索">🇨🇼 库拉索</option>
+                    <option value="🇨🇿 捷克">🇨🇿 捷克</option>
+                    <option value="🇩🇰 丹麦">🇩🇰 丹麦</option>
+                    <option value="🇪🇨 厄瓜多尔">🇪🇨 厄瓜多尔</option>
+                    <option value="🇪🇬 埃及">🇪🇬 埃及</option>
+                    <option value="🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</option>
+                    <option value="🇫🇷 法国">🇫🇷 法国</option>
+                    <option value="🇨🇻 佛得角">🇨🇻 佛得角</option>
+                    <option value="🇩🇪 德国">🇩🇪 德国</option>
+                    <option value="🇬🇭 加纳">🇬🇭 加纳</option>
+                    <option value="🇭🇹 海地">🇭🇹 海地</option>
+                    <option value="🇭🇳 洪都拉斯">🇭🇳 洪都拉斯</option>
+                    <option value="🇭🇺 匈牙利">🇭🇺 匈牙利</option>
+                    <option value="🇮🇷 伊朗">🇮🇷 伊朗</option>
+                    <option value="🇮🇶 伊拉克">🇮🇶 伊拉克</option>
+                    <option value="🇯🇵 日本">🇯🇵 日本</option>
+                    <option value="🇯🇴 约旦">🇯🇴 约旦</option>
+                    <option value="🇰🇷 韩国">🇰🇷 韩国</option>
+                    <option value="🇲🇽 墨西哥">🇲🇽 墨西哥</option>
+                    <option value="🇲🇦 摩洛哥">🇲🇦 摩洛哥</option>
+                    <option value="🇳🇱 荷兰">🇳🇱 荷兰</option>
+                    <option value="🇳🇿 新西兰">🇳🇿 新西兰</option>
+                    <option value="🇳🇴 挪威">🇳🇴 挪威</option>
+                    <option value="🇵🇾 巴拉圭">🇵🇾 巴拉圭</option>
+                    <option value="🇵🇹 葡萄牙">🇵🇹 葡萄牙</option>
+                    <option value="🇶🇦 卡塔尔">🇶🇦 卡塔尔</option>
+                    <option value="🇷🇴 罗马尼亚">🇷🇴 罗马尼亚</option>
+                    <option value="🇸🇦 沙特阿拉伯">🇸🇦 沙特阿拉伯</option>
+                    <option value="🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰">🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰</option>
+                    <option value="🇸🇳 塞内加尔">🇸🇳 塞内加尔</option>
+                    <option value="🇷🇸 塞尔维亚">🇷🇸 塞尔维亚</option>
+                    <option value="🇪🇸 西班牙">🇪🇸 西班牙</option>
+                    <option value="🇸🇪 瑞典">🇸🇪 瑞典</option>
+                    <option value="🇨🇭 瑞士">🇨🇭 瑞士</option>
+                    <option value="🇹🇳 突尼斯">🇹🇳 突尼斯</option>
+                    <option value="🇹🇷 土耳其">🇹🇷 土耳其</option>
+                    <option value="🇺🇾 乌拉圭">🇺🇾 乌拉圭</option>
+                    <option value="🇺🇸 美国">🇺🇸 美国</option>
+                    <option value="🇿🇦 南非">🇿🇦 南非</option>
+                    <option value="🇺🇿 乌兹别克斯坦">🇺🇿 乌兹别克斯坦</option>
+                    <option value="🇬🇷 希腊">🇬🇷 希腊</option>
+                </select>
+                <button class="btn btn-outline" onclick="copyTeamSubscribeLink()" style="padding: 10px 16px; font-size: 0.85rem; border-radius: 10px; white-space: nowrap;">📥 下载/复制 ICS</button>
             </div>
-        </div>
-
-        <div class="group-selector">
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">A组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '墨西哥')" data-team='🇲🇽 墨西哥'>
-                                🇲🇽 墨西哥 👑
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '南非')" data-team='🇿🇦 南非'>
-                                🇿🇦 南非 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '韩国')" data-team='🇰🇷 韩国'>
-                                🇰🇷 韩国 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '捷克')" data-team='🇨🇿 捷克'>
-                                🇨🇿 捷克 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">B组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '加拿大')" data-team='🇨🇦 加拿大'>
-                                🇨🇦 加拿大 👑
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '波黑')" data-team='🇧🇦 波黑'>
-                                🇧🇦 波黑 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '卡塔尔')" data-team='🇶🇦 卡塔尔'>
-                                🇶🇦 卡塔尔 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '瑞士')" data-team='🇨🇭 瑞士'>
-                                🇨🇭 瑞士 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">C组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '巴西')" data-team='🇧🇷 巴西'>
-                                🇧🇷 巴西 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '摩洛哥')" data-team='🇲🇦 摩洛哥'>
-                                🇲🇦 摩洛哥 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '海地')" data-team='🇭🇹 海地'>
-                                🇭🇹 海地 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '苏格兰')" data-team='🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰'>
-                                🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">D组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '美国')" data-team='🇺🇸 美国'>
-                                🇺🇸 美国 👑
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '巴拉圭')" data-team='🇵🇾 巴拉圭'>
-                                🇵🇾 巴拉圭 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '澳大利亚')" data-team='🇦🇺 澳大利亚'>
-                                🇦🇺 澳大利亚 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '土耳其')" data-team='🇹🇷 土耳其'>
-                                🇹🇷 土耳其 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">E组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '德国')" data-team='🇩🇪 德国'>
-                                🇩🇪 德国 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '库拉索')" data-team='🇨🇼 库拉索'>
-                                🇨🇼 库拉索 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '科特迪瓦')" data-team='🇨🇮 科特迪瓦'>
-                                🇨🇮 科特迪瓦 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '厄瓜多尔')" data-team='🇪🇨 厄瓜多尔'>
-                                🇪🇨 厄瓜多尔 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">F组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '荷兰')" data-team='🇳🇱 荷兰'>
-                                🇳🇱 荷兰 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '日本')" data-team='🇯🇵 日本'>
-                                🇯🇵 日本 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '瑞典')" data-team='🇸🇪 瑞典'>
-                                🇸🇪 瑞典 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '突尼斯')" data-team='🇹🇳 突尼斯'>
-                                🇹🇳 突尼斯 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">G组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '比利时')" data-team='🇧🇪 比利时'>
-                                🇧🇪 比利时 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '埃及')" data-team='🇪🇬 埃及'>
-                                🇪🇬 埃及 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '伊朗')" data-team='🇮🇷 伊朗'>
-                                🇮🇷 伊朗 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '新西兰')" data-team='🇳🇿 新西兰'>
-                                🇳🇿 新西兰 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">H组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '西班牙')" data-team='🇪🇸 西班牙'>
-                                🇪🇸 西班牙 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '佛得角')" data-team='🇨🇻 佛得角'>
-                                🇨🇻 佛得角 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '沙特阿拉伯')" data-team='🇸🇦 沙特阿拉伯'>
-                                🇸🇦 沙特阿拉伯 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '乌拉圭')" data-team='🇺🇾 乌拉圭'>
-                                🇺🇾 乌拉圭 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">I组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '法国')" data-team='🇫🇷 法国'>
-                                🇫🇷 法国 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '塞内加尔')" data-team='🇸🇳 塞内加尔'>
-                                🇸🇳 塞内加尔 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '伊拉克')" data-team='🇮🇶 伊拉克'>
-                                🇮🇶 伊拉克 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '挪威')" data-team='🇳🇴 挪威'>
-                                🇳🇴 挪威 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">J组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '阿根廷')" data-team='🇦🇷 阿根廷'>
-                                🇦🇷 阿根廷 👑
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '阿尔及利亚')" data-team='🇩🇿 阿尔及利亚'>
-                                🇩🇿 阿尔及利亚 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '奥地利')" data-team='🇦🇹 奥地利'>
-                                🇦🇹 奥地利 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '约旦')" data-team='🇯🇴 约旦'>
-                                🇯🇴 约旦 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">K组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '葡萄牙')" data-team='🇵🇹 葡萄牙'>
-                                🇵🇹 葡萄牙 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '刚果(金)')" data-team='🇨🇩 刚果(金)'>
-                                🇨🇩 刚果(金) 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '乌兹别克斯坦')" data-team='🇺🇿 乌兹别克斯坦'>
-                                🇺🇿 乌兹别克斯坦 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '哥伦比亚')" data-team='🇨🇴 哥伦比亚'>
-                                🇨🇴 哥伦比亚 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group-card">
-                <div class="group-header" onclick="toggleGroup(this)">
-                    <span class="group-name">L组</span>
-                    <span class="group-arrow">▼</span>
-                </div>
-                <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '英格兰')" data-team='🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰'>
-                                🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '克罗地亚')" data-team='🇭🇷 克罗地亚'>
-                                🇭🇷 克罗地亚 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '加纳')" data-team='🇬🇭 加纳'>
-                                🇬🇭 加纳 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
-                            <div class="team-chip" onclick="toggleTeam(this, '巴拿马')" data-team='🇵🇦 巴拿马'>
-                                🇵🇦 巴拿马 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-selector-section">
-            <h3>📋 已选赛程预览</h3>
-            <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button class="btn" onclick="generateAndCopyLink()">🔗 生成订阅链接并复制</button>
-                <button class="btn btn-outline" onclick="downloadSelectedICS()">📥 下载选中球队 ICS</button>
-            </div>
-            <div id="selected-count" style="margin-top:12px;font-size:0.9rem;color:var(--text-muted);"></div>
         </div>
 
         <div id="calendar-app"></div>
@@ -632,130 +192,31 @@
         <div class="footer">© 2026 WorldCup2026-Calendar · 数据来源: FIFA · Powered by Glenman</div>
     </div>
     <script>
-// Team flag map
-const FLAG_MAP = {
-    '墨西哥': '🇲🇽', '南非': '🇿🇦', '韩国': '🇰🇷', '捷克': '🇨🇿',
-    '加拿大': '🇨🇦', '波黑': '🇧🇦', '卡塔尔': '🇶🇦', '瑞士': '🇨🇭',
-    '巴西': '🇧🇷', '摩洛哥': '🇲🇦', '海地': '🇭🇹', '苏格兰': '🏴',
-    '美国': '🇺🇸', '巴拉圭': '🇵🇾', '澳大利亚': '🇦🇺', '土耳其': '🇹🇷',
-    '德国': '🇩🇪', '库拉索': '🇨🇼', '科特迪瓦': '🇨🇮', '厄瓜多尔': '🇪🇨',
-    '荷兰': '🇳🇱', '日本': '🇯🇵', '瑞典': '🇸🇪', '突尼斯': '🇹🇳',
-    '比利时': '🇧🇪', '埃及': '🇪🇬', '伊朗': '🇮🇷', '新西兰': '🇳🇿',
-    '西班牙': '🇪🇸', '佛得角': '🇨🇻', '沙特阿拉伯': '🇸🇦', '乌拉圭': '🇺🇾',
-    '法国': '🇫🇷', '塞内加尔': '🇸🇳', '伊拉克': '🇮🇶', '挪威': '🇳🇴',
-    '阿根廷': '🇦🇷', '阿尔及利亚': '🇩🇿', '奥地利': '🇦🇹', '约旦': '🇯🇴',
-    '葡萄牙': '🇵🇹', '刚果(金)': '🇨🇩', '乌兹别克斯坦': '🇺🇿', '哥伦比亚': '🇨🇴',
-    '英格兰': '🏴', '克罗地亚': '🇭🇷', '加纳': '🇬🇭', '巴拿马': '🇵🇦',
-};
+const MATCHES = {"6月12日": [{"g": "A组", "m": "🇲🇽 墨西哥 vs 🇿🇦 南非", "c": "墨西哥城", "s": "阿兹特克球场", "t": "3:00"}, {"g": "A组", "m": "🇰🇷 韩国 vs 🇨🇿 捷克", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月13日": [{"g": "B组", "m": "🇨🇦 加拿大 vs 🇧🇦 波黑", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "D组", "m": "🇺🇸 美国 vs 🇵🇾 巴拉圭", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月14日": [{"g": "B组", "m": "🇶🇦 卡塔尔 vs 🇨🇭 瑞士", "c": "旧金山湾区", "s": "李维斯球场", "t": "3:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇲🇦 摩洛哥", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "6:00"}, {"g": "C组", "m": "🇭🇹 海地 vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "c": "波士顿", "s": "吉列球场", "t": "9:00"}, {"g": "D组", "m": "🇦🇺 澳大利亚 vs 🇹🇷 土耳其", "c": "温哥华", "s": "BC广场", "t": "12:00"}], "6月15日": [{"g": "E组", "m": "🇩🇪 德国 vs 🇨🇼 库拉索", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "F组", "m": "🇳🇱 荷兰 vs 🇯🇵 日本", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "E组", "m": "🇨🇮 科特迪瓦 vs 🇪🇨 厄瓜多尔", "c": "费城", "s": "林肯金融球场", "t": "7:00"}, {"g": "F组", "m": "🇸🇪 瑞典 vs 🇹🇳 突尼斯", "c": "蒙特雷", "s": "BBVA球场", "t": "10:00"}], "6月16日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇨🇻 佛得角", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇪🇬 埃及", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "H组", "m": "🇸🇦 沙特阿拉伯 vs 🇺🇾 乌拉圭", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇮🇷 伊朗 vs 🇳🇿 新西兰", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月17日": [{"g": "I组", "m": "🇫🇷 法国 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "3:00"}, {"g": "I组", "m": "🇮🇶 伊拉克 vs 🇳🇴 挪威", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "J组", "m": "🇦🇷 阿根廷 vs 🇩🇿 阿尔及利亚", "c": "堪萨斯城", "s": "箭头体育场", "t": "9:00"}, {"g": "J组", "m": "🇦🇹 奥地利 vs 🇯🇴 约旦", "c": "旧金山湾区", "s": "李维斯球场", "t": "12:00"}], "6月18日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇨🇩 刚果(金)", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇭🇷 克罗地亚", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "L组", "m": "🇬🇭 加纳 vs 🇵🇦 巴拿马", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚", "c": "墨西哥城", "s": "阿兹特克球场", "t": "10:00"}], "6月19日": [{"g": "A组", "m": "🇨🇿 捷克 vs 🇿🇦 南非", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇧🇦 波黑", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "B组", "m": "🇨🇦 加拿大 vs 🇶🇦 卡塔尔", "c": "温哥华", "s": "BC广场", "t": "6:00"}, {"g": "A组", "m": "🇲🇽 墨西哥 vs 🇰🇷 韩国", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "9:00"}], "6月20日": [{"g": "D组", "m": "🇺🇸 美国 vs 🇦🇺 澳大利亚", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇲🇦 摩洛哥", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇭🇹 海地", "c": "费城", "s": "林肯金融球场", "t": "8:30"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇵🇾 巴拉圭", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月21日": [{"g": "F组", "m": "🇳🇱 荷兰 vs 🇸🇪 瑞典", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "E组", "m": "🇩🇪 德国 vs 🇨🇮 科特迪瓦", "c": "多伦多", "s": "BMO球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇨🇼 库拉索", "c": "堪萨斯城", "s": "箭头体育场", "t": "8:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇯🇵 日本", "c": "蒙特雷", "s": "BBVA球场", "t": "12:00"}], "6月22日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇸🇦 沙特阿拉伯", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇮🇷 伊朗", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇨🇻 佛得角", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇪🇬 埃及", "c": "温哥华", "s": "BC广场", "t": "9:00"}], "6月23日": [{"g": "J组", "m": "🇦🇷 阿根廷 vs 🇦🇹 奥地利", "c": "达拉斯", "s": "AT&T球场", "t": "1:00"}, {"g": "I组", "m": "🇫🇷 法国 vs 🇮🇶 伊拉克", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "8:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇩🇿 阿尔及利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月24日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇺🇿 乌兹别克斯坦", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇬🇭 加纳", "c": "波士顿", "s": "吉列球场", "t": "4:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🇭🇷 克罗地亚", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇨🇩 刚果(金)", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月25日": [{"g": "B组", "m": "🇧🇦 波黑 vs 🇶🇦 卡塔尔", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇨🇦 加拿大", "c": "温哥华", "s": "BC广场", "t": "3:00"}, {"g": "C组", "m": "🇲🇦 摩洛哥 vs 🇭🇹 海地", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "6:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇧🇷 巴西", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "A组", "m": "🇿🇦 南非 vs 🇰🇷 韩国", "c": "蒙特雷", "s": "BBVA球场", "t": "9:00"}, {"g": "A组", "m": "🇨🇿 捷克 vs 🇲🇽 墨西哥", "c": "墨西哥城", "s": "阿兹特克球场", "t": "9:00"}], "6月26日": [{"g": "E组", "m": "🇨🇼 库拉索 vs 🇨🇮 科特迪瓦", "c": "费城", "s": "林肯金融球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇩🇪 德国", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "4:00"}, {"g": "F组", "m": "🇯🇵 日本 vs 🇸🇪 瑞典", "c": "达拉斯", "s": "AT&T球场", "t": "7:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇳🇱 荷兰", "c": "堪萨斯城", "s": "箭头体育场", "t": "7:00"}, {"g": "D组", "m": "🇵🇾 巴拉圭 vs 🇦🇺 澳大利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "10:00"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇺🇸 美国", "c": "洛杉矶", "s": "SoFi体育场", "t": "10:00"}], "6月27日": [{"g": "I组", "m": "🇸🇳 塞内加尔 vs 🇮🇶 伊拉克", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇫🇷 法国", "c": "波士顿", "s": "吉列球场", "t": "3:00"}, {"g": "H组", "m": "🇨🇻 佛得角 vs 🇸🇦 沙特阿拉伯", "c": "休斯顿", "s": "NRG球场", "t": "8:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇪🇸 西班牙", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "8:00"}, {"g": "G组", "m": "🇪🇬 埃及 vs 🇮🇷 伊朗", "c": "西雅图", "s": "卢门球场", "t": "11:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇧🇪 比利时", "c": "温哥华", "s": "BC广场", "t": "11:00"}], "6月28日": [{"g": "L组", "m": "🇭🇷 克罗地亚 vs 🇬🇭 加纳", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "5:00"}, {"g": "K组", "m": "🇨🇩 刚果(金) vs 🇺🇿 乌兹别克斯坦", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "7:30"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇵🇹 葡萄牙", "c": "迈阿密", "s": "硬石体育场", "t": "7:30"}, {"g": "J组", "m": "🇩🇿 阿尔及利亚 vs 🇦🇹 奥地利", "c": "休斯顿", "s": "NRG球场", "t": "10:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇦🇷 阿根廷", "c": "西雅图", "s": "卢门球场", "t": "10:00"}]};
+const TEAMS = ["🇦🇷 阿根廷", "🇩🇿 阿尔及利亚", "🇦🇺 澳大利亚", "🇦🇹 奥地利", "🇵🇦 巴拿马", "🇧🇪 比利时", "🇧🇦 波黑", "🇧🇷 巴西", "🇨🇦 加拿大", "🇨🇴 哥伦比亚", "🇨🇮 科特迪瓦", "🇭🇷 克罗地亚", "🇨🇼 库拉索", "🇨🇿 捷克", "🇩🇰 丹麦", "🇪🇨 厄瓜多尔", "🇪🇬 埃及", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "🇫🇷 法国", "🇨🇻 佛得角", "🇩🇪 德国", "🇬🇭 加纳", "🇭🇹 海地", "🇭🇳 洪都拉斯", "🇭🇺 匈牙利", "🇮🇷 伊朗", "🇮🇶 伊拉克", "🇯🇵 日本", "🇯🇴 约旦", "🇰🇷 韩国", "🇲🇽 墨西哥", "🇲🇦 摩洛哥", "🇳🇱 荷兰", "🇳🇿 新西兰", "🇳🇴 挪威", "🇵🇾 巴拉圭", "🇵🇹 葡萄牙", "🇶🇦 卡塔尔", "🇷🇴 罗马尼亚", "🇸🇦 沙特阿拉伯", "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "🇸🇳 塞内加尔", "🇷🇸 塞尔维亚", "🇪🇸 西班牙", "🇸🇪 瑞典", "🇨🇭 瑞士", "🇹🇳 突尼斯", "🇹🇷 土耳其", "🇺🇾 乌拉圭", "🇺🇸 美国", "🇿🇦 南非", "🇺🇿 乌兹别克斯坦", "🇬🇷 希腊"];
+const BASE_URL = 'https://glenman.github.io/WorldCup2026-Calendar/';
 
-const HOST_TEAMS = ['墨西哥', '加拿大', '美国'];
-const FAN_FAVORITES = ['巴西', '法国', '德国', '阿根廷', '西班牙', '英格兰', '葡萄牙', '意大利'];
-let selectedTeams = new Set();
-
-function initFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    const teamsParam = params.get('teams');
-    if (teamsParam) {
-        const names = teamsParam.split(',').map(s => s.trim()).filter(Boolean);
-        names.forEach(name => { if (FLAG_MAP[name]) selectedTeams.add(name); });
+function getTeamMatches(teamName) {
+    const result = [];
+    const shortName = teamName.replace(/^\S+\s+/, '');
+    for (const [day, dayMatches] of Object.entries(MATCHES)) {
+        dayMatches.forEach(m => {
+            if (m.m.includes(shortName)) {
+                result.push({...m, day});
+            }
+        });
     }
+    return result;
 }
 
-function toggleTeam(el, name) {
-    if (selectedTeams.has(name)) {
-        selectedTeams.delete(name);
-        el.classList.remove('selected');
-    } else {
-        selectedTeams.add(name);
-        el.classList.add('selected');
-    }
-    updateChips();
-    updateCalendar();
-}
-
-function updateChips() {
-    const container = document.getElementById('selected-chips');
-    const countEl = document.getElementById('selected-count');
-    if (selectedTeams.size === 0) {
-        container.innerHTML = '<div class="no-selection">点击球队添加到关注列表，或点击上方快捷按钮</div>';
-        countEl.textContent = '';
-    } else {
-        const chips = Array.from(selectedTeams).map(n => {
-            const flag = FLAG_MAP[n] || '⚽';
-            return '<div class="chip" onclick="removeTeam(\'' + n + '\')" title="点击移除">' + flag + ' ' + n + ' ✕</div>';
-        }).join('');
-        container.innerHTML = '<div class="chips-row">' + chips + '</div>';
-        countEl.textContent = '已选 ' + selectedTeams.size + ' 支球队';
-    }
-}
-
-function removeTeam(name) {
-    selectedTeams.delete(name);
-    document.querySelectorAll('.team-chip').forEach(el => {
-        if (el.dataset.team && el.dataset.team.includes(name)) el.classList.remove('selected');
-    });
-    updateChips();
-    updateCalendar();
-}
-
-function selectAll() {
-    Object.keys(FLAG_MAP).forEach(name => selectedTeams.add(name));
-    document.querySelectorAll('.team-chip').forEach(el => el.classList.add('selected'));
-    updateChips(); updateCalendar();
-}
-
-function deselectAll() {
-    selectedTeams.clear();
-    document.querySelectorAll('.team-chip').forEach(el => el.classList.remove('selected'));
-    updateChips(); updateCalendar();
-}
-
-function selectAllHost() {
-    selectedTeams.clear();
-    HOST_TEAMS.forEach(name => selectedTeams.add(name));
-    document.querySelectorAll('.team-chip').forEach(el => {
-        const n = getChipName(el.dataset.team);
-        if (HOST_TEAMS.includes(n)) el.classList.add('selected');
-    });
-    updateChips(); updateCalendar();
-}
-
-function selectAllFavorites() {
-    selectedTeams.clear();
-    FAN_FAVORITES.forEach(name => selectedTeams.add(name));
-    document.querySelectorAll('.team-chip').forEach(el => {
-        const n = getChipName(el.dataset.team);
-        if (FAN_FAVORITES.includes(n)) el.classList.add('selected');
-    });
-    updateChips(); updateCalendar();
-}
-
-function getChipName(ds) {
-    if (!ds) return '';
-    return ds.replace(/^[^\u4e00-\u9fff]+/, '').trim();
-}
-
-function generateAndCopyLink() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    const url = window.location.origin + window.location.pathname + '?teams=' + Array.from(selectedTeams).join(',');
-    navigator.clipboard.writeText(url).then(() => {
-        alert('✅ 订阅链接已复制！\n\n' + url + '\n\n分享给好友，打开后可看到选中球队的赛程。');
-    }).catch(() => { prompt('请手动复制：', url); });
-}
-
-function downloadSelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    const matches = getSelectedMatches();
-    if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
+function generateICS(matches, teamName) {
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
     let idx = 1;
     for (const m of matches) {
-        const [h, mi] = m.t.split(':').map(Number);
+        const [h, min] = m.t.split(':').map(Number);
         const utcH = h - 8;
         const dayNum = parseInt(m.day.replace('月','').replace('日',''));
-        let utcDate;
-        if (utcH < 0) utcDate = new Date(2026, 5, dayNum - 1, utcH + 24, mi);
-        else utcDate = new Date(2026, 5, dayNum, utcH, mi);
+        const utcDate = new Date(2026, 5, dayNum, utcH, min);
         const iso = utcDate.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
         ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
@@ -763,88 +224,79 @@ function downloadSelectedICS() {
         const endDt = new Date(utcDate.getTime() + 5400000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
         ics += 'SUMMARY:' + m.m + '\r\n';
-        const tl = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' | ');
-        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + tl + '\r\n';
+        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
         ics += 'LOCATION:' + m.c + ' - ' + m.s + '\r\n';
         ics += 'END:VEVENT\r\n';
         idx++;
     }
     ics += 'END:VCALENDAR\r\n';
-    const blob = new Blob([ics], {type: 'text/calendar'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = '世界杯2026_' + Array.from(selectedTeams).slice(0,3).join('-') + '.ics';
-    a.click();
-    URL.revokeObjectURL(url);
+    return ics;
 }
 
-function getSelectedMatches() {
-    const result = [];
-    for (const [day, dayMatches] of Object.entries(MATCHES)) {
-        dayMatches.forEach(m => {
-            const mt = extractTeams(m.m);
-            for (const st of selectedTeams) {
-                if (mt.includes(st)) { result.push({...m, day}); break; }
-            }
-        });
-    }
-    return result;
-}
-
-function extractTeams(matchStr) {
-    const parts = matchStr.split(' vs ');
-    if (parts.length !== 2) return [];
-    return [parts[0].trim(), parts[1].trim()];
-}
-
-function updateCalendar() { renderCalendar(getSelectedMatches()); }
-
-function renderCalendar(filteredMatches) {
+function renderCalendar(filteredMatches, teamName) {
     const container = document.getElementById('calendar-app');
-    const teamCount = selectedTeams.size;
+    
+    // 球队名称横幅
     let bannerHtml = '';
-    if (teamCount > 0) {
-        const flags = Array.from(selectedTeams).slice(0, 10).map(n => (FLAG_MAP[n]||'⚽') + ' ' + n).join(' ');
-        bannerHtml = '<div class="team-banner"><div class="team-banner-name">' + teamCount + ' 支球队专属赛程</div><div class="team-banner-count">' + flags + '</div></div>';
+    if (teamName !== 'all' && teamName !== null) {
+        const flag = teamName.match(/^\S+/)?.[0] || '🏆';
+        const team = teamName.replace(/^\S+\s+/, '');
+        const count = filteredMatches ? filteredMatches.length : 0;
+        bannerHtml = '<div class="team-banner">' +
+            '<span class="team-banner-flag">' + flag + '</span>' +
+            '<div class="team-banner-info">' +
+                '<div class="team-banner-name">' + team + ' 专属赛程</div>' +
+                '<div class="team-banner-count">' + count + ' 场比赛 · 点击"📥 下载 ICS"按钮导出日历文件</div>' +
+            '</div>' +
+        '</div>';
     }
     if (filteredMatches && filteredMatches.length === 0) {
-        container.innerHTML = bannerHtml + '<div class="empty-state"><p>😕 没有找到选中球队的比赛</p></div>';
+        container.innerHTML = '<div class="empty-state"><p>😕 没有找到该球队的比赛</p><p>请尝试其他球队</p></div>';
         return;
     }
+    if (teamName === 'all') {
+        filteredMatches = null;
+    }
+    const title = document.getElementById('page-title');
+    const totalEl = document.getElementById('total-matches');
+    if (teamName === 'all') {
+        title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 世界杯观赛日程表';
+        totalEl.textContent = '72 场';
+    } else {
+        const flag = teamName.match(/^\S+/)?.[0] || '🏆';
+        title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 ' + flag + ' ' + teamName.replace(/^\S+\s+/, '') + ' 专属赛程';
+        const count = filteredMatches ? filteredMatches.length : 0;
+        totalEl.textContent = count + ' 场';
+    }
     const byDay = {};
-    (filteredMatches || []).forEach(m => {
-        if (!byDay[m.day]) byDay[m.day] = [];
-        byDay[m.day].push(m);
-    });
     if (!filteredMatches) {
-        for (const [day, dm] of Object.entries(MATCHES)) byDay[day] = dm;
+        for (const [day, dayMatches] of Object.entries(MATCHES)) {
+            byDay[day] = dayMatches;
+        }
+    } else {
+        filteredMatches.forEach(m => {
+            if (!byDay[m.day]) byDay[m.day] = [];
+            byDay[m.day].push(m);
+        });
     }
     const days = Object.keys(byDay);
-    let html = bannerHtml;
+    let html = '';
     days.forEach(day => {
-        const dm = byDay[day];
-        html += '<div class="date-header"><span>📅 ' + day + '</span><span class="day-count">' + dm.length + ' 场</span></div>';
-        dm.forEach(m => {
-            html += '<div class="match-card"><div class="match-time">' + m.t + '</div><div class="match-info"><div class="match-name">' + m.m + '</div><div class="match-meta">📍 ' + m.c + ' · ' + m.s + '</div></div><span class="group-badge">' + m.g + '</span></div>';
+        const dayMatches = byDay[day];
+        html += '<div class="date-header"><span>📅 ' + day + '</span><span class="day-count">' + dayMatches.length + ' 场</span></div>';
+        dayMatches.forEach(m => {
+            html += '<div class="match-card">' +
+                '<div class="match-time">' + m.t + '</div>' +
+                '<div class="match-info">' +
+                    '<div class="match-name">' + m.m + '</div>' +
+                    '<div class="match-meta">📍 ' + m.c + ' · ' + m.s + '</div>' +
+                '</div>' +
+                '<span class="group-badge">' + m.g + '</span>' +
+            '</div>';
         });
     });
     container.innerHTML = html;
 }
-
-function toggleGroup(header) {
-    const body = header.nextElementSibling;
-    const arrow = header.querySelector('.group-arrow');
-    if (body.style.display === 'none') { body.style.display = ''; arrow.textContent = '▼'; }
-    else { body.style.display = 'none'; arrow.textContent = '▶'; }
-}
-
-
-const MATCHES = {"6月12日": [{"g": "A组", "m": "🇲🇽 墨西哥 vs 🇿🇦 南非", "c": "墨西哥城", "s": "阿兹特克球场", "t": "3:00"}, {"g": "A组", "m": "🇰🇷 韩国 vs 🇨🇿 捷克", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月13日": [{"g": "B组", "m": "🇨🇦 加拿大 vs 🇧🇦 波黑", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "D组", "m": "🇺🇸 美国 vs 🇵🇾 巴拉圭", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月14日": [{"g": "B组", "m": "🇶🇦 卡塔尔 vs 🇨🇭 瑞士", "c": "旧金山湾区", "s": "李维斯球场", "t": "3:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇲🇦 摩洛哥", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "6:00"}, {"g": "C组", "m": "🇭🇹 海地 vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "c": "波士顿", "s": "吉列球场", "t": "9:00"}, {"g": "D组", "m": "🇦🇺 澳大利亚 vs 🇹🇷 土耳其", "c": "温哥华", "s": "BC广场", "t": "12:00"}], "6月15日": [{"g": "E组", "m": "🇩🇪 德国 vs 🇨🇼 库拉索", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "F组", "m": "🇳🇱 荷兰 vs 🇯🇵 日本", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "E组", "m": "🇨🇮 科特迪瓦 vs 🇪🇨 厄瓜多尔", "c": "费城", "s": "林肯金融球场", "t": "7:00"}, {"g": "F组", "m": "🇸🇪 瑞典 vs 🇹🇳 突尼斯", "c": "蒙特雷", "s": "BBVA球场", "t": "10:00"}], "6月16日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇨🇻 佛得角", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇪🇬 埃及", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "H组", "m": "🇸🇦 沙特阿拉伯 vs 🇺🇾 乌拉圭", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇮🇷 伊朗 vs 🇳🇿 新西兰", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月17日": [{"g": "I组", "m": "🇫🇷 法国 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "3:00"}, {"g": "I组", "m": "🇮🇶 伊拉克 vs 🇳🇴 挪威", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "J组", "m": "🇦🇷 阿根廷 vs 🇩🇿 阿尔及利亚", "c": "堪萨斯城", "s": "箭头体育场", "t": "9:00"}, {"g": "J组", "m": "🇦🇹 奥地利 vs 🇯🇴 约旦", "c": "旧金山湾区", "s": "李维斯球场", "t": "12:00"}], "6月18日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇨🇩 刚果(金)", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇭🇷 克罗地亚", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "L组", "m": "🇬🇭 加纳 vs 🇵🇦 巴拿马", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚", "c": "墨西哥城", "s": "阿兹特克球场", "t": "10:00"}], "6月19日": [{"g": "A组", "m": "🇨🇿 捷克 vs 🇿🇦 南非", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇧🇦 波黑", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "B组", "m": "🇨🇦 加拿大 vs 🇶🇦 卡塔尔", "c": "温哥华", "s": "BC广场", "t": "6:00"}, {"g": "A组", "m": "🇲🇽 墨西哥 vs 🇰🇷 韩国", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "9:00"}], "6月20日": [{"g": "D组", "m": "🇺🇸 美国 vs 🇦🇺 澳大利亚", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇲🇦 摩洛哥", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇭🇹 海地", "c": "费城", "s": "林肯金融球场", "t": "8:30"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇵🇾 巴拉圭", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月21日": [{"g": "F组", "m": "🇳🇱 荷兰 vs 🇸🇪 瑞典", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "E组", "m": "🇩🇪 德国 vs 🇨🇮 科特迪瓦", "c": "多伦多", "s": "BMO球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇨🇼 库拉索", "c": "堪萨斯城", "s": "箭头体育场", "t": "8:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇯🇵 日本", "c": "蒙特雷", "s": "BBVA球场", "t": "12:00"}], "6月22日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇸🇦 沙特阿拉伯", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇮🇷 伊朗", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇨🇻 佛得角", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇪🇬 埃及", "c": "温哥华", "s": "BC广场", "t": "9:00"}], "6月23日": [{"g": "J组", "m": "🇦🇷 阿根廷 vs 🇦🇹 奥地利", "c": "达拉斯", "s": "AT&T球场", "t": "1:00"}, {"g": "I组", "m": "🇫🇷 法国 vs 🇮🇶 伊拉克", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "8:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇩🇿 阿尔及利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月24日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇺🇿 乌兹别克斯坦", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇬🇭 加纳", "c": "波士顿", "s": "吉列球场", "t": "4:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🇭🇷 克罗地亚", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇨🇩 刚果(金)", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月25日": [{"g": "B组", "m": "🇧🇦 波黑 vs 🇶🇦 卡塔尔", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇨🇦 加拿大", "c": "温哥华", "s": "BC广场", "t": "3:00"}, {"g": "C组", "m": "🇲🇦 摩洛哥 vs 🇭🇹 海地", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "6:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇧🇷 巴西", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "A组", "m": "🇿🇦 南非 vs 🇰🇷 韩国", "c": "蒙特雷", "s": "BBVA球场", "t": "9:00"}, {"g": "A组", "m": "🇨🇿 捷克 vs 🇲🇽 墨西哥", "c": "墨西哥城", "s": "阿兹特克球场", "t": "9:00"}], "6月26日": [{"g": "E组", "m": "🇨🇼 库拉索 vs 🇨🇮 科特迪瓦", "c": "费城", "s": "林肯金融球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇩🇪 德国", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "4:00"}, {"g": "F组", "m": "🇯🇵 日本 vs 🇸🇪 瑞典", "c": "达拉斯", "s": "AT&T球场", "t": "7:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇳🇱 荷兰", "c": "堪萨斯城", "s": "箭头体育场", "t": "7:00"}, {"g": "D组", "m": "🇵🇾 巴拉圭 vs 🇦🇺 澳大利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "10:00"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇺🇸 美国", "c": "洛杉矶", "s": "SoFi体育场", "t": "10:00"}], "6月27日": [{"g": "I组", "m": "🇸🇳 塞内加尔 vs 🇮🇶 伊拉克", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇫🇷 法国", "c": "波士顿", "s": "吉列球场", "t": "3:00"}, {"g": "H组", "m": "🇨🇻 佛得角 vs 🇸🇦 沙特阿拉伯", "c": "休斯顿", "s": "NRG球场", "t": "8:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇪🇸 西班牙", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "8:00"}, {"g": "G组", "m": "🇪🇬 埃及 vs 🇮🇷 伊朗", "c": "西雅图", "s": "卢门球场", "t": "11:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇧🇪 比利时", "c": "温哥华", "s": "BC广场", "t": "11:00"}], "6月28日": [{"g": "L组", "m": "🇭🇷 克罗地亚 vs 🇬🇭 加纳", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "5:00"}, {"g": "K组", "m": "🇨🇩 刚果(金) vs 🇺🇿 乌兹别克斯坦", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "7:30"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇵🇹 葡萄牙", "c": "迈阿密", "s": "硬石体育场", "t": "7:30"}, {"g": "J组", "m": "🇩🇿 阿尔及利亚 vs 🇦🇹 奥地利", "c": "休斯顿", "s": "NRG球场", "t": "10:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇦🇷 阿根廷", "c": "西雅图", "s": "卢门球场", "t": "10:00"}]};
-const TEAMS = ["🇦🇷 阿根廷", "🇩🇿 阿尔及利亚", "🇦🇺 澳大利亚", "🇦🇹 奥地利", "🇵🇦 巴拿马", "🇧🇪 比利时", "🇧🇦 波黑", "🇧🇷 巴西", "🇨🇦 加拿大", "🇨🇴 哥伦比亚", "🇨🇮 科特迪瓦", "🇭🇷 克罗地亚", "🇨🇼 库拉索", "🇨🇿 捷克", "🇩🇰 丹麦", "🇪🇨 厄瓜多尔", "🇪🇬 埃及", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "🇫🇷 法国", "🇨🇻 佛得角", "🇩🇪 德国", "🇬🇭 加纳", "🇭🇹 海地", "🇭🇳 洪都拉斯", "🇭🇺 匈牙利", "🇮🇷 伊朗", "🇮🇶 伊拉克", "🇯🇵 日本", "🇯🇴 约旦", "🇰🇷 韩国", "🇲🇽 墨西哥", "🇲🇦 摩洛哥", "🇳🇱 荷兰", "🇳🇿 新西兰", "🇳🇴 挪威", "🇵🇾 巴拉圭", "🇵🇹 葡萄牙", "🇶🇦 卡塔尔", "🇷🇴 罗马尼亚", "🇸🇦 沙特阿拉伯", "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "🇸🇳 塞内加尔", "🇷🇸 塞尔维亚", "🇪🇸 西班牙", "🇸🇪 瑞典", "🇨🇭 瑞士", "🇹🇳 突尼斯", "🇹🇷 土耳其", "🇺🇾 乌拉圭", "🇺🇸 美国", "🇿🇦 南非", "🇺🇿 乌兹别克斯坦", "🇬🇷 希腊"];
-const BASE_URL = 'https://glenman.github.io/WorldCup2026-Calendar/';
-
-
 
 function onTeamChange() {
     const sel = document.getElementById('team-select');
@@ -897,9 +349,7 @@ function copyTeamSubscribeLink() {
     alert('✅ ' + flag + ' ' + teamName + ' 专属赛程已下载！\n\n📅 共 ' + filtered.length + ' 场比赛\n📄 文件名: ' + cleanName + '_worldcup26.ics\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置 → 从日历导入\n3. 电脑: 双击 .ics 文件导入系统日历');
 }
 
-initFromURL();
-    updateChips();
-    renderCalendar(null, 'all');renderCalendar(null, 'all');
+renderCalendar(null, 'all');
 </script>
 </body>
 </html>
