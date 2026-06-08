@@ -113,7 +113,7 @@
             <div class="summary-grid">
                 <div class="summary-item"><div class="label">⏰ 时间范围</div><div class="value">6月12日 - 6月28日</div></div>
                 <div class="summary-item"><div class="label">⏱️ 所有时间</div><div class="value">北京时间</div></div>
-                <div class="summary-item"><div class="label">🏆 总场次</div><div class="value" id="total-matches">70 场</div></div>
+                <div class="summary-item"><div class="label">🏆 总场次</div><div class="value" id="total-matches">72 场</div></div>
                 <div class="summary-item"><div class="label">📅 比赛天数</div><div class="value">17 天</div></div>
             </div>
             <div class="summary-actions">
@@ -127,7 +127,7 @@
             <h3>🔍 按球队筛选赛程</h3>
             <div class="selector-row">
                 <select <select id="team-select" onchange="onTeamChange()">
-                    <option value="all-teams">📋 全部 70 场比赛</option>
+                    <option value="all-teams">📋 全部 72 场比赛</option>
                     <option value="select-team" disabled>--- 选择球队 ---</option>
                     <option value="🇦🇷 阿根廷">🇦🇷 阿根廷</option>
                     <option value="🇩🇿 阿尔及利亚">🇩🇿 阿尔及利亚</option>
@@ -261,7 +261,7 @@ function renderCalendar(filteredMatches, teamName) {
     const totalEl = document.getElementById('total-matches');
     if (teamName === 'all') {
         title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 世界杯观赛日程表';
-        totalEl.textContent = '70 场';
+        totalEl.textContent = '72 场';
     } else {
         const flag = teamName.match(/^\S+/)?.[0] || '🏆';
         title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 ' + flag + ' ' + teamName.replace(/^\S+\s+/, '') + ' 专属赛程';
