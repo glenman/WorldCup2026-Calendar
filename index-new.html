@@ -933,28 +933,37 @@ id="calendar-app"></div>
 // Robust sync copy-to-clipboard function
 // Robust copy-to-clipboard function (works in all browsers)
 function copyToClipboard(text) {
-    // Use synchronous approach with temporary textarea
-    // This works in all browsers within user gesture context
+    // Try Clipboard API first (modern browsers, requires HTTPS)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(function() {
+            return true;
+        }).catch(function(err) {
+            console.log('Clipboard API failed, using fallback:', err);
+            return _copyFallback(text);
+        });
+    }
+    // Fallback for all browsers
+    return _copyFallback(text);
+}
+
+function _copyFallback(text) {
     var ta = document.createElement('textarea');
     ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.left = '-9999px';
-    ta.style.top = '0';
-    ta.style.opacity = '0';
-    ta.style.pointerEvents = 'none';
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
     document.body.appendChild(ta);
-    
-    // Select and copy must happen synchronously
     ta.focus();
-    ta.select();
-    try {
-        var success = document.execCommand('copy');
-        document.body.removeChild(ta);
-        if (success) return true;
-    } catch(e) {
-        try { document.body.removeChild(ta); } catch(e2) {}
+    if (ta.select !== undefined) {
+        ta.select();
     }
-    return false;
+    try {
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+    } catch(e) {
+        document.body.removeChild(ta);
+        return false;
+    }
 }
 
 function _copyFallback(text) {
@@ -1129,11 +1138,18 @@ function onTeamChange() {
 
 function copyAllSubscribeLink() {
     var url = BASE_URL + 'worldcup2026.ics';
-    var ok = copyToClipboard(url);
-    if (ok) {
-        alert('✅ 全部赛程订阅链接已复制！\n\n' + url);
+    var result = copyToClipboard(url);
+    // Handle both sync (true/false) and async (Promise) returns
+    if (result && typeof result.then === 'function') {
+        result.then(function(ok) {
+            alert('✅ 全部赛程订阅链接已复制！\n\n' + url);
+        });
     } else {
-        alert('❌ 复制失败，请手动复制：\n' + url);
+        if (result) {
+            alert('✅ 全部赛程订阅链接已复制！\n\n' + url);
+        } else {
+            alert('❌ 复制失败，请手动复制：\n' + url);
+        }
     }
 }
 
@@ -1323,11 +1339,19 @@ function getChipName(ds) {
 function generateAndCopyLink() {
     if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
     var url = window.location.origin + window.location.pathname + '?teams=' + Array.from(selectedTeams).join(',');
-    var ok = copyToClipboard(url);
-    if (ok) {
-        alert('✅ 订阅链接已复制！\n\n' + url);
+    var result = copyToClipboard(url);
+    if (result && typeof result.then === 'function') {
+        result.then(function(ok) {
+            alert('✅ 订阅链接已复制！\n\n' + url);
+        }).catch(function() {
+            alert('❌ 复制失败，请手动复制：\n' + url);
+        });
     } else {
-        alert('❌ 复制失败，请手动复制：\n' + url);
+        if (result) {
+            alert('✅ 订阅链接已复制！\n\n' + url);
+        } else {
+            alert('❌ 复制失败，请手动复制：\n' + url);
+        }
     }
 }
 
