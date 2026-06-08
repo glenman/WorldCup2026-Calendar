@@ -6,37 +6,243 @@
     <title>2026 FIFA 世界杯观赛日程表</title>
     <style>
         * { box-sizing: border-box; }
-        :root { --primary: #326e55; --accent: #b39cd7; --bg: #f0f2f5; --card: #ffffff; --gold: #ffd700; }
-        body { font-family: 'PingFang SC', 'Helvetica Neue', sans-serif; background: var(--bg); color: #333; margin: 0; padding: 20px; }
+        :root {
+            /* 官方视觉：黑白金 */
+            --black: #1a1a2e;
+            --white: #ffffff;
+            --gold: #c8a84e;
+            --gold-light: #f5e6b8;
+            
+            /* 三国代表色 */
+            --canada-red: #e63946;
+            --usa-blue: #1d3557;
+            --mexico-green: #2d6a4f;
+            
+            /* 辅助 */
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --card-border: #2a2a3e;
+            --text: #e0e0e0;
+            --text-muted: #8888aa;
+        }
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            background-image: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+        }
         .container { max-width: 960px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 20px; }
-        h1 { color: var(--primary); margin: 10px 0 5px; font-size: 2rem; }
-        h1 small { font-size: 0.5em; font-weight: normal; color: #999; }
-        .summary-banner { background: linear-gradient(135deg, var(--primary), #1a5c3a); color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: 0 4px 16px rgba(50,110,85,0.25); }
-        .summary-banner h2 { margin: 0 0 18px; font-size: 1.3rem; color: #fff; }
-        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
-        .summary-item { background: rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 18px; }
-        .summary-item .label { font-size: 0.8rem; opacity: 0.8; margin-bottom: 4px; }
-        .summary-item .value { font-size: 1.2rem; font-weight: 700; }
-        .summary-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--primary); border: none; padding: 10px 24px; border-radius: 25px; cursor: pointer; font-size: 0.95rem; text-decoration: none; font-weight: 600; transition: all 0.15s; }
-        .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .date-header { background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 12px; margin: 20px 0 10px; font-size: 1.1rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .match-card { background: var(--card); border-radius: 12px; padding: 18px 20px; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); border-left: 5px solid var(--primary); display: flex; align-items: center; gap: 15px; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; }
-        .match-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .match-time { font-size: 1.3rem; font-weight: bold; color: var(--primary); min-width: 80px; text-align: center; white-space: nowrap; }
+        
+        /* ===== Header ===== */
+        header { text-align: center; margin-bottom: 24px; }
+        h1 {
+            color: var(--white);
+            margin: 10px 0 5px;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+        h1 small {
+            display: block;
+            font-size: 0.45em;
+            font-weight: 300;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+        .hosts {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 12px 0 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .hosts span { opacity: 0.6; }
+        
+        /* ===== Summary Banner ===== */
+        .summary-banner {
+            background: linear-gradient(135deg, var(--black), #16213e);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(200,168,78,0.08), inset 0 0 60px rgba(200,168,78,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--canada-red), var(--usa-blue), var(--mexico-green));
+        }
+        .summary-banner h2 {
+            margin: 0 0 18px;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(200,168,78,0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+        .summary-item .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+        .summary-item .value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .summary-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(200,168,78,0.25);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border-color: var(--card-border);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--text-muted);
+        }
+        
+        /* ===== Date Header ===== */
+        .date-header {
+            background: linear-gradient(90deg, var(--black), #16213e);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 12px;
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--gold);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .date-header .day-count {
+            font-size: 0.8rem;
+            color: var(--gold);
+            background: rgba(200,168,78,0.1);
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+        
+        /* ===== Match Card ===== */
+        .match-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .match-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold);
+            box-shadow: 0 4px 16px rgba(200,168,78,0.1);
+        }
+        .match-time {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 75px;
+            text-align: center;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
         .match-info { flex: 1; }
-        .match-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-        .match-meta { font-size: 0.85rem; color: #888; }
-        .group-badge { background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.75rem; white-space: nowrap; }
-        .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #999; padding: 20px; }
+        .match-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--white);
+        }
+        .match-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .group-badge {
+            background: rgba(200,168,78,0.12);
+            color: var(--gold);
+            border: 1px solid rgba(200,168,78,0.25);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 20px;
+            border-top: 1px solid var(--card-border);
+        }
+        
+        /* ===== Responsive ===== */
         @media (max-width: 600px) {
-            .match-card { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px; }
+            .match-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 14px;
+            }
             .match-time { font-size: 1.1rem; min-width: auto; }
             .match-name { font-size: 1rem; }
             h1 { font-size: 1.5rem; }
             .summary-banner { padding: 20px; }
             .summary-grid { grid-template-columns: 1fr 1fr; }
+            .summary-actions { flex-direction: column; }
+            .btn { justify-content: center; }
         }
     </style>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -46,12 +252,17 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏆 2026 FIFA 世界杯观赛日程表</h1>
-            <p>🇺🇸 美国 🇲🇽 墨西哥 🇨🇦 加拿大 · 小组赛阶段</p>
+            <h1>
+                <small>FIFA WORLD CUP 2026</small>
+                🏆 世界杯观赛日程表
+            </h1>
+            <div class="hosts">
+                🇨🇦 加拿大 &nbsp;|&nbsp; 🇺🇸 美国 &nbsp;|&nbsp; 🇲🇽 墨西哥
+            </div>
         </header>
 
         <!-- 核心摘要 + 订阅下载 -->
-        <div class="summary-banner" id="summary-banner">
+        <div class="summary-banner">
             <h2>📋 赛事概览</h2>
             <div class="summary-grid">
                 <div class="summary-item">
@@ -73,8 +284,8 @@
             </div>
             <div class="summary-actions">
                 <a href="worldcup2026.ics" class="btn" download>📥 下载 ICS 日历</a>
-                <a href="data/worldcup2026-matches.json" class="btn" download>📊 下载 JSON 数据</a>
-                <button class="btn" onclick="copySubscribeLink()">🔗 复制订阅链接</button>
+                <a href="data/worldcup2026-matches.json" class="btn btn-outline" download>📊 下载 JSON</a>
+                <button class="btn btn-outline" onclick="copySubscribeLink()">🔗 复制订阅链接</button>
             </div>
         </div>
 
@@ -193,6 +404,15 @@
         ]
     };
 
+    function copySubscribeLink() {
+        const url = 'https://glenman.github.io/WorldCup2026-Calendar/worldcup2026.ics';
+        navigator.clipboard.writeText(url).then(() => {
+            alert('✅ 订阅链接已复制！\n\n使用方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历 → 粘贴链接\n2. Android/Google: Google Calendar → 设置 → 添加账户 → 从网址添加 → 粘贴链接\n3. Outlook: 订阅日历 → 输入粘贴的链接');
+        }).catch(() => {
+            prompt('请手动复制以下链接：', url);
+        });
+    }
+    
     function renderCalendar() {
         const container = document.getElementById('calendar-app');
         const days = Object.keys(MATCHES);
@@ -202,7 +422,7 @@
             const dayCount = MATCHES[day].length;
             total += dayCount;
             
-            let html = `<div class="date-header"><span>📅 ${day}</span><span>${dayCount} 场</span></div>`;
+            let html = `<div class="date-header"><span>📅 ${day}</span><span class="day-count">${dayCount} 场</span></div>`;
             
             MATCHES[day].forEach(m => {
                 html += `
@@ -220,20 +440,6 @@
         });
         
         document.getElementById('total-matches').textContent = total + ' 场';
-    }
-    
-    function copySubscribeLink() {
-        const url = 'https://glenman.github.io/WorldCup2026-Calendar/worldcup2026.ics';
-        navigator.clipboard.writeText(url).then(() => {
-            alert('✅ 订阅链接已复制！
-
-使用方法：
-1. iOS: 设置 → 日历 → 账户 → 添加账户 → 添加已订阅的日历 → 粘贴链接
-2. Android: 打开 Google Calendar → 设置 → 添加账户 → 从网址添加 → 粘贴链接
-3. Outlook: 订阅日历 → 输入粘贴的链接');
-        }).catch(() => {
-            prompt('请手动复制以下链接：', url);
-        });
     }
     
     function addToCalendar(matchName, dateTime) {
