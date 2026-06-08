@@ -100,7 +100,8 @@
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Expires" content="0">
     
-.group-selector {
+        /* Block-style group selector */
+        .group-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
@@ -219,8 +220,11 @@
             }
         }
 
-        
-<div class="team-selector-section">
+</style>
+</head><body>
+
+
+        <div class="team-selector-section">
             <h3>🎯 选择关注球队</h3>
             <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px;">
                 <button class="btn btn-outline" onclick="selectAll()">📋 全选</button>
@@ -645,7 +649,7 @@ function updateChips() {
 function removeTeam(name) {
     selectedTeams.delete(name);
     document.querySelectorAll('.group-team-row').forEach(el => {
-        if (el.dataset.team === name) el.classList.remove('selected');
+        if (el.dataset.team && el.dataset.team.includes(name)) el.classList.remove('selected');
     });
     updateChips();
     updateCalendar();
