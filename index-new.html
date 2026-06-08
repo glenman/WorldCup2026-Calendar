@@ -81,35 +81,58 @@
         .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: var(--text-muted); padding: 20px; border-top: 1px solid var(--card-border); }
         .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 1.1rem; }
         /* Responsive group selector: 3 cols x 4 rows (desktop), 6 cols x 2 rows (landscape) */
+        
         .group-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin-bottom: 30px;
         }
+        @media (orientation: landscape) and (min-width: 768px) {
+            .group-selector {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .group-selector {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+        
         .group-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: all 0.2s;
+            transition: all 0.15s;
+        }
+        .group-card:hover {
+            border-color: rgba(200,168,78,0.3);
         }
         .group-card:hover {
             border-color: var(--gold);
             box-shadow: 0 4px 16px rgba(200,168,78,0.15);
         }
+        
         .group-header {
-            background: linear-gradient(90deg, rgba(200,168,78,0.15), transparent);
-            padding: 10px 14px;
-            font-size: 0.95rem;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .group-name {
             font-weight: 700;
             color: var(--gold);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--card-border);
-            user-select: none;
+            font-size: 0.9rem;
+        }
+        .group-arrow {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
         .group-header:hover {
             background: linear-gradient(90deg, rgba(200,168,78,0.25), transparent);
@@ -119,34 +142,44 @@
             font-size: 0.7rem;
             transition: transform 0.2s;
         }
+        
         .group-body {
             padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
         }
-        .rank-row {
-            padding: 4px 0;
-        }
-        .rank-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            display: block;
+        .group-body.hidden {
+            display: none;
         }
         .team-chips {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
+        
         .team-chip {
             background: rgba(255,255,255,0.06);
             border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 6px 10px;
+            border-radius: 6px;
+            padding: 4px 8px;
             cursor: pointer;
             transition: all 0.15s;
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.85rem;
+            gap: 3px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+        .team-chip:hover {
+            background: rgba(200,168,78,0.15);
+            border-color: var(--gold);
+        }
+        .team-chip.selected {
+            background: rgba(200,168,78,0.25);
+            border-color: var(--gold);
+            color: var(--gold);
+            font-weight: 600;
         }
         /* Checkmark badge for selected teams */
         .select-mark {
@@ -248,15 +281,6 @@
         .group-body {
             padding: 8px;
         }
-        .rank-row {
-            padding: 4px 0;
-        }
-        .rank-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            display: block;
-        }
         .team-chips {
             display: flex;
             flex-wrap: wrap;
@@ -329,6 +353,7 @@
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Expires" content="0">
     
+
 
 
 </style>
@@ -438,37 +463,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '墨西哥')" data-team='🇲🇽 墨西哥'>
                                 🇲🇽 墨西哥 👑
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '南非')" data-team='🇿🇦 南非'>
                                 🇿🇦 南非 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '韩国')" data-team='🇰🇷 韩国'>
                                 🇰🇷 韩国 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '捷克')" data-team='🇨🇿 捷克'>
                                 🇨🇿 捷克 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -478,37 +491,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '加拿大')" data-team='🇨🇦 加拿大'>
                                 🇨🇦 加拿大 👑
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '波黑')" data-team='🇧🇦 波黑'>
                                 🇧🇦 波黑 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '卡塔尔')" data-team='🇶🇦 卡塔尔'>
                                 🇶🇦 卡塔尔 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '瑞士')" data-team='🇨🇭 瑞士'>
                                 🇨🇭 瑞士 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -518,37 +519,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '巴西')" data-team='🇧🇷 巴西'>
                                 🇧🇷 巴西 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '摩洛哥')" data-team='🇲🇦 摩洛哥'>
                                 🇲🇦 摩洛哥 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '海地')" data-team='🇭🇹 海地'>
                                 🇭🇹 海地 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '苏格兰')" data-team='🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰'>
                                 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -558,37 +547,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '美国')" data-team='🇺🇸 美国'>
                                 🇺🇸 美国 👑
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '巴拉圭')" data-team='🇵🇾 巴拉圭'>
                                 🇵🇾 巴拉圭 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '澳大利亚')" data-team='🇦🇺 澳大利亚'>
                                 🇦🇺 澳大利亚 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '土耳其')" data-team='🇹🇷 土耳其'>
                                 🇹🇷 土耳其 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -598,37 +575,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '德国')" data-team='🇩🇪 德国'>
                                 🇩🇪 德国 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '库拉索')" data-team='🇨🇼 库拉索'>
                                 🇨🇼 库拉索 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '科特迪瓦')" data-team='🇨🇮 科特迪瓦'>
                                 🇨🇮 科特迪瓦 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '厄瓜多尔')" data-team='🇪🇨 厄瓜多尔'>
                                 🇪🇨 厄瓜多尔 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -638,37 +603,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '荷兰')" data-team='🇳🇱 荷兰'>
                                 🇳🇱 荷兰 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '日本')" data-team='🇯🇵 日本'>
                                 🇯🇵 日本 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '瑞典')" data-team='🇸🇪 瑞典'>
                                 🇸🇪 瑞典 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '突尼斯')" data-team='🇹🇳 突尼斯'>
                                 🇹🇳 突尼斯 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -678,37 +631,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '比利时')" data-team='🇧🇪 比利时'>
                                 🇧🇪 比利时 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '埃及')" data-team='🇪🇬 埃及'>
                                 🇪🇬 埃及 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '伊朗')" data-team='🇮🇷 伊朗'>
                                 🇮🇷 伊朗 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '新西兰')" data-team='🇳🇿 新西兰'>
                                 🇳🇿 新西兰 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -718,37 +659,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '西班牙')" data-team='🇪🇸 西班牙'>
                                 🇪🇸 西班牙 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '佛得角')" data-team='🇨🇻 佛得角'>
                                 🇨🇻 佛得角 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '沙特阿拉伯')" data-team='🇸🇦 沙特阿拉伯'>
                                 🇸🇦 沙特阿拉伯 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '乌拉圭')" data-team='🇺🇾 乌拉圭'>
                                 🇺🇾 乌拉圭 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -758,37 +687,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '法国')" data-team='🇫🇷 法国'>
                                 🇫🇷 法国 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '塞内加尔')" data-team='🇸🇳 塞内加尔'>
                                 🇸🇳 塞内加尔 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '伊拉克')" data-team='🇮🇶 伊拉克'>
                                 🇮🇶 伊拉克 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '挪威')" data-team='🇳🇴 挪威'>
                                 🇳🇴 挪威 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -798,37 +715,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '阿根廷')" data-team='🇦🇷 阿根廷'>
                                 🇦🇷 阿根廷 👑
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '阿尔及利亚')" data-team='🇩🇿 阿尔及利亚'>
                                 🇩🇿 阿尔及利亚 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '奥地利')" data-team='🇦🇹 奥地利'>
                                 🇦🇹 奥地利 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '约旦')" data-team='🇯🇴 约旦'>
                                 🇯🇴 约旦 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -838,37 +743,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '葡萄牙')" data-team='🇵🇹 葡萄牙'>
                                 🇵🇹 葡萄牙 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '刚果(金)')" data-team='🇨🇩 刚果(金)'>
                                 🇨🇩 刚果(金) 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '乌兹别克斯坦')" data-team='🇺🇿 乌兹别克斯坦'>
                                 🇺🇿 乌兹别克斯坦 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '哥伦比亚')" data-team='🇨🇴 哥伦比亚'>
                                 🇨🇴 哥伦比亚 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -878,37 +771,25 @@
                     <span class="group-arrow">▼</span>
                 </div>
                 <div class="group-body">
-                    <div class="rank-row">
-                        <span class="rank-label">种子队</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '英格兰')" data-team='🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰'>
                                 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第2档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '克罗地亚')" data-team='🇭🇷 克罗地亚'>
                                 🇭🇷 克罗地亚 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第3档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '加纳')" data-team='🇬🇭 加纳'>
                                 🇬🇭 加纳 
                             </div>
-                        </div>
                     </div>
-                    <div class="rank-row">
-                        <span class="rank-label">第4档</span>
-                        <div class="team-chips">
+                    <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '巴拿马')" data-team='🇵🇦 巴拿马'>
                                 🇵🇦 巴拿马 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
