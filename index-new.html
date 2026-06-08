@@ -376,7 +376,10 @@
             <div class="summary-actions">
                 <a href="worldcup2026.ics" class="btn" download>📥 下载全部赛程 ICS</a>
                 <a href="data/worldcup2026-matches.json" class="btn btn-outline" download>📊 下载 JSON</a>
-                <button class="btn btn-outline" onclick="copyAllSubscribeLink()">🔗 复制全部赛程订阅链接</button>
+                <div style="display:flex;gap:8px;align-items:center;margin:8px 0;">
+                    <input id="subscribe-url-input" type="text" readonly style="flex:1;min-width:0;background:rgba(0,0,0,0.3);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;color:var(--text-muted);font-size:0.85rem;font-family:monospace;"/>
+                    <button id="copy-subscribe-btn" onclick="copySubscribeUrl()" style="padding:8px 16px;background:var(--gold);color:#1a1a2e;border:none;border-radius:8px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">复制</button>
+                </div>
             </div>
         </div>
 
@@ -889,6 +892,25 @@ const STADIUM_GEO = {
     'BMO球场': {'name':'BMO Field','city':'Toronto, Canada','lat':43.6332,'lng':-79.4186},
     'BC广场': {'name':'BC Place','city':'Vancouver, Canada','lat':49.2766,'lng':-123.1119},
 };
+function updateSubscribeUrlInput() {
+    var input = document.getElementById('subscribe-url-input');
+    if (input) {
+        input.value = BASE_URL + 'worldcup2026.ics';
+    }
+}
+
+function copySubscribeUrl() {
+    var input = document.getElementById('subscribe-url-input');
+    if (!input) return;
+    input.select();
+    try {
+        document.execCommand('copy');
+        alert('✅ 订阅链接已复制！\n\n' + input.value);
+    } catch(e) {
+        alert('❌ 复制失败，请手动复制：\n' + input.value);
+    }
+}
+
 
 function getStadiumGeo(stadiumName, cityName) {
     if (!STADIUM_GEO[stadiumName]) return '';
@@ -930,7 +952,10 @@ function generateICS(matches, teamName) {
         ics += 'SUMMARY:' + m.m + '\r\n';
         ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
         ics += 'LOCATION:' + m.c + ' - ' + m.s + '\r\n';
-           if (STADIUM_GEO[m.s]) {\n            ics += getStadiumGeo(m.s, m.c) + '\\r\\n';\n        }\n     ics += 'END:VEVENT\r\n';
+        if (STADIUM_GEO[m.s]) {
+            ics += getStadiumGeo(m.s, m.c) + '\r\n';
+        }
+        ics += 'END:VEVENT\r\n';
         idx++;
     }
     ics += 'END:VCALENDAR\r\n';
