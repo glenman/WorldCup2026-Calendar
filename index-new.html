@@ -1271,68 +1271,6 @@ function getChipName(ds) {
     return ds.replace(/^[^\u4e00-\u9fff]+/, '').trim();
 }
 
-function generateSelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return ''; }
-    const matches = getSelectedMatches();
-    if (matches.length === 0) { alert('未找到选中球队的比赛'); return ''; }
-    let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
-    let idx = 1;
-    for (const m of matches) {
-        const [h, min] = m.t.split(':').map(Number);
-        const utcH = h - 8;
-        const dayNum = parseInt(m.day.replace('月','').replace('日',''));
-        const utcDate = new Date(2026, 5, dayNum, utcH, min);
-        const iso = utcDate.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
-        ics += 'BEGIN:VEVENT\r\n';
-        ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
-        ics += 'DTSTART:' + iso + '\r\n';
-        const endDt = new Date(utcDate.getTime() + 5400000);
-        ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
-        ics += 'SUMMARY:' + m.m + '\r\n';
-        const tl = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' | ');
-        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + tl + '\r\n';
-        ics += 'LOCATION:' + m.c + ' - ' + m.s + '\r\n';
-        ics += 'END:VEVENT\r\n';
-        idx++;
-    }
-    ics += 'END:VCALENDAR\r\n';
-    return ics;
-}
-
-function downloadSelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    const ics = generateSelectedICS();
-    if (!ics) return;
-    const blob = new Blob([ics], {type: 'text/calendar'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    const teamNames = Array.from(selectedTeams).slice(0, 3).join('-');
-    a.download = '世界杯2026_' + teamNames + '.ics';
-    a.click();
-    URL.revokeObjectURL(url);
-}
-
-function copySelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    const ics = generateSelectedICS();
-    if (!ics) return;
-    var result = copyToClipboard(ics);
-    if (result && typeof result.then === 'function') {
-        result.then(function(ok) {
-            alert('✅ ICS 内容已复制到剪贴板！\n\n用法：\n1. 打开手机/电脑日历应用\n2. 创建新日历事件 → 导入/粘贴 .ics 文件\n3. 或将内容保存为 .ics 文件后打开');
-        }).catch(function() {
-            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
-        });
-    } else {
-        if (result) {
-            alert('✅ ICS 内容已复制到剪贴板！\n\n用法：\n1. 打开手机/电脑日历应用\n2. 创建新日历事件 → 导入/粘贴 .ics 文件\n3. 或将内容保存为 .ics 文件后打开');
-        } else {
-            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
-        }
-    }
-}
-
 function getSelectedMatches() {
     const result = [];
     for (const [day, dayMatches] of Object.entries(MATCHES)) {
@@ -1346,13 +1284,47 @@ function getSelectedMatches() {
     return result;
 }
 
-function extractTeams(matchStr) {
-    const parts = matchStr.split(' vs ');
-    if (parts.length !== 2) return [];
-    return [parts[0].trim(), parts[1].trim()];
+function downloadSelectedICS() {
+    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+    const matches = getSelectedMatches();
+    if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
+    // 复用 generateICS 函数，用选中的比赛和球队名称列表生成标准 ICS
+    const teamLabel = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' + ');
+    const ics = generateICS(matches, teamLabel);
+    const blob = new Blob([ics], {type: 'text/calendar'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const teamNames = Array.from(selectedTeams).map(n => n.replace(/[()]/g, '')).slice(0, 3).join('-');
+    a.download = teamNames + '_worldcup26.ics';
+    a.click();
+    URL.revokeObjectURL(url);
+    const count = matches.length;
+    alert('✅ 选中球队专属赛程已下载！\n\n📅 共 ' + count + ' 场比赛\n📄 文件名: ' + a.download + '\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置 → 从日历导入\n3. 电脑: 双击 .ics 文件导入系统日历');
 }
 
-function updateCalendar() { renderCalendar(getSelectedMatches()); }
+function copySelectedICS() {
+    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+    const matches = getSelectedMatches();
+    if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
+    const teamLabel = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' + ');
+    const ics = generateICS(matches, teamLabel);
+    var result = copyToClipboard(ics);
+    if (result && typeof result.then === 'function') {
+        result.then(function(ok) {
+            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + matches.length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
+        }).catch(function() {
+            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+        });
+    } else {
+        if (result) {
+            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + matches.length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
+        } else {
+            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+        }
+    }
+}
+
 
 
     </script>
