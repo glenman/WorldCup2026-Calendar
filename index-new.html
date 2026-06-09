@@ -1206,12 +1206,9 @@ function updateChips() {
             el.style.display = 'flex';
         });
     } else {
-        const chips = Array.from(selectedTeams).map(n => {
-            const flag = FLAG_MAP[n] || '⚽';
-            return '<div class="chip" onclick="removeTeam(\'' + n + '\')" title="点击移除">' + flag + ' ' + n + ' ✕</div>';
-        }).join('');
-        container.innerHTML = '<div class="chips-row">' + chips + '</div>';
+        // 不再显示选中列表，只显示计数
         countEl.textContent = '已选 ' + selectedTeams.size + ' 支球队';
+        container.innerHTML = '';
         // 隐藏池子中已选中的球队芯片
         document.querySelectorAll('.team-chip').forEach(el => {
             const elName = getChipName(el.dataset.team);
