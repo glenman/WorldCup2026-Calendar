@@ -826,8 +826,13 @@
         <div class="team-selector-section">
             <h3>📋 已选赛程预览</h3>
             <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button class="btn" onclick="downloadSelectedICS()">📥 下载选中球队 ICS</button>
-                <button class="btn btn-outline" onclick="copySelectedICS()">📋 复制 ICS 内容</button>
+                <button class="btn" id="generate-ics-btn" onclick="generateAndPreviewICS()">🔨 生成 ICS 文件</button>
+            </div>
+            <div id="ics-preview" style="display:none;margin-top:12px;"></div>
+            <div id="ics-actions" style="display:none;margin-top:8px;gap:8px;flex-wrap:wrap;">
+                <button class="btn" onclick="downloadGeneratedICS()">📥 下载 ICS</button>
+                <button class="btn btn-outline" onclick="copyGeneratedICSLink()">📋 复制 ICS 订阅链接</button>
+            </div>
             </div>
             <div id="selected-count" style="margin-top:12px;font-size:0.9rem;color:var(--text-muted);"></div>
         </div>
@@ -1284,43 +1289,58 @@ function getSelectedMatches() {
     return result;
 }
 
-function downloadSelectedICS() {
+// 缓存生成的 ICS 内容和 Blob URL
+let _generatedICS = null;
+let _generatedBlobURL = null;
+let _generatedFileName = '';
+
+function generateAndPreviewICS() {
     if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
     const matches = getSelectedMatches();
     if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
     // 复用 generateICS 函数，用选中的比赛和球队名称列表生成标准 ICS
     const teamLabel = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' + ');
-    const ics = generateICS(matches, teamLabel);
-    const blob = new Blob([ics], {type: 'text/calendar'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
+    _generatedICS = generateICS(matches, teamLabel);
+    // 生成 Blob URL
+    if (_generatedBlobURL) URL.revokeObjectURL(_generatedBlobURL);
+    const blob = new Blob([_generatedICS], {type: 'text/calendar'});
+    _generatedBlobURL = URL.createObjectURL(blob);
+    // 文件名
     const teamNames = Array.from(selectedTeams).map(n => n.replace(/[()]/g, '')).slice(0, 3).join('-');
-    a.download = teamNames + '_worldcup26.ics';
-    a.click();
-    URL.revokeObjectURL(url);
-    const count = matches.length;
-    alert('✅ 选中球队专属赛程已下载！\n\n📅 共 ' + count + ' 场比赛\n📄 文件名: ' + a.download + '\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置 → 从日历导入\n3. 电脑: 双击 .ics 文件导入系统日历');
+    _generatedFileName = teamNames + '_worldcup26.ics';
+    // 显示预览和下载/复制按钮
+    const previewEl = document.getElementById('ics-preview');
+    const actionsEl = document.getElementById('ics-actions');
+    const teamNamesList = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n.replace(/[()]/g, '')).join(', ');
+    previewEl.innerHTML = '<div style="font-size:0.9rem;color:var(--gold);">✅ ICS 文件已生成<br><span style="color:var(--text-muted);font-size:0.85rem;">📅 共 ' + matches.length + ' 场比赛 | 📄 ' + _generatedFileName + '<br>👥 关注球队: ' + teamNamesList + '</span></div>';
+    previewEl.style.display = 'block';
+    actionsEl.style.display = 'flex';
 }
 
-function copySelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+function downloadGeneratedICS() {
+    if (!_generatedBlobURL) { alert('请先生成 ICS 文件'); return; }
+    const a = document.createElement('a');
+    a.href = _generatedBlobURL;
+    a.download = _generatedFileName;
+    a.click();
     const matches = getSelectedMatches();
-    if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
-    const teamLabel = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' + ');
-    const ics = generateICS(matches, teamLabel);
-    var result = copyToClipboard(ics);
+    alert('✅ 选中球队专属赛程已下载！\n\n📅 共 ' + matches.length + ' 场比赛\n📄 文件名: ' + _generatedFileName + '\n\n导入方法：\n1. iOS: 设置 → 日历 → 账户 → 添加已订阅的日历\n2. Android: Google Calendar → 设置 → 从日历导入\n3. 电脑: 双击 .ics 文件导入系统日历');
+}
+
+function copyGeneratedICSLink() {
+    if (!_generatedICS) { alert('请先生成 ICS 文件'); return; }
+    var result = copyToClipboard(_generatedICS);
     if (result && typeof result.then === 'function') {
         result.then(function(ok) {
-            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + matches.length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
+            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + getSelectedMatches().length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
         }).catch(function() {
-            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+            alert('❌ 复制失败，请手动复制：\n\n' + _generatedICS.substring(0, 200) + '...');
         });
     } else {
         if (result) {
-            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + matches.length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
+            alert('✅ ICS 内容已复制到剪贴板！\n\n📅 共 ' + getSelectedMatches().length + ' 场比赛\n\n用法：\n1. 将内容保存为 .ics 文件\n2. 双击导入系统日历\n3. 或粘贴到日历应用中导入');
         } else {
-            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+            alert('❌ 复制失败，请手动复制：\n\n' + _generatedICS.substring(0, 200) + '...');
         }
     }
 }
