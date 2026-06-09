@@ -1319,7 +1319,13 @@ function extractTeams(matchStr) {
     return [parts[0].trim(), parts[1].trim()];
 }
 
-function updateCalendar() { renderCalendar(getSelectedMatches()); }
+function updateCalendar() {
+    if (selectedTeams.size === 0) {
+        renderCalendar(null, 'all');
+    } else {
+        renderCalendar(getSelectedMatches());
+    }
+}
 
 // 缓存生成的 ICS 内容和 Blob URL
 let _generatedICS = null;
