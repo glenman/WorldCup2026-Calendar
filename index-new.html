@@ -826,8 +826,8 @@
         <div class="team-selector-section">
             <h3>📋 已选赛程预览</h3>
             <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button class="btn" onclick="generateAndCopyLink()">🔗 生成订阅链接并复制</button>
-                <button class="btn btn-outline" onclick="downloadSelectedICS()">📥 下载选中球队 ICS</button>
+                <button class="btn" onclick="downloadSelectedICS()">📥 下载选中球队 ICS</button>
+                <button class="btn btn-outline" onclick="copySelectedICS()">📋 复制 ICS 内容</button>
             </div>
             <div id="selected-count" style="margin-top:12px;font-size:0.9rem;color:var(--text-muted);"></div>
         </div>
@@ -1271,38 +1271,17 @@ function getChipName(ds) {
     return ds.replace(/^[^\u4e00-\u9fff]+/, '').trim();
 }
 
-function generateAndCopyLink() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
-    var url = window.location.origin + window.location.pathname + '?teams=' + Array.from(selectedTeams).join(',');
-    var result = copyToClipboard(url);
-    if (result && typeof result.then === 'function') {
-        result.then(function(ok) {
-            alert('✅ 订阅链接已复制！\n\n' + url);
-        }).catch(function() {
-            alert('❌ 复制失败，请手动复制：\n' + url);
-        });
-    } else {
-        if (result) {
-            alert('✅ 订阅链接已复制！\n\n' + url);
-        } else {
-            alert('❌ 复制失败，请手动复制：\n' + url);
-        }
-    }
-}
-
-function downloadSelectedICS() {
-    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+function generateSelectedICS() {
+    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return ''; }
     const matches = getSelectedMatches();
-    if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
+    if (matches.length === 0) { alert('未找到选中球队的比赛'); return ''; }
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
     let idx = 1;
     for (const m of matches) {
-        const [h, mi] = m.t.split(':').map(Number);
+        const [h, min] = m.t.split(':').map(Number);
         const utcH = h - 8;
         const dayNum = parseInt(m.day.replace('月','').replace('日',''));
-        let utcDate;
-        if (utcH < 0) utcDate = new Date(2026, 5, dayNum - 1, utcH + 24, mi);
-        else utcDate = new Date(2026, 5, dayNum, utcH, mi);
+        const utcDate = new Date(2026, 5, dayNum, utcH, min);
         const iso = utcDate.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
         ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
@@ -1317,13 +1296,41 @@ function downloadSelectedICS() {
         idx++;
     }
     ics += 'END:VCALENDAR\r\n';
+    return ics;
+}
+
+function downloadSelectedICS() {
+    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+    const ics = generateSelectedICS();
+    if (!ics) return;
     const blob = new Blob([ics], {type: 'text/calendar'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = '世界杯2026_' + Array.from(selectedTeams).slice(0,3).join('-') + '.ics';
+    const teamNames = Array.from(selectedTeams).slice(0, 3).join('-');
+    a.download = '世界杯2026_' + teamNames + '.ics';
     a.click();
     URL.revokeObjectURL(url);
+}
+
+function copySelectedICS() {
+    if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
+    const ics = generateSelectedICS();
+    if (!ics) return;
+    var result = copyToClipboard(ics);
+    if (result && typeof result.then === 'function') {
+        result.then(function(ok) {
+            alert('✅ ICS 内容已复制到剪贴板！\n\n用法：\n1. 打开手机/电脑日历应用\n2. 创建新日历事件 → 导入/粘贴 .ics 文件\n3. 或将内容保存为 .ics 文件后打开');
+        }).catch(function() {
+            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+        });
+    } else {
+        if (result) {
+            alert('✅ ICS 内容已复制到剪贴板！\n\n用法：\n1. 打开手机/电脑日历应用\n2. 创建新日历事件 → 导入/粘贴 .ics 文件\n3. 或将内容保存为 .ics 文件后打开');
+        } else {
+            alert('❌ 复制失败，请手动复制：\n\n' + ics.substring(0, 200) + '...');
+        }
+    }
 }
 
 function getSelectedMatches() {
