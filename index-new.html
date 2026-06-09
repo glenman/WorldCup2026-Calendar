@@ -156,15 +156,17 @@
         
         .group-body {
             padding: 8px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 4px;
         }
         .group-body.hidden {
             display: none;
         }
         .team-chips {
-            display: contents;
+            display: flex;
+            gap: 6px;
+            width: 100%;
         }
         
         .team-chip {
@@ -184,7 +186,6 @@
             white-space: nowrap;
             min-width: 0;
         }
-        .team-chip:hover {
             background: rgba(200,168,78,0.15);
             border-color: var(--gold);
         }
