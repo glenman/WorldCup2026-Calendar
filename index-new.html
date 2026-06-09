@@ -1302,44 +1302,30 @@ let _generatedMatchCount = 0;
 
 function generateAndPreviewICS() {
     try {
-        console.log('[ICS] generateAndPreviewICS called');
-        console.log('[ICS] selectedTeams:', selectedTeams);
         if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
         const matches = getSelectedMatches();
-        console.log('[ICS] matches found:', matches.length);
         if (matches.length === 0) { alert('未找到选中球队的比赛'); return; }
         const teamLabel = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n).join(' + ');
-        console.log('[ICS] generating ICS with teamLabel:', teamLabel);
         _generatedICS = generateICS(matches, teamLabel);
-        console.log('[ICS] ICS generated, length:', _generatedICS.length);
         if (_generatedBlobURL) URL.revokeObjectURL(_generatedBlobURL);
         const blob = new Blob([_generatedICS], {type: 'text/calendar'});
         _generatedBlobURL = URL.createObjectURL(blob);
         const teamNames = Array.from(selectedTeams).map(n => n.replace(/[()]/g, '')).slice(0, 3).join('-');
         _generatedFileName = teamNames + '_worldcup26.ics';
         _generatedMatchCount = matches.length;
-        console.log('[ICS] setting up DOM');
         const previewEl = document.getElementById('ics-preview');
         const actionsEl = document.getElementById('ics-actions');
-        console.log('[ICS] previewEl:', !!previewEl, 'actionsEl:', !!actionsEl);
-        if (!previewEl || !actionsEl) { console.error('[ICS] DOM elements not found!'); return; }
+        if (!previewEl || !actionsEl) { return; }
         const teamNamesList = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n.replace(/[()]/g, '')).join(', ');
-        previewEl.innerHTML = '<div style="font-size:0.9rem;color:var(--gold);margin-bottom:12px;">\u2705 ICS \u6587\u4ef6\u5df2\u751f\u6210</div><div style="margin-bottom:8px;font-size:0.85rem;color:var(--text-muted);">\ud83d\udcc5 \u5171 ' + _generatedMatchCount + ' \u573a\u6bd4\u8d5b | \ud83d\udc65 ' + teamNamesList + '</div><textarea id="ics-content-box" style="width:100%;height:200px;background:rgba(0,0,0,0.3);color:#ccc;border:1px solid var(--card-border);border-radius:10px;padding:12px;font-size:0.82rem;font-family:monospace;resize:vertical;">' + escapeHtml(_generatedICS) + '</textarea>';
+        previewEl.innerHTML = '<div style="font-size:0.9rem;color:var(--gold);margin-bottom:12px;">✅ ICS 文件已生成</div><div style="margin-bottom:12px;font-size:0.85rem;color:var(--text-muted);">📅 共 ' + _generatedMatchCount + ' 场比赛 | 👥 ' + teamNamesList + '</div>';
         previewEl.style.display = 'block';
-        actionsEl.innerHTML = '<button class="btn" onclick="downloadGeneratedICS()" style="margin-right:8px;">\ud83d\udce5 \u4e0b\u8f7d ICS</button><button class="btn btn-outline" onclick="copyGeneratedICSLink()">\ud83d\udccb \u590d\u5236 ICS \u5185\u5bb9</button>';
+        actionsEl.innerHTML = '<button class="btn" onclick="downloadGeneratedICS()" style="margin-right:8px;">📥 下载 ICS 文件</button>';
         actionsEl.style.display = 'flex';
         actionsEl.style.flexWrap = 'wrap';
-        console.log('[ICS] DOM updated successfully');
     } catch(e) {
         console.error('[ICS] ERROR:', e);
-        alert('\u751f\u6210 ICS \u65f6\u51fa\u9519: ' + e.message);
+        alert('生成 ICS 时出错: ' + e.message);
     }
-}
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.appendChild(document.createTextNode(text));
-    return div.innerHTML;
 }
 
 function downloadGeneratedICS() {
