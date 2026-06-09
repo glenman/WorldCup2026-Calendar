@@ -849,11 +849,31 @@ function _copyFallback(text) {
 
 
 
+// 中文城市到国家的映射
+const CITY_COUNTRY = {
+    '墨西哥城': '墨西哥',
+    '瓜达拉哈拉': '墨西哥',
+    '蒙特雷': '墨西哥',
+    '多伦多': '加拿大',
+    '温哥华': '加拿大',
+    '亚特兰大': '美国',
+    '波士顿': '美国',
+    '达拉斯': '美国',
+    '休斯顿': '美国',
+    '堪萨斯城': '美国',
+    '洛杉矶': '美国',
+    '迈阿密': '美国',
+    '纽约/新泽西': '美国',
+    '费城': '美国',
+    '旧金山湾区': '美国',
+    '西雅图': '美国',
+};
+
 // FIFA World Cup 2026 stadium coordinates for ICS GEO property
 const STADIUM_GEO = {
     '阿兹特克球场': {'name':'Estadio Azteca','city':'Mexico City, Mexico','lat':19.3029,'lng':-99.1506},
     '阿克伦球场': {'name':'Estadio Akron','city':'Guadalajara, Mexico','lat':20.6737,'lng':-103.3447},
-    'BBVA球场': {'name':'BBVA Stadium','city':'Houston, USA','lat':29.7506,'lng':-95.4934},
+    'BBVA球场': {'name':'Estadio BBVA','city':'Monterrey, Mexico','lat':25.6689,'lng':-100.2418},
     'NRG球场': {'name':'NRG Stadium','city':'Houston, USA','lat':29.6847,'lng':-95.4108},
     'SoFi体育场': {'name':'SoFi Stadium','city':'Los Angeles, USA','lat':33.9535,'lng':-118.3392},
     '李维斯球场': {'name':'Levis Stadium','city':'San Francisco Bay Area, USA','lat':37.4032,'lng':-121.9712},
@@ -928,7 +948,8 @@ function generateICS(matches, teamName) {
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
         ics += 'SUMMARY:' + m.m + '\r\n';
         ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
-        ics += 'LOCATION:' + m.c + ' - ' + m.s + '\r\n';
+        var country = CITY_COUNTRY[m.c] || '';
+        ics += 'LOCATION:' + country + ' ' + m.c + ' ' + m.s + '\r\n';
         if (STADIUM_GEO[m.s]) {
             ics += getStadiumGeo(m.s, m.c) + '\r\n';
         }
