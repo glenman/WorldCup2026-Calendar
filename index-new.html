@@ -1004,8 +1004,26 @@ function generateICS(matches, teamName) {
     return ics;
 }
 
+
+// 将 #calendar-app 移动到 .container 内
+(function() {
+    const container = document.querySelector('.container');
+    const calendarApp = document.getElementById('calendar-app');
+    if (container && calendarApp) {
+        // 如果已经不在 .container 内，移动它
+        if (calendarApp.parentElement !== container) {
+            container.appendChild(calendarApp);
+        }
+        // 清除可能存在的内联样式
+        calendarApp.style.maxWidth = '';
+        calendarApp.style.marginLeft = '';
+        calendarApp.style.marginRight = '';
+        calendarApp.style.width = '';
+    }
+})();
+
 function renderCalendar(filteredMatches, teamName) {
-    const container = document.getElementById('calendar-app');
+    const calContainer = document.getElementById('calendar-app');
     
     // 球队名称横幅
     let bannerHtml = '';
@@ -1066,7 +1084,7 @@ function renderCalendar(filteredMatches, teamName) {
             '</div>';
         });
     });
-    container.innerHTML = html;
+    calContainer.innerHTML = html;
 }
 
 function onTeamChange() {
