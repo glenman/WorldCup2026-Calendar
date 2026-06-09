@@ -979,7 +979,7 @@ function generateICS(matches, teamName) {
     for (const m of matches) {
         const [h, min] = m.t.split(':').map(Number);
         const utcH = h - 8;
-        const dayNum = parseInt(m.day.replace('月','').replace('日',''));
+        const dayNum = parseInt(m.day.replace(/月/g, '').replace(/日/g, ''));
         const utcDate = new Date(2026, 5, dayNum, utcH, min);
         const iso = utcDate.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
