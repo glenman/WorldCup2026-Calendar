@@ -1286,6 +1286,12 @@ function getSelectedMatches() {
     return result;
 }
 
+function extractTeams(matchStr) {
+    const parts = matchStr.split(' vs ');
+    if (parts.length !== 2) return [];
+    return [parts[0].trim(), parts[1].trim()];
+}
+
 // 缓存生成的 ICS 内容和 Blob URL
 let _generatedICS = null;
 let _generatedBlobURL = null;
