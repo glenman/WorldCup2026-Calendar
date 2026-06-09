@@ -68,9 +68,9 @@
         .copy-subscribe-btn:hover { background: #d4b33a; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(200,168,78,0.25); }
         .subscribe-ok { color: #4CAF50; font-size: 0.88rem; margin-top: 8px; opacity: 0; transition: opacity 0.3s ease; }
         .subscribe-ok.show { opacity: 1; }
-        .date-header { background: linear-gradient(90deg, var(--black), #16213e); color: var(--white); padding: 10px 20px; border-radius: 12px; margin: 20px 0 10px; font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--gold); border-bottom: 1px solid var(--card-border); width: 100%; }
+        .date-header { background: linear-gradient(90deg, var(--black), #16213e); color: var(--white); padding: 10px 20px; border-radius: 12px; margin: 20px 0 10px; font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--gold); border-bottom: 1px solid var(--card-border); }
         .date-header .day-count { font-size: 0.8rem; color: var(--gold); background: rgba(200,168,78,0.1); padding: 3px 10px; border-radius: 10px; }
-        .match-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 15px; transition: all 0.2s; cursor: pointer; width: 100%; }
+        .match-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 15px; transition: all 0.2s; cursor: pointer; }
         .match-card:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 4px 16px rgba(200,168,78,0.1); }
         .match-time { font-size: 1.3rem; font-weight: 700; color: var(--gold); min-width: 75px; text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
         .match-info { flex: 1; }
@@ -406,7 +406,8 @@
 
 
 
-</style>
+
+        #calendar-app { max-width: 960px; margin: 0 auto; width: 100%; }</style>
 </head>
 <body>
     <div class="container">
