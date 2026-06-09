@@ -96,21 +96,27 @@
         
         .group-selector {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-bottom: 30px;
         }
-        @media (orientation: landscape) and (min-width: 768px) {
-            .group-selector {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 8px;
-            }
-        }
-        @media (max-width: 768px) {
+        @media (orientation: portrait) and (max-width: 768px) {
             .group-selector {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 6px;
             }
+        }
+        @media (orientation: landscape) and (max-width: 768px) {
+            .group-selector {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .group-selector {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
             .group-name {
                 font-size: 0.75rem;
             }
