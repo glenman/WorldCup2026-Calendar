@@ -1279,7 +1279,7 @@ function getSelectedMatches() {
         dayMatches.forEach(m => {
             const mt = extractTeams(m.m);
             for (const st of selectedTeams) {
-                if (mt.includes(st)) { result.push({...m, day}); break; }
+                if (mt.includes(st) || mt.some(t => t.endsWith(st))) { result.push({...m, day}); break; }
             }
         });
     }
