@@ -826,13 +826,10 @@
         <div class="team-selector-section">
             <h3>📋 已选赛程预览</h3>
             <div class="selector-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button class="btn" id="generate-ics-btn" onclick="generateAndPreviewICS()">🔨 生成 ICS 文件</button>
+                <button class="btn" onclick="generateAndPreviewICS()">🔨 生成 ICS 文件</button>
             </div>
             <div id="ics-preview" style="display:none;margin-top:12px;"></div>
-            <div id="ics-actions" style="display:none;margin-top:8px;gap:8px;flex-wrap:wrap;">
-                <button class="btn" onclick="downloadGeneratedICS()">📥 下载 ICS</button>
-                <button class="btn btn-outline" onclick="copyGeneratedICSLink()">📋 复制 ICS 订阅链接</button>
-            </div>
+            <div id="ics-actions" style="display:none;margin-top:8px;"></div>
             </div>
             <div id="selected-count" style="margin-top:12px;font-size:0.9rem;color:var(--text-muted);"></div>
         </div>
@@ -1293,6 +1290,7 @@ function getSelectedMatches() {
 let _generatedICS = null;
 let _generatedBlobURL = null;
 let _generatedFileName = '';
+let _generatedMatchCount = 0;
 
 function generateAndPreviewICS() {
     if (selectedTeams.size === 0) { alert('请至少选择一支球队'); return; }
@@ -1308,13 +1306,22 @@ function generateAndPreviewICS() {
     // 文件名
     const teamNames = Array.from(selectedTeams).map(n => n.replace(/[()]/g, '')).slice(0, 3).join('-');
     _generatedFileName = teamNames + '_worldcup26.ics';
-    // 显示预览和下载/复制按钮
+    _generatedMatchCount = matches.length;
+    // 构建预览区域：ICS 内容 + 文本框 + 下载/复制按钮
     const previewEl = document.getElementById('ics-preview');
     const actionsEl = document.getElementById('ics-actions');
     const teamNamesList = Array.from(selectedTeams).map(n => FLAG_MAP[n] + ' ' + n.replace(/[()]/g, '')).join(', ');
-    previewEl.innerHTML = '<div style="font-size:0.9rem;color:var(--gold);">✅ ICS 文件已生成<br><span style="color:var(--text-muted);font-size:0.85rem;">📅 共 ' + matches.length + ' 场比赛 | 📄 ' + _generatedFileName + '<br>👥 关注球队: ' + teamNamesList + '</span></div>';
+    previewEl.innerHTML = '<div style="font-size:0.9rem;color:var(--gold);margin-bottom:12px;">✅ ICS 文件已生成</div><div style="margin-bottom:8px;font-size:0.85rem;color:var(--text-muted);">📅 共 ' + _generatedMatchCount + ' 场比赛 | 👥 ' + teamNamesList + '</div><textarea id="ics-content-box" style="width:100%;height:200px;background:rgba(0,0,0,0.3);color:#ccc;border:1px solid var(--card-border);border-radius:10px;padding:12px;font-size:0.82rem;font-family:monospace;resize:vertical;">' + escapeHtml(_generatedICS) + '</textarea>';
     previewEl.style.display = 'block';
+    actionsEl.innerHTML = '<button class="btn" onclick="downloadGeneratedICS()" style="margin-right:8px;">📥 下载 ICS</button><button class="btn btn-outline" onclick="copyGeneratedICSLink()">📋 复制 ICS 内容</button>';
     actionsEl.style.display = 'flex';
+    actionsEl.style.flexWrap = 'wrap';
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
 }
 
 function downloadGeneratedICS() {
