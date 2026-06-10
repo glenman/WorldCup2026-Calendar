@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIFA 2026 世界杯观赛日程表</title>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <style>
         * { box-sizing: border-box; }
         :root {
@@ -810,7 +811,9 @@ id="calendar-app"></div>
 
         <div class="footer">
             © 2026 WorldCup2026-Calendar · 数据来源: FIFA · Powered by Glenman
-            <div class="visitor-counter">👀 已被访问 <span id="visitor-count">加载中...</span> 次</div>
+            <div class="visitor-counter">
+                👀 本站已被访问 <span id="busuanzi_value_site_pv"></span> 次
+            </div>
         </div>
     </div>
     <script>
@@ -1374,30 +1377,6 @@ function copyGeneratedICSLink() {
 
 
 
-    </script>
-    
-    <!-- 页面访问量统计 -->
-    <script>
-    (function() {
-        var ns = 'worldcup2026';
-        setTimeout(function() {
-            var img = new Image();
-            img.src = 'https://api.countapi.xyz/hit/' + ns + '/visits';
-            img.onload = function() {
-                fetch('https://api.countapi.xyz/get/' + ns + '/visits/')
-                    .then(function(r) { return r.json(); })
-                    .then(function(data) {
-                        var el = document.getElementById('visitor-count');
-                        if (el) el.textContent = data.value;
-                    })
-                    .catch(function() { var el = document.querySelector('.visitor-counter'); if(el) el.style.display='none'; });
-            };
-            img.onerror = function() {
-                var el = document.querySelector('.visitor-counter');
-                if (el) el.style.display = 'none';
-            };
-        }, 2000);
-    })();
     </script>
 </body>
 </html>
