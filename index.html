@@ -960,9 +960,9 @@ function generateICS(matches, teamName) {
         ics += 'DTSTART:' + iso + '\r\n';
         const endDt = new Date(utcDate + 7200000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
+        var country = CITY_COUNTRY[m.c] || '美国';
         ics += 'SUMMARY:' + m.m + '\r\n';
-        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
-        var country = CITY_COUNTRY[m.c] || '';
+        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + ' | 📍' + country + '，' + m.c + '，' + m.s + '\r\n';
         ics += 'LOCATION:' + (STADIUM_GEO[m.s] ? STADIUM_GEO[m.s].address : m.c + ' ' + m.s) + '\r\n';
         if (STADIUM_GEO[m.s]) {
             ics += getStadiumGeo(m.s, m.c) + '\r\n';
