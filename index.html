@@ -91,6 +91,8 @@
         .team-banner-name { font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
         .team-banner-count { font-size: 0.85rem; color: var(--text-muted); }
         .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: var(--text-muted); padding: 20px; border-top: 1px solid var(--card-border); }
+        .visitor-counter { margin-top: 12px; font-size: 0.75rem; color: var(--text-muted); }
+        .visitor-counter span { color: var(--gold); font-weight: 700; }
         .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 1.1rem; }
         /* Responsive group selector: 3 cols x 4 rows (desktop), 6 cols x 2 rows (landscape) */
         
@@ -806,7 +808,10 @@
         <div 
 id="calendar-app"></div>
 
-        <div class="footer">© 2026 WorldCup2026-Calendar · 数据来源: FIFA · Powered by Glenman</div>
+        <div class="footer">
+            © 2026 WorldCup2026-Calendar · 数据来源: FIFA · Powered by Glenman
+            <div class="visitor-counter">👀 已被访问 <span id="visitor-count">加载中...</span> 次</div>
+        </div>
     </div>
     <script>
 // Robust copy-to-clipboard function (works everywhere)
@@ -1369,6 +1374,30 @@ function copyGeneratedICSLink() {
 
 
 
+    </script>
+    
+    <!-- 页面访问量统计 -->
+    <script>
+    (function() {
+        var ns = 'worldcup2026-calendar';
+        var key = 'visits';
+        setTimeout(function() {
+            // 先递增
+            fetch('https://countapi.xyz/api/' + ns + '/' + key + '/increment/?add=1')
+                .then(function() {
+                    return fetch('https://countapi.xyz/get/' + ns + '/' + key + '/');
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    var el = document.getElementById('visitor-count');
+                    if (el) el.textContent = data.value;
+                })
+                .catch(function() {
+                    var el = document.querySelector('.visitor-counter');
+                    if (el) el.style.display = 'none';
+                });
+        }, 2000);
+    })();
     </script>
 </body>
 </html>
