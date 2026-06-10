@@ -945,14 +945,16 @@ function generateICS(matches, teamName) {
     let idx = 1;
     for (const m of matches) {
         const [h, min] = m.t.split(':').map(Number);
-        const utcH = h - 8;
         const dayNum = parseInt(m.day.match(/(\d+)[^\d]*$/)?.[1]);
-        const utcDate = new Date(2026, 5, dayNum, utcH, min);
-        const iso = utcDate.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+        // 北京时间转UTC：直接用 UTC 构造避免时区问题
+        const utcH = (h - 8 + 24) % 24;
+        const utcDay = (h < 8) ? dayNum - 1 : dayNum;
+        const utcDate = Date.UTC(2026, 5, utcDay, utcH, min);
+        const iso = new Date(utcDate).toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
         ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
         ics += 'DTSTART:' + iso + '\r\n';
-        const endDt = new Date(utcDate.getTime() + 5400000);
+        const endDt = new Date(utcDate + 5400000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
         ics += 'SUMMARY:' + m.m + '\r\n';
         ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
