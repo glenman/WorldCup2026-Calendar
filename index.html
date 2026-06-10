@@ -958,7 +958,7 @@ function generateICS(matches, teamName) {
         ics += 'BEGIN:VEVENT\r\n';
         ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
         ics += 'DTSTART:' + iso + '\r\n';
-        const endDt = new Date(utcDate + 5400000);
+        const endDt = new Date(utcDate + 7200000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
         ics += 'SUMMARY:' + m.m + '\r\n';
         ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
