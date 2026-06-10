@@ -1379,23 +1379,23 @@ function copyGeneratedICSLink() {
     <!-- 页面访问量统计 -->
     <script>
     (function() {
-        var ns = 'worldcup2026-calendar';
-        var key = 'visits';
+        var ns = 'worldcup2026';
         setTimeout(function() {
-            // 先递增
-            fetch('https://countapi.xyz/api/' + ns + '/' + key + '/increment/?add=1')
-                .then(function() {
-                    return fetch('https://countapi.xyz/get/' + ns + '/' + key + '/');
-                })
-                .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    var el = document.getElementById('visitor-count');
-                    if (el) el.textContent = data.value;
-                })
-                .catch(function() {
-                    var el = document.querySelector('.visitor-counter');
-                    if (el) el.style.display = 'none';
-                });
+            var img = new Image();
+            img.src = 'https://api.countapi.xyz/hit/' + ns + '/visits';
+            img.onload = function() {
+                fetch('https://api.countapi.xyz/get/' + ns + '/visits/')
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        var el = document.getElementById('visitor-count');
+                        if (el) el.textContent = data.value;
+                    })
+                    .catch(function() { var el = document.querySelector('.visitor-counter'); if(el) el.style.display='none'; });
+            };
+            img.onerror = function() {
+                var el = document.querySelector('.visitor-counter');
+                if (el) el.style.display = 'none';
+            };
         }, 2000);
     })();
     </script>
