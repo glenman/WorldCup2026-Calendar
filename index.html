@@ -879,22 +879,22 @@ const CITY_COUNTRY = {
 
 // FIFA World Cup 2026 stadium coordinates for ICS GEO property
 const STADIUM_GEO = {
-    '阿兹特克球场': {'name':'Estadio Azteca','city':'Mexico City, Mexico','lat':19.3029,'lng':-99.1506},
-    '阿克伦球场': {'name':'Estadio Akron','city':'Guadalajara, Mexico','lat':20.6737,'lng':-103.3447},
-    'BBVA球场': {'name':'Estadio BBVA','city':'Monterrey, Mexico','lat':25.6689,'lng':-100.2418},
-    'NRG球场': {'name':'NRG Stadium','city':'Houston, USA','lat':29.6847,'lng':-95.4108},
-    'SoFi体育场': {'name':'SoFi Stadium','city':'Los Angeles, USA','lat':33.9535,'lng':-118.3392},
-    '李维斯球场': {'name':'Levis Stadium','city':'San Francisco Bay Area, USA','lat':37.4032,'lng':-121.9712},
-    '大都会人寿球场': {'name':'MetLife Stadium','city':'New York/New Jersey, USA','lat':40.8128,'lng':-74.0742},
-    '林肯金融球场': {'name':'Lincoln Financial Field','city':'Philadelphia, USA','lat':39.9008,'lng':-75.1675},
-    '吉列球场': {'name':'Gillette Stadium','city':'Boston, USA','lat':42.0909,'lng':-71.2643},
-    '卢门球场': {'name':'Lumen Field','city':'Seattle, USA','lat':47.5952,'lng':-122.3316},
-    '梅赛德斯-奔驰球场': {'name':'Mercedes-Benz Stadium','city':'Atlanta, USA','lat':33.7553,'lng':-84.4006},
-    '硬石体育场': {'name':'Hard Rock Stadium','city':'Miami, USA','lat':25.9580,'lng':-80.2389},
-    '箭头体育场': {'name':'Arrowhead Stadium','city':'Kansas City, USA','lat':39.0489,'lng':-94.4840},
-    'AT&T球场': {'name':'AT&T Stadium','city':'Dallas, USA','lat':32.7390,'lng':-97.0931},
-    'BMO球场': {'name':'BMO Field','city':'Toronto, Canada','lat':43.6332,'lng':-79.4186},
-    'BC广场': {'name':'BC Place','city':'Vancouver, Canada','lat':49.2766,'lng':-123.1119},
+    '阿兹特克球场': {'name':'Estadio Azteca','address':'Calz. de Tlalpan 3465, Santa Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX, Mexico','lat':19.3029,'lng':-99.1506},
+    '阿克伦球场': {'name':'Estadio Akron','address':'Estadio Akron, Calle Circuito JVC 2800, 45645 El Salto, Jal., Mexico','lat':20.6737,'lng':-103.3447},
+    'BBVA球场': {'name':'Estadio BBVA','address':'Estadio BBVA, Av. Pablo Livas 2011, La Pastora, 67195 Guadalupe, N.L., Mexico','lat':25.6689,'lng':-100.2418},
+    'NRG球场': {'name':'NRG Stadium','address':'1 NRG Pkwy, Houston, TX 77054, United States','lat':29.6847,'lng':-95.4108},
+    'SoFi体育场': {'name':'SoFi Stadium','address':'1001 S Stadium Drive, Inglewood, CA 90301, United States','lat':33.9535,'lng':-118.3392},
+    '李维斯球场': {'name':'Levis Stadium','address':'4900 Marie P DeBartolo Way, Santa Clara, CA 95054, United States','lat':37.4032,'lng':-121.9712},
+    '大都会人寿球场': {'name':'MetLife Stadium','address':'1 MetLife Stadium Dr, East Rutherford, NJ 07073, United States','lat':40.8128,'lng':-74.0742},
+    '林肯金融球场': {'name':'Lincoln Financial Field','address':'1 Lincoln Financial Field Way, Philadelphia, PA 19148, United States','lat':39.9008,'lng':-75.1675},
+    '吉列球场': {'name':'Gillette Stadium','address':'1 Patriot Pl, Foxborough, MA 02035, United States','lat':42.0909,'lng':-71.2643},
+    '卢门球场': {'name':'Lumen Field','address':'800 Occidental Ave S, Seattle, WA 98134, United States','lat':47.5952,'lng':-122.3316},
+    '梅赛德斯-奔驰球场': {'name':'Mercedes-Benz Stadium','address':'1 AMB Dr NW, Atlanta, GA 30313, United States','lat':33.7553,'lng':-84.4006},
+    '硬石体育场': {'name':'Hard Rock Stadium','address':'347 Don Shula Dr, Miami Gardens, FL 33056, United States','lat':25.9580,'lng':-80.2389},
+    '箭头体育场': {'name':'Arrowhead Stadium','address':'1 Arrowhead Dr, Kansas City, MO 64129, United States','lat':39.0489,'lng':-94.4840},
+    'AT&T球场': {'name':'AT&T Stadium','address':'1 AT&T Way, Arlington, TX 76011, United States','lat':32.7390,'lng':-97.0931},
+    'BMO球场': {'name':'BMO Field','address':'170 Princes\'s Boulevard, Toronto, ON M6K 3C3, Canada','lat':43.6332,'lng':-79.4186},
+    'BC广场': {'name':'BC Place','address':'777 Pacific Blvd, Vancouver, BC V6B 4Y8, Canada','lat':49.2766,'lng':-123.1119},
 };
 const BASE_URL = 'https://glenman.github.io/WorldCup2026-Calendar/';
 
@@ -924,8 +924,8 @@ function getStadiumGeo(stadiumName, cityName) {
     var s = STADIUM_GEO[stadiumName];
     // 标准 GEO 字段（分号分隔）
     var geo = 'GEO:' + s.lat + ';' + s.lng + '\r\n';
-    // Apple 私有扩展字段（逗号分隔，触发地图大头针）
-    var xapple = 'X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=' + s.name + ':geo:' + s.lat + ',' + s.lng + '\r\n';
+    // Apple 私有扩展字段（用标准英文地址，触发地图大头针）
+    var xapple = 'X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=' + s.address + ':geo:' + s.lat + ',' + s.lng + '\r\n';
     return geo + xapple;
 }
 
@@ -963,7 +963,7 @@ function generateICS(matches, teamName) {
         ics += 'SUMMARY:' + m.m + '\r\n';
         ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + '\r\n';
         var country = CITY_COUNTRY[m.c] || '';
-        ics += 'LOCATION:' + country + ' ' + m.c + ' ' + m.s + '\r\n';
+        ics += 'LOCATION:' + (STADIUM_GEO[m.s] ? STADIUM_GEO[m.s].address : m.c + ' ' + m.s) + '\r\n';
         if (STADIUM_GEO[m.s]) {
             ics += getStadiumGeo(m.s, m.c) + '\r\n';
         }
