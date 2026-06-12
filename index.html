@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIFA 2026 世界杯观赛日程表</title>
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+// ========== A组积分榜 from JSON ==========
+fetch('data/worldcup2026-group_standings.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        var tbody = document.getElementById('standings-body-A组');
+        if (!tbody || !data['A组']) return;
+        var teams = data['A组'].teams;
+        var html = '';
+        teams.forEach(function(t) {
+            html += '<tr><td>' + t.team + '</td><td class="points-cell">' + t.points + '</td></tr>';
+        });
+        tbody.innerHTML = html;
+    })
+    .catch(function(err) {
+        console.error('Standings load error:', err);
+    });
+
+</script>
     <style>
         * { box-sizing: border-box; }
         :root {
@@ -571,12 +589,7 @@
                     <div class="group-standings">
                         <table class="standings-table">
                             <thead><tr><th>球队</th><th>积分</th></tr></thead>
-                            <tbody>
-                                <tr><td>墨西哥</td><td class="points-cell">3</td></tr>
-                                <tr><td>韩国</td><td class="points-cell">3</td></tr>
-                                <tr><td>捷克</td><td class="points-cell">0</td></tr>
-                                <tr><td>南非</td><td class="points-cell">0</td></tr>
-                            </tbody>
+                            <tbody id="standings-body-A组"></tbody>
                         </table>
                     </div>
                 </div>
@@ -1550,6 +1563,24 @@ function renderInlineScores() {
 document.addEventListener('DOMContentLoaded', function() {
     renderInlineScores();
 });
+
+
+// ========== A组积分榜 from JSON ==========
+fetch('data/worldcup2026-group_standings.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        var tbody = document.getElementById('standings-body-A组');
+        if (!tbody || !data['A组']) return;
+        var teams = data['A组'].teams;
+        var html = '';
+        teams.forEach(function(t) {
+            html += '<tr><td>' + t.team + '</td><td class="points-cell">' + t.points + '</td></tr>';
+        });
+        tbody.innerHTML = html;
+    })
+    .catch(function(err) {
+        console.error('Standings load error:', err);
+    });
 
 </script>
 </body>

@@ -14,7 +14,7 @@ BEGIN:VEVENT
 UID:wc26-2@worldcup26
 DTSTART:20260612T020000Z
 DTEND:20260612T040000Z
-SUMMARY:🇰🇷 韩国 vs 🇨🇿 捷克
+SUMMARY:🇰🇷 韩国 vs 🇨🇿 捷克 2:1
 DESCRIPTION:小组赛 A组 | 📍Guadalajara, Mexico, 阿克伦球场
 LOCATION:Calle Circuito JVC 2800, El Salto, Jalisco 45645, Mexico
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=Calle Circuito JVC 2800, El Salto, Jalisco 45645, Mexico:geo:20.6737,-103.3447
