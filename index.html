@@ -95,31 +95,7 @@
         .visitor-counter { margin-top: 12px; font-size: 0.75rem; color: var(--text-muted); }
         .visitor-counter span { color: var(--gold); font-weight: 700; }
         .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 1.1rem; }
-        /* Responsive group selector: 3 cols x 4 rows (desktop), 6 cols x 2 rows (landscape) */
-        
-        .group-selector {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-        @media (orientation: portrait) and (max-width: 768px) {
-            .group-selector {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-        }
-        @media (orientation: landscape) and (max-width: 768px) {
-            .group-selector {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 6px;
-            }
-        }
-        @media (min-width: 1200px) {
-            .group-selector {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
+
             .group-name {
                 font-size: 0.75rem;
             }
@@ -156,6 +132,69 @@
         .group-card:hover {
             border-color: var(--gold);
             box-shadow: 0 4px 16px rgba(200,168,78,0.15);
+        }
+        
+        /* 小组内联比分 */
+        .inline-scores {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding: 6px 8px 8px;
+            gap: 3px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0,0,0,0.15);
+            overflow-x: auto;
+        }
+        .inline-score-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 0.6rem;
+            white-space: nowrap;
+            flex: 1;
+            min-width: 0;
+            justify-content: center;
+        }
+        .inline-score-item .flag {
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .inline-score-item .score {
+            color: #c8a84e;
+            font-weight: 700;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+        }
+        .inline-score-item .vs {
+            color: #8888aa;
+            font-size: 0.55rem;
+            margin: 0 1px;
+            flex-shrink: 0;
+        }
+        
+        /* 分组选择响应式 */
+        .group-selector {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        @media (orientation: portrait) and (max-width: 768px) {
+            .group-selector {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+        @media (orientation: landscape) and (max-width: 768px) {
+            .group-selector {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .group-selector {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
         
         .group-header {
@@ -482,6 +521,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '捷克')" data-team='🇨🇿 捷克'>
                                 🇨🇿 捷克 
                             </div>
+                            <div class="inline-scores" data-group="A组"></div>
                     </div>
                 </div>
             </div>
@@ -510,6 +550,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '瑞士')" data-team='🇨🇭 瑞士'>
                                 🇨🇭 瑞士 
                             </div>
+                            <div class="inline-scores" data-group="B组"></div>
                     </div>
                 </div>
             </div>
@@ -538,6 +579,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '苏格兰')" data-team='🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰'>
                                 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 
                             </div>
+                            <div class="inline-scores" data-group="C组"></div>
                     </div>
                 </div>
             </div>
@@ -566,6 +608,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '土耳其')" data-team='🇹🇷 土耳其'>
                                 🇹🇷 土耳其 
                             </div>
+                            <div class="inline-scores" data-group="D组"></div>
                     </div>
                 </div>
             </div>
@@ -594,6 +637,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '厄瓜多尔')" data-team='🇪🇨 厄瓜多尔'>
                                 🇪🇨 厄瓜多尔 
                             </div>
+                            <div class="inline-scores" data-group="E组"></div>
                     </div>
                 </div>
             </div>
@@ -622,6 +666,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '突尼斯')" data-team='🇹🇳 突尼斯'>
                                 🇹🇳 突尼斯 
                             </div>
+                            <div class="inline-scores" data-group="F组"></div>
                     </div>
                 </div>
             </div>
@@ -650,6 +695,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '新西兰')" data-team='🇳🇿 新西兰'>
                                 🇳🇿 新西兰 
                             </div>
+                            <div class="inline-scores" data-group="G组"></div>
                     </div>
                 </div>
             </div>
@@ -678,6 +724,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '乌拉圭')" data-team='🇺🇾 乌拉圭'>
                                 🇺🇾 乌拉圭 
                             </div>
+                            <div class="inline-scores" data-group="H组"></div>
                     </div>
                 </div>
             </div>
@@ -706,6 +753,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '挪威')" data-team='🇳🇴 挪威'>
                                 🇳🇴 挪威 
                             </div>
+                            <div class="inline-scores" data-group="I组"></div>
                     </div>
                 </div>
             </div>
@@ -734,6 +782,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '约旦')" data-team='🇯🇴 约旦'>
                                 🇯🇴 约旦 
                             </div>
+                            <div class="inline-scores" data-group="J组"></div>
                     </div>
                 </div>
             </div>
@@ -762,6 +811,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '哥伦比亚')" data-team='🇨🇴 哥伦比亚'>
                                 🇨🇴 哥伦比亚 
                             </div>
+                            <div class="inline-scores" data-group="K组"></div>
                     </div>
                 </div>
             </div>
@@ -790,6 +840,7 @@
                             <div class="team-chip" onclick="toggleTeam(this, '巴拿马')" data-team='🇵🇦 巴拿马'>
                                 🇵🇦 巴拿马 
                             </div>
+                            <div class="inline-scores" data-group="L组"></div>
                     </div>
                 </div>
             </div>
@@ -1383,6 +1434,67 @@ function copyGeneratedICSLink() {
 
 
 
+
+// ========== 小组内联比分 ==========
+function computeInlineScores() {
+    const groups = {};
+    for (const g of GROUP_ORDER) {
+        groups[g + '组'] = {teams:{}, matches:[]};
+    }
+    for (const [day, matches] of Object.entries(MATCHES)) {
+        for (const m of matches) {
+            const gn = m.g;
+            if (!groups[gn]) groups[gn] = {teams:{},matches:[]};
+            // Extract team names and flags from match string
+            const parts = m.m.split(' vs ');
+            if (parts.length !== 2) continue;
+            const flag1 = parts[0].trim();
+            const flag2 = parts[1].trim();
+            const name1 = flag1.replace(/^.{2,3}\s*/, '');
+            const name2 = flag2.replace(/^.{2,3}\s*/, '');
+            if (!groups[gn].teams[name1]) groups[gn].teams[name1] = {flag: flag1.split(' ')[0], name: name1};
+            if (!groups[gn].teams[name2]) groups[gn].teams[name2] = {flag: flag2.split(' ')[0], name: name2};
+            if (m.score) {
+                groups[gn].matches.push({name1, name2, score: m.score, flag1, flag2});
+            }
+        }
+    }
+    const result = {};
+    for (const [gn, data] of Object.entries(groups)) {
+        const teamLatest = {};
+        for (const mt of data.matches) {
+            teamLatest[mt.name1] = mt;
+            teamLatest[mt.name2] = mt;
+        }
+        result[gn] = Object.values(teamLatest);
+    }
+    return result;
+}
+const INLINE_SCORES = computeInlineScores();
+
+function renderInlineScores() {
+    document.querySelectorAll('.inline-scores').forEach(container => {
+        const gn = container.getAttribute('data-group');
+        const entries = INLINE_SCORES[gn] || [];
+        if (entries.length === 0) {
+            container.innerHTML = '<div class="inline-score-item"><span style="color:#555;font-style:italic;font-size:0.6rem">暂无比分</span></div>';
+            return;
+        }
+        let html = '';
+        const display = entries.slice(0, 6);  // limit to avoid overflow
+        for (const e of display) {
+            html += '<div class="inline-score-item">' +
+                '<span class="flag">' + e.flag1 + '</span>' +
+                '<span>' + e.name1 + '</span>' +
+                '<span class="score">' + e.score + '</span>' +
+                '</div>';
+        }
+        container.innerHTML = html;
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    renderInlineScores();
+});
     </script>
 </body>
 </html>
