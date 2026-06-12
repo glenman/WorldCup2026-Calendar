@@ -91,6 +91,39 @@
         .team-banner-flag { font-size: 2.5rem; }
         .team-banner-name { font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
         .team-banner-count { font-size: 0.85rem; color: var(--text-muted); }
+        /* 小组积分榜 */
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 0.72rem;
+        }
+        .standings-table th {
+            background: rgba(200,168,78,0.15);
+            color: var(--gold);
+            padding: 4px 3px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .standings-table td {
+            padding: 4px 3px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text);
+        }
+        .standings-table tr:first-child td {
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .standings-table .team-cell {
+            text-align: left;
+            white-space: nowrap;
+        }
+        .standings-table .pts {
+            font-weight: 700;
+            color: #4CAF50;
+        }
         .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: var(--text-muted); padding: 20px; border-top: 1px solid var(--card-border); }
         .visitor-counter { margin-top: 12px; font-size: 0.75rem; color: var(--text-muted); }
         .visitor-counter span { color: var(--gold); font-weight: 700; }
@@ -466,6 +499,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '墨西哥')" data-team='🇲🇽 墨西哥'>
                                 🇲🇽 墨西哥 👑
+                <div class="standings-container" data-group="A组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -494,6 +528,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '加拿大')" data-team='🇨🇦 加拿大'>
                                 🇨🇦 加拿大 👑
+                <div class="standings-container" data-group="B组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -522,6 +557,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '巴西')" data-team='🇧🇷 巴西'>
                                 🇧🇷 巴西 
+                <div class="standings-container" data-group="C组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -550,6 +586,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '美国')" data-team='🇺🇸 美国'>
                                 🇺🇸 美国 👑
+                <div class="standings-container" data-group="D组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -578,6 +615,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '德国')" data-team='🇩🇪 德国'>
                                 🇩🇪 德国 
+                <div class="standings-container" data-group="E组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -606,6 +644,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '荷兰')" data-team='🇳🇱 荷兰'>
                                 🇳🇱 荷兰 
+                <div class="standings-container" data-group="F组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -634,6 +673,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '比利时')" data-team='🇧🇪 比利时'>
                                 🇧🇪 比利时 
+                <div class="standings-container" data-group="G组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -662,6 +702,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '西班牙')" data-team='🇪🇸 西班牙'>
                                 🇪🇸 西班牙 
+                <div class="standings-container" data-group="H组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -690,6 +731,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '法国')" data-team='🇫🇷 法国'>
                                 🇫🇷 法国 
+                <div class="standings-container" data-group="I组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -718,6 +760,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '阿根廷')" data-team='🇦🇷 阿根廷'>
                                 🇦🇷 阿根廷 👑
+                <div class="standings-container" data-group="J组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -746,6 +789,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '葡萄牙')" data-team='🇵🇹 葡萄牙'>
                                 🇵🇹 葡萄牙 
+                <div class="standings-container" data-group="K组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -774,6 +818,7 @@
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '英格兰')" data-team='🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰'>
                                 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 
+                <div class="standings-container" data-group="L组"></div>
                             </div>
                     </div>
                     <div class="team-chips">
@@ -928,6 +973,41 @@ function getStadiumGeo(stadiumName, cityName) {
     var xapple = 'X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=' + s.address + ':geo:' + s.lat + ',' + s.lng + '\r\n';
     return geo + xapple;
 }
+
+// ========== 小组积分榜 ==========
+const GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+function parseScore(s) { if (!s) return null; const p = s.split(':'); if (p.length!==2) return null; const a=parseInt(p[0]),b=parseInt(p[1]); if (isNaN(a)||isNaN(b)) return null; return {a,b}; }
+function extractTeamNames(ms) { const p=ms.split(' vs '); if(p.length!==2) return ['', '', '', '']; const h=p[0].trim(),aw=p[1].trim(); return [h,aw, h.replace(/^\S+\s+/,''), aw.replace(/^\S+\s+/,'')]; }
+function computeStandings() {
+    const groups = {};
+    for (const g of GROUP_ORDER) groups[g+'组'] = {teams:{}};
+    for (const [day, matches] of Object.entries(MATCHES)) {
+        for (const m of matches) {
+            const g = m.g; if (!groups[g]) groups[g]={teams:{}};
+            const [hf,awf,hn,an] = extractTeamNames(m.m);
+            if (!groups[g].teams[hn]) groups[g].teams[hn]={flag:hf.split(' ')[0],name:hn.replace(/^\S+\s+/,''),gp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};
+            if (!groups[g].teams[an]) groups[g].teams[an]={flag:awf.split(' ')[0],name:an.replace(/^\S+\s+/,''),gp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};
+            const sc = parseScore(m.score);
+            if (sc) {
+                groups[g].teams[hn].gp++; groups[g].teams[an].gp++;
+                groups[g].teams[hn].gf+=sc.a; groups[g].teams[hn].ga+=sc.b;
+                groups[g].teams[an].gf+=sc.b; groups[g].teams[an].ga+=sc.a;
+                if (sc.a>sc.b) { groups[g].teams[hn].w++; groups[g].teams[hn].pts+=3; groups[g].teams[an].l++; }
+                else if (sc.a<sc.b) { groups[g].teams[an].w++; groups[g].teams[an].pts+=3; groups[g].teams[hn].l++; }
+                else { groups[g].teams[hn].d++; groups[g].teams[an].d++; groups[g].teams[hn].pts+=1; groups[g].teams[an].pts+=1; }
+            }
+        }
+    }
+    const result = {};
+    for (const [gn, data] of Object.entries(groups)) {
+        const tl = Object.values(data.teams);
+        for (const t of tl) t.gd = t.gf - t.ga;
+        tl.sort((a,b) => b.pts!==a.pts ? b.pts-a.pts : b.gd!==a.gd ? b.gd-a.gd : b.gf-a.gf);
+        result[gn] = tl;
+    }
+    return result;
+}
+const STANDINGS = computeStandings();
 
 const MATCHES = {"6月12日": [{"g": "A组", "m": "🇲🇽 墨西哥 vs 🇿🇦 南非", "c": "墨西哥城", "s": "阿兹特克球场", "t": "3:00", "score": "2:0"}, {"g": "A组", "m": "🇰🇷 韩国 vs 🇨🇿 捷克", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月13日": [{"g": "B组", "m": "🇨🇦 加拿大 vs 🇧🇦 波黑", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "D组", "m": "🇺🇸 美国 vs 🇵🇾 巴拉圭", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月14日": [{"g": "B组", "m": "🇶🇦 卡塔尔 vs 🇨🇭 瑞士", "c": "旧金山湾区", "s": "李维斯球场", "t": "3:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇲🇦 摩洛哥", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "6:00"}, {"g": "C组", "m": "🇭🇹 海地 vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "c": "波士顿", "s": "吉列球场", "t": "9:00"}, {"g": "D组", "m": "🇦🇺 澳大利亚 vs 🇹🇷 土耳其", "c": "温哥华", "s": "BC广场", "t": "12:00"}], "6月15日": [{"g": "E组", "m": "🇩🇪 德国 vs 🇨🇼 库拉索", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "F组", "m": "🇳🇱 荷兰 vs 🇯🇵 日本", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "E组", "m": "🇨🇮 科特迪瓦 vs 🇪🇨 厄瓜多尔", "c": "费城", "s": "林肯金融球场", "t": "7:00"}, {"g": "F组", "m": "🇸🇪 瑞典 vs 🇹🇳 突尼斯", "c": "蒙特雷", "s": "BBVA球场", "t": "10:00"}], "6月16日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇨🇻 佛得角", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇪🇬 埃及", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "H组", "m": "🇸🇦 沙特阿拉伯 vs 🇺🇾 乌拉圭", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇮🇷 伊朗 vs 🇳🇿 新西兰", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月17日": [{"g": "I组", "m": "🇫🇷 法国 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "3:00"}, {"g": "I组", "m": "🇮🇶 伊拉克 vs 🇳🇴 挪威", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "J组", "m": "🇦🇷 阿根廷 vs 🇩🇿 阿尔及利亚", "c": "堪萨斯城", "s": "箭头体育场", "t": "9:00"}, {"g": "J组", "m": "🇦🇹 奥地利 vs 🇯🇴 约旦", "c": "旧金山湾区", "s": "李维斯球场", "t": "12:00"}], "6月18日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇨🇩 刚果(金)", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇭🇷 克罗地亚", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "L组", "m": "🇬🇭 加纳 vs 🇵🇦 巴拿马", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚", "c": "墨西哥城", "s": "阿兹特克球场", "t": "10:00"}], "6月19日": [{"g": "A组", "m": "🇨🇿 捷克 vs 🇿🇦 南非", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇧🇦 波黑", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "B组", "m": "🇨🇦 加拿大 vs 🇶🇦 卡塔尔", "c": "温哥华", "s": "BC广场", "t": "6:00"}, {"g": "A组", "m": "🇲🇽 墨西哥 vs 🇰🇷 韩国", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "9:00"}], "6月20日": [{"g": "D组", "m": "🇺🇸 美国 vs 🇦🇺 澳大利亚", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇲🇦 摩洛哥", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇭🇹 海地", "c": "费城", "s": "林肯金融球场", "t": "8:30"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇵🇾 巴拉圭", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月21日": [{"g": "F组", "m": "🇳🇱 荷兰 vs 🇸🇪 瑞典", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "E组", "m": "🇩🇪 德国 vs 🇨🇮 科特迪瓦", "c": "多伦多", "s": "BMO球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇨🇼 库拉索", "c": "堪萨斯城", "s": "箭头体育场", "t": "8:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇯🇵 日本", "c": "蒙特雷", "s": "BBVA球场", "t": "12:00"}], "6月22日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇸🇦 沙特阿拉伯", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇮🇷 伊朗", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇨🇻 佛得角", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇪🇬 埃及", "c": "温哥华", "s": "BC广场", "t": "9:00"}], "6月23日": [{"g": "J组", "m": "🇦🇷 阿根廷 vs 🇦🇹 奥地利", "c": "达拉斯", "s": "AT&T球场", "t": "1:00"}, {"g": "I组", "m": "🇫🇷 法国 vs 🇮🇶 伊拉克", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "8:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇩🇿 阿尔及利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月24日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇺🇿 乌兹别克斯坦", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇬🇭 加纳", "c": "波士顿", "s": "吉列球场", "t": "4:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🇭🇷 克罗地亚", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇨🇩 刚果(金)", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月25日": [{"g": "B组", "m": "🇧🇦 波黑 vs 🇶🇦 卡塔尔", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇨🇦 加拿大", "c": "温哥华", "s": "BC广场", "t": "3:00"}, {"g": "C组", "m": "🇲🇦 摩洛哥 vs 🇭🇹 海地", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "6:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇧🇷 巴西", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "A组", "m": "🇿🇦 南非 vs 🇰🇷 韩国", "c": "蒙特雷", "s": "BBVA球场", "t": "9:00"}, {"g": "A组", "m": "🇨🇿 捷克 vs 🇲🇽 墨西哥", "c": "墨西哥城", "s": "阿兹特克球场", "t": "9:00"}], "6月26日": [{"g": "E组", "m": "🇨🇼 库拉索 vs 🇨🇮 科特迪瓦", "c": "费城", "s": "林肯金融球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇩🇪 德国", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "4:00"}, {"g": "F组", "m": "🇯🇵 日本 vs 🇸🇪 瑞典", "c": "达拉斯", "s": "AT&T球场", "t": "7:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇳🇱 荷兰", "c": "堪萨斯城", "s": "箭头体育场", "t": "7:00"}, {"g": "D组", "m": "🇵🇾 巴拉圭 vs 🇦🇺 澳大利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "10:00"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇺🇸 美国", "c": "洛杉矶", "s": "SoFi体育场", "t": "10:00"}], "6月27日": [{"g": "I组", "m": "🇸🇳 塞内加尔 vs 🇮🇶 伊拉克", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇫🇷 法国", "c": "波士顿", "s": "吉列球场", "t": "3:00"}, {"g": "H组", "m": "🇨🇻 佛得角 vs 🇸🇦 沙特阿拉伯", "c": "休斯顿", "s": "NRG球场", "t": "8:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇪🇸 西班牙", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "8:00"}, {"g": "G组", "m": "🇪🇬 埃及 vs 🇮🇷 伊朗", "c": "西雅图", "s": "卢门球场", "t": "11:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇧🇪 比利时", "c": "温哥华", "s": "BC广场", "t": "11:00"}], "6月28日": [{"g": "L组", "m": "🇭🇷 克罗地亚 vs 🇬🇭 加纳", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "5:00"}, {"g": "K组", "m": "🇨🇩 刚果(金) vs 🇺🇿 乌兹别克斯坦", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "7:30"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇵🇹 葡萄牙", "c": "迈阿密", "s": "硬石体育场", "t": "7:30"}, {"g": "J组", "m": "🇩🇿 阿尔及利亚 vs 🇦🇹 奥地利", "c": "休斯顿", "s": "NRG球场", "t": "10:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇦🇷 阿根廷", "c": "西雅图", "s": "卢门球场", "t": "10:00"}]};
 const TEAMS = ["🇦🇷 阿根廷", "🇩🇿 阿尔及利亚", "🇦🇺 澳大利亚", "🇦🇹 奥地利", "🇵🇦 巴拿马", "🇧🇪 比利时", "🇧🇦 波黑", "🇧🇷 巴西", "🇨🇦 加拿大", "🇨🇴 哥伦比亚", "🇨🇮 科特迪瓦", "🇭🇷 克罗地亚", "🇨🇼 库拉索", "🇨🇿 捷克", "🇩🇰 丹麦", "🇪🇨 厄瓜多尔", "🇪🇬 埃及", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "🇫🇷 法国", "🇨🇻 佛得角", "🇩🇪 德国", "🇬🇭 加纳", "🇭🇹 海地", "🇭🇳 洪都拉斯", "🇭🇺 匈牙利", "🇮🇷 伊朗", "🇮🇶 伊拉克", "🇯🇵 日本", "🇯🇴 约旦", "🇰🇷 韩国", "🇲🇽 墨西哥", "🇲🇦 摩洛哥", "🇳🇱 荷兰", "🇳🇿 新西兰", "🇳🇴 挪威", "🇵🇾 巴拉圭", "🇵🇹 葡萄牙", "🇶🇦 卡塔尔", "🇷🇴 罗马尼亚", "🇸🇦 沙特阿拉伯", "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "🇸🇳 塞内加尔", "🇷🇸 塞尔维亚", "🇪🇸 西班牙", "🇸🇪 瑞典", "🇨🇭 瑞士", "🇹🇳 突尼斯", "🇹🇷 土耳其", "🇺🇾 乌拉圭", "🇺🇸 美国", "🇿🇦 南非", "🇺🇿 乌兹别克斯坦", "🇬🇷 希腊"];
@@ -1383,6 +1463,34 @@ function copyGeneratedICSLink() {
 
 
 
-    </script>
+    // ========== 渲染小组积分榜 ==========
+function renderStandings() {
+    document.querySelectorAll('.standings-container').forEach(container => {
+        const gn = container.getAttribute('data-group');
+        const teams = STANDINGS[gn];
+        if (!teams || teams.length === 0) return;
+        let h = '<table class="standings-table"><thead><tr>' +
+            '<th>#</th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th>' +
+            '</tr></thead><tbody>';
+        teams.forEach((t, i) => {
+            h += '<tr>' +
+                '<td>' + (i+1) + '</td>' +
+                '<td class="team-cell">' + t.flag + ' ' + t.name + '</td>' +
+                '<td>' + t.gp + '</td>' +
+                '<td>' + t.w + '</td>' +
+                '<td>' + t.d + '</td>' +
+                '<td>' + t.l + '</td>' +
+                '<td>' + t.gf + '</td>' +
+                '<td>' + t.ga + '</td>' +
+                '<td>' + t.gd + '</td>' +
+                '<td class="pts">' + t.pts + '</td>' +
+            '</tr>';
+        });
+        h += '</tbody></table>';
+        container.innerHTML = h;
+    });
+}
+document.addEventListener('DOMContentLoaded', function() { renderStandings(); });
+</script>
 </body>
 </html>
