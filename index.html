@@ -1047,7 +1047,7 @@ function renderCalendar(filteredMatches, teamName) {
             html += '<div class="match-card">' +
                 '<div class="match-time">' + m.t + '</div>' +
                 '<div class="match-info">' +
-                    '<div class="match-name">' + m.m + '</div>' +
+                    '<div class="match-name">' + m.m.replace(/ (\d+:\d+)$/, ' <span style="float:right;color:#c8a84e;font-weight:700;">$1</span>') + '</div>' +
                     '<div class="match-meta">📍 ' + m.c + ' · ' + m.s + '</div>' +
                 '</div>' +
                 '<span class="group-badge">' + m.g + '</span>' +
