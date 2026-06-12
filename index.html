@@ -168,6 +168,23 @@ document.addEventListener('DOMContentLoaded', renderTeamScores);
         }
         
         /* 小组积分榜 */
+        .group-standings {
+            margin-top: 8px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 6px;
+        }
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+        .standings-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 2px 0;
+            border-bottom: 1px solid var(--card-border);
+        }
         .standings-table td {
             padding: 3px 0;
             color: var(--text);
@@ -182,6 +199,15 @@ document.addEventListener('DOMContentLoaded', renderTeamScores);
             color: var(--gold);
             font-weight: 700;
             font-size: 0.85rem;
+        }
+        .team-points {
+            color: #c8a84e;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-left: auto;
+            text-align: right;
+            display: block;
+            padding: 2px 0;
         }
 
         .team-score {
@@ -568,21 +594,37 @@ document.addEventListener('DOMContentLoaded', renderTeamScores);
                             <div class="team-chip" onclick="toggleTeam(this, '墨西哥')" data-team='🇲🇽 墨西哥'>
                                 🇲🇽 墨西哥 👑<span class="team-score" data-team="墨西哥"> </span>
                             </div>
+                            <span class="team-points" data-team="墨西哥">3</span>
                     </div>
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '南非')" data-team='🇿🇦 南非'>
                                 🇿🇦 南非 <span class="team-score" data-team="南非"> </span>
                             </div>
+                            <span class="team-points" data-team="南非">0</span>
                     </div>
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '韩国')" data-team='🇰🇷 韩国'>
                                 🇰🇷 韩国 <span class="team-score" data-team="韩国"> </span>
                             </div>
+                            <span class="team-points" data-team="韩国">3</span>
                     </div>
                     <div class="team-chips">
                             <div class="team-chip" onclick="toggleTeam(this, '捷克')" data-team='🇨🇿 捷克'>
                                 🇨🇿 捷克 <span class="team-score" data-team="捷克"> </span>
                             </div>
+                            <span class="team-points" data-team="捷克">0</span>
+                    </div>
+                    <!-- Group Standings -->
+                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody>
+                                <tr><td>🇲🇽 墨西哥</td><td class="points-cell">3</td></tr>
+                                <tr><td>🇰🇷 韩国</td><td class="points-cell">3</td></tr>
+                                <tr><td>🇿🇦 南非</td><td class="points-cell">0</td></tr>
+                                <tr><td>🇨🇿 捷克</td><td class="points-cell">0</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
