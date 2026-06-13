@@ -4,25 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIFA 2026 世界杯观赛日程表</title>
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-// ========== A组积分榜 from JSON ==========
-fetch('data/worldcup2026-group_standings.json')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-        var tbody = document.getElementById('standings-body-A组');
-        if (!tbody || !data['A组']) return;
-        var teams = data['A组'].teams;
-        var html = '';
-        teams.forEach(function(t) {
-            html += '<tr><td>' + t.team + '</td><td class="points-cell">' + t.points + '</td></tr>';
-        });
-        tbody.innerHTML = html;
-    })
-    .catch(function(err) {
-        console.error('Standings load error:', err);
-    });
-
-</script>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <style>
         * { box-sizing: border-box; }
         :root {
@@ -164,7 +146,7 @@ fetch('data/worldcup2026-group_standings.json')
             font-size: 0.75rem;
         }
         .standings-table th {
-            text-align: left;
+            text-align: center;
             color: var(--text-muted);
             font-weight: 600;
             padding: 2px 0;
@@ -173,6 +155,7 @@ fetch('data/worldcup2026-group_standings.json')
         .standings-table td {
             padding: 3px 0;
             color: var(--text);
+            text-align: center;
         }
         .standings-table tr:nth-child(1) td,
         .standings-table tr:nth-child(2) td {
@@ -621,7 +604,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇨🇭 瑞士 <span class="team-score" data-team="瑞士"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-B组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -650,7 +639,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 <span class="team-score" data-team="苏格兰"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-C组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -679,7 +674,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇹🇷 土耳其 <span class="team-score" data-team="土耳其"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-D组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -708,7 +709,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇪🇨 厄瓜多尔 <span class="team-score" data-team="厄瓜多尔"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-E组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -737,7 +744,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇹🇳 突尼斯 <span class="team-score" data-team="突尼斯"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-F组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -766,7 +779,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇳🇿 新西兰 <span class="team-score" data-team="新西兰"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-G组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -795,7 +814,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇺🇾 乌拉圭 <span class="team-score" data-team="乌拉圭"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-H组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -824,7 +849,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇳🇴 挪威 <span class="team-score" data-team="挪威"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-I组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -853,7 +884,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇯🇴 约旦 <span class="team-score" data-team="约旦"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-J组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -882,7 +919,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇨🇴 哥伦比亚 <span class="team-score" data-team="哥伦比亚"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-K组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
             <div class="group-card">
                 <div class="group-header" onclick="toggleGroup(this)">
@@ -910,7 +953,13 @@ fetch('data/worldcup2026-group_standings.json')
                                 🇵🇦 巴拿马 <span class="team-score" data-team="巴拿马"> </span>
                             </div>
                     </div>
-                </div>
+                                    <div class="group-standings">
+                        <table class="standings-table">
+                            <thead><tr><th>球队</th><th>积分</th></tr></thead>
+                            <tbody id="standings-body-L组"></tbody>
+                        </table>
+                    </div>
+</div>
             </div>
         </div>
 
@@ -1048,45 +1097,44 @@ function getStadiumGeo(stadiumName, cityName) {
     return geo + xapple;
 }
 
-const MATCHES = {"6月12日": [{"g": "A组", "m": "🇲🇽 墨西哥 vs 🇿🇦 南非 2:0", "c": "墨西哥城", "s": "阿兹特克球场", "t": "3:00"}, {"g": "A组", "m": "🇰🇷 韩国 vs 🇨🇿 捷克 2:1", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月13日": [{"g": "B组", "m": "🇨🇦 加拿大 vs 🇧🇦 波黑", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "D组", "m": "🇺🇸 美国 vs 🇵🇾 巴拉圭", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月14日": [{"g": "B组", "m": "🇶🇦 卡塔尔 vs 🇨🇭 瑞士", "c": "旧金山湾区", "s": "李维斯球场", "t": "3:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇲🇦 摩洛哥", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "6:00"}, {"g": "C组", "m": "🇭🇹 海地 vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "c": "波士顿", "s": "吉列球场", "t": "9:00"}, {"g": "D组", "m": "🇦🇺 澳大利亚 vs 🇹🇷 土耳其", "c": "温哥华", "s": "BC广场", "t": "12:00"}], "6月15日": [{"g": "E组", "m": "🇩🇪 德国 vs 🇨🇼 库拉索", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "F组", "m": "🇳🇱 荷兰 vs 🇯🇵 日本", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "E组", "m": "🇨🇮 科特迪瓦 vs 🇪🇨 厄瓜多尔", "c": "费城", "s": "林肯金融球场", "t": "7:00"}, {"g": "F组", "m": "🇸🇪 瑞典 vs 🇹🇳 突尼斯", "c": "蒙特雷", "s": "BBVA球场", "t": "10:00"}], "6月16日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇨🇻 佛得角", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇪🇬 埃及", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "H组", "m": "🇸🇦 沙特阿拉伯 vs 🇺🇾 乌拉圭", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇮🇷 伊朗 vs 🇳🇿 新西兰", "c": "洛杉矶", "s": "SoFi体育场", "t": "9:00"}], "6月17日": [{"g": "I组", "m": "🇫🇷 法国 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "3:00"}, {"g": "I组", "m": "🇮🇶 伊拉克 vs 🇳🇴 挪威", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "J组", "m": "🇦🇷 阿根廷 vs 🇩🇿 阿尔及利亚", "c": "堪萨斯城", "s": "箭头体育场", "t": "9:00"}, {"g": "J组", "m": "🇦🇹 奥地利 vs 🇯🇴 约旦", "c": "旧金山湾区", "s": "李维斯球场", "t": "12:00"}], "6月18日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇨🇩 刚果(金)", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇭🇷 克罗地亚", "c": "达拉斯", "s": "AT&T球场", "t": "4:00"}, {"g": "L组", "m": "🇬🇭 加纳 vs 🇵🇦 巴拿马", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚", "c": "墨西哥城", "s": "阿兹特克球场", "t": "10:00"}], "6月19日": [{"g": "A组", "m": "🇨🇿 捷克 vs 🇿🇦 南非", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇧🇦 波黑", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "B组", "m": "🇨🇦 加拿大 vs 🇶🇦 卡塔尔", "c": "温哥华", "s": "BC广场", "t": "6:00"}, {"g": "A组", "m": "🇲🇽 墨西哥 vs 🇰🇷 韩国", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "9:00"}], "6月20日": [{"g": "D组", "m": "🇺🇸 美国 vs 🇦🇺 澳大利亚", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇲🇦 摩洛哥", "c": "波士顿", "s": "吉列球场", "t": "6:00"}, {"g": "C组", "m": "🇧🇷 巴西 vs 🇭🇹 海地", "c": "费城", "s": "林肯金融球场", "t": "8:30"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇵🇾 巴拉圭", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月21日": [{"g": "F组", "m": "🇳🇱 荷兰 vs 🇸🇪 瑞典", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "E组", "m": "🇩🇪 德国 vs 🇨🇮 科特迪瓦", "c": "多伦多", "s": "BMO球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇨🇼 库拉索", "c": "堪萨斯城", "s": "箭头体育场", "t": "8:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇯🇵 日本", "c": "蒙特雷", "s": "BBVA球场", "t": "12:00"}], "6月22日": [{"g": "H组", "m": "🇪🇸 西班牙 vs 🇸🇦 沙特阿拉伯", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "0:00"}, {"g": "G组", "m": "🇧🇪 比利时 vs 🇮🇷 伊朗", "c": "洛杉矶", "s": "SoFi体育场", "t": "3:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇨🇻 佛得角", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇪🇬 埃及", "c": "温哥华", "s": "BC广场", "t": "9:00"}], "6月23日": [{"g": "J组", "m": "🇦🇷 阿根廷 vs 🇦🇹 奥地利", "c": "达拉斯", "s": "AT&T球场", "t": "1:00"}, {"g": "I组", "m": "🇫🇷 法国 vs 🇮🇶 伊拉克", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇸🇳 塞内加尔", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "8:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇩🇿 阿尔及利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "11:00"}], "6月24日": [{"g": "K组", "m": "🇵🇹 葡萄牙 vs 🇺🇿 乌兹别克斯坦", "c": "休斯顿", "s": "NRG球场", "t": "1:00"}, {"g": "L组", "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇬🇭 加纳", "c": "波士顿", "s": "吉列球场", "t": "4:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🇭🇷 克罗地亚", "c": "多伦多", "s": "BMO球场", "t": "7:00"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇨🇩 刚果(金)", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "10:00"}], "6月25日": [{"g": "B组", "m": "🇧🇦 波黑 vs 🇶🇦 卡塔尔", "c": "西雅图", "s": "卢门球场", "t": "3:00"}, {"g": "B组", "m": "🇨🇭 瑞士 vs 🇨🇦 加拿大", "c": "温哥华", "s": "BC广场", "t": "3:00"}, {"g": "C组", "m": "🇲🇦 摩洛哥 vs 🇭🇹 海地", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "6:00"}, {"g": "C组", "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇧🇷 巴西", "c": "迈阿密", "s": "硬石体育场", "t": "6:00"}, {"g": "A组", "m": "🇿🇦 南非 vs 🇰🇷 韩国", "c": "蒙特雷", "s": "BBVA球场", "t": "9:00"}, {"g": "A组", "m": "🇨🇿 捷克 vs 🇲🇽 墨西哥", "c": "墨西哥城", "s": "阿兹特克球场", "t": "9:00"}], "6月26日": [{"g": "E组", "m": "🇨🇼 库拉索 vs 🇨🇮 科特迪瓦", "c": "费城", "s": "林肯金融球场", "t": "4:00"}, {"g": "E组", "m": "🇪🇨 厄瓜多尔 vs 🇩🇪 德国", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "4:00"}, {"g": "F组", "m": "🇯🇵 日本 vs 🇸🇪 瑞典", "c": "达拉斯", "s": "AT&T球场", "t": "7:00"}, {"g": "F组", "m": "🇹🇳 突尼斯 vs 🇳🇱 荷兰", "c": "堪萨斯城", "s": "箭头体育场", "t": "7:00"}, {"g": "D组", "m": "🇵🇾 巴拉圭 vs 🇦🇺 澳大利亚", "c": "旧金山湾区", "s": "李维斯球场", "t": "10:00"}, {"g": "D组", "m": "🇹🇷 土耳其 vs 🇺🇸 美国", "c": "洛杉矶", "s": "SoFi体育场", "t": "10:00"}], "6月27日": [{"g": "I组", "m": "🇸🇳 塞内加尔 vs 🇮🇶 伊拉克", "c": "多伦多", "s": "BMO球场", "t": "3:00"}, {"g": "I组", "m": "🇳🇴 挪威 vs 🇫🇷 法国", "c": "波士顿", "s": "吉列球场", "t": "3:00"}, {"g": "H组", "m": "🇨🇻 佛得角 vs 🇸🇦 沙特阿拉伯", "c": "休斯顿", "s": "NRG球场", "t": "8:00"}, {"g": "H组", "m": "🇺🇾 乌拉圭 vs 🇪🇸 西班牙", "c": "瓜达拉哈拉", "s": "阿克伦球场", "t": "8:00"}, {"g": "G组", "m": "🇪🇬 埃及 vs 🇮🇷 伊朗", "c": "西雅图", "s": "卢门球场", "t": "11:00"}, {"g": "G组", "m": "🇳🇿 新西兰 vs 🇧🇪 比利时", "c": "温哥华", "s": "BC广场", "t": "11:00"}], "6月28日": [{"g": "L组", "m": "🇭🇷 克罗地亚 vs 🇬🇭 加纳", "c": "费城", "s": "林肯金融球场", "t": "5:00"}, {"g": "L组", "m": "🇵🇦 巴拿马 vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "c": "纽约/新泽西", "s": "大都会人寿球场", "t": "5:00"}, {"g": "K组", "m": "🇨🇩 刚果(金) vs 🇺🇿 乌兹别克斯坦", "c": "亚特兰大", "s": "梅赛德斯-奔驰球场", "t": "7:30"}, {"g": "K组", "m": "🇨🇴 哥伦比亚 vs 🇵🇹 葡萄牙", "c": "迈阿密", "s": "硬石体育场", "t": "7:30"}, {"g": "J组", "m": "🇩🇿 阿尔及利亚 vs 🇦🇹 奥地利", "c": "休斯顿", "s": "NRG球场", "t": "10:00"}, {"g": "J组", "m": "🇯🇴 约旦 vs 🇦🇷 阿根廷", "c": "西雅图", "s": "卢门球场", "t": "10:00"}]};
-const TEAMS = ["🇦🇷 阿根廷", "🇩🇿 阿尔及利亚", "🇦🇺 澳大利亚", "🇦🇹 奥地利", "🇵🇦 巴拿马", "🇧🇪 比利时", "🇧🇦 波黑", "🇧🇷 巴西", "🇨🇦 加拿大", "🇨🇴 哥伦比亚", "🇨🇮 科特迪瓦", "🇭🇷 克罗地亚", "🇨🇼 库拉索", "🇨🇿 捷克", "🇩🇰 丹麦", "🇪🇨 厄瓜多尔", "🇪🇬 埃及", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰", "🇫🇷 法国", "🇨🇻 佛得角", "🇩🇪 德国", "🇬🇭 加纳", "🇭🇹 海地", "🇭🇳 洪都拉斯", "🇭🇺 匈牙利", "🇮🇷 伊朗", "🇮🇶 伊拉克", "🇯🇵 日本", "🇯🇴 约旦", "🇰🇷 韩国", "🇲🇽 墨西哥", "🇲🇦 摩洛哥", "🇳🇱 荷兰", "🇳🇿 新西兰", "🇳🇴 挪威", "🇵🇾 巴拉圭", "🇵🇹 葡萄牙", "🇶🇦 卡塔尔", "🇷🇴 罗马尼亚", "🇸🇦 沙特阿拉伯", "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰", "🇸🇳 塞内加尔", "🇷🇸 塞尔维亚", "🇪🇸 西班牙", "🇸🇪 瑞典", "🇨🇭 瑞士", "🇹🇳 突尼斯", "🇹🇷 土耳其", "🇺🇾 乌拉圭", "🇺🇸 美国", "🇿🇦 南非", "🇺🇿 乌兹别克斯坦", "🇬🇷 希腊"];
+let ALL_MATCHES = [];        // fetched from worldcup2026-matches.json
+let STANDINGS_DATA = {};     // fetched from worldcup2026-group_standings.json
 const GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
 
 function getTeamMatches(teamName) {
-    const result = [];
-    const shortName = teamName.replace(/^\S+\s+/, '');
-    for (const [day, dayMatches] of Object.entries(MATCHES)) {
-        dayMatches.forEach(m => {
-            if (m.m.includes(shortName)) {
-                result.push({...m, day});
-            }
-        });
-    }
-    return result;
+    if (!ALL_MATCHES.length) return [];
+    return ALL_MATCHES.filter(function(m) {
+        return m.home_team.name === teamName || m.away_team.name === teamName;
+    });
 }
 
 function generateICS(matches, teamName) {
-    let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
-    let idx = 1;
-    for (const m of matches) {
-        const [h, min] = m.t.split(':').map(Number);
-        const dayNum = parseInt(m.day.match(/(\d+)[^\d]*$/)?.[1]);
-        // 北京时间转UTC：直接用 UTC 构造避免时区问题
-        const utcH = (h - 8 + 24) % 24;
-        const utcDay = (h < 8) ? dayNum - 1 : dayNum;
-        const utcDate = Date.UTC(2026, 5, utcDay, utcH, min);
-        const iso = new Date(utcDate).toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+    var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
+    var idx = 1;
+    for (var i = 0; i < matches.length; i++) {
+        var m = matches[i];
+        var timeParts = m.time_cn.split(':').map(Number);
+        var h = timeParts[0];
+        var min = timeParts[1];
+        var dayMatch = m.date_cn.match(/(\d+)[^\d]*$/);
+        var dayNum = dayMatch ? parseInt(dayMatch[1]) : 12;
+        // Beijing time to UTC
+        var utcH = (h - 8 + 24) % 24;
+        var utcDay = (h < 8) ? dayNum - 1 : dayNum;
+        var utcDate = Date.UTC(2026, 5, utcDay, utcH, min);
+        var iso = new Date(utcDate).toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
         ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
         ics += 'DTSTART:' + iso + '\r\n';
-        const endDt = new Date(utcDate + 7200000);
+        var endDt = new Date(utcDate + 7200000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
-        var country = CITY_COUNTRY[m.c] || '美国';
-        ics += 'SUMMARY:' + m.m + '\r\n';
-        ics += 'DESCRIPTION:小组赛 ' + m.g + '\n场地: ' + m.s + '\n城市: ' + m.c + '\n' + teamName + ' | 📍' + country + '，' + m.c + '，' + m.s + '\r\n';
-        ics += 'LOCATION:' + (STADIUM_GEO[m.s] ? STADIUM_GEO[m.s].address : m.c + ' ' + m.s) + '\r\n';
-        if (STADIUM_GEO[m.s]) {
-            ics += getStadiumGeo(m.s, m.c) + '\r\n';
+        var summary = m.home_team.flag + ' ' + m.home_team.name + ' ' + m.home_team.score + ':' + m.away_team.score + ' ' + m.away_team.flag + ' ' + m.away_team.name;
+        var cityVenue = m.venue || '';
+        ics += 'SUMMARY:' + summary + '\r\n';
+        ics += 'DESCRIPTION:' + m.match_type + ' ' + m.group + '\\n场地: ' + m.stadium + '\\n' + teamName + ' | 📍' + cityVenue + '\\n' + m.stadium + '\r\n';
+        ics += 'LOCATION:' + (STADIUM_GEO[m.stadium] ? STADIUM_GEO[m.stadium].address : (m.venue + ' ' + m.stadium)) + '\r\n';
+        if (STADIUM_GEO[m.stadium]) {
+            ics += getStadiumGeo(m.stadium, m.venue) + '\r\n';
         }
         ics += 'END:VEVENT\r\n';
         idx++;
@@ -1114,14 +1162,14 @@ function generateICS(matches, teamName) {
 })();
 
 function renderCalendar(filteredMatches, teamName) {
-    const calContainer = document.getElementById('calendar-app');
+    var calContainer = document.getElementById('calendar-app');
     
-    // 球队名称横幅
-    let bannerHtml = '';
+    // team banner
+    var bannerHtml = '';
     if (teamName && teamName !== 'all') {
-        const flag = teamName.match(/^\S+/)?.[0] || '🏆';
-        const team = teamName.replace(/^\S+\s+/, '');
-        const count = filteredMatches ? filteredMatches.length : 0;
+        var flag = teamName.match(/^\S+/)?.[0] || '🏆';
+        var team = teamName.replace(/^\S+\s+/, '');
+        var count = filteredMatches ? filteredMatches.length : 0;
         bannerHtml = '<div class="team-banner">' +
             '<span class="team-banner-flag">' + flag + '</span>' +
             '<div class="team-banner-info">' +
@@ -1131,47 +1179,48 @@ function renderCalendar(filteredMatches, teamName) {
         '</div>';
     }
     if (filteredMatches && filteredMatches.length === 0) {
-        container.innerHTML = '<div class="empty-state"><p>😕 没有找到该球队的比赛</p><p>请尝试其他球队</p></div>';
+        calContainer.innerHTML = '<div class="empty-state"><p>😕 没有找到该球队的比赛</p><p>请尝试其他球队</p></div>';
         return;
     }
     if (teamName === 'all') {
         filteredMatches = null;
     }
-    const title = document.getElementById('page-title');
-    const totalEl = document.getElementById('total-matches');
+    var title = document.getElementById('page-title');
+    var totalEl = document.getElementById('total-matches');
     if (teamName === 'all' || !teamName) {
         title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 世界杯观赛日程表';
         totalEl.textContent = '72 场';
     } else {
-        const flag = teamName.match(/^\S+/)?.[0] || '🏆';
-        title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 ' + flag + ' ' + teamName.replace(/^\S+\s+/, '') + ' 专属赛程';
-        const count = filteredMatches ? filteredMatches.length : 0;
-        totalEl.textContent = count + ' 场';
+        var flag2 = teamName.match(/^\S+/)?.[0] || '🏆';
+        title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 ' + flag2 + ' ' + teamName.replace(/^\S+\s+/, '') + ' 专属赛程';
+        var count2 = filteredMatches ? filteredMatches.length : 0;
+        totalEl.textContent = count2 + ' 场';
     }
-    const byDay = {};
-    if (!filteredMatches) {
-        for (const [day, dayMatches] of Object.entries(MATCHES)) {
-            byDay[day] = dayMatches;
-        }
-    } else {
-        filteredMatches.forEach(m => {
-            if (!byDay[m.day]) byDay[m.day] = [];
-            byDay[m.day].push(m);
-        });
-    }
-    const days = Object.keys(byDay);
-    let html = '';
-    days.forEach(day => {
-        const dayMatches = byDay[day];
+    var byDay = {};
+    var sourceMatches = filteredMatches || ALL_MATCHES;
+    sourceMatches.forEach(function(m) {
+        var day = m.date_cn;
+        if (!byDay[day]) byDay[day] = [];
+        byDay[day].push(m);
+    });
+    var days = Object.keys(byDay);
+    var html = bannerHtml;
+    days.forEach(function(day) {
+        var dayMatches = byDay[day];
         html += '<div class="date-header"><span>📅 ' + day + '</span><span class="day-count">' + dayMatches.length + ' 场</span></div>';
-        dayMatches.forEach(m => {
+        dayMatches.forEach(function(m) {
+            var matchName = m.home_team.flag + ' ' + m.home_team.name + ' vs ' + m.away_team.flag + ' ' + m.away_team.name;
+            var scoreHtml = '';
+            if (m.status === '已结束') {
+                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+            }
             html += '<div class="match-card">' +
-                '<div class="match-time">' + m.t + '</div>' +
+                '<div class="match-time">' + m.time_cn + '</div>' +
                 '<div class="match-info">' +
-                    '<div class="match-name">' + m.m.replace(/ (\d+:\d+)$/, '<span class="match-score">$1</span>') + '</div>' +
-                    '<div class="match-meta">📍 ' + m.c + ' · ' + m.s + '</div>' +
+                    '<div class="match-name">' + matchName + scoreHtml + '</div>' +
+                    '<div class="match-meta">📍 ' + m.venue + ' · ' + m.stadium + '</div>' +
                 '</div>' +
-                '<span class="group-badge">' + m.g + '</span>' +
+                '<span class="group-badge">' + m.group + '</span>' +
             '</div>';
         });
     });
@@ -1192,6 +1241,47 @@ function onTeamChange() {
         if (btn) btn.textContent = '📥 下载 ' + shortName + ' ICS (' + filtered.length + '场)';
     }
 }
+
+function renderAllStandings() {
+    var groups = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+    groups.forEach(function(g) {
+        var tbody = document.getElementById('standings-body-' + g + '组');
+        var key = g + '组';
+        if (!tbody || !STANDINGS_DATA[key]) return;
+        var teams = STANDINGS_DATA[key].teams;
+        var html = '';
+        teams.forEach(function(t) {
+            html += '<tr><td>' + t.team + '</td><td class="points-cell">' + t.points + '</td></tr>';
+        });
+        tbody.innerHTML = html;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load matches JSON
+    fetch('data/worldcup2026-matches.json')
+        .then(function(r) { return r.json(); })
+        .then(function(matches) {
+            ALL_MATCHES = matches;
+            renderCalendar(null, 'all');
+            initFromURL();
+        })
+        .catch(function(err) {
+            console.error('Failed to load matches:', err);
+        });
+
+    // Load standings JSON
+    fetch('data/worldcup2026-group_standings.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            STANDINGS_DATA = data;
+            renderAllStandings();
+            renderInlineScores();
+        })
+        .catch(function(err) {
+            console.error('Standings load error:', err);
+        });
+});
 
 function copyAllSubscribeLink() {
     var url = BASE_URL + 'worldcup2026.ics';
@@ -1414,20 +1504,21 @@ function getChipName(ds) {
 }
 
 function getSelectedMatches() {
-    const result = [];
-    for (const [day, dayMatches] of Object.entries(MATCHES)) {
-        dayMatches.forEach(m => {
-            const mt = extractTeams(m.m);
-            for (const st of selectedTeams) {
-                if (mt.includes(st) || mt.some(t => t.endsWith(st))) { result.push({...m, day}); break; }
+    var result = [];
+    ALL_MATCHES.forEach(function(m) {
+        for (var i = 0; i < selectedTeams.size; i++) {
+            var st = Array.from(selectedTeams)[i];
+            if (m.home_team.name === st || m.away_team.name === st) {
+                result.push(m);
+                break;
             }
-        });
-    }
+        }
+    });
     return result;
 }
 
 function extractTeams(matchStr) {
-    const parts = matchStr.split(' vs ');
+    var parts = matchStr.split(' vs ');
     if (parts.length !== 2) return [];
     return [parts[0].trim(), parts[1].trim()];
 }
@@ -1507,52 +1598,39 @@ function copyGeneratedICSLink() {
 
 // ========== 小组内联比分 ==========
 function computeInlineScores() {
-    const groups = {};
-    for (const g of GROUP_ORDER) {
-        groups[g + '组'] = {teams:{}, matches:[]};
-    }
-    for (const [day, matches] of Object.entries(MATCHES)) {
-        for (const m of matches) {
-            const gn = m.g;
-            if (!groups[gn]) groups[gn] = {teams:{},matches:[]};
-            // Extract team names and flags from match string
-            const parts = m.m.split(' vs ');
-            if (parts.length !== 2) continue;
-            const flag1 = parts[0].trim();
-            const flag2 = parts[1].trim();
-            const name1 = flag1.replace(/^.{2,3}\s*/, '');
-            const name2 = flag2.replace(/^.{2,3}\s*/, '');
-            if (!groups[gn].teams[name1]) groups[gn].teams[name1] = {flag: flag1.split(' ')[0], name: name1};
-            if (!groups[gn].teams[name2]) groups[gn].teams[name2] = {flag: flag2.split(' ')[0], name: name2};
-            if (m.score) {
-                groups[gn].matches.push({name1, name2, score: m.score, flag1, flag2});
-            }
+    var result = {};
+    for (var i = 0; i < GROUP_ORDER.length; i++) {
+        var gn = GROUP_ORDER[i] + '组';
+        var groupData = STANDINGS_DATA[gn];
+        if (!groupData || !groupData.teams) {
+            result[gn] = [];
+            continue;
         }
-    }
-    const result = {};
-    for (const [gn, data] of Object.entries(groups)) {
-        const teamLatest = {};
-        for (const mt of data.matches) {
-            teamLatest[mt.name1] = mt;
-            teamLatest[mt.name2] = mt;
-        }
-        result[gn] = Object.values(teamLatest);
+        result[gn] = groupData.teams.map(function(t) {
+            return {
+                flag1: FLAG_MAP[t.team] || '🏳',
+                name1: t.team,
+                score: t.gf + ':' + t.ga
+            };
+        });
     }
     return result;
 }
-const INLINE_SCORES = computeInlineScores();
+var INLINE_SCORES = {};
 
 function renderInlineScores() {
-    document.querySelectorAll('.inline-scores').forEach(container => {
-        const gn = container.getAttribute('data-group');
-        const entries = INLINE_SCORES[gn] || [];
+    var scores = computeInlineScores();
+    document.querySelectorAll('.inline-scores').forEach(function(container) {
+        var gn = container.getAttribute('data-group');
+        var entries = scores[gn] || [];
         if (entries.length === 0) {
             container.innerHTML = '<div class="inline-score-item"><span style="color:#555;font-style:italic;font-size:0.6rem">暂无比分</span></div>';
             return;
         }
-        let html = '';
-        const display = entries.slice(0, 6);  // limit to avoid overflow
-        for (const e of display) {
+        var html = '';
+        var display = entries.slice(0, 6);
+        for (var i = 0; i < display.length; i++) {
+            var e = display[i];
             html += '<div class="inline-score-item">' +
                 '<span class="flag">' + e.flag1 + '</span>' +
                 '<span>' + e.name1 + '</span>' +
@@ -1562,27 +1640,8 @@ function renderInlineScores() {
         container.innerHTML = html;
     });
 }
-document.addEventListener('DOMContentLoaded', function() {
-    renderInlineScores();
-});
 
 
-// ========== A组积分榜 from JSON ==========
-fetch('data/worldcup2026-group_standings.json')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-        var tbody = document.getElementById('standings-body-A组');
-        if (!tbody || !data['A组']) return;
-        var teams = data['A组'].teams;
-        var html = '';
-        teams.forEach(function(t) {
-            html += '<tr><td>' + t.team + '</td><td class="points-cell">' + t.points + '</td></tr>';
-        });
-        tbody.innerHTML = html;
-    })
-    .catch(function(err) {
-        console.error('Standings load error:', err);
-    });
 
 </script>
 </body>

@@ -4,7 +4,6 @@
     "teams": [
       {
         "team": "墨西哥",
-        "standing": 1,
         "played": 1,
         "won": 1,
         "drawn": 0,
@@ -12,11 +11,11 @@
         "gf": 2,
         "ga": 0,
         "gd": 2,
-        "points": 3
+        "points": 3,
+        "standing": 1
       },
       {
         "team": "韩国",
-        "standing": 2,
         "played": 1,
         "won": 1,
         "drawn": 0,
@@ -24,11 +23,11 @@
         "gf": 2,
         "ga": 1,
         "gd": 1,
-        "points": 3
+        "points": 3,
+        "standing": 2
       },
       {
         "team": "捷克",
-        "standing": 3,
         "played": 1,
         "won": 0,
         "drawn": 0,
@@ -36,11 +35,11 @@
         "gf": 1,
         "ga": 2,
         "gd": -1,
-        "points": 0
+        "points": 0,
+        "standing": 3
       },
       {
         "team": "南非",
-        "standing": 4,
         "played": 1,
         "won": 0,
         "drawn": 0,
@@ -48,7 +47,8 @@
         "gf": 0,
         "ga": 2,
         "gd": -2,
-        "points": 0
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -56,44 +56,31 @@
     "group": "B组",
     "teams": [
       {
-        "team": "波黑",
-        "standing": 1,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
-      },
-      {
         "team": "加拿大",
-        "standing": 2,
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "gf": 1,
+        "ga": 1,
         "gd": 0,
-        "points": 0
+        "points": 1,
+        "standing": 1
       },
       {
-        "team": "瑞士",
-        "standing": 3,
-        "played": 0,
+        "team": "波黑",
+        "played": 1,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "gf": 1,
+        "ga": 1,
         "gd": 0,
-        "points": 0
+        "points": 1,
+        "standing": 2
       },
       {
         "team": "卡塔尔",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -101,7 +88,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "瑞士",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -109,8 +109,7 @@
     "group": "C组",
     "teams": [
       {
-        "team": "摩洛哥",
-        "standing": 1,
+        "team": "巴西",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -118,11 +117,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
-        "team": "巴西",
-        "standing": 2,
+        "team": "摩洛哥",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -130,11 +129,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "海地",
-        "standing": 3,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -142,11 +141,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
       },
       {
         "team": "苏格兰",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -154,7 +153,8 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -162,8 +162,19 @@
     "group": "D组",
     "teams": [
       {
+        "team": "美国",
+        "played": 1,
+        "won": 1,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "points": 3,
+        "standing": 1
+      },
+      {
         "team": "澳大利亚",
-        "standing": 1,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -171,11 +182,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "土耳其",
-        "standing": 2,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -183,31 +194,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
       },
       {
         "team": "巴拉圭",
-        "standing": 3,
-        "played": 0,
+        "played": 1,
         "won": 0,
         "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "美国",
-        "standing": 4,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "lost": 1,
+        "gf": 1,
+        "ga": 4,
+        "gd": -3,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -216,7 +216,6 @@
     "teams": [
       {
         "team": "德国",
-        "standing": 1,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -224,11 +223,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "库拉索",
-        "standing": 2,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -236,23 +235,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "厄瓜多尔",
-        "standing": 3,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "科特迪瓦",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -260,7 +247,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "厄瓜多尔",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -269,7 +269,6 @@
     "teams": [
       {
         "team": "荷兰",
-        "standing": 1,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -277,23 +276,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "突尼斯",
-        "standing": 2,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "日本",
-        "standing": 3,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -301,11 +288,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "瑞典",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -313,7 +300,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "突尼斯",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -321,8 +321,7 @@
     "group": "G组",
     "teams": [
       {
-        "team": "新西兰",
-        "standing": 1,
+        "team": "比利时",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -330,23 +329,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "伊朗",
-        "standing": 2,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "埃及",
-        "standing": 3,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -354,11 +341,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
-        "team": "比利时",
-        "standing": 4,
+        "team": "伊朗",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -366,7 +353,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "新西兰",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -374,8 +374,7 @@
     "group": "H组",
     "teams": [
       {
-        "team": "乌拉圭",
-        "standing": 1,
+        "team": "西班牙",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -383,23 +382,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "沙特阿拉伯",
-        "standing": 2,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "佛得角",
-        "standing": 3,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -407,11 +394,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
-        "team": "西班牙",
-        "standing": 4,
+        "team": "沙特阿拉伯",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -419,7 +406,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "乌拉圭",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -427,8 +427,7 @@
     "group": "I组",
     "teams": [
       {
-        "team": "伊拉克",
-        "standing": 1,
+        "team": "法国",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -436,11 +435,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "塞内加尔",
-        "standing": 2,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -448,11 +447,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
-        "team": "法国",
-        "standing": 3,
+        "team": "伊拉克",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -460,11 +459,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
       },
       {
         "team": "挪威",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -472,7 +471,8 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -481,7 +481,6 @@
     "teams": [
       {
         "team": "阿根廷",
-        "standing": 1,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -489,23 +488,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "约旦",
-        "standing": 2,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "阿尔及利亚",
-        "standing": 3,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -513,11 +500,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "奥地利",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -525,7 +512,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "约旦",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -533,8 +533,7 @@
     "group": "K组",
     "teams": [
       {
-        "team": "刚果(金)",
-        "standing": 1,
+        "team": "葡萄牙",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -542,11 +541,23 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
+      },
+      {
+        "team": "刚果(金)",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "乌兹别克斯坦",
-        "standing": 2,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -554,23 +565,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "葡萄牙",
-        "standing": 3,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
       },
       {
         "team": "哥伦比亚",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -578,7 +577,8 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 4
       }
     ]
   },
@@ -586,8 +586,7 @@
     "group": "L组",
     "teams": [
       {
-        "team": "巴拿马",
-        "standing": 1,
+        "team": "英格兰",
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -595,11 +594,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 1
       },
       {
         "team": "克罗地亚",
-        "standing": 2,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -607,23 +606,11 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
-      },
-      {
-        "team": "英格兰",
-        "standing": 3,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 2
       },
       {
         "team": "加纳",
-        "standing": 4,
         "played": 0,
         "won": 0,
         "drawn": 0,
@@ -631,7 +618,20 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
-        "points": 0
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "巴拿马",
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "points": 0,
+        "standing": 4
       }
     ]
   }

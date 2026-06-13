@@ -1,540 +1,1658 @@
-{
-  "6月12日": [
-    {
-      "g": "A组",
-      "m": "🇲🇽 墨西哥 vs 🇿🇦 南非",
-      "c": "墨西哥城",
-      "s": "阿兹特克球场",
-      "t": "3:00"
+[
+  {
+    "match_number": 1,
+    "date_cn": "6月12日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇲🇽",
+      "name": "墨西哥",
+      "score": 2,
+      "points": 3
     },
-    {
-      "g": "A组",
-      "m": "🇰🇷 韩国 vs 🇨🇿 捷克",
-      "c": "瓜达拉哈拉",
-      "s": "阿克伦球场",
-      "t": "10:00"
-    }
-  ],
-  "6月13日": [
-    {
-      "g": "B组",
-      "m": "🇨🇦 加拿大 vs 🇧🇦 波黑",
-      "c": "多伦多",
-      "s": "BMO球场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇿🇦",
+      "name": "南非",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "D组",
-      "m": "🇺🇸 美国 vs 🇵🇾 巴拉圭",
-      "c": "洛杉矶",
-      "s": "SoFi体育场",
-      "t": "9:00"
-    }
-  ],
-  "6月14日": [
-    {
-      "g": "B组",
-      "m": "🇶🇦 卡塔尔 vs 🇨🇭 瑞士",
-      "c": "旧金山湾区",
-      "s": "李维斯球场",
-      "t": "3:00"
+    "venue": "Mexico City, Mexico",
+    "stadium": "阿兹特克球场",
+    "status": "已结束"
+  },
+  {
+    "match_number": 2,
+    "date_cn": "6月12日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇰🇷",
+      "name": "韩国",
+      "score": 2,
+      "points": 3
     },
-    {
-      "g": "C组",
-      "m": "🇧🇷 巴西 vs 🇲🇦 摩洛哥",
-      "c": "纽约/新泽西",
-      "s": "大都会人寿球场",
-      "t": "6:00"
+    "away_team": {
+      "flag": "🇨🇿",
+      "name": "捷克",
+      "score": 1,
+      "points": 0
     },
-    {
-      "g": "C组",
-      "m": "🇭🇹 海地 vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰",
-      "c": "波士顿",
-      "s": "吉列球场",
-      "t": "9:00"
+    "venue": "Guadalajara, Mexico",
+    "stadium": "阿克伦球场",
+    "status": "已结束"
+  },
+  {
+    "match_number": 3,
+    "date_cn": "6月13日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇨🇦",
+      "name": "加拿大",
+      "score": 1,
+      "points": 1
     },
-    {
-      "g": "D组",
-      "m": "🇦🇺 澳大利亚 vs 🇹🇷 土耳其",
-      "c": "温哥华",
-      "s": "BC广场",
-      "t": "12:00"
-    }
-  ],
-  "6月15日": [
-    {
-      "g": "E组",
-      "m": "🇩🇪 德国 vs 🇨🇼 库拉索",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "1:00"
+    "away_team": {
+      "flag": "🇧🇦",
+      "name": "波黑",
+      "score": 1,
+      "points": 1
     },
-    {
-      "g": "F组",
-      "m": "🇳🇱 荷兰 vs 🇯🇵 日本",
-      "c": "达拉斯",
-      "s": "AT&T球场",
-      "t": "4:00"
+    "venue": "Toronto, Canada, BMO球场",
+    "stadium": "BMO球场",
+    "status": "已结束"
+  },
+  {
+    "match_number": 4,
+    "date_cn": "6月13日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇺🇸",
+      "name": "美国",
+      "score": 4,
+      "points": 3
     },
-    {
-      "g": "E组",
-      "m": "🇨🇮 科特迪瓦 vs 🇪🇨 厄瓜多尔",
-      "c": "费城",
-      "s": "林肯金融球场",
-      "t": "7:00"
+    "away_team": {
+      "flag": "🇵🇾",
+      "name": "巴拉圭",
+      "score": 1,
+      "points": 0
     },
-    {
-      "g": "F组",
-      "m": "🇸🇪 瑞典 vs 🇹🇳 突尼斯",
-      "c": "蒙特雷",
-      "s": "BBVA球场",
-      "t": "10:00"
-    }
-  ],
-  "6月16日": [
-    {
-      "g": "H组",
-      "m": "🇪🇸 西班牙 vs 🇨🇻 佛得角",
-      "c": "亚特兰大",
-      "s": "梅赛德斯-奔驰球场",
-      "t": "0:00"
+    "venue": "Inglewood, USA, SoFi体育场",
+    "stadium": "SoFi体育场",
+    "status": "已结束"
+  },
+  {
+    "match_number": 5,
+    "date_cn": "6月14日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇶🇦",
+      "name": "卡塔尔",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇧🇪 比利时 vs 🇪🇬 埃及",
-      "c": "西雅图",
-      "s": "卢门球场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇨🇭",
+      "name": "瑞士",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "H组",
-      "m": "🇸🇦 沙特阿拉伯 vs 🇺🇾 乌拉圭",
-      "c": "迈阿密",
-      "s": "硬石体育场",
-      "t": "6:00"
+    "venue": "Santa Clara, USA",
+    "stadium": "李维斯球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 6,
+    "date_cn": "6月14日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🇧🇷",
+      "name": "巴西",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇮🇷 伊朗 vs 🇳🇿 新西兰",
-      "c": "洛杉矶",
-      "s": "SoFi体育场",
-      "t": "9:00"
-    }
-  ],
-  "6月17日": [
-    {
-      "g": "I组",
-      "m": "🇫🇷 法国 vs 🇸🇳 塞内加尔",
-      "c": "纽约/新泽西",
-      "s": "大都会人寿球场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "I组",
-      "m": "🇮🇶 伊拉克 vs 🇳🇴 挪威",
-      "c": "波士顿",
-      "s": "吉列球场",
-      "t": "6:00"
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 7,
+    "date_cn": "6月14日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🇭🇹",
+      "name": "海地",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "J组",
-      "m": "🇦🇷 阿根廷 vs 🇩🇿 阿尔及利亚",
-      "c": "堪萨斯城",
-      "s": "箭头体育场",
-      "t": "9:00"
+    "away_team": {
+      "flag": "🏴",
+      "name": "苏格兰",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "J组",
-      "m": "🇦🇹 奥地利 vs 🇯🇴 约旦",
-      "c": "旧金山湾区",
-      "s": "李维斯球场",
-      "t": "12:00"
-    }
-  ],
-  "6月18日": [
-    {
-      "g": "K组",
-      "m": "🇵🇹 葡萄牙 vs 🇨🇩 刚果(金)",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "1:00"
+    "venue": "Foxborough, USA",
+    "stadium": "吉列球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 8,
+    "date_cn": "6月14日",
+    "time_cn": "12:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇦🇺",
+      "name": "澳大利亚",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "L组",
-      "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇭🇷 克罗地亚",
-      "c": "达拉斯",
-      "s": "AT&T球场",
-      "t": "4:00"
+    "away_team": {
+      "flag": "🇹🇷",
+      "name": "土耳其",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "L组",
-      "m": "🇬🇭 加纳 vs 🇵🇦 巴拿马",
-      "c": "多伦多",
-      "s": "BMO球场",
-      "t": "7:00"
+    "venue": "Vancouver, Canada, BC广场",
+    "stadium": "BC广场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 9,
+    "date_cn": "6月15日",
+    "time_cn": "1:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇩🇪",
+      "name": "德国",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "K组",
-      "m": "🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚",
-      "c": "墨西哥城",
-      "s": "阿兹特克球场",
-      "t": "10:00"
-    }
-  ],
-  "6月19日": [
-    {
-      "g": "A组",
-      "m": "🇨🇿 捷克 vs 🇿🇦 南非",
-      "c": "亚特兰大",
-      "s": "梅赛德斯-奔驰球场",
-      "t": "0:00"
+    "away_team": {
+      "flag": "🇨🇼",
+      "name": "库拉索",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "B组",
-      "m": "🇨🇭 瑞士 vs 🇧🇦 波黑",
-      "c": "洛杉矶",
-      "s": "SoFi体育场",
-      "t": "3:00"
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 10,
+    "date_cn": "6月15日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇳🇱",
+      "name": "荷兰",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "B组",
-      "m": "🇨🇦 加拿大 vs 🇶🇦 卡塔尔",
-      "c": "温哥华",
-      "s": "BC广场",
-      "t": "6:00"
+    "away_team": {
+      "flag": "🇯🇵",
+      "name": "日本",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "A组",
-      "m": "🇲🇽 墨西哥 vs 🇰🇷 韩国",
-      "c": "瓜达拉哈拉",
-      "s": "阿克伦球场",
-      "t": "9:00"
-    }
-  ],
-  "6月20日": [
-    {
-      "g": "D组",
-      "m": "🇺🇸 美国 vs 🇦🇺 澳大利亚",
-      "c": "西雅图",
-      "s": "卢门球场",
-      "t": "3:00"
+    "venue": "Arlington, USA, AT&T球场",
+    "stadium": "AT&T球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 11,
+    "date_cn": "6月15日",
+    "time_cn": "7:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇨🇮",
+      "name": "科特迪瓦",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "C组",
-      "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇲🇦 摩洛哥",
-      "c": "波士顿",
-      "s": "吉列球场",
-      "t": "6:00"
+    "away_team": {
+      "flag": "🇪🇨",
+      "name": "厄瓜多尔",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "C组",
-      "m": "🇧🇷 巴西 vs 🇭🇹 海地",
-      "c": "费城",
-      "s": "林肯金融球场",
-      "t": "8:30"
+    "venue": "Philadelphia, USA",
+    "stadium": "林肯金融球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 12,
+    "date_cn": "6月15日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇸🇪",
+      "name": "瑞典",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "D组",
-      "m": "🇹🇷 土耳其 vs 🇵🇾 巴拉圭",
-      "c": "旧金山湾区",
-      "s": "李维斯球场",
-      "t": "11:00"
-    }
-  ],
-  "6月21日": [
-    {
-      "g": "F组",
-      "m": "🇳🇱 荷兰 vs 🇸🇪 瑞典",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "1:00"
+    "away_team": {
+      "flag": "🇹🇳",
+      "name": "突尼斯",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "E组",
-      "m": "🇩🇪 德国 vs 🇨🇮 科特迪瓦",
-      "c": "多伦多",
-      "s": "BMO球场",
-      "t": "4:00"
+    "venue": "Monterrey, Mexico, BBVA球场",
+    "stadium": "BBVA球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 13,
+    "date_cn": "6月16日",
+    "time_cn": "0:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇪🇸",
+      "name": "西班牙",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "E组",
-      "m": "🇪🇨 厄瓜多尔 vs 🇨🇼 库拉索",
-      "c": "堪萨斯城",
-      "s": "箭头体育场",
-      "t": "8:00"
+    "away_team": {
+      "flag": "🇨🇻",
+      "name": "佛得角",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "F组",
-      "m": "🇹🇳 突尼斯 vs 🇯🇵 日本",
-      "c": "蒙特雷",
-      "s": "BBVA球场",
-      "t": "12:00"
-    }
-  ],
-  "6月22日": [
-    {
-      "g": "H组",
-      "m": "🇪🇸 西班牙 vs 🇸🇦 沙特阿拉伯",
-      "c": "亚特兰大",
-      "s": "梅赛德斯-奔驰球场",
-      "t": "0:00"
+    "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
+    "stadium": "梅赛德斯-奔驰球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 14,
+    "date_cn": "6月16日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇧🇪",
+      "name": "比利时",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇧🇪 比利时 vs 🇮🇷 伊朗",
-      "c": "洛杉矶",
-      "s": "SoFi体育场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇪🇬",
+      "name": "埃及",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "H组",
-      "m": "🇺🇾 乌拉圭 vs 🇨🇻 佛得角",
-      "c": "迈阿密",
-      "s": "硬石体育场",
-      "t": "6:00"
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 15,
+    "date_cn": "6月16日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇸🇦",
+      "name": "沙特阿拉伯",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇳🇿 新西兰 vs 🇪🇬 埃及",
-      "c": "温哥华",
-      "s": "BC广场",
-      "t": "9:00"
-    }
-  ],
-  "6月23日": [
-    {
-      "g": "J组",
-      "m": "🇦🇷 阿根廷 vs 🇦🇹 奥地利",
-      "c": "达拉斯",
-      "s": "AT&T球场",
-      "t": "1:00"
+    "away_team": {
+      "flag": "🇺🇾",
+      "name": "乌拉圭",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "I组",
-      "m": "🇫🇷 法国 vs 🇮🇶 伊拉克",
-      "c": "费城",
-      "s": "林肯金融球场",
-      "t": "5:00"
+    "venue": "Miami Gardens, USA",
+    "stadium": "硬石体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 16,
+    "date_cn": "6月16日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇮🇷",
+      "name": "伊朗",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "I组",
-      "m": "🇳🇴 挪威 vs 🇸🇳 塞内加尔",
-      "c": "纽约/新泽西",
-      "s": "大都会人寿球场",
-      "t": "8:00"
+    "away_team": {
+      "flag": "🇳🇿",
+      "name": "新西兰",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "J组",
-      "m": "🇯🇴 约旦 vs 🇩🇿 阿尔及利亚",
-      "c": "旧金山湾区",
-      "s": "李维斯球场",
-      "t": "11:00"
-    }
-  ],
-  "6月24日": [
-    {
-      "g": "K组",
-      "m": "🇵🇹 葡萄牙 vs 🇺🇿 乌兹别克斯坦",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "1:00"
+    "venue": "Inglewood, USA, SoFi体育场",
+    "stadium": "SoFi体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 17,
+    "date_cn": "6月17日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇫🇷",
+      "name": "法国",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "L组",
-      "m": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 vs 🇬🇭 加纳",
-      "c": "波士顿",
-      "s": "吉列球场",
-      "t": "4:00"
+    "away_team": {
+      "flag": "🇸🇳",
+      "name": "塞内加尔",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "L组",
-      "m": "🇵🇦 巴拿马 vs 🇭🇷 克罗地亚",
-      "c": "多伦多",
-      "s": "BMO球场",
-      "t": "7:00"
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 18,
+    "date_cn": "6月17日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇮🇶",
+      "name": "伊拉克",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "K组",
-      "m": "🇨🇴 哥伦比亚 vs 🇨🇩 刚果(金)",
-      "c": "瓜达拉哈拉",
-      "s": "阿克伦球场",
-      "t": "10:00"
-    }
-  ],
-  "6月25日": [
-    {
-      "g": "B组",
-      "m": "🇧🇦 波黑 vs 🇶🇦 卡塔尔",
-      "c": "西雅图",
-      "s": "卢门球场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇳🇴",
+      "name": "挪威",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "B组",
-      "m": "🇨🇭 瑞士 vs 🇨🇦 加拿大",
-      "c": "温哥华",
-      "s": "BC广场",
-      "t": "3:00"
+    "venue": "Foxborough, USA",
+    "stadium": "吉列球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 19,
+    "date_cn": "6月17日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇦🇷",
+      "name": "阿根廷",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "C组",
-      "m": "🇲🇦 摩洛哥 vs 🇭🇹 海地",
-      "c": "亚特兰大",
-      "s": "梅赛德斯-奔驰球场",
-      "t": "6:00"
+    "away_team": {
+      "flag": "🇩🇿",
+      "name": "阿尔及利亚",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "C组",
-      "m": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 vs 🇧🇷 巴西",
-      "c": "迈阿密",
-      "s": "硬石体育场",
-      "t": "6:00"
+    "venue": "Kansas City, USA",
+    "stadium": "箭头体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 20,
+    "date_cn": "6月17日",
+    "time_cn": "12:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇦🇹",
+      "name": "奥地利",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "A组",
-      "m": "🇿🇦 南非 vs 🇰🇷 韩国",
-      "c": "蒙特雷",
-      "s": "BBVA球场",
-      "t": "9:00"
+    "away_team": {
+      "flag": "🇯🇴",
+      "name": "约旦",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "A组",
-      "m": "🇨🇿 捷克 vs 🇲🇽 墨西哥",
-      "c": "墨西哥城",
-      "s": "阿兹特克球场",
-      "t": "9:00"
-    }
-  ],
-  "6月26日": [
-    {
-      "g": "E组",
-      "m": "🇨🇼 库拉索 vs 🇨🇮 科特迪瓦",
-      "c": "费城",
-      "s": "林肯金融球场",
-      "t": "4:00"
+    "venue": "Santa Clara, USA",
+    "stadium": "李维斯球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 21,
+    "date_cn": "6月18日",
+    "time_cn": "1:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "E组",
-      "m": "🇪🇨 厄瓜多尔 vs 🇩🇪 德国",
-      "c": "纽约/新泽西",
-      "s": "大都会人寿球场",
-      "t": "4:00"
+    "away_team": {
+      "flag": "🇨🇩",
+      "name": "刚果(金)",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "F组",
-      "m": "🇯🇵 日本 vs 🇸🇪 瑞典",
-      "c": "达拉斯",
-      "s": "AT&T球场",
-      "t": "7:00"
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 22,
+    "date_cn": "6月18日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🏴",
+      "name": "英格兰",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "F组",
-      "m": "🇹🇳 突尼斯 vs 🇳🇱 荷兰",
-      "c": "堪萨斯城",
-      "s": "箭头体育场",
-      "t": "7:00"
+    "away_team": {
+      "flag": "🇭🇷",
+      "name": "克罗地亚",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "D组",
-      "m": "🇵🇾 巴拉圭 vs 🇦🇺 澳大利亚",
-      "c": "旧金山湾区",
-      "s": "李维斯球场",
-      "t": "10:00"
+    "venue": "Arlington, USA, AT&T球场",
+    "stadium": "AT&T球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 23,
+    "date_cn": "6月18日",
+    "time_cn": "7:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🇬🇭",
+      "name": "加纳",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "D组",
-      "m": "🇹🇷 土耳其 vs 🇺🇸 美国",
-      "c": "洛杉矶",
-      "s": "SoFi体育场",
-      "t": "10:00"
-    }
-  ],
-  "6月27日": [
-    {
-      "g": "I组",
-      "m": "🇸🇳 塞内加尔 vs 🇮🇶 伊拉克",
-      "c": "多伦多",
-      "s": "BMO球场",
-      "t": "3:00"
+    "away_team": {
+      "flag": "🇵🇦",
+      "name": "巴拿马",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "I组",
-      "m": "🇳🇴 挪威 vs 🇫🇷 法国",
-      "c": "波士顿",
-      "s": "吉列球场",
-      "t": "3:00"
+    "venue": "Toronto, Canada, BMO球场",
+    "stadium": "BMO球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 24,
+    "date_cn": "6月18日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第1轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇺🇿",
+      "name": "乌兹别克斯坦",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "H组",
-      "m": "🇨🇻 佛得角 vs 🇸🇦 沙特阿拉伯",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "8:00"
+    "away_team": {
+      "flag": "🇨🇴",
+      "name": "哥伦比亚",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "H组",
-      "m": "🇺🇾 乌拉圭 vs 🇪🇸 西班牙",
-      "c": "瓜达拉哈拉",
-      "s": "阿克伦球场",
-      "t": "8:00"
+    "venue": "Mexico City, Mexico",
+    "stadium": "阿兹特克球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 25,
+    "date_cn": "6月19日",
+    "time_cn": "0:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇨🇿",
+      "name": "捷克",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇪🇬 埃及 vs 🇮🇷 伊朗",
-      "c": "西雅图",
-      "s": "卢门球场",
-      "t": "11:00"
+    "away_team": {
+      "flag": "🇿🇦",
+      "name": "南非",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "G组",
-      "m": "🇳🇿 新西兰 vs 🇧🇪 比利时",
-      "c": "温哥华",
-      "s": "BC广场",
-      "t": "11:00"
-    }
-  ],
-  "6月28日": [
-    {
-      "g": "L组",
-      "m": "🇭🇷 克罗地亚 vs 🇬🇭 加纳",
-      "c": "费城",
-      "s": "林肯金融球场",
-      "t": "5:00"
+    "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
+    "stadium": "梅赛德斯-奔驰球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 26,
+    "date_cn": "6月19日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇨🇭",
+      "name": "瑞士",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "L组",
-      "m": "🇵🇦 巴拿马 vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰",
-      "c": "纽约/新泽西",
-      "s": "大都会人寿球场",
-      "t": "5:00"
+    "away_team": {
+      "flag": "🇧🇦",
+      "name": "波黑",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "K组",
-      "m": "🇨🇩 刚果(金) vs 🇺🇿 乌兹别克斯坦",
-      "c": "亚特兰大",
-      "s": "梅赛德斯-奔驰球场",
-      "t": "7:30"
+    "venue": "Inglewood, USA, SoFi体育场",
+    "stadium": "SoFi体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 27,
+    "date_cn": "6月19日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇨🇦",
+      "name": "加拿大",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "K组",
-      "m": "🇨🇴 哥伦比亚 vs 🇵🇹 葡萄牙",
-      "c": "迈阿密",
-      "s": "硬石体育场",
-      "t": "7:30"
+    "away_team": {
+      "flag": "🇶🇦",
+      "name": "卡塔尔",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "J组",
-      "m": "🇩🇿 阿尔及利亚 vs 🇦🇹 奥地利",
-      "c": "休斯顿",
-      "s": "NRG球场",
-      "t": "10:00"
+    "venue": "Vancouver, Canada, BC广场",
+    "stadium": "BC广场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 28,
+    "date_cn": "6月19日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇲🇽",
+      "name": "墨西哥",
+      "score": 0,
+      "points": 0
     },
-    {
-      "g": "J组",
-      "m": "🇯🇴 约旦 vs 🇦🇷 阿根廷",
-      "c": "西雅图",
-      "s": "卢门球场",
-      "t": "10:00"
-    }
-  ]
-}
+    "away_team": {
+      "flag": "🇰🇷",
+      "name": "韩国",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Guadalajara, Mexico",
+    "stadium": "阿克伦球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 29,
+    "date_cn": "6月20日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇺🇸",
+      "name": "美国",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇦🇺",
+      "name": "澳大利亚",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 30,
+    "date_cn": "6月20日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🏴",
+      "name": "苏格兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Foxborough, USA",
+    "stadium": "吉列球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 31,
+    "date_cn": "6月20日",
+    "time_cn": "8:30",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🇧🇷",
+      "name": "巴西",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇭🇹",
+      "name": "海地",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Philadelphia, USA",
+    "stadium": "林肯金融球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 32,
+    "date_cn": "6月20日",
+    "time_cn": "11:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇹🇷",
+      "name": "土耳其",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇵🇾",
+      "name": "巴拉圭",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Santa Clara, USA",
+    "stadium": "李维斯球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 33,
+    "date_cn": "6月21日",
+    "time_cn": "1:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇳🇱",
+      "name": "荷兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇸🇪",
+      "name": "瑞典",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 34,
+    "date_cn": "6月21日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇩🇪",
+      "name": "德国",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇮",
+      "name": "科特迪瓦",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Toronto, Canada, BMO球场",
+    "stadium": "BMO球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 35,
+    "date_cn": "6月21日",
+    "time_cn": "8:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇪🇨",
+      "name": "厄瓜多尔",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇼",
+      "name": "库拉索",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Kansas City, USA",
+    "stadium": "箭头体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 36,
+    "date_cn": "6月21日",
+    "time_cn": "12:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇹🇳",
+      "name": "突尼斯",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇯🇵",
+      "name": "日本",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Monterrey, Mexico, BBVA球场",
+    "stadium": "BBVA球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 37,
+    "date_cn": "6月22日",
+    "time_cn": "0:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇪🇸",
+      "name": "西班牙",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇸🇦",
+      "name": "沙特阿拉伯",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
+    "stadium": "梅赛德斯-奔驰球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 38,
+    "date_cn": "6月22日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇧🇪",
+      "name": "比利时",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇮🇷",
+      "name": "伊朗",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Inglewood, USA, SoFi体育场",
+    "stadium": "SoFi体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 39,
+    "date_cn": "6月22日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇺🇾",
+      "name": "乌拉圭",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇻",
+      "name": "佛得角",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Miami Gardens, USA",
+    "stadium": "硬石体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 40,
+    "date_cn": "6月22日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇳🇿",
+      "name": "新西兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇪🇬",
+      "name": "埃及",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Vancouver, Canada, BC广场",
+    "stadium": "BC广场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 41,
+    "date_cn": "6月23日",
+    "time_cn": "1:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇦🇷",
+      "name": "阿根廷",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇦🇹",
+      "name": "奥地利",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Arlington, USA, AT&T球场",
+    "stadium": "AT&T球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 42,
+    "date_cn": "6月23日",
+    "time_cn": "5:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇫🇷",
+      "name": "法国",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇮🇶",
+      "name": "伊拉克",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Philadelphia, USA",
+    "stadium": "林肯金融球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 43,
+    "date_cn": "6月23日",
+    "time_cn": "8:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇳🇴",
+      "name": "挪威",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇸🇳",
+      "name": "塞内加尔",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 44,
+    "date_cn": "6月23日",
+    "time_cn": "11:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇯🇴",
+      "name": "约旦",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇩🇿",
+      "name": "阿尔及利亚",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Santa Clara, USA",
+    "stadium": "李维斯球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 45,
+    "date_cn": "6月24日",
+    "time_cn": "1:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇺🇿",
+      "name": "乌兹别克斯坦",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 46,
+    "date_cn": "6月24日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🏴",
+      "name": "英格兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇬🇭",
+      "name": "加纳",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Foxborough, USA",
+    "stadium": "吉列球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 47,
+    "date_cn": "6月24日",
+    "time_cn": "7:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🇵🇦",
+      "name": "巴拿马",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇭🇷",
+      "name": "克罗地亚",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Toronto, Canada, BMO球场",
+    "stadium": "BMO球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 48,
+    "date_cn": "6月24日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第2轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇨🇴",
+      "name": "哥伦比亚",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇩",
+      "name": "刚果(金)",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Guadalajara, Mexico",
+    "stadium": "阿克伦球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 49,
+    "date_cn": "6月25日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇧🇦",
+      "name": "波黑",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇶🇦",
+      "name": "卡塔尔",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 50,
+    "date_cn": "6月25日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "B组",
+    "home_team": {
+      "flag": "🇨🇭",
+      "name": "瑞士",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇦",
+      "name": "加拿大",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Vancouver, Canada, BC广场",
+    "stadium": "BC广场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 51,
+    "date_cn": "6月25日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇭🇹",
+      "name": "海地",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
+    "stadium": "梅赛德斯-奔驰球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 52,
+    "date_cn": "6月25日",
+    "time_cn": "6:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "C组",
+    "home_team": {
+      "flag": "🏴",
+      "name": "苏格兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇧🇷",
+      "name": "巴西",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Miami Gardens, USA",
+    "stadium": "硬石体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 53,
+    "date_cn": "6月25日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇿🇦",
+      "name": "南非",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇰🇷",
+      "name": "韩国",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Monterrey, Mexico, BBVA球场",
+    "stadium": "BBVA球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 54,
+    "date_cn": "6月25日",
+    "time_cn": "9:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "A组",
+    "home_team": {
+      "flag": "🇨🇿",
+      "name": "捷克",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇲🇽",
+      "name": "墨西哥",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Mexico City, Mexico",
+    "stadium": "阿兹特克球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 55,
+    "date_cn": "6月26日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇨🇼",
+      "name": "库拉索",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇨🇮",
+      "name": "科特迪瓦",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Philadelphia, USA",
+    "stadium": "林肯金融球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 56,
+    "date_cn": "6月26日",
+    "time_cn": "4:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "E组",
+    "home_team": {
+      "flag": "🇪🇨",
+      "name": "厄瓜多尔",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇩🇪",
+      "name": "德国",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 57,
+    "date_cn": "6月26日",
+    "time_cn": "7:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇯🇵",
+      "name": "日本",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇸🇪",
+      "name": "瑞典",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Arlington, USA, AT&T球场",
+    "stadium": "AT&T球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 58,
+    "date_cn": "6月26日",
+    "time_cn": "7:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "F组",
+    "home_team": {
+      "flag": "🇹🇳",
+      "name": "突尼斯",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇳🇱",
+      "name": "荷兰",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Kansas City, USA",
+    "stadium": "箭头体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 59,
+    "date_cn": "6月26日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇵🇾",
+      "name": "巴拉圭",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇦🇺",
+      "name": "澳大利亚",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Santa Clara, USA",
+    "stadium": "李维斯球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 60,
+    "date_cn": "6月26日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "D组",
+    "home_team": {
+      "flag": "🇹🇷",
+      "name": "土耳其",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇺🇸",
+      "name": "美国",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Inglewood, USA, SoFi体育场",
+    "stadium": "SoFi体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 61,
+    "date_cn": "6月27日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇸🇳",
+      "name": "塞内加尔",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇮🇶",
+      "name": "伊拉克",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Toronto, Canada, BMO球场",
+    "stadium": "BMO球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 62,
+    "date_cn": "6月27日",
+    "time_cn": "3:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "I组",
+    "home_team": {
+      "flag": "🇳🇴",
+      "name": "挪威",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇫🇷",
+      "name": "法国",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Foxborough, USA",
+    "stadium": "吉列球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 63,
+    "date_cn": "6月27日",
+    "time_cn": "8:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇨🇻",
+      "name": "佛得角",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇸🇦",
+      "name": "沙特阿拉伯",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 64,
+    "date_cn": "6月27日",
+    "time_cn": "8:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "H组",
+    "home_team": {
+      "flag": "🇺🇾",
+      "name": "乌拉圭",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇪🇸",
+      "name": "西班牙",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Guadalajara, Mexico",
+    "stadium": "阿克伦球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 65,
+    "date_cn": "6月27日",
+    "time_cn": "11:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇪🇬",
+      "name": "埃及",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇮🇷",
+      "name": "伊朗",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 66,
+    "date_cn": "6月27日",
+    "time_cn": "11:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "G组",
+    "home_team": {
+      "flag": "🇳🇿",
+      "name": "新西兰",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇧🇪",
+      "name": "比利时",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Vancouver, Canada, BC广场",
+    "stadium": "BC广场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 67,
+    "date_cn": "6月28日",
+    "time_cn": "5:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🇭🇷",
+      "name": "克罗地亚",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇬🇭",
+      "name": "加纳",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Philadelphia, USA",
+    "stadium": "林肯金融球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 68,
+    "date_cn": "6月28日",
+    "time_cn": "5:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "L组",
+    "home_team": {
+      "flag": "🇵🇦",
+      "name": "巴拿马",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🏴",
+      "name": "英格兰",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 69,
+    "date_cn": "6月28日",
+    "time_cn": "7:30",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇨🇩",
+      "name": "刚果(金)",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇺🇿",
+      "name": "乌兹别克斯坦",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
+    "stadium": "梅赛德斯-奔驰球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 70,
+    "date_cn": "6月28日",
+    "time_cn": "7:30",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "K组",
+    "home_team": {
+      "flag": "🇨🇴",
+      "name": "哥伦比亚",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Miami Gardens, USA",
+    "stadium": "硬石体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 71,
+    "date_cn": "6月28日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇩🇿",
+      "name": "阿尔及利亚",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇦🇹",
+      "name": "奥地利",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Houston, USA, NRG球场",
+    "stadium": "NRG球场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 72,
+    "date_cn": "6月28日",
+    "time_cn": "10:00",
+    "match_type": "小组赛",
+    "round": "第3轮",
+    "group": "J组",
+    "home_team": {
+      "flag": "🇯🇴",
+      "name": "约旦",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇦🇷",
+      "name": "阿根廷",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
+    "status": "未开始"
+  }
+]
