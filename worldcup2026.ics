@@ -75,8 +75,8 @@ BEGIN:VEVENT
 UID:wc26-8@worldcup26
 DTSTART:20260614T040000Z
 DTEND:20260614T060000Z
-SUMMARY:🇦🇺 澳大利亚 vs 🇹🇷 土耳其
-DESCRIPTION:小组赛 D组 | 📍Vancouver, Canada, BC广场
+SUMMARY:🇦🇺 澳大利亚 2:0 🇹🇷 土耳其
+DESCRIPTION:小组赛 D组 | 📍Vancouver, Canada, BC广场 | 比分: 2:0
 LOCATION:777 Pacific Blvd, Vancouver, BC V6B 4Y8, Canada
 GEO:49.2766;-123.1119
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=777 Pacific Blvd, Vancouver, BC V6B 4Y8, Canada:geo:49.2766,-123.1119
