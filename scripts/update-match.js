@@ -97,4 +97,18 @@ console.log('[update-match] matches.json 已更新');
 console.log('[update-match] 执行 build.js...');
 execSync('node ' + path.join(__dirname, 'build.js'), { cwd: rootDir, stdio: 'inherit' });
 
+// 自动 Git 提交并推送
+const homeTeam = found.home_team.name;
+const awayTeam = found.away_team.name;
+const commitMsg = `update score: ${homeTeam} ${homeScore}:${awayScore} ${awayTeam}`;
+try {
+    console.log('[update-match] 自动推送...');
+    execSync('git add data/worldcup2026-matches.json data/worldcup2026-group_standings.json worldcup2026.ics', { cwd: rootDir, stdio: 'pipe' });
+    execSync(`git commit -m "${commitMsg}"`, { cwd: rootDir, stdio: 'pipe' });
+    execSync('git push origin gh-pages', { cwd: rootDir, stdio: 'pipe' });
+    console.log('[update-match] 已推送到远程');
+} catch (e) {
+    console.log('[update-match] ⚠ Git 推送失败（可手动推送）:', e.message);
+}
+
 console.log('🎉 完成! 刷新浏览器即可看到更新。');

@@ -216,27 +216,15 @@
     "teams": [
       {
         "team": "德国",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "drawn": 0,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
+        "gf": 7,
+        "ga": 1,
+        "gd": 6,
+        "points": 3,
         "standing": 1
-      },
-      {
-        "team": "库拉索",
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
-        "standing": 2
       },
       {
         "team": "科特迪瓦",
@@ -248,7 +236,7 @@
         "ga": 0,
         "gd": 0,
         "points": 0,
-        "standing": 3
+        "standing": 2
       },
       {
         "team": "厄瓜多尔",
@@ -260,6 +248,18 @@
         "ga": 0,
         "gd": 0,
         "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "库拉索",
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 1,
+        "ga": 7,
+        "gd": -6,
+        "points": 0,
         "standing": 4
       }
     ]
@@ -269,26 +269,26 @@
     "teams": [
       {
         "team": "荷兰",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "gf": 2,
+        "ga": 2,
         "gd": 0,
-        "points": 0,
+        "points": 1,
         "standing": 1
       },
       {
         "team": "日本",
-        "played": 0,
+        "played": 1,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
+        "gf": 2,
+        "ga": 2,
         "gd": 0,
-        "points": 0,
+        "points": 1,
         "standing": 2
       },
       {

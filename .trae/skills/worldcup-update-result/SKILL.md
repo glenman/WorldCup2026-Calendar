@@ -40,6 +40,8 @@ The script will:
 
 Report the updated match details to the user: group, round, venue, and new standings.
 
+The script auto-commits and pushes to GitHub Pages after each update — no separate `git push` needed.
+
 ## Example
 
 User: `"加拿大 vs 波黑 1:0"`
