@@ -101,18 +101,18 @@
     "home_team": {
       "flag": "🇶🇦",
       "name": "卡塔尔",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇨🇭",
       "name": "瑞士",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Santa Clara, USA",
     "stadium": "李维斯球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 6,
@@ -124,18 +124,18 @@
     "home_team": {
       "flag": "🇧🇷",
       "name": "巴西",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇲🇦",
       "name": "摩洛哥",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "East Rutherford, USA",
     "stadium": "大都会人寿球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 7,
