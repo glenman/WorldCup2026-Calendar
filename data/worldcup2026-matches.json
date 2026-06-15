@@ -239,8 +239,8 @@
     "home_team": {
       "flag": "🇨🇮",
       "name": "科特迪瓦",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "away_team": {
       "flag": "🇪🇨",
@@ -250,7 +250,7 @@
     },
     "venue": "Philadelphia, USA",
     "stadium": "林肯金融球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 12,
