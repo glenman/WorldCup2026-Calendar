@@ -308,18 +308,18 @@
     "home_team": {
       "flag": "🇧🇪",
       "name": "比利时",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇪🇬",
       "name": "埃及",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Seattle, USA",
     "stadium": "卢门球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 15,
