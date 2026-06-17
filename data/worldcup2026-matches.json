@@ -400,18 +400,18 @@
     "home_team": {
       "flag": "🇮🇶",
       "name": "伊拉克",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇳🇴",
       "name": "挪威",
-      "score": 0,
-      "points": 0
+      "score": 4,
+      "points": 3
     },
     "venue": "Foxborough, USA",
     "stadium": "吉列球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 19,
