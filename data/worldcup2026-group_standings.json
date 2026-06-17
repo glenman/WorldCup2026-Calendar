@@ -481,27 +481,15 @@
     "teams": [
       {
         "team": "阿根廷",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "drawn": 0,
         "lost": 0,
-        "gf": 0,
+        "gf": 3,
         "ga": 0,
-        "gd": 0,
-        "points": 0,
+        "gd": 3,
+        "points": 3,
         "standing": 1
-      },
-      {
-        "team": "阿尔及利亚",
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
-        "standing": 2
       },
       {
         "team": "奥地利",
@@ -513,7 +501,7 @@
         "ga": 0,
         "gd": 0,
         "points": 0,
-        "standing": 3
+        "standing": 2
       },
       {
         "team": "约旦",
@@ -524,6 +512,18 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "阿尔及利亚",
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 0,
+        "ga": 3,
+        "gd": -3,
         "points": 0,
         "standing": 4
       }
