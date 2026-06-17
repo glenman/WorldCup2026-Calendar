@@ -428,27 +428,15 @@
     "teams": [
       {
         "team": "法国",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "drawn": 0,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
+        "gf": 3,
+        "ga": 1,
+        "gd": 2,
+        "points": 3,
         "standing": 1
-      },
-      {
-        "team": "塞内加尔",
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
-        "standing": 2
       },
       {
         "team": "伊拉克",
@@ -460,7 +448,7 @@
         "ga": 0,
         "gd": 0,
         "points": 0,
-        "standing": 3
+        "standing": 2
       },
       {
         "team": "挪威",
@@ -471,6 +459,18 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "塞内加尔",
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 1,
+        "ga": 3,
+        "gd": -2,
         "points": 0,
         "standing": 4
       }
