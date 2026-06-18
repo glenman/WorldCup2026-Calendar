@@ -587,27 +587,15 @@
     "teams": [
       {
         "team": "英格兰",
-        "played": 0,
-        "won": 0,
+        "played": 1,
+        "won": 1,
         "drawn": 0,
         "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "points": 3,
         "standing": 1
-      },
-      {
-        "team": "克罗地亚",
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
-        "points": 0,
-        "standing": 2
       },
       {
         "team": "加纳",
@@ -619,7 +607,7 @@
         "ga": 0,
         "gd": 0,
         "points": 0,
-        "standing": 3
+        "standing": 2
       },
       {
         "team": "巴拿马",
@@ -630,6 +618,18 @@
         "gf": 0,
         "ga": 0,
         "gd": 0,
+        "points": 0,
+        "standing": 3
+      },
+      {
+        "team": "克罗地亚",
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 2,
+        "ga": 4,
+        "gd": -2,
         "points": 0,
         "standing": 4
       }
