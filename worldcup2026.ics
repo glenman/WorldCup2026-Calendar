@@ -235,8 +235,8 @@ BEGIN:VEVENT
 UID:wc26-24@worldcup26
 DTSTART:20260618T020000Z
 DTEND:20260618T040000Z
-SUMMARY:🇺🇿 乌兹别克斯坦 vs 🇨🇴 哥伦比亚
-DESCRIPTION:小组赛 K组 | 📍Mexico City, Mexico
+SUMMARY:🇺🇿 乌兹别克斯坦 1:3 🇨🇴 哥伦比亚
+DESCRIPTION:小组赛 K组 | 📍Mexico City, Mexico | 比分: 1:3
 LOCATION:Calz. de Tlalpan 3465, Santa Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX, Mexico
 GEO:19.3029;-99.1506
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=Calz. de Tlalpan 3465, Santa Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX, Mexico:geo:19.3029,-99.1506
