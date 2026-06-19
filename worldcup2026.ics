@@ -275,8 +275,8 @@ BEGIN:VEVENT
 UID:wc26-28@worldcup26
 DTSTART:20260619T010000Z
 DTEND:20260619T030000Z
-SUMMARY:🇲🇽 墨西哥 vs 🇰🇷 韩国
-DESCRIPTION:小组赛 A组 | 📍Guadalajara, Mexico
+SUMMARY:🇲🇽 墨西哥 1:0 🇰🇷 韩国
+DESCRIPTION:小组赛 A组 | 📍Guadalajara, Mexico | 比分: 1:0
 LOCATION:Calle Circuito JVC 2800, El Salto, Jalisco 45645, Mexico
 GEO:20.6737;-103.3447
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=Calle Circuito JVC 2800, El Salto, Jalisco 45645, Mexico:geo:20.6737,-103.3447
