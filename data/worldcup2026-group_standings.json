@@ -56,19 +56,19 @@
     "group": "B组",
     "teams": [
       {
-        "team": "加拿大",
-        "played": 1,
-        "won": 0,
+        "team": "瑞士",
+        "played": 2,
+        "won": 1,
         "drawn": 1,
         "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "points": 1,
+        "gf": 5,
+        "ga": 2,
+        "gd": 3,
+        "points": 4,
         "standing": 1
       },
       {
-        "team": "波黑",
+        "team": "加拿大",
         "played": 1,
         "won": 0,
         "drawn": 1,
@@ -92,14 +92,14 @@
         "standing": 3
       },
       {
-        "team": "瑞士",
-        "played": 1,
+        "team": "波黑",
+        "played": 2,
         "won": 0,
         "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
+        "lost": 1,
+        "gf": 2,
+        "ga": 5,
+        "gd": -3,
         "points": 1,
         "standing": 4
       }
