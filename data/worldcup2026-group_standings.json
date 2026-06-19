@@ -56,6 +56,18 @@
     "group": "B组",
     "teams": [
       {
+        "team": "加拿大",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 7,
+        "ga": 1,
+        "gd": 6,
+        "points": 4,
+        "standing": 1
+      },
+      {
         "team": "瑞士",
         "played": 2,
         "won": 1,
@@ -65,31 +77,7 @@
         "ga": 2,
         "gd": 3,
         "points": 4,
-        "standing": 1
-      },
-      {
-        "team": "加拿大",
-        "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "points": 1,
         "standing": 2
-      },
-      {
-        "team": "卡塔尔",
-        "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "points": 1,
-        "standing": 3
       },
       {
         "team": "波黑",
@@ -100,6 +88,18 @@
         "gf": 2,
         "ga": 5,
         "gd": -3,
+        "points": 1,
+        "standing": 3
+      },
+      {
+        "team": "卡塔尔",
+        "played": 2,
+        "won": 0,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 1,
+        "ga": 7,
+        "gd": -6,
         "points": 1,
         "standing": 4
       }

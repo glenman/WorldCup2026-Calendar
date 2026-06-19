@@ -607,8 +607,8 @@
     "home_team": {
       "flag": "🇨🇦",
       "name": "加拿大",
-      "score": 0,
-      "points": 0
+      "score": 6,
+      "points": 3
     },
     "away_team": {
       "flag": "🇶🇦",
@@ -618,7 +618,7 @@
     },
     "venue": "Vancouver, Canada, BC广场",
     "stadium": "BC广场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 28,
