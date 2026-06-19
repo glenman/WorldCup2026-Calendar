@@ -28,26 +28,26 @@
       },
       {
         "team": "捷克",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 1,
-        "gf": 1,
-        "ga": 2,
+        "gf": 2,
+        "ga": 3,
         "gd": -1,
-        "points": 0,
+        "points": 1,
         "standing": 3
       },
       {
         "team": "南非",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "drawn": 0,
+        "drawn": 1,
         "lost": 1,
-        "gf": 0,
-        "ga": 2,
+        "gf": 1,
+        "ga": 3,
         "gd": -2,
-        "points": 0,
+        "points": 1,
         "standing": 4
       }
     ]

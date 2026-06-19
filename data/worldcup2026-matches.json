@@ -561,18 +561,18 @@
     "home_team": {
       "flag": "🇨🇿",
       "name": "捷克",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇿🇦",
       "name": "南非",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 26,
