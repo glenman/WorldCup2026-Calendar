@@ -305,8 +305,8 @@ BEGIN:VEVENT
 UID:wc26-31@worldcup26
 DTSTART:20260620T003000Z
 DTEND:20260620T023000Z
-SUMMARY:🇧🇷 巴西 vs 🇭🇹 海地
-DESCRIPTION:小组赛 C组 | 📍Philadelphia, USA
+SUMMARY:🇧🇷 巴西 3:0 🇭🇹 海地
+DESCRIPTION:小组赛 C组 | 📍Philadelphia, USA | 比分: 3:0
 LOCATION:1 Lincoln Financial Field Way, Philadelphia, PA 19148, USA
 GEO:39.9008;-75.1675
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=1 Lincoln Financial Field Way, Philadelphia, PA 19148, USA:geo:39.9008,-75.1675

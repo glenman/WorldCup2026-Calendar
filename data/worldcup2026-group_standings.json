@@ -109,6 +109,18 @@
     "group": "C组",
     "teams": [
       {
+        "team": "巴西",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "points": 4,
+        "standing": 1
+      },
+      {
         "team": "摩洛哥",
         "played": 2,
         "won": 1,
@@ -118,7 +130,7 @@
         "ga": 1,
         "gd": 1,
         "points": 4,
-        "standing": 1
+        "standing": 2
       },
       {
         "team": "苏格兰",
@@ -130,29 +142,17 @@
         "ga": 1,
         "gd": 0,
         "points": 3,
-        "standing": 2
-      },
-      {
-        "team": "巴西",
-        "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "points": 1,
         "standing": 3
       },
       {
         "team": "海地",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "drawn": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 0,
-        "ga": 1,
-        "gd": -1,
+        "ga": 4,
+        "gd": -4,
         "points": 0,
         "standing": 4
       }
