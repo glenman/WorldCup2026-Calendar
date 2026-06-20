@@ -728,12 +728,12 @@
     "away_team": {
       "flag": "🇵🇾",
       "name": "巴拉圭",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Santa Clara, USA",
     "stadium": "李维斯球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 33,
