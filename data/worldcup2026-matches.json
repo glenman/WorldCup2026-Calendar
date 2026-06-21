@@ -837,8 +837,8 @@
     "home_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 4,
+      "points": 3
     },
     "away_team": {
       "flag": "🇸🇦",
@@ -848,7 +848,7 @@
     },
     "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 38,

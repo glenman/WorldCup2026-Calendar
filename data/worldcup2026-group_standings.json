@@ -374,15 +374,15 @@
     "group": "H组",
     "teams": [
       {
-        "team": "沙特阿拉伯",
-        "played": 1,
-        "won": 0,
+        "team": "西班牙",
+        "played": 2,
+        "won": 1,
         "drawn": 1,
         "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "points": 1,
+        "gf": 4,
+        "ga": 0,
+        "gd": 4,
+        "points": 4,
         "standing": 1
       },
       {
@@ -398,7 +398,7 @@
         "standing": 2
       },
       {
-        "team": "西班牙",
+        "team": "佛得角",
         "played": 1,
         "won": 0,
         "drawn": 1,
@@ -410,14 +410,14 @@
         "standing": 3
       },
       {
-        "team": "佛得角",
-        "played": 1,
+        "team": "沙特阿拉伯",
+        "played": 2,
         "won": 0,
         "drawn": 1,
-        "lost": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
+        "lost": 1,
+        "gf": 1,
+        "ga": 5,
+        "gd": -4,
         "points": 1,
         "standing": 4
       }
