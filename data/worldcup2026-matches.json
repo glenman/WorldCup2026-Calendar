@@ -861,17 +861,17 @@
       "flag": "🇧🇪",
       "name": "比利时",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇮🇷",
       "name": "伊朗",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Inglewood, USA, SoFi体育场",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 39,

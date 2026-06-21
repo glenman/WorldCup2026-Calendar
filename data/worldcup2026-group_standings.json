@@ -322,15 +322,27 @@
     "teams": [
       {
         "team": "伊朗",
-        "played": 1,
+        "played": 2,
         "won": 0,
-        "drawn": 1,
+        "drawn": 2,
         "lost": 0,
         "gf": 2,
         "ga": 2,
         "gd": 0,
-        "points": 1,
+        "points": 2,
         "standing": 1
+      },
+      {
+        "team": "比利时",
+        "played": 2,
+        "won": 0,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "points": 2,
+        "standing": 2
       },
       {
         "team": "新西兰",
@@ -340,18 +352,6 @@
         "lost": 0,
         "gf": 2,
         "ga": 2,
-        "gd": 0,
-        "points": 1,
-        "standing": 2
-      },
-      {
-        "team": "比利时",
-        "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
         "gd": 0,
         "points": 1,
         "standing": 3
