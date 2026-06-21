@@ -792,17 +792,17 @@
       "flag": "🇪🇨",
       "name": "厄瓜多尔",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇨🇼",
       "name": "库拉索",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Kansas City, USA",
     "stadium": "箭头体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 36,
