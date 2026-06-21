@@ -820,12 +820,12 @@
     "away_team": {
       "flag": "🇯🇵",
       "name": "日本",
-      "score": 0,
-      "points": 0
+      "score": 4,
+      "points": 3
     },
     "venue": "Monterrey, Mexico, BBVA球场",
     "stadium": "BBVA球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 37,
