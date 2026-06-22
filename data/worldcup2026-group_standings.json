@@ -321,6 +321,18 @@
     "group": "G组",
     "teams": [
       {
+        "team": "埃及",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "points": 4,
+        "standing": 1
+      },
+      {
         "team": "伊朗",
         "played": 2,
         "won": 0,
@@ -330,7 +342,7 @@
         "ga": 2,
         "gd": 0,
         "points": 2,
-        "standing": 1
+        "standing": 2
       },
       {
         "team": "比利时",
@@ -342,29 +354,17 @@
         "ga": 1,
         "gd": 0,
         "points": 2,
-        "standing": 2
-      },
-      {
-        "team": "新西兰",
-        "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gf": 2,
-        "ga": 2,
-        "gd": 0,
-        "points": 1,
         "standing": 3
       },
       {
-        "team": "埃及",
-        "played": 1,
+        "team": "新西兰",
+        "played": 2,
         "won": 0,
         "drawn": 1,
-        "lost": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
+        "lost": 1,
+        "gf": 3,
+        "ga": 5,
+        "gd": -2,
         "points": 1,
         "standing": 4
       }
