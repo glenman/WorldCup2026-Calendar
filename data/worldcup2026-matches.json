@@ -883,18 +883,18 @@
     "home_team": {
       "flag": "🇺🇾",
       "name": "乌拉圭",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 1
     },
     "away_team": {
       "flag": "🇨🇻",
       "name": "佛得角",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 1
     },
     "venue": "Miami Gardens, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 40,
