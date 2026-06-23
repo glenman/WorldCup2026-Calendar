@@ -427,6 +427,18 @@
     "group": "I组",
     "teams": [
       {
+        "team": "法国",
+        "played": 2,
+        "won": 2,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 6,
+        "ga": 1,
+        "gd": 5,
+        "points": 6,
+        "standing": 1
+      },
+      {
         "team": "挪威",
         "played": 1,
         "won": 1,
@@ -435,18 +447,6 @@
         "gf": 4,
         "ga": 1,
         "gd": 3,
-        "points": 3,
-        "standing": 1
-      },
-      {
-        "team": "法国",
-        "played": 1,
-        "won": 1,
-        "drawn": 0,
-        "lost": 0,
-        "gf": 3,
-        "ga": 1,
-        "gd": 2,
         "points": 3,
         "standing": 2
       },
@@ -464,13 +464,13 @@
       },
       {
         "team": "伊拉克",
-        "played": 1,
+        "played": 2,
         "won": 0,
         "drawn": 0,
-        "lost": 1,
+        "lost": 2,
         "gf": 1,
-        "ga": 4,
-        "gd": -3,
+        "ga": 7,
+        "gd": -6,
         "points": 0,
         "standing": 4
       }
