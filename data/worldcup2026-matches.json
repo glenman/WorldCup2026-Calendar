@@ -929,8 +929,8 @@
     "home_team": {
       "flag": "🇦🇷",
       "name": "阿根廷",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇦🇹",
@@ -940,7 +940,7 @@
     },
     "venue": "Arlington, USA, AT&T球场",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 42,
