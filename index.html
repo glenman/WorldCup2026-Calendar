@@ -1779,10 +1779,12 @@ function switchTab(tab) {
     if (tab === 'schedule') {
         scheduleSections.forEach(function(el) { el.style.display = ''; });
         scorersEl.style.display = 'none';
+        scorersEl.classList.add('hidden');
         buttons[0].classList.add('active');
     } else if (tab === 'scorers') {
         scheduleSections.forEach(function(el) { el.style.display = 'none'; });
         scorersEl.style.display = '';
+        scorersEl.classList.remove('hidden');
         buttons[1].classList.add('active');
         if (!window._scorersLoaded) {
             loadScorers();
