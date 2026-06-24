@@ -561,9 +561,7 @@
             border-bottom: 2px solid var(--card-border);
             white-space: nowrap;
         }
-        .scorers-table thead th:nth-child(1),
-        .scorers-table thead th:nth-child(4),
-        .scorers-table thead th:nth-child(5) { text-align: center; }
+        .scorers-table thead th { text-align: center; }
         .scorers-table tbody td {
             padding: 10px 12px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -571,32 +569,32 @@
         }
         .scorers-table tbody tr { transition: background 0.15s; }
         .scorers-table tbody tr:hover { background: rgba(200,168,78,0.06); }
-        .scorers-table .rank { text-align: center; font-weight: 700; color: var(--text-muted); width: 40px; }
+        .scorers-table .rank { text-align: center; font-weight: 700; color: var(--text-muted); width: 36px; }
         .scorers-table .rank.top1 { color: #FFD700; font-size: 1.2rem; }
         .scorers-table .rank.top2 { color: #C0C0C0; font-size: 1.1rem; }
         .scorers-table .rank.top3 { color: #CD7F32; font-size: 1.1rem; }
-        .scorers-table .player { font-weight: 600; color: var(--white); white-space: nowrap; padding-right: 16px; }
-        .scorers-table .team-td { color: var(--text); white-space: nowrap; }
+        .scorers-table .player { font-weight: 600; color: var(--white); white-space: nowrap; padding-right: 24px; text-align: center; }
+        .scorers-table .team-td { color: var(--text); white-space: nowrap; text-align: center; }
         .scorers-table .team-flag { margin-right: 4px; }
-        .scorers-table .goals { text-align: center; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
+        .scorers-table .goals { text-align: center; font-weight: 700; color: var(--gold); font-size: 1.1rem; width: 48px; }
         .scorers-table .goal-times { color: var(--text-muted); font-size: 0.78rem; max-width: 220px; }
         .scorers-table .penalty-badge { font-size: 0.7rem; color: #e63946; }
         .scorers-table .og-badge { font-size: 0.7rem; color: #ff9800; }
 
         @media (max-width: 600px) {
-            .scorers-banner { padding: 20px 12px; }
+            .scorers-banner { padding: 20px 10px; }
             .scorers-table-wrap { overflow-x: visible; }
-            .scorers-table { font-size: 0.75rem; table-layout: fixed; }
+            .scorers-table { font-size: 0.75rem; table-layout: auto; }
             .scorers-table thead th,
-            .scorers-table tbody td { padding: 8px 4px; }
-            .scorers-table .rank { width: 30px; font-size: 0.7rem; }
-            .scorers-table .goals { width: 28px; font-size: 0.8rem; text-align: center; }
-            .scorers-table .player { padding-right: 10px; }
+            .scorers-table tbody td { padding: 10px 6px; }
+            .scorers-table .rank { width: 24px !important; font-size: 0.7rem; }
+            .scorers-table .goals { width: 32px !important; font-size: 0.85rem; text-align: center; }
+            .scorers-table .player { padding-right: 8px; font-size: 0.78rem; text-align: center; }
             .scorers-table .team-td {
                 white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding-left: 2px;
+                font-size: 0.73rem;
+                text-align: center;
+                padding: 10px 2px;
             }
             .scorers-table .team-flag { margin-right: 2px; }
         }
