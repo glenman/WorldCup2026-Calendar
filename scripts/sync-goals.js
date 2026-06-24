@@ -63,12 +63,22 @@ const TEAM_MAP = {
     'Panama': '巴拿马',
 };
 
-// ====== 从我们的 matches.json 构建 match_number → 中文信息索引 ======
+// ====== 反向映射: 英文队名 → 中文队名 ======
+var EN_TO_ZH = {};
+Object.keys(TEAM_MAP).forEach(function (en) {
+    EN_TO_ZH[en.toLowerCase()] = TEAM_MAP[en];
+});
+
+// ====== 加载我们 matches.json 并构建 {home_en, away_en} → 中文信息索引 ======
 function loadMatchIndex() {
     const matches = JSON.parse(fs.readFileSync(MATCHES_PATH, 'utf8'));
     const index = {};
     matches.forEach(function (m) {
-        index[m.match_number] = {
+        var homeEn = m.venue && m.venue.includes && false ? '' : ''; // not available
+        // Build key from Chinese names (stable within our data)
+        var key = m.home_team.name + '|' + m.away_team.name;
+        index[key] = {
+            match_number: m.match_number,
             group: m.group,
             round: m.round,
             match_type: m.match_type,
@@ -79,6 +89,45 @@ function loadMatchIndex() {
         };
     });
     return index;
+}
+
+// ====== 根据 API 英文队名查找我们 match 的中文信息 ======
+function findMatch(apiGame, matchIndex) {
+    var homeEn = (apiGame.home_team_name_en || '').toLowerCase();
+    var awayEn = (apiGame.away_team_name_en || '').toLowerCase();
+    var homeZh = EN_TO_ZH[homeEn];
+    var awayZh = EN_TO_ZH[awayEn];
+
+    if (!homeZh || !awayZh) {
+        // 淘汰赛可能用 label 而非队名, 跳过
+        return null;
+    }
+
+    var key = homeZh + '|' + awayZh;
+    var chi = matchIndex[key];
+    if (chi) {
+        // 验证: API 的 home/away 和我们的 home/away 一致
+        if (chi.home_zh === homeZh && chi.away_zh === awayZh) return chi;
+    }
+
+    // 可能主客队方向不同, 反转查找
+    var keyRev = awayZh + '|' + homeZh;
+    var chiRev = matchIndex[keyRev];
+    if (chiRev) {
+        return {
+            match_number: chiRev.match_number,
+            group: chiRev.group,
+            round: chiRev.round,
+            match_type: chiRev.match_type,
+            // API 的方向, 不是我们 JSON 的方向
+            home_zh: homeZh,
+            away_zh: awayZh,
+            home_flag: chiRev.away_flag, // 注意: 方向可能颠倒
+            away_flag: chiRev.home_flag,
+        };
+    }
+
+    return null; // 淘汰赛或未匹配
 }
 
 // ====== 解析进球字符串 ======
@@ -189,13 +238,15 @@ async function main() {
     var withScorers = 0;
 
     apiData.games.forEach(function (g) {
-        var matchNum = parseInt(g.id, 10);
         var homeScorers = parseScorers(g.home_scorers, 'home');
         var awayScorers = parseScorers(g.away_scorers, 'away');
-        var chi = matchIndex[matchNum];
+        var chi = findMatch(g, matchIndex);
 
-        // 只处理小组赛和已知比赛
+        // 只处理已结束且有进球的小组赛
         if (!chi) return;
+        if (homeScorers.length === 0 && awayScorers.length === 0) return;
+
+        var matchNum = chi.match_number;
 
         var homeZh = chi.home_zh;
         var awayZh = chi.away_zh;
@@ -240,7 +291,7 @@ async function main() {
             total++;
         });
 
-        if (homeScorers.length > 0 || awayScorers.length > 0) withScorers++;
+        withScorers++;
     });
 
     // 按 match_number 和时间排序
