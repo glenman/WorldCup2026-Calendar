@@ -1113,18 +1113,18 @@
     "home_team": {
       "flag": "🇧🇦",
       "name": "波黑",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇶🇦",
       "name": "卡塔尔",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Seattle, USA",
     "stadium": "卢门球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 50,
@@ -1136,18 +1136,18 @@
     "home_team": {
       "flag": "🇨🇭",
       "name": "瑞士",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇨🇦",
       "name": "加拿大",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Vancouver, Canada, BC广场",
     "stadium": "BC广场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 51,
