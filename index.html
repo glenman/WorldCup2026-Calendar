@@ -498,6 +498,94 @@
 
 
         .summary-banner, .team-selector-section { max-width: 960px; }
+
+        /* ====== Tab 切换 ====== */
+        .tab-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 24px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+        }
+        .tab-btn {
+            flex: 1;
+            max-width: 200px;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .tab-btn:first-child { border-right: 1px solid var(--card-border); }
+        .tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+        .tab-btn.active {
+            color: var(--black);
+            background: var(--gold);
+            box-shadow: 0 2px 12px rgba(200,168,78,0.3);
+        }
+
+        /* ====== 射手榜 ====== */
+        .scorers-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 30px rgba(200,168,78,0.08);
+        }
+        .scorers-banner h2 { margin: 0 0 16px; color: var(--gold); font-size: 1.4rem; letter-spacing: 2px; }
+        .scorers-meta { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
+        .scorers-table-wrap { overflow-x: auto; }
+        .scorers-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .scorers-table thead th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--card-border);
+            white-space: nowrap;
+        }
+        .scorers-table thead th:nth-child(1),
+        .scorers-table thead th:nth-child(4),
+        .scorers-table thead th:nth-child(5) { text-align: center; }
+        .scorers-table tbody td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            vertical-align: middle;
+        }
+        .scorers-table tbody tr { transition: background 0.15s; }
+        .scorers-table tbody tr:hover { background: rgba(200,168,78,0.06); }
+        .scorers-table .rank { text-align: center; font-weight: 700; color: var(--text-muted); width: 40px; }
+        .scorers-table .rank.top1 { color: #FFD700; font-size: 1.2rem; }
+        .scorers-table .rank.top2 { color: #C0C0C0; font-size: 1.1rem; }
+        .scorers-table .rank.top3 { color: #CD7F32; font-size: 1.1rem; }
+        .scorers-table .player { font-weight: 600; color: var(--white); }
+        .scorers-table .team-td { color: var(--text); }
+        .scorers-table .team-flag { margin-right: 4px; }
+        .scorers-table .goals { text-align: center; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
+        .scorers-table .goal-times { color: var(--text-muted); font-size: 0.78rem; max-width: 220px; }
+        .scorers-table .penalty-badge { font-size: 0.7rem; color: #e63946; }
+        .scorers-table .og-badge { font-size: 0.7rem; color: #ff9800; }
+
+        @media (max-width: 600px) {
+            .scorers-table thead th:nth-child(5),
+            .scorers-table tbody td:nth-child(5) { display: none; }
+            .scorers-banner { padding: 20px 16px; }
+        }
 </style>
 </head>
 <body>
@@ -506,6 +594,15 @@
             <h1 id="page-title"><small>FIFA WORLD CUP 2026</small>🏆 世界杯观赛日程表</h1>
             <div class="hosts">🇨🇦 加拿大 &nbsp;|&nbsp; 🇺🇸 美国 &nbsp;|&nbsp; 🇲🇽 墨西哥</div>
         </header>
+
+        <!-- Tab 切换栏 -->
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('schedule')">📅 比赛赛程</button>
+            <button class="tab-btn" onclick="switchTab('scorers')">⚽ 射手榜</button>
+        </div>
+
+        <!-- 赛程面板 -->
+        <div id="tab-schedule">
 
         <div class="summary-banner">
             <h2>📋 小组赛赛事概览</h2>
@@ -976,6 +1073,30 @@
 
         <div 
 id="calendar-app"></div>
+
+        </div><!-- /tab-schedule -->
+
+        <!-- 射手榜面板 -->
+        <div id="tab-scorers" style="display:none;">
+            <div class="scorers-banner">
+                <h2>⚽ 射手榜</h2>
+                <div class="scorers-meta" id="scorers-meta"></div>
+                <div class="scorers-table-wrap">
+                    <table class="scorers-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>球员</th>
+                                <th>球队</th>
+                                <th>进球</th>
+                                <th>进球时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scorers-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- /tab-scorers -->
 
         <div class="footer">
             © 2026 WorldCup2026-Calendar · 数据来源: FIFA · Powered by Glenman
@@ -1642,6 +1763,138 @@ function renderInlineScores() {
 }
 
 
+
+// ========== Tab 切换 ==========
+function switchTab(tab) {
+    var scheduleEl = document.getElementById('tab-schedule');
+    var scorersEl = document.getElementById('tab-scorers');
+    var buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(function(b) { b.classList.remove('active'); });
+    if (tab === 'schedule') {
+        scheduleEl.style.display = '';
+        scorersEl.style.display = 'none';
+        buttons[0].classList.add('active');
+    } else if (tab === 'scorers') {
+        scheduleEl.style.display = 'none';
+        scorersEl.style.display = '';
+        buttons[1].classList.add('active');
+        // 如果还没加载过数据则加载
+        if (!window._scorersLoaded) {
+            loadScorers();
+            window._scorersLoaded = true;
+        }
+    }
+}
+
+// ========== 射手榜 ==========
+var SCORERS_DATA = null;
+
+function loadScorers() {
+    fetch('data/wc2026-goals.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            SCORERS_DATA = data;
+            renderScorers();
+        })
+        .catch(function(err) {
+            console.error('Failed to load scorers:', err);
+            document.getElementById('scorers-tbody').innerHTML =
+                '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--text-muted);">😕 射手榜数据加载失败</td></tr>';
+        });
+}
+
+function renderScorers() {
+    if (!SCORERS_DATA || !SCORERS_DATA.goals) return;
+
+    var goals = SCORERS_DATA.goals;
+    // 按 (球员 + 球队) 分组统计
+    var playerMap = {};
+    goals.forEach(function(g) {
+        var key = g.scorer + '||' + g.team;
+        if (!playerMap[key]) {
+            playerMap[key] = {
+                scorer: g.scorer,
+                team: g.team,
+                goals: 0,
+                penaltyGoals: 0,
+                ownGoals: 0,
+                times: []
+            };
+        }
+        playerMap[key].goals++;
+        if (g.penalty) playerMap[key].penaltyGoals++;
+        if (g.own_goal) playerMap[key].ownGoals++;
+        playerMap[key].times.push({
+            minute: g.minute,
+            display: g.minute_display,
+            match_number: g.match_number,
+            against: g.team === g.home_team ? g.away_team : g.home_team
+        });
+    });
+
+    // 转为数组并排序: 进球数降序, 球员名升序
+    var players = Object.values(playerMap);
+    players.sort(function(a, b) {
+        if (b.goals !== a.goals) return b.goals - a.goals;
+        return a.scorer.localeCompare(b.scorer);
+    });
+
+    // 渲染元信息
+    var metaEl = document.getElementById('scorers-meta');
+    metaEl.textContent = '数据来源: ' + SCORERS_DATA.source +
+        ' | 更新于: ' + new Date(SCORERS_DATA.updated_at).toLocaleString('zh-CN') +
+        ' | 共 ' + players.length + ' 名球员 · ' + SCORERS_DATA.total_goals + ' 个进球';
+
+    // 渲染表格
+    var tbody = document.getElementById('scorers-tbody');
+    var html = '';
+    var prevGoals = -1;
+    var rank = 0;
+    var actualRank = 0;
+
+    players.forEach(function(p, i) {
+        actualRank++;
+        if (p.goals !== prevGoals) {
+            rank = actualRank;
+            prevGoals = p.goals;
+        }
+
+        var rankClass = '';
+        if (rank === 1) rankClass = ' top1';
+        else if (rank === 2) rankClass = ' top2';
+        else if (rank === 3) rankClass = ' top3';
+
+        var rankDisplay = rank;
+        if (rank === 1) rankDisplay = '🥇';
+        else if (rank === 2) rankDisplay = '🥈';
+        else if (rank === 3) rankDisplay = '🥉';
+
+        // 显示进球时间（最多5个, 按时间排序）
+        var timeSorted = p.times.slice().sort(function(a, b) { return a.minute - b.minute; });
+        var timeStr = timeSorted.map(function(t) {
+            var s = t.display;
+            return s;
+        }).join(', ');
+        if (timeSorted.length > 8) {
+            timeStr = timeSorted.slice(0, 8).map(function(t) { return t.display; }).join(', ') + ' ...';
+        }
+
+        var flag = FLAG_MAP[p.team] || '🏳';
+
+        html += '<tr>' +
+            '<td class="rank' + rankClass + '">' + rankDisplay + '</td>' +
+            '<td class="player">' + p.scorer + '</td>' +
+            '<td class="team-td"><span class="team-flag">' + flag + '</span>' + p.team + '</td>' +
+            '<td class="goals">' + p.goals +
+                (p.penaltyGoals > 0 ? ' <span class="penalty-badge">(' + p.penaltyGoals + 'p)</span>' : '') +
+                (p.ownGoals > 0 ? ' <span class="og-badge">(' + p.ownGoals + 'og)</span>' : '') +
+            '</td>' +
+            '<td class="goal-times">' + timeStr + '</td>' +
+        '</tr>';
+    });
+
+    tbody.innerHTML = html;
+}
 
 </script>
 </body>
