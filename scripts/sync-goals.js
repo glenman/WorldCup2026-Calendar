@@ -9,6 +9,39 @@ const { execSync } = require('child_process');
 
 const IS_CI = process.argv.includes('--ci');
 
+// ====== 球员名归一化映射: API中同一个人可能有缩写/全名两种写法 ======
+const NAME_NORMALIZE = {
+    'K. Mbappé': 'Kylian Mbappé',
+    'K. Mbappe': 'Kylian Mbappé',
+};
+
+function normalizeScorerName(name, team, allScorersInTeam) {
+    // 1. 精确映射
+    if (NAME_NORMALIZE[name]) return NAME_NORMALIZE[name];
+
+    // 2. 通用缩写归一化: "X. Lastname" → "Fullname Lastname"
+    var abbrMatch = name.match(/^([A-Z])\.\s+(.+)$/);
+    if (abbrMatch) {
+        var initial = abbrMatch[1].toLowerCase();
+        var lastName = abbrMatch[2].toLowerCase();
+        // 在队友中查找匹配的全名
+        for (var i = 0; i < allScorersInTeam.length; i++) {
+            var other = allScorersInTeam[i];
+            var parts = other.split(/\s+/);
+            if (parts.length >= 2) {
+                var otherLast = parts[parts.length - 1].toLowerCase();
+                var otherFirst = parts[0].toLowerCase();
+                if (otherLast === lastName && otherFirst[0] === initial && other !== name) {
+                    NAME_NORMALIZE[name] = other; // 缓存
+                    return other;
+                }
+            }
+        }
+    }
+
+    return name;
+}
+
 const API_URL = 'https://worldcup26.ir/get/games';
 const OUTPUT = path.join(__dirname, '..', 'data', 'wc2026-goals.json');
 const MATCHES_PATH = path.join(__dirname, '..', 'data', 'worldcup2026-matches.json');
@@ -243,6 +276,22 @@ async function main() {
     console.log('[sync-goals] 共 ' + apiData.games.length + ' 场比赛');
     var matchIndex = loadMatchIndex();
 
+    // ====== 第一遍: 收集所有球队的进球者姓名 (用于缩写归一化) ======
+    var teamAllScorers = {}; // {球队中文名: [scorerName, ...]}
+    apiData.games.forEach(function (g) {
+        var homeScorers = parseScorers(g.home_scorers, 'home');
+        var awayScorers = parseScorers(g.away_scorers, 'away');
+        var chi = findMatch(g, matchIndex);
+        if (!chi) return;
+        var homeZh = chi.home_zh;
+        var awayZh = chi.away_zh;
+        if (!teamAllScorers[homeZh]) teamAllScorers[homeZh] = [];
+        if (!teamAllScorers[awayZh]) teamAllScorers[awayZh] = [];
+        homeScorers.forEach(function (s) { teamAllScorers[homeZh].push(s.scorer); });
+        awayScorers.forEach(function (s) { teamAllScorers[awayZh].push(s.scorer); });
+    });
+
+    // ====== 第二遍: 构建进球记录 (应用姓名归一化) ======
     var allGoals = [];
     var total = 0;
     var withScorers = 0;
@@ -271,7 +320,7 @@ async function main() {
                 away_team: awayZh,
                 team: homeZh,
                 team_en: g.home_team_name_en,
-                scorer: s.scorer,
+                scorer: normalizeScorerName(s.scorer, homeZh, teamAllScorers[homeZh] || []),
                 minute: s.minute,
                 minute_display: s.minute_display,
                 own_goal: s.own_goal,
@@ -291,7 +340,7 @@ async function main() {
                 away_team: awayZh,
                 team: awayZh,
                 team_en: g.away_team_name_en,
-                scorer: s.scorer,
+                scorer: normalizeScorerName(s.scorer, awayZh, teamAllScorers[awayZh] || []),
                 minute: s.minute,
                 minute_display: s.minute_display,
                 own_goal: s.own_goal,
