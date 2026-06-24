@@ -575,7 +575,7 @@
         .scorers-table .rank.top1 { color: #FFD700; font-size: 1.2rem; }
         .scorers-table .rank.top2 { color: #C0C0C0; font-size: 1.1rem; }
         .scorers-table .rank.top3 { color: #CD7F32; font-size: 1.1rem; }
-        .scorers-table .player { font-weight: 600; color: var(--white); white-space: nowrap; }
+        .scorers-table .player { font-weight: 600; color: var(--white); white-space: nowrap; padding-right: 16px; }
         .scorers-table .team-td { color: var(--text); white-space: nowrap; }
         .scorers-table .team-flag { margin-right: 4px; }
         .scorers-table .goals { text-align: center; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
@@ -590,11 +590,13 @@
             .scorers-table thead th,
             .scorers-table tbody td { padding: 8px 4px; }
             .scorers-table .rank { width: 30px; font-size: 0.7rem; }
-            .scorers-table .goals { width: 32px; font-size: 0.8rem; }
+            .scorers-table .goals { width: 28px; font-size: 0.8rem; text-align: center; }
+            .scorers-table .player { padding-right: 10px; }
             .scorers-table .team-td {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                padding-left: 2px;
             }
             .scorers-table .team-flag { margin-right: 2px; }
         }
