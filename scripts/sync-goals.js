@@ -1,11 +1,13 @@
 // sync-goals.js — 从 worldcup26.ir API 同步进球记录
-// 用法: node scripts/sync-goals.js
-// 自动 fetch API → 解析进球 → 写入 data/wc2026-goals.json → commit + push
+// 用法: node scripts/sync-goals.js          → 本地运行, 自动 commit + push
+//       node scripts/sync-goals.js --ci     → CI 模式, 仅生成 JSON, 由 workflow 负责 git 操作
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+
+const IS_CI = process.argv.includes('--ci');
 
 const API_URL = 'https://worldcup26.ir/get/games';
 const OUTPUT = path.join(__dirname, '..', 'data', 'wc2026-goals.json');
@@ -321,19 +323,23 @@ async function main() {
     console.log('[sync-goals] 写入 ' + OUTPUT);
     console.log('[sync-goals] ' + withScorers + ' 场比赛有进球记录, 共 ' + total + ' 个进球');
 
-    // 如果有变动则 commit + push
-    try {
-        execSync('git add data/wc2026-goals.json scripts/sync-goals.js', { cwd: path.join(__dirname, '..') });
-        var diff = execSync('git diff --cached --name-only', { cwd: path.join(__dirname, '..'), encoding: 'utf8' }).trim();
-        if (diff) {
-            execSync('git commit -m "' + total + ' goals synced from worldcup26.ir API"', { cwd: path.join(__dirname, '..') });
-            execSync('git push origin gh-pages', { cwd: path.join(__dirname, '..') });
-            console.log('[sync-goals] 已推送到远程');
-        } else {
-            console.log('[sync-goals] 无变动, 跳过推送');
+    // 如果有变动则 commit + push (CI 模式下跳过, 由 workflow 处理)
+    if (!IS_CI) {
+        try {
+            execSync('git add data/wc2026-goals.json scripts/sync-goals.js', { cwd: path.join(__dirname, '..') });
+            var diff = execSync('git diff --cached --name-only', { cwd: path.join(__dirname, '..'), encoding: 'utf8' }).trim();
+            if (diff) {
+                execSync('git commit -m "' + total + ' goals synced from worldcup26.ir API"', { cwd: path.join(__dirname, '..') });
+                execSync('git push origin gh-pages', { cwd: path.join(__dirname, '..') });
+                console.log('[sync-goals] 已推送到远程');
+            } else {
+                console.log('[sync-goals] 无变动, 跳过推送');
+            }
+        } catch (e) {
+            console.log('[sync-goals] 推送失败 (SSL/网络): ' + e.message.substring(0, 80));
         }
-    } catch (e) {
-        console.log('[sync-goals] 推送失败 (SSL/网络): ' + e.message.substring(0, 80));
+    } else {
+        console.log('[sync-goals] CI 模式: 跳过 git 操作, 由 workflow 负责提交');
     }
 
     console.log('  Done!');

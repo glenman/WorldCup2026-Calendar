@@ -1,0 +1,40 @@
+name: Sync Goals
+
+on:
+  schedule:
+    # 每天 UTC 0:00, 8:00, 16:00 自动运行 (对应北京时间 8:00, 16:00, 24:00)
+    - cron: '0 0,8,16 * * *'
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run sync-goals
+        run: node scripts/sync-goals.js --ci
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/wc2026-goals.json
+          if git diff --cached --quiet; then
+            echo "No changes, skipping push"
+          else
+            git commit -m "Auto-sync goals from worldcup26.ir API [skip ci]"
+            git push origin gh-pages
+          fi
