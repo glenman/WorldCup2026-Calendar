@@ -1767,20 +1767,21 @@ function renderInlineScores() {
 
 // ========== Tab 切换 ==========
 function switchTab(tab) {
-    var scheduleEl = document.getElementById('tab-schedule');
     var scorersEl = document.getElementById('tab-scorers');
     var buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(function(b) { b.classList.remove('active'); });
+
+    // 所有赛程相关的区块选择器
+    var scheduleSections = document.querySelectorAll(
+        '.summary-banner, .team-selector-section, .group-selector, #calendar-app'
+    );
+
     if (tab === 'schedule') {
-        scheduleEl.classList.remove('hidden');
-        scheduleEl.style.display = '';
-        scorersEl.classList.add('hidden');
+        scheduleSections.forEach(function(el) { el.style.display = ''; });
         scorersEl.style.display = 'none';
         buttons[0].classList.add('active');
     } else if (tab === 'scorers') {
-        scheduleEl.classList.add('hidden');
-        scheduleEl.style.display = 'none';
-        scorersEl.classList.remove('hidden');
+        scheduleSections.forEach(function(el) { el.style.display = 'none'; });
         scorersEl.style.display = '';
         buttons[1].classList.add('active');
         if (!window._scorersLoaded) {
