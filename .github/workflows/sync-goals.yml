@@ -1,4 +1,4 @@
-name: Sync Goals
+name: Auto Sync Results & Goals
 
 on:
   schedule:
@@ -24,17 +24,20 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run sync-goals
+      - name: Sync match results (scores, standings, ICS)
+        run: node scripts/sync-results.js --ci
+
+      - name: Sync goal records
         run: node scripts/sync-goals.js --ci
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/wc2026-goals.json
+          git add data/worldcup2026-matches.json data/worldcup2026-group_standings.json worldcup2026.ics data/wc2026-goals.json
           if git diff --cached --quiet; then
             echo "No changes, skipping push"
           else
-            git commit -m "Auto-sync goals from worldcup26.ir API [skip ci]"
+            git commit -m "[auto] sync results & goals from API [skip ci]"
             git push origin gh-pages
           fi
