@@ -586,16 +586,15 @@
         @media (max-width: 600px) {
             .scorers-banner { padding: 20px 12px; }
             .scorers-table-wrap { overflow-x: visible; }
-            .scorers-table { font-size: 0.78rem; table-layout: fixed; }
+            .scorers-table { font-size: 0.75rem; table-layout: fixed; }
             .scorers-table thead th,
-            .scorers-table tbody td { padding: 8px 6px; }
-            .scorers-table .rank { width: 32px; font-size: 0.75rem; }
-            .scorers-table .goals { width: 36px; font-size: 0.85rem; }
-            .scorers-table .player,
+            .scorers-table tbody td { padding: 8px 4px; }
+            .scorers-table .rank { width: 30px; font-size: 0.7rem; }
+            .scorers-table .goals { width: 32px; font-size: 0.8rem; }
             .scorers-table .team-td {
+                white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                white-space: nowrap;
             }
             .scorers-table .team-flag { margin-right: 2px; }
         }
@@ -1893,8 +1892,6 @@ function renderScorers() {
             '<td class="player">' + p.scorer + '</td>' +
             '<td class="team-td"><span class="team-flag">' + flag + '</span>' + p.team + '</td>' +
             '<td class="goals">' + p.goals +
-                (p.penaltyGoals > 0 ? ' <span class="penalty-badge">(' + p.penaltyGoals + 'p)</span>' : '') +
-                (p.ownGoals > 0 ? ' <span class="og-badge">(' + p.ownGoals + 'og)</span>' : '') +
             '</td>' +
         '</tr>';
     });
