@@ -13,6 +13,8 @@ const IS_CI = process.argv.includes('--ci');
 const NAME_NORMALIZE = {
     'K. Mbappé': 'Kylian Mbappé',
     'K. Mbappe': 'Kylian Mbappé',
+    'D. Undav': 'Deniz Undav',
+    'Dniz Avndav': 'Deniz Undav',
 };
 
 function normalizeScorerName(name, team, allScorersInTeam) {
