@@ -15,6 +15,10 @@ const NAME_NORMALIZE = {
     'K. Mbappe': 'Kylian Mbappé',
     'D. Undav': 'Deniz Undav',
     'Dniz Avndav': 'Deniz Undav',
+    'C. Larin': 'Cyle Larin',
+    'Kail Larin': 'Cyle Larin',
+    'Asmaail Saibari': 'Ismaïla Saibari',
+    'I. Saibari': 'Ismaïla Saibari',
 };
 
 function normalizeScorerName(name, team, allScorersInTeam) {
@@ -218,7 +222,7 @@ function parseScorerEntry(entry, homeAway) {
     var stoppage = timeMatch[2] ? parseInt(timeMatch[2], 10) : 0;
     var actualMinute = minute + stoppage;
 
-    var namePart = entry.substring(0, entry.length - timeMatch[0].length).trim();
+    var namePart = entry.substring(0, timeMatch.index !== undefined ? timeMatch.index : (entry.length - timeMatch[0].length)).trim();
     if (!namePart && timeMatch[1]) {
         // 降级: 用正则找到数字前的内容
         namePart = entry.replace(/\d+[\+']*\d*'.*$/, '').trim();
