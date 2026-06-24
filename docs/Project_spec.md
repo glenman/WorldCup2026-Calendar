@@ -9,6 +9,7 @@
 - **部署分支**: `gh-pages`
 - **技术栈**: 纯 HTML/CSS/JavaScript（前端），Node.js 标准库（构建脚本），GitHub Pages 静态部署
 - **数据**: 72 场小组赛，48 支球队，12 个小组（A-L），3 个东道主（加拿大、美国、墨西哥）
+- **自动化**: GitHub Actions 定时从 API 自动同步比分、积分榜、进球记录
 
 ---
 
@@ -16,14 +17,19 @@
 
 ```
 WorldCup2026-Calendar/
-├── index.html                              # 单文件应用（前端展示 + 所有 JS/CSS）
+├── index.html                              # 单文件应用（前端展示 + 所有 JS/CSS，含赛程/射手榜双Tab）
 ├── worldcup2026.ics                        # ★ 自动生成的 ICS 日历文件
+├── .github/workflows/
+│   └── sync-goals.yml                      # GitHub Actions: 定时自动同步比分+进球
 ├── data/
 │   ├── worldcup2026-matches.json           # ★ 比赛数据（72场，唯一数据源）
-│   └── worldcup2026-group_standings.json   # ★ 小组积分榜数据（从 matches 自动计算）
+│   ├── worldcup2026-group_standings.json   # ★ 小组积分榜数据（从 matches 自动计算）
+│   └── wc2026-goals.json                   # ★ 进球记录（从 API 自动同步）
 ├── scripts/
 │   ├── build.js                            # 构建脚本：计算积分榜 + 生成 ICS
-│   └── update-match.js                     # 比分更新：解析 "A vs B X:Y" → 全链路更新
+│   ├── update-match.js                     # 比分更新：解析 "A vs B X:Y" → 全链路更新
+│   ├── sync-results.js                     # API 自动同步：比分+积分+状态+调 build.js
+│   └── sync-goals.js                       # API 自动同步：进球记录解析+写入
 ├── docs/
 │   ├── Project_spec.md                     # 本文档
 │   └── TODO.md                             # 待处理任务清单
@@ -39,51 +45,67 @@ WorldCup2026-Calendar/
 
 ---
 
-## 数据流架构（v2.0 当前实现）
+## 数据流架构（v3.0 当前实现）
+
+### API 自动化同步（主要方式）
 
 ```
-              ┌─────────────────────────┐
-              │   AI Skill 自然语言输入   │
-              │  "巴西 vs 摩洛哥 3:1"    │
-              └───────────┬─────────────┘
+                    worldcup26.ir API
+                     (无需认证)
                           │
-                          ▼
-              ┌──────────────────────┐
-              │  update-match.js     │
-              │  · 解析 A vs B X:Y   │
-              │  · 匹配主客队         │
-              │  · 写入 score/points  │
-              │  · 更新 status        │
-              └──────────┬───────────┘
-                         │
-                         ▼
-         ┌───────────────────────────┐
-         │ worldcup2026-matches.json │ ◄── 单一数据源（数组格式）
-         └─────────────┬─────────────┘
-                       │
-          ┌────────────┴────────────┐
-          │  build.js               │
-          │  · 读取 matches.json    │
-          │  · 循环计算 12 组积分    │
-          │  · 排序（积分→净胜→进球）│
-          │  · 生成 ICS 日历文件    │
-          └─────────┬───────────────┘
-                    │
-          ┌─────────┴──────────┐
-          ▼                    ▼
-group_standings.json    worldcup2026.ics
-          │                    │
-          └─────────┬──────────┘
-                    ▼
-              index.html
-          (fetch JSON → render)
+              ┌───────────┼───────────┐
+              ▼                       ▼
+      sync-results.js           sync-goals.js
+      · 拉取比赛数据             · 拉取比赛数据
+      · 匹配球队+比分           · 解析进球字符串
+      · 更新 score/points       · 球员名归一化
+      · 更新 status             · 英→中队名映射
+      · 调用 build.js           · 写入 wc2026-goals.json
+              │                       │
+              ▼                       ▼
+        matches.json            wc2026-goals.json
+              │
+              ▼
+          build.js
+      · 读取 matches.json
+      · 循环计算 12 组积分
+      · 排序（积分→净胜→进球）
+      · 生成 ICS 日历文件
+              │
+      ┌───────┴───────┐
+      ▼               ▼
+standings.json    worldcup2026.ics
+      │               │
+      └───────┬───────┘
+              ▼
+        index.html
+    · 赛程Tab: matches + standings
+    · 射手榜Tab: wc2026-goals
+```
+
+### 手工 Skill 方式（辅助）
+
+```
+   AI Skill 自然语言输入
+  "巴西 vs 摩洛哥 3:1"
+            │
+            ▼
+    update-match.js
+    · 解析 A vs B X:Y
+    · 匹配主客队
+    · 写入 score/points
+    · 调用 build.js
+            │
+            ▼
+      matches.json → build.js → standings + ICS
 ```
 
 ### 核心原则
 
-- **单一数据源**: `worldcup2026-matches.json` 是唯一可编辑的数据文件
+- **单一数据源**: `worldcup2026-matches.json` 是唯一可编辑的比赛数据文件
 - **自动派生**: `group_standings.json` 和 `worldcup2026.ics` 由 `build.js` 自动生成
-- **零依赖**: 全部使用 Node.js 标准库（fs、path），无需 npm install
+- **全自动同步**: GitHub Actions 定时从 API 拉取数据，无需人工干预
+- **零依赖**: 全部使用 Node.js 标准库（fs、path、https），无需 npm install
 - **静态部署**: 所有文件为静态 JSON/ICS/HTML，通过 GitHub Pages 直接托管
 
 ---
@@ -132,6 +154,26 @@ group_standings.json    worldcup2026.ics
 - **定义文件**: `.trae/skills/worldcup-update-result/SKILL.md`
 - **触发方式**: 用户输入含 "A vs B X:Y" 格式的比分
 - **执行链路**: Skill → `scripts/update-match.js` → `build.js` → 完整更新
+
+### 7. 射手榜
+
+- 页面顶部 Tab 栏可切换 "比赛赛程" / "射手榜"
+- 数据源：`data/wc2026-goals.json`（由 sync-goals.js 自动同步）
+- 按进球数降序排名，同进球数并列
+- 前三名金银铜奖牌高亮
+- 点球(p)和乌龙(og)标注
+- 球员名归一化处理（L. Messi = Lionel Messi, K. Mbappé = Kylian Mbappé 等）
+- 移动端自适应布局
+
+### 8. API 自动化同步
+
+- **触发**: GitHub Actions 定时（北京时间 3/6/9/12 点）
+- **比分同步**: `sync-results.js` 从 API 拉取 → 匹配球队 → 更新 score/points/status → 调用 build.js
+- **进球同步**: `sync-goals.js` 从 API 拉取 → 解析进球字符串 → 球员名归一化 → 写入 wc2026-goals.json
+- **数据源**: `https://worldcup26.ir/get/games`（无需认证）
+- **球队映射**: 48 支球队英文↔中文双向映射（含 `USA`/`United States` 双写兼容）
+- **智能匹配**: `findMatch()` 自动处理主客队反转，无需关心 API 球队顺序
+- **增量更新**: 仅当数据变化时写入文件，避免不必要的 Git 提交
 
 ---
 
@@ -189,6 +231,41 @@ group_standings.json    worldcup2026.ics
 
 - `"已结束"`: 比分已录入
 - `"未开始"`: 比分未录入
+
+### wc2026-goals.json
+
+```json
+{
+  "updated_at": "2026-06-24T...",
+  "source": "https://worldcup26.ir/get/games",
+  "total_goals": 138,
+  "goals": [
+    {
+      "match_number": 1,
+      "group": "A组",
+      "round": "第1轮",
+      "home_team": "墨西哥",
+      "away_team": "南非",
+      "team": "墨西哥",
+      "team_en": "Mexico",
+      "scorer": "J. Quiñones",
+      "minute": 9,
+      "minute_display": "9'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    }
+  ]
+}
+```
+
+每个进球记录字段说明：
+- `match_number`: 赛程编号（对应 matches.json）
+- `team` / `team_en`: 进球方中文 / 英文队名
+- `scorer`: 球员名（已归一化）
+- `minute` / `minute_display`: 进球分钟数 / 显示文本
+- `own_goal` / `penalty`: 乌龙球 / 点球标记
+- `half`: 半场（1=上半场, 2=下半场）
 
 ---
 
@@ -264,6 +341,73 @@ node scripts/update-match.js "球队A vs 球队B X:Y"
 4. 写入 matches.json
 5. 自动调用 `build.js` 完成全链路
 
+### sync-results.js (API 自动同步)
+
+```
+node scripts/sync-results.js
+# 或: node scripts/sync-results.js --ci  (跳过 git 操作)
+```
+
+功能：
+1. 从 `https://worldcup26.ir/get/games` 拉取比赛数据
+2. 通过 48 队 TEAM_MAP 将英文队名映射为中文
+3. `findMatch()` 双向匹配 API 比赛与 matches.json（支持主客队反转）
+4. 比对 home_score/away_score，仅当变化时更新
+5. 自动设置 status（已结束/未开始）
+6. 调用 `build.js` 重算积分榜 + 重新生成 ICS
+7. GitHub Actions 中带 `--ci` 参数运行（跳过 git add/commit/push）
+
+### sync-goals.js (进球数据自动同步)
+
+```
+node scripts/sync-goals.js
+```
+
+功能：
+1. 从 `https://worldcup26.ir/get/games` 拉取比赛数据
+2. 解析 `home_scorers` / `away_scorers` 字符串（格式：`"Messi 23(p), Di Maria 60"`）
+3. 球员名归一化（`NAME_NORMALIZE` 映射表 + 同队首字母+姓氏匹配）
+4. 判断点球(p)、乌龙(og)标记
+5. 写入 `data/wc2026-goals.json`
+
+---
+
+## GitHub Actions 自动化
+
+Workflow 文件：[`.github/workflows/sync-goals.yml`](../.github/workflows/sync-goals.yml)
+
+### 触发时间（北京时间）
+
+| 时间 | 说明 |
+|------|------|
+| 03:00 | 凌晨场次结束后 |
+| 06:00 | 早晨场次结束后 |
+| 09:00 | 上午场次结束后 |
+| 12:00 | 下午补充同步 |
+
+### 执行流程
+
+```
+GitHub Actions 触发 (每3小时)
+  │
+  ├─ 1. Checkout gh-pages 分支
+  ├─ 2. node scripts/sync-results.js --ci
+  │     └─ 拉API → 更新matches → 调build.js → 生成standings + ICS
+  ├─ 3. node scripts/sync-goals.js
+  │     └─ 拉API → 解析进球 → 写入wc2026-goals.json
+  └─ 4. git commit + push
+        └─ 提交 4 个文件: matches.json, standings.json, .ics, goals.json
+```
+
+### 同步文件一览
+
+| 文件 | 更新脚本 | 数据来源 |
+|------|---------|---------|
+| `data/worldcup2026-matches.json` | sync-results.js | API home_score/away_score |
+| `data/worldcup2026-group_standings.json` | build.js（由 sync-results 调用） | matches.json 重算 |
+| `worldcup2026.ics` | build.js（同上） | matches.json 重生成 |
+| `data/wc2026-goals.json` | sync-goals.js | API home_scorers/away_scorers |
+
 ---
 
 ## 关键代码位置（index.html）
@@ -290,22 +434,31 @@ node scripts/update-match.js "球队A vs 球队B X:Y"
 2. ~~积分榜仅 A组~~ → ✅ 12组全部实现
 3. ~~比分格式不规范~~ → ✅ 统一使用 home_team/away_team.score
 4. ~~需要手动编辑 JSON~~ → ✅ Skill + update-match.js
-5. **TODO**: 淘汰赛阶段（当前仅小组赛）
-6. **TODO**: 积分榜更多字段展示（已赛/胜/平/负/净胜球）
-7. **TODO**: 实时比赛中的状态标记（进行中/半场）
-8. **TODO**: 比赛卡片点击展开详情（阵容、进球时间等）
+5. ~~手动更新比分~~ → ✅ GitHub Actions API 全自动同步
+6. ~~缺少进球数据~~ → ✅ sync-goals.js + 射手榜
+7. **TODO**: 淘汰赛阶段（当前仅小组赛）
+8. **TODO**: 积分榜更多字段展示（已赛/胜/平/负/净胜球）
+9. **TODO**: 实时比赛中的状态标记（进行中/半场）
+10. **TODO**: 比赛卡片点击展开详情（阵容、进球时间等）
 
 ---
 
 ## 部署流程
 
+比分和进球数据由 GitHub Actions 自动同步，无需手动部署：
+
+1. **自动同步**: GitHub Actions 每 3/6/9/12 点自动拉取 API 数据
+2. **自动构建**: sync-results.js → build.js → standings + ICS
+3. **自动部署**: git push 到 gh-pages 分支 → GitHub Pages 自动发布
+4. **线上访问**: https://glenman.github.io/WorldCup2026-Calendar/
+5. **更新订阅**: 日历订阅用户自动同步 `worldcup2026.ics`
+
+如需手动部署：
 1. **本地更新**: Skill 或 `node scripts/update-match.js "..."` 更新比分
 2. **本地验证**: `python -m http.server 3000` 查看 index.html
 3. **Git 提交**: `git add -A && git commit -m "update scores"`
 4. **推送**: `git push origin gh-pages`
-5. **线上访问**: https://glenman.github.io/WorldCup2026-Calendar/
-6. **更新订阅**: 已在日历中订阅的用户会自动同步 `worldcup2026.ics`
 
 ---
 
-*最后更新: 2026-06-13*
+*最后更新: 2026-06-24*
