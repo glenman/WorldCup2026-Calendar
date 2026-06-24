@@ -584,9 +584,20 @@
         .scorers-table .og-badge { font-size: 0.7rem; color: #ff9800; }
 
         @media (max-width: 600px) {
-            .scorers-table thead th:nth-child(5),
-            .scorers-table tbody td:nth-child(5) { display: none; }
-            .scorers-banner { padding: 20px 16px; }
+            .scorers-banner { padding: 20px 12px; }
+            .scorers-table-wrap { overflow-x: visible; }
+            .scorers-table { font-size: 0.78rem; table-layout: fixed; }
+            .scorers-table thead th,
+            .scorers-table tbody td { padding: 8px 6px; }
+            .scorers-table .rank { width: 32px; font-size: 0.75rem; }
+            .scorers-table .goals { width: 36px; font-size: 0.85rem; }
+            .scorers-table .player,
+            .scorers-table .team-td {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .scorers-table .team-flag { margin-right: 2px; }
         }
 </style>
 </head>
