@@ -1021,8 +1021,8 @@
     "home_team": {
       "flag": "🇵🇹",
       "name": "葡萄牙",
-      "score": 0,
-      "points": 0
+      "score": 5,
+      "points": 3
     },
     "away_team": {
       "flag": "🇺🇿",
@@ -1032,7 +1032,7 @@
     },
     "venue": "Houston, USA, NRG球场",
     "stadium": "NRG球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 46,
