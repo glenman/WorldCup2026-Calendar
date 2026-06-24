@@ -1090,7 +1090,6 @@ id="calendar-app"></div>
                                 <th>球员</th>
                                 <th>球队</th>
                                 <th>进球</th>
-                                <th>进球时间</th>
                             </tr>
                         </thead>
                         <tbody id="scorers-tbody"></tbody>
@@ -1876,16 +1875,6 @@ function renderScorers() {
         else if (rank === 2) rankDisplay = '🥈';
         else if (rank === 3) rankDisplay = '🥉';
 
-        // 显示进球时间（最多5个, 按时间排序）
-        var timeSorted = p.times.slice().sort(function(a, b) { return a.minute - b.minute; });
-        var timeStr = timeSorted.map(function(t) {
-            var s = t.display;
-            return s;
-        }).join(', ');
-        if (timeSorted.length > 8) {
-            timeStr = timeSorted.slice(0, 8).map(function(t) { return t.display; }).join(', ') + ' ...';
-        }
-
         var flag = FLAG_MAP[p.team] || '🏳';
 
         html += '<tr>' +
@@ -1896,7 +1885,6 @@ function renderScorers() {
                 (p.penaltyGoals > 0 ? ' <span class="penalty-badge">(' + p.penaltyGoals + 'p)</span>' : '') +
                 (p.ownGoals > 0 ? ' <span class="og-badge">(' + p.ownGoals + 'og)</span>' : '') +
             '</td>' +
-            '<td class="goal-times">' + timeStr + '</td>' +
         '</tr>';
     });
 
