@@ -164,11 +164,15 @@ function parseScorerEntry(entry, homeAway) {
     if (!entry || entry === 'null') return null;
     entry = entry.trim().replace(/^"+|"+$/g, '');
 
-    // 匹配末尾的时间: 数字(分钟) + ' + 可选补时
+    // 匹配末尾的时间: 数字(分钟) + ' + 可选补时 + 可选(p/OG)
     // 例如: "9'", "45'+5'", "90'+8'(p)", "76'"
     var timeMatch = entry.match(/\((\d+)[\+']+(\d*)'[^\)]*\)\s*$/);
     if (!timeMatch) {
         timeMatch = entry.match(/(\d+)[\+']+(\d*)'[^'\)]*$/);
+    }
+    if (!timeMatch) {
+        // 普通进球 "67'"
+        timeMatch = entry.match(/(\d+)'/);
     }
 
     if (!timeMatch) return null;
@@ -178,6 +182,10 @@ function parseScorerEntry(entry, homeAway) {
     var actualMinute = minute + stoppage;
 
     var namePart = entry.substring(0, entry.length - timeMatch[0].length).trim();
+    if (!namePart && timeMatch[1]) {
+        // 降级: 用正则找到数字前的内容
+        namePart = entry.replace(/\d+[\+']*\d*'.*$/, '').trim();
+    }
     namePart = namePart.replace(/^"+|"+$/g, '').replace(/[\(\)]/g, '').trim();
 
     if (!namePart) return null;
