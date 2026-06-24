@@ -1773,11 +1773,15 @@ function switchTab(tab) {
     buttons.forEach(function(b) { b.classList.remove('active'); });
     if (tab === 'schedule') {
         scheduleEl.classList.remove('hidden');
+        scheduleEl.style.display = '';
         scorersEl.classList.add('hidden');
+        scorersEl.style.display = 'none';
         buttons[0].classList.add('active');
     } else if (tab === 'scorers') {
         scheduleEl.classList.add('hidden');
+        scheduleEl.style.display = 'none';
         scorersEl.classList.remove('hidden');
+        scorersEl.style.display = '';
         buttons[1].classList.add('active');
         if (!window._scorersLoaded) {
             loadScorers();
