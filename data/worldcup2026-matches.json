@@ -1090,8 +1090,8 @@
     "home_team": {
       "flag": "🇨🇴",
       "name": "哥伦比亚",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "away_team": {
       "flag": "🇨🇩",
@@ -1101,7 +1101,7 @@
     },
     "venue": "Guadalajara, Mexico",
     "stadium": "阿克伦球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 49,
