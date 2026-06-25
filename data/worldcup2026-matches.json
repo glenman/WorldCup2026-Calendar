@@ -1159,18 +1159,18 @@
     "home_team": {
       "flag": "🇲🇦",
       "name": "摩洛哥",
-      "score": 0,
-      "points": 0
+      "score": 4,
+      "points": 3
     },
     "away_team": {
       "flag": "🇭🇹",
       "name": "海地",
-      "score": 0,
+      "score": 2,
       "points": 0
     },
     "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 52,
@@ -1188,12 +1188,12 @@
     "away_team": {
       "flag": "🇧🇷",
       "name": "巴西",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "venue": "Miami Gardens, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 53,
@@ -1205,8 +1205,8 @@
     "home_team": {
       "flag": "🇿🇦",
       "name": "南非",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "away_team": {
       "flag": "🇰🇷",
@@ -1216,7 +1216,7 @@
     },
     "venue": "Monterrey, Mexico, BBVA球场",
     "stadium": "BBVA球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 54,
@@ -1234,12 +1234,12 @@
     "away_team": {
       "flag": "🇲🇽",
       "name": "墨西哥",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "venue": "Mexico City, Mexico",
     "stadium": "阿兹特克球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 55,
