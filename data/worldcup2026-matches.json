@@ -1257,12 +1257,12 @@
     "away_team": {
       "flag": "🇨🇮",
       "name": "科特迪瓦",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "Philadelphia, USA",
     "stadium": "林肯金融球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 56,
@@ -1274,18 +1274,18 @@
     "home_team": {
       "flag": "🇪🇨",
       "name": "厄瓜多尔",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇩🇪",
       "name": "德国",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "East Rutherford, USA",
     "stadium": "大都会人寿球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 57,
