@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-25T07:54:43.488Z",
+  "updated_at": "2026-06-25T21:02:55.536Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 50,
-  "total_goals": 158,
+  "matches_with_goals": 52,
+  "total_goals": 161,
   "goals": [
     {
       "match_number": 1,
@@ -2532,6 +2532,54 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 55,
+      "group": "E组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "库拉索",
+      "away_team": "科特迪瓦",
+      "team": "科特迪瓦",
+      "team_en": "Ivory Coast",
+      "scorer": "Nikvlas Ph Ph",
+      "minute": 7,
+      "minute_display": "7'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 56,
+      "group": "E组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "厄瓜多尔",
+      "away_team": "德国",
+      "team": "德国",
+      "team_en": "Germany",
+      "scorer": "Leroy Sané",
+      "minute": 2,
+      "minute_display": "2'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 56,
+      "group": "E组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "厄瓜多尔",
+      "away_team": "德国",
+      "team": "厄瓜多尔",
+      "team_en": "Ecuador",
+      "scorer": "Nilsvn Angvlv",
+      "minute": 9,
+      "minute_display": "9'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     }
   ]
 }
