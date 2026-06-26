@@ -1297,18 +1297,18 @@
     "home_team": {
       "flag": "🇯🇵",
       "name": "日本",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇸🇪",
       "name": "瑞典",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Arlington, USA, AT&T球场",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 58,
@@ -1320,18 +1320,18 @@
     "home_team": {
       "flag": "🇹🇳",
       "name": "突尼斯",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇳🇱",
       "name": "荷兰",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "venue": "Kansas City, USA",
     "stadium": "箭头体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 59,
@@ -1344,17 +1344,17 @@
       "flag": "🇵🇾",
       "name": "巴拉圭",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇦🇺",
       "name": "澳大利亚",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Santa Clara, USA",
     "stadium": "李维斯球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 60,
@@ -1366,18 +1366,18 @@
     "home_team": {
       "flag": "🇹🇷",
       "name": "土耳其",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇺🇸",
       "name": "美国",
-      "score": 0,
+      "score": 2,
       "points": 0
     },
     "venue": "Inglewood, USA, SoFi体育场",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 61,
