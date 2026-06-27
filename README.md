@@ -19,7 +19,7 @@
 | 日历订阅链接 | ✅ | 复制链接后粘贴到日历应用（Apple/Google/Outlook） |
 | 响应式布局 | ✅ | 桌面 / 平板 / 手机 自适应 |
 | AI 比分录入 | ✅ | 通过 Skill 一句话更新比分（手工方式） |
-| API 自动同步 | ✅ | GitHub Actions 每 3 小时自动从 API 拉取比分、积分、进球 |
+| API 自动同步 | ✅ | GitHub Actions 每天 08:00/12:00（北京时间）自动从 API 拉取比分、积分、进球 |
 | 进球数据 | ✅ | 138+ 个进球记录，含球员、时间、点球/乌龙标注 |
 
 ---
@@ -147,10 +147,10 @@ Workflow 文件：[.github/workflows/sync-goals.yml](.github/workflows/sync-goal
 
 | 时间 | 说明 |
 |------|------|
-| 03:00 | 凌晨场次结束后 |
-| 06:00 | 早晨场次结束后 |
-| 09:00 | 上午场次结束后 |
-| 12:00 | 下午补充同步 |
+| 08:00 | 早晨同步 |
+| 12:00 | 中午同步 |
+
+> **注意**：cron 表达式为 `0 0,4 * * *`（UTC）。GitHub Actions 的 cron 调度器在 workflow 变更后可能需要一个周期才能生效，偶尔跳过一次属正常现象。如遇未触发，可手动触发（见下方）。
 
 **同步内容**：
 
@@ -162,6 +162,17 @@ Workflow 文件：[.github/workflows/sync-goals.yml](.github/workflows/sync-goal
 | `wc2026-goals.json` | API `home_scorers`/`away_scorers` | 每场进球记录 |
 
 **数据来源**：`https://worldcup26.ir/get/games`（无需认证）
+
+### 手动触发
+
+如果 cron 未自动触发，可以手动触发 GitHub Actions：
+
+```bash
+cd WorldCup2026-Calendar
+github workflow run sync-goals.yml
+```
+
+或直接访问：https://github.com/glenman/WorldCup2026-Calendar/actions/workflows/sync-goals.yml
 
 ---
 
