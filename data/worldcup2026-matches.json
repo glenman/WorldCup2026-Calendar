@@ -1436,17 +1436,17 @@
       "flag": "🇨🇻",
       "name": "佛得角",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇸🇦",
       "name": "沙特阿拉伯",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Houston, USA, NRG球场",
     "stadium": "NRG球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 64,
@@ -1464,12 +1464,12 @@
     "away_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Guadalajara, Mexico",
     "stadium": "阿克伦球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 65,
