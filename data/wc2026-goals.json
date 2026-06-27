@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-27T00:23:44.853Z",
+  "updated_at": "2026-06-27T01:54:21.335Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 57,
-  "total_goals": 184,
+  "matches_with_goals": 58,
+  "total_goals": 185,
   "goals": [
     {
       "match_number": 1,
@@ -2948,6 +2948,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 64,
+      "group": "H组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "乌拉圭",
+      "away_team": "西班牙",
+      "team": "西班牙",
+      "team_en": "Spain",
+      "scorer": "Álex Baena",
+      "minute": 42,
+      "minute_display": "42'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     }
   ]
 }
