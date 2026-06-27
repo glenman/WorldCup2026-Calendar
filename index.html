@@ -526,7 +526,7 @@
             letter-spacing: 1px;
             white-space: nowrap;
         }
-        .tab-btn:first-child { border-right: 1px solid var(--card-border); }
+        .tab-btn:not(:last-child) { border-right: 1px solid var(--card-border); }
         .tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
         .tab-btn.active {
             color: var(--black);
@@ -598,6 +598,387 @@
             }
             .scorers-table .team-flag { margin-right: 2px; }
         }
+
+        /* ====== 淘汰赛 Bracket ====== */
+        .knockout-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 30px rgba(200,168,78,0.08);
+            position: relative; overflow: hidden;
+        }
+        .knockout-banner::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), #ff6b35, var(--gold));
+        }
+        .knockout-banner h2 { margin: 0 0 16px; color: var(--gold); font-size: 1.4rem; letter-spacing: 2px; }
+
+        .bracket-container {
+            overflow-x: auto;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        .bracket-tree {
+            display: flex;
+            gap: 0;
+            min-width: max-content;
+            justify-content: center;
+        }
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+            min-width: 170px;
+            padding: 0 8px;
+            position: relative;
+        }
+        .bracket-round-label {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+        .bracket-match {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            position: relative;
+            transition: all 0.2s;
+            cursor: pointer;
+            min-height: 64px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            justify-content: center;
+        }
+        .bracket-match:hover {
+            border-color: var(--gold);
+            box-shadow: 0 2px 12px rgba(200,168,78,0.12);
+        }
+        .bracket-match.finished {
+            border-color: rgba(200,168,78,0.4);
+        }
+
+        /* 对阵行：主队 | VS | 客队 */
+        .matchup-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+        .team-block {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+        }
+        .team-block.home { justify-content: flex-end; text-align: right; }
+        .team-block.away { justify-content: flex-start; text-align: left; }
+        .team-block .flag { font-size: 1rem; flex-shrink: 0; }
+        .team-block .name {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .team-block .score-num {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-variant-numeric: tabular-nums;
+            min-width: 16px;
+            text-align: center;
+        }
+        .team-block.winner .name { color: var(--gold); font-weight: 700; }
+        .team-block.loser .name { color: var(--text-muted); text-decoration: line-through; }
+        .vs-badge {
+            flex-shrink: 0;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--card-border);
+            display: flex;
+            align-items: center; justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+        .bracket-match.finished .vs-badge {
+            background: rgba(200,168,78,0.2);
+            color: var(--gold);
+            font-size: 0.65rem;
+        }
+        .match-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+        .match-meta-row .meta-divider {
+            width: 3px; height: 3px;
+            border-radius: 50%;
+            background: var(--card-border);
+        }
+        .advance-indicator { display: none; } /* 桌面端隐藏晋级标注 */
+        .bracket-match .round-badge { display: none; }
+        .bracket-team { display: none; }
+        .bracket-match-time { display: none; }
+
+        /* Bracket connectors (right side arrows) */
+        .bracket-round:not(:last-child) .bracket-match::after {
+            content: '';
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            width: 8px;
+            height: 2px;
+            background: var(--card-border);
+        }
+        /* Vertical lines connecting matches to next round */
+        .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::before {
+            content: '';
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            width: 2px;
+            height: calc(50% + 6px);
+            background: var(--card-border);
+        }
+        .bracket-round:not(:last-child) .bracket-match:nth-child(even)::before {
+            content: '';
+            position: absolute;
+            right: -16px;
+            bottom: 50%;
+            width: 2px;
+            height: calc(50% + 6px);
+            background: var(--card-border);
+        }
+        .bracket-match .round-badge {
+            display: inline-block;
+            background: rgba(200,168,78,0.12);
+            color: var(--gold);
+            padding: 1px 6px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .knockout-subscribe {
+            background: rgba(200,168,78,0.06);
+            border: 1px solid rgba(200,168,78,0.2);
+            border-radius: 16px;
+            padding: 20px 28px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* ====== 统一列式 Bracket（全端通用） ====== */
+        /* 隐藏旧桌面端 bracket 组件 */
+        .bracket-nav, .bracket-dots, .bracket-round-tabs,
+        .bracket-round, .bracket-round-label, .bracket-team, .bracket-match-time,
+        .bracket-round:not(:last-child) .bracket-match::after,
+        .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::before,
+        .bracket-round:not(:last-child) .bracket-match:nth-child(even)::before { display: none !important; }
+        .bracket-carousel { display: block; }
+        .bracket-carousel-wrap { overflow-x: visible; }
+        .bracket-tree { display: block; min-width: unset; justify-content: unset; }
+        .bracket-container { padding: 6px 0 12px; overflow-x: visible; }
+
+        /* 列布局容器 */
+        .bracket-tree-vertical {
+            display: flex !important;
+            align-items: stretch;
+            justify-content: center;
+            gap: 1px;
+            padding: 4px 1px 8px;
+        }
+
+        /* 列 */
+        .btv-col {
+            flex: 1 1 0;
+            min-width: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1px;
+            position: relative;
+        }
+        .btv-col.center { flex: 0 0 auto; min-width: 72px; gap: 4px; }
+        .btv-col-label {
+            font-size: 0.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: rgba(200,168,78,0.4);
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1px;
+        }
+
+        /* 对阵项 */
+        .btv-match-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+            padding: 3px 2px;
+            background: linear-gradient(135deg, #1a1a2e, #141e30);
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .btv-match-item:hover, .btv-match-item:active {
+            border-color: var(--gold);
+        }
+        .btv-match-item.finished {
+            background: linear-gradient(135deg, #1e1c14, #151a20);
+            border-color: rgba(200,168,78,0.3);
+        }
+        .btv-match-item .flag-only {
+            font-size: 1.05rem;
+            line-height: 1.2;
+        }
+        .btv-match-item .btv-vs-mini,
+        .btv-match-item .btv-score {
+            font-size: 0.42rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            min-height: 8px;
+            line-height: 1;
+        }
+        .btv-match-item.finished .btv-score { color: var(--gold); }
+
+        /* 决赛列卡片 */
+        .btv-final-card, .btv-third-card {
+            background: linear-gradient(145deg, #1e1b0c, #1a1520);
+            border: 1.5px solid var(--gold);
+            border-radius: 8px;
+            padding: 5px 6px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(200,168,78,0.08);
+            width: 100%;
+        }
+        .btv-third-card {
+            border-color: rgba(200,168,78,0.3);
+            box-shadow: 0 0 6px rgba(200,168,78,0.04);
+        }
+        .btv-round-label {
+            font-size: 0.38rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+        .btv-final-card .btv-match-item,
+        .btv-third-card .btv-match-item {
+            flex-direction: row;
+            gap: 3px;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 2px 0;
+        }
+        .btv-final-card .btv-match-item .btv-vs-mini,
+        .btv-third-card .btv-match-item .btv-vs-mini {
+            display: flex;
+            font-size: 0.38rem;
+            width: 10px; height: 10px;
+        }
+
+        /* 竖屏默认：隐藏 3 字母代码 */
+        .btv-code { display: none; }
+        .btv-flag-circle, .btv-center, .btv-stage,
+        .btv-stage-label, .btv-gap, .btv-branch, .btv-capsule,
+        .btv-vs, .btv-score, .btv-connector, .btv-trophy { display: none; }
+
+        /* ====== ≥500px（横屏手机 / 小平板）：显示 3 字母代码 ====== */
+        @media (min-width: 500px) {
+            .btv-code {
+                display: block;
+                font-size: 0.42rem;
+                font-weight: 700;
+                color: var(--text);
+                letter-spacing: 0.5px;
+                font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+                line-height: 1;
+            }
+            .btv-match-item { gap: 1px; padding: 3px 4px; }
+            .btv-col { min-width: 34px; }
+            .btv-col.center { min-width: 90px; }
+            .btv-col-label { font-size: 0.45rem; letter-spacing: 1px; }
+            .btv-match-item .btv-vs-mini,
+            .btv-match-item .btv-score { font-size: 0.45rem; }
+        }
+
+        /* ====== ≥768px（平板 / PC）：放大 ====== */
+        @media (min-width: 768px) {
+            .bracket-container { padding: 10px 0 20px; }
+            .bracket-tree-vertical { gap: 2px; padding: 8px 2px 14px; }
+            .btv-col { gap: 3px; min-width: 48px; }
+            .btv-col.center { min-width: 140px; gap: 8px; }
+            .btv-col-label { font-size: 0.55rem; letter-spacing: 2px; margin-bottom: 3px; }
+            .btv-match-item { gap: 3px; padding: 5px 6px; border-radius: 8px; }
+            .btv-match-item .flag-only { font-size: 1.4rem; }
+            .btv-code { font-size: 0.55rem; }
+            .btv-match-item .btv-vs-mini,
+            .btv-match-item .btv-score { font-size: 0.55rem; min-height: 10px; }
+            .btv-final-card, .btv-third-card {
+                border-radius: 12px;
+                padding: 8px 12px;
+                box-shadow: 0 0 16px rgba(200,168,78,0.12);
+            }
+            .btv-round-label { font-size: 0.5rem; letter-spacing: 2px; }
+            .btv-final-card .btv-match-item .btv-vs-mini,
+            .btv-third-card .btv-match-item .btv-vs-mini {
+                font-size: 0.45rem;
+                width: 14px; height: 14px;
+            }
+            /* 列间连接箭头 */
+            .btv-col:not(.center)::after {
+                content: '\203A';
+                position: absolute;
+                right: -7px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1rem;
+                color: var(--card-border);
+                line-height: 1;
+            }
+            .btv-col:last-child::after, .btv-col.center::after { display: none; }
+        }
+
+        /* ====== ≥1024px（大屏）：更宽松 ====== */
+        @media (min-width: 1024px) {
+            .bracket-tree-vertical { gap: 4px; padding: 12px 4px 20px; max-width: 1100px; margin: 0 auto; }
+            .btv-col { gap: 4px; min-width: 64px; }
+            .btv-col.center { min-width: 180px; gap: 12px; }
+            .btv-col-label { font-size: 0.65rem; letter-spacing: 3px; }
+            .btv-match-item { gap: 4px; padding: 6px 8px; border-radius: 10px; border-width: 1.5px; }
+            .btv-match-item .flag-only { font-size: 1.7rem; }
+            .btv-code { font-size: 0.65rem; }
+            .btv-match-item .btv-vs-mini,
+            .btv-match-item .btv-score { font-size: 0.65rem; }
+            .btv-round-label { font-size: 0.6rem; }
+            .btv-col:not(.center)::after { font-size: 1.2rem; right: -10px; }
+        }
 </style>
 </head>
 <body>
@@ -609,7 +990,8 @@
 
         <!-- Tab 切换栏 -->
         <div class="tab-bar">
-            <button class="tab-btn active" onclick="switchTab('schedule')">📅 比赛赛程</button>
+            <button class="tab-btn active" onclick="switchTab('schedule')">📅 小组赛程</button>
+            <button class="tab-btn" onclick="switchTab('knockout')">🏆 淘汰赛</button>
             <button class="tab-btn" onclick="switchTab('scorers')">⚽ 射手榜</button>
         </div>
 
@@ -617,12 +999,12 @@
         <div id="tab-schedule" class="tab-panel">
 
         <div class="summary-banner">
-            <h2>📋 小组赛赛事概览</h2>
+            <h2>📋 赛事概览</h2>
             <div class="summary-grid">
-                <div class="summary-item"><div class="label">⏰ 时间范围</div><div class="value">6月12日 - 6月28日</div></div>
+                <div class="summary-item"><div class="label">⏰ 时间范围</div><div class="value">6月12日 - 7月20日</div></div>
                 <div class="summary-item"><div class="label">⏱️ 所有时间</div><div class="value">北京时间</div></div>
-                <div class="summary-item"><div class="label">🏆 总场次</div><div class="value" id="total-matches">72 场</div></div>
-                <div class="summary-item"><div class="label">📅 比赛天数</div><div class="value">17 天</div></div>
+                <div class="summary-item"><div class="label">🏆 总场次</div><div class="value" id="total-matches">104 场</div></div>
+                <div class="summary-item"><div class="label">📅 比赛天数</div><div class="value">39 天</div></div>
             </div>
             <div class="summary-actions">
                 <a href="worldcup2026.ics" class="btn" download>📥 下载全部赛程 ICS</a>
@@ -630,7 +1012,7 @@
             <div class="subscribe-section">
                 <h2 style="font-size:1.1rem;">🔗 订阅链接</h2>
                 <div class="subscribe-item">
-                    <label>📅 小组赛赛程订阅链接：</label>
+                    <label>📅 全部赛程订阅链接（含小组赛+淘汰赛共104场）：</label>
                     <div class="subscribe-url-row">
                         <input type="text" id="subscribeUrlWc" value="https://glenman.github.io/WorldCup2026-Calendar/worldcup2026.ics" readonly />
                         <button class="copy-subscribe-btn" onclick="copySubscribeUrl('subscribeUrlWc', 'subscribeOkWc')">📋 复制</button>
@@ -1087,6 +1469,38 @@ id="calendar-app"></div>
 
         </div><!-- /tab-schedule -->
 
+        <!-- 淘汰赛面板 -->
+        <div id="tab-knockout" class="tab-panel hidden">
+            <div class="knockout-banner">
+                <h2>🏆 淘汰赛对阵图</h2>
+                <div class="summary-grid">
+                    <div class="summary-item"><div class="label">⏰ 时间范围</div><div class="value">6月29日 - 7月20日</div></div>
+                    <div class="summary-item"><div class="label">🏆 总场次</div><div class="value" id="knockout-total">32 场</div></div>
+                    <div class="summary-item"><div class="label">🏟️ 阶段</div><div class="value">1/16 → 决赛</div></div>
+                    <div class="summary-item"><div class="label">📅 比赛天数</div><div class="value">22 天</div></div>
+                </div>
+                <div class="summary-actions">
+                    <a href="worldcup2026.ics" class="btn" download>📥 下载全部赛程 ICS</a>
+                </div>
+                <div class="knockout-subscribe" style="margin-top:16px;">
+                    <label style="display:block;margin-bottom:8px;color:var(--text);font-weight:600;">
+                        📅 淘汰赛赛程订阅链接（含全部 104 场）：
+                    </label>
+                    <div class="subscribe-url-row">
+                        <input type="text" id="subscribeUrlKo" value="https://glenman.github.io/WorldCup2026-Calendar/worldcup2026.ics" readonly />
+                        <button class="copy-subscribe-btn" onclick="copySubscribeUrl('subscribeUrlKo', 'subscribeOkKo')">📋 复制</button>
+                    </div>
+                    <div class="subscribe-ok" id="subscribeOkKo">✅ 已复制到剪贴板！</div>
+                </div>
+            </div>
+
+            <div class="bracket-container">
+                <div class="bracket-tree" id="bracket-tree"></div>
+            </div>
+
+            <div id="knockout-calendar"></div>
+        </div><!-- /tab-knockout -->
+
         <!-- 射手榜面板 -->
         <div id="tab-scorers" class="tab-panel hidden">
             <div class="scorers-banner">
@@ -1241,34 +1655,55 @@ function getTeamMatches(teamName) {
 
 function generateICS(matches, teamName) {
     var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
-    var idx = 1;
     for (var i = 0; i < matches.length; i++) {
         var m = matches[i];
         var timeParts = m.time_cn.split(':').map(Number);
         var h = timeParts[0];
         var min = timeParts[1];
-        var dayMatch = m.date_cn.match(/(\d+)[^\d]*$/);
-        var dayNum = dayMatch ? parseInt(dayMatch[1]) : 12;
+        // 解析 "X月X日" 格式
+        var dayMatch = m.date_cn.match(/(\d+)月(\d+)日/);
+        var monthNum = dayMatch ? parseInt(dayMatch[1]) : 6;
+        var dayNum = dayMatch ? parseInt(dayMatch[2]) : 12;
         // Beijing time to UTC
         var utcH = (h - 8 + 24) % 24;
         var utcDay = (h < 8) ? dayNum - 1 : dayNum;
-        var utcDate = Date.UTC(2026, 5, utcDay, utcH, min);
+        var utcDate = Date.UTC(2026, monthNum - 1, utcDay, utcH, min);
         var iso = new Date(utcDate).toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
         ics += 'BEGIN:VEVENT\r\n';
-        ics += 'UID:wc26-' + idx + '@worldcup26\r\n';
+        ics += 'UID:wc26-' + m.match_number + '@worldcup26\r\n';
         ics += 'DTSTART:' + iso + '\r\n';
         var endDt = new Date(utcDate + 7200000);
         ics += 'DTEND:' + endDt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z\r\n';
-        var summary = m.home_team.flag + ' ' + m.home_team.name + ' ' + m.home_team.score + ':' + m.away_team.score + ' ' + m.away_team.flag + ' ' + m.away_team.name;
-        var cityVenue = m.venue || '';
+        // SUMMARY
+        var summary;
+        var flagH = m.home_team.flag || '';
+        var flagA = m.away_team.flag || '';
+        if (m.status === '已结束') {
+            summary = flagH + ' ' + m.home_team.name + ' ' + m.home_team.score + ':' + m.away_team.score + ' ' + flagA + ' ' + m.away_team.name;
+        } else {
+            summary = flagH + ' ' + m.home_team.name + ' vs ' + flagA + ' ' + m.away_team.name;
+        }
+        if (m.match_type === '淘汰赛') {
+            summary += ' (' + m.round + ')';
+        }
+        // DESCRIPTION
+        var desc;
+        if (m.match_type === '淘汰赛') {
+            desc = '淘汰赛 ' + m.round + ' | 📍' + (m.venue || '');
+        } else {
+            desc = m.match_type + ' ' + (m.group || '') + ' | 📍' + (m.venue || '');
+        }
+        if (m.status === '已结束') {
+            desc += ' | 比分: ' + m.home_team.score + ':' + m.away_team.score;
+        }
+        desc += '\\n场地: ' + m.stadium + '\\n' + (teamName || '') + '\\n';
         ics += 'SUMMARY:' + summary + '\r\n';
-        ics += 'DESCRIPTION:' + m.match_type + ' ' + m.group + '\\n场地: ' + m.stadium + '\\n' + teamName + ' | 📍' + cityVenue + '\\n' + m.stadium + '\r\n';
+        ics += 'DESCRIPTION:' + desc + '\r\n';
         ics += 'LOCATION:' + (STADIUM_GEO[m.stadium] ? STADIUM_GEO[m.stadium].address : (m.venue + ' ' + m.stadium)) + '\r\n';
         if (STADIUM_GEO[m.stadium]) {
             ics += getStadiumGeo(m.stadium, m.venue) + '\r\n';
         }
         ics += 'END:VEVENT\r\n';
-        idx++;
     }
     ics += 'END:VCALENDAR\r\n';
     return ics;
@@ -1324,17 +1759,27 @@ function renderCalendar(filteredMatches, teamName) {
     } else {
         var flag2 = teamName.match(/^\S+/)?.[0] || '🏆';
         title.innerHTML = '<small>FIFA WORLD CUP 2026</small>🏆 ' + flag2 + ' ' + teamName.replace(/^\S+\s+/, '') + ' 专属赛程';
-        var count2 = filteredMatches ? filteredMatches.length : 0;
+        var count2 = filteredMatches ? filteredMatches.filter(function(m) { return m.match_type === '小组赛'; }).length : 0;
         totalEl.textContent = count2 + ' 场';
     }
     var byDay = {};
-    var sourceMatches = filteredMatches || ALL_MATCHES;
+    // 小组赛程 Tab 只显示小组赛（淘汰赛在淘汰赛 Tab 中查看）
+    var sourceMatches = (filteredMatches || ALL_MATCHES).filter(function(m) { return m.match_type === '小组赛'; });
     sourceMatches.forEach(function(m) {
         var day = m.date_cn;
         if (!byDay[day]) byDay[day] = [];
         byDay[day].push(m);
     });
     var days = Object.keys(byDay);
+    // 按日期排序（支持跨月）
+    days.sort(function(a, b) {
+        var ma = a.match(/(\d+)月(\d+)日/);
+        var mb = b.match(/(\d+)月(\d+)日/);
+        if (!ma || !mb) return 0;
+        var da = parseInt(ma[1]) * 100 + parseInt(ma[2]);
+        var db = parseInt(mb[1]) * 100 + parseInt(mb[2]);
+        return da - db;
+    });
     var html = bannerHtml;
     days.forEach(function(day) {
         var dayMatches = byDay[day];
@@ -1351,7 +1796,7 @@ function renderCalendar(filteredMatches, teamName) {
                     '<div class="match-name">' + matchName + scoreHtml + '</div>' +
                     '<div class="match-meta">📍 ' + m.venue + ' · ' + m.stadium + '</div>' +
                 '</div>' +
-                '<span class="group-badge">' + m.group + '</span>' +
+                '<span class="group-badge">' + (m.match_type === '淘汰赛' ? m.round : m.group) + '</span>' +
             '</div>';
         });
     });
@@ -1776,30 +2221,444 @@ function renderInlineScores() {
 
 // ========== Tab 切换 ==========
 function switchTab(tab) {
-    var scorersEl = document.getElementById('tab-scorers');
+    var schedulePanel = document.getElementById('tab-schedule');
+    var knockoutPanel = document.getElementById('tab-knockout');
+    var scorersPanel = document.getElementById('tab-scorers');
     var buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(function(b) { b.classList.remove('active'); });
 
-    // 所有赛程相关的区块选择器
-    var scheduleSections = document.querySelectorAll(
-        '.summary-banner, .team-selector-section, .group-selector, #calendar-app'
-    );
+    // 隐藏所有面板
+    [schedulePanel, knockoutPanel, scorersPanel].forEach(function(el) {
+        if (el) { el.style.display = 'none'; el.classList.add('hidden'); }
+    });
 
     if (tab === 'schedule') {
-        scheduleSections.forEach(function(el) { el.style.display = ''; });
-        scorersEl.style.display = 'none';
-        scorersEl.classList.add('hidden');
+        schedulePanel.style.display = '';
+        schedulePanel.classList.remove('hidden');
         buttons[0].classList.add('active');
-    } else if (tab === 'scorers') {
-        scheduleSections.forEach(function(el) { el.style.display = 'none'; });
-        scorersEl.style.display = '';
-        scorersEl.classList.remove('hidden');
+    } else if (tab === 'knockout') {
+        knockoutPanel.style.display = '';
+        knockoutPanel.classList.remove('hidden');
         buttons[1].classList.add('active');
+        if (!window._knockoutLoaded) {
+            renderBracket();
+            renderKnockoutCalendar();
+            window._knockoutLoaded = true;
+        }
+    } else if (tab === 'scorers') {
+        scorersPanel.style.display = '';
+        scorersPanel.classList.remove('hidden');
+        buttons[2].classList.add('active');
         if (!window._scorersLoaded) {
             loadScorers();
             window._scorersLoaded = true;
         }
     }
+}
+
+// ========== 淘汰赛渲染 ==========
+function getKnockoutMatches() {
+    if (!ALL_MATCHES.length) return [];
+    return ALL_MATCHES.filter(function(m) {
+        return m.match_type === '淘汰赛';
+    });
+}
+
+var BRACKET_ROUNDS = ['1/16决赛', '1/8决赛', '1/4决赛', '半决赛', '季军赛', '决赛'];
+
+function renderBracket() {
+    var tree = document.getElementById('bracket-tree');
+    if (!tree) return;
+    var koMatches = getKnockoutMatches();
+    if (koMatches.length === 0) {
+        tree.innerHTML = '<div class="empty-state"><p>淘汰赛数据加载中...</p></div>';
+        return;
+    }
+
+    // 按轮次和比赛号索引
+    var matchMap = {};
+    koMatches.forEach(function(m) { matchMap[m.match_number] = m; });
+
+    var displayOrder = ['1/16决赛', '1/8决赛', '1/4决赛', '半决赛', '季军赛', '决赛'];
+    var validRounds = [];
+    var roundHtml = '';
+
+    // 按轮次分组
+    var rounds = {};
+    displayOrder.forEach(function(r) { rounds[r] = []; });
+    koMatches.forEach(function(m) {
+        if (rounds[m.round]) rounds[m.round].push(m);
+    });
+
+    displayOrder.forEach(function(roundName) {
+        var matches = rounds[roundName];
+        if (!matches || matches.length === 0) return;
+        matches.sort(function(a, b) { return a.match_number - b.match_number; });
+        validRounds.push(roundName);
+
+        roundHtml += '<div class="bracket-round" data-round="' + roundName + '">';
+        roundHtml += '<div class="bracket-round-label">' + roundName + '</div>';
+        matches.forEach(function(m) {
+            var extraClass = m.status === '已结束' ? ' finished' : '';
+            var homeWin = m.status === '已结束' && m.home_team.score > m.away_team.score;
+            var awayWin = m.status === '已结束' && m.away_team.score > m.home_team.score;
+
+            roundHtml += '<div class="bracket-match' + extraClass + '">';
+            roundHtml += '<div class="matchup-row">';
+            var homeCls = homeWin ? ' winner' : (awayWin ? ' loser' : '');
+            roundHtml += '<div class="team-block home' + homeCls + '">';
+            roundHtml += '<span class="name">' + m.home_team.name + '</span>';
+            if (m.status === '已结束') roundHtml += '<span class="score-num">' + m.home_team.score + '</span>';
+            roundHtml += '<span class="flag">' + (m.home_team.flag || '🏳') + '</span>';
+            roundHtml += '</div>';
+            if (m.status === '已结束') {
+                roundHtml += '<div class="vs-badge">' + m.home_team.score + ':' + m.away_team.score + '</div>';
+            } else {
+                roundHtml += '<div class="vs-badge">VS</div>';
+            }
+            var awayCls = awayWin ? ' winner' : (homeWin ? ' loser' : '');
+            roundHtml += '<div class="team-block away' + awayCls + '">';
+            roundHtml += '<span class="flag">' + (m.away_team.flag || '🏳') + '</span>';
+            if (m.status === '已结束') roundHtml += '<span class="score-num">' + m.away_team.score + '</span>';
+            roundHtml += '<span class="name">' + m.away_team.name + '</span>';
+            roundHtml += '</div>';
+            roundHtml += '</div>';
+            roundHtml += '<div class="match-meta-row">';
+            roundHtml += '<span>' + m.date_cn + ' ' + m.time_cn + '</span>';
+            roundHtml += '<span class="meta-divider"></span>';
+            roundHtml += '<span>' + (m.stadium || m.venue) + '</span>';
+            roundHtml += '</div>';
+            if (m.round !== '决赛' && m.round !== '季军赛') {
+                var nextRoundMap = { '1/16决赛': '1/8决赛', '1/8决赛': '1/4决赛', '1/4决赛': '半决赛', '半决赛': '决赛' };
+                roundHtml += '<div class="advance-indicator"><span class="advance-arrow">&#8595;</span><span>胜者晋级 ' + (nextRoundMap[m.round] || '') + '</span></div>';
+            }
+            roundHtml += '</div>';
+        });
+        roundHtml += '</div>';
+    });
+
+    // 默认选中轮次
+    var defaultRoundIndex = 0;
+    for (var ri = 0; ri < validRounds.length; ri++) {
+        var rMatches = rounds[validRounds[ri]];
+        if (rMatches.some(function(m) { return m.status !== '已结束'; })) { defaultRoundIndex = ri; break; }
+    }
+
+    // 选项卡
+    var tabsHtml = '<div class="bracket-round-tabs" id="bracket-round-tabs">';
+    validRounds.forEach(function(r, idx) {
+        tabsHtml += '<button class="bracket-round-tab' + (idx === defaultRoundIndex ? ' active' : '') + '" data-round="' + r + '">';
+        tabsHtml += r + '<span class="count">' + rounds[r].length + '场</span>';
+        tabsHtml += '</button>';
+    });
+    tabsHtml += '</div>';
+
+    // 桌面端横向 tree
+    var desktopHtml = tabsHtml;
+    desktopHtml += '<div class="bracket-carousel-wrap">';
+    desktopHtml += '<div class="bracket-carousel" id="bracket-carousel">';
+    desktopHtml += roundHtml;
+    desktopHtml += '</div></div>';
+
+    // 移动端对称树状 tree
+    var mobileHtml = renderBracketVertical(matchMap);
+
+    tree.innerHTML = desktopHtml + mobileHtml;
+
+    initRoundTabs(validRounds, defaultRoundIndex);
+    // 延迟绘制连接线（等待 DOM 渲染）
+    setTimeout(function() { drawBracketConnectors(matchMap); }, 100);
+}
+
+function drawBracketConnectors(matchMap) {
+    var tree = document.getElementById('bracket-tree');
+    if (!tree) return;
+
+    // 移除旧 SVG
+    var oldSvg = tree.querySelector('.bracket-connectors-svg');
+    if (oldSvg) oldSvg.remove();
+
+    var cols = tree.querySelectorAll('.btv-col');
+    if (cols.length < 2) return;
+
+    // 创建 SVG 覆盖层
+    var container = tree.querySelector('.bracket-tree-vertical');
+    if (!container) return;
+    var rect = container.getBoundingClientRect();
+    var svgH = rect.height;
+    var svgW = rect.width;
+
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'bracket-connectors-svg');
+    svg.setAttribute('width', svgW);
+    svg.setAttribute('height', svgH);
+    svg.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:1;';
+    svg.style.width = svgW + 'px';
+    svg.style.height = svgH + 'px';
+    container.style.position = 'relative';
+    container.appendChild(svg);
+
+    // 计算每个列中 match item 的中心 Y 位置 + 左右边缘
+    function getColMatchCenters(col) {
+        var items = col.querySelectorAll('.btv-match-item');
+        var centers = [];
+        items.forEach(function(item) {
+            var ir = item.getBoundingClientRect();
+            var cx = ir.left + ir.width / 2 - rect.left;
+            var cy = ir.top + ir.height / 2 - rect.top;
+            var rx = ir.right - rect.left;
+            var lx = ir.left - rect.left;
+            centers.push({ cx: cx, cy: cy, rx: rx, lx: lx, item: item });
+        });
+        return centers;
+    }
+
+    var colData = [];
+    cols.forEach(function(col, i) {
+        var data = getColMatchCenters(col);
+        var cr = col.getBoundingClientRect();
+        data._colLeft = cr.left - rect.left;
+        data._colRight = cr.right - rect.left;
+        data._isCenter = col.classList.contains('center');
+        colData.push(data);
+    });
+
+    function drawPath(x1, y1, x2, y2) {
+        var midX = (x1 + x2) / 2;
+        var d = 'M' + x1 + ',' + y1 + ' C' + midX + ',' + y1 + ' ' + midX + ',' + y2 + ' ' + x2 + ',' + y2;
+        var path = document.createElementNS(ns, 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', 'rgba(200,168,78,0.35)');
+        path.setAttribute('stroke-width', '0.8');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(path);
+    }
+
+    // 连接相邻列（从卡片右边缘 → 下一卡片左边缘）
+    for (var i = 0; i < colData.length - 1; i++) {
+        var left = colData[i];
+        var right = colData[i + 1];
+        if (left._isCenter || right._isCenter || left.length === 0 || right.length === 0) continue;
+
+        var ratio = left.length / right.length;
+        for (var j = 0; j < left.length; j++) {
+            var targetIdx = Math.floor(j / ratio);
+            if (targetIdx < right.length) {
+                var x1 = left[j].rx;
+                var y1 = left[j].cy;
+                var x2 = right[targetIdx].lx;
+                var y2 = right[targetIdx].cy;
+                drawPath(x1, y1, x2, y2);
+            }
+        }
+    }
+
+    // 连接 SF 到 FINAL / 3RD
+    for (var k = 0; k < colData.length; k++) {
+        if (colData[k]._isCenter && colData[k].length >= 2) {
+            var finalItem = colData[k][0];
+            var thirdItem = colData[k][1];
+            if (k > 0 && colData[k - 1].length === 1) {
+                var sfL = colData[k - 1];
+                if (finalItem) drawPath(sfL[0].rx, sfL[0].cy, finalItem.lx, finalItem.cy);
+                if (thirdItem) drawPath(sfL[0].rx, sfL[0].cy, thirdItem.lx, thirdItem.cy);
+            }
+            if (k < colData.length - 1 && colData[k + 1].length === 1) {
+                var sfR = colData[k + 1];
+                if (finalItem) drawPath(sfR[0].lx, sfR[0].cy, finalItem.rx, finalItem.cy);
+                if (thirdItem) drawPath(sfR[0].lx, sfR[0].cy, thirdItem.rx, thirdItem.cy);
+            }
+            break;
+        }
+    }
+}
+
+function getCountryCode(name) {
+    var codes = {
+        '墨西哥': 'MEX', '南非': 'RSA', '加拿大': 'CAN', '瑞士': 'SUI',
+        '巴西': 'BRA', '摩洛哥': 'MAR', '日本': 'JPN', '荷兰': 'NED',
+        '美国': 'USA', '澳大利亚': 'AUS', '德国': 'GER', '科特迪瓦': 'CIV',
+        '法国': 'FRA', '挪威': 'NOR', '阿根廷': 'ARG', '哥伦比亚': 'COL',
+        '英格兰': 'ENG', '西班牙': 'ESP', '葡萄牙': 'POR', '意大利': 'ITA',
+        '乌拉圭': 'URU', '韩国': 'KOR', '塞内加尔': 'SEN', '伊朗': 'IRN',
+        '丹麦': 'DEN', '奥地利': 'AUT', '乌克兰': 'UKR', '尼日利亚': 'NGA',
+        '新西兰': 'NZL', '喀麦隆': 'CMR', '智利': 'CHI', '秘鲁': 'PER',
+        '比利时': 'BEL', '克罗地亚': 'CRO',
+        '巴拉圭': 'PAR', '瑞典': 'SWE', '波黑': 'BIH',
+        '埃及': 'EGY', '佛得角': 'CPV'
+    };
+    if (codes[name]) return codes[name];
+    if (name.indexOf('小组第一') > -1) return name.replace(/小组/, '').replace(/第一/, '1');
+    if (name.indexOf('小组第二') > -1) return name.replace(/小组/, '').replace(/第二/, '2');
+    if (name.indexOf('小组第三') > -1) return name.replace(/小组第三\(/, '3').replace(/\)/, '');
+    if (name.indexOf('胜者') > -1) return name.replace(/胜者/, 'W');
+    return name.substring(0, 3).toUpperCase();
+}
+
+function renderCapsule(m, matchMap) {
+    var finished = m.status === '已结束';
+    var vsContent = finished ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>' : '';
+    var vsBadge = finished ? '' : '<div class="btv-vs">VS</div>';
+
+    var html = '<div class="btv-capsule' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
+    html += '<span class="flag-only">' + (m.home_team.flag || '🏳') + '</span>';
+    if (vsBadge) html += vsBadge;
+    if (vsContent) html += vsContent;
+    html += '<span class="flag-only">' + (m.away_team.flag || '🏳') + '</span>';
+    html += '</div>';
+    return html;
+}
+
+function initRoundTabs(rounds, defaultIdx) {
+    var tabs = document.querySelectorAll('.bracket-round-tab');
+    var roundsEls = document.querySelectorAll('.bracket-round');
+    if (!tabs.length) return;
+
+    function switchRound(roundName) {
+        tabs.forEach(function(t) {
+            t.classList.toggle('active', t.getAttribute('data-round') === roundName);
+        });
+        roundsEls.forEach(function(r) {
+            r.classList.toggle('active', r.getAttribute('data-round') === roundName);
+        });
+    }
+
+    tabs.forEach(function(t) {
+        t.addEventListener('click', function() {
+            switchRound(this.getAttribute('data-round'));
+        });
+    });
+
+    if (defaultIdx >= 0 && defaultIdx < rounds.length) {
+        switchRound(rounds[defaultIdx]);
+    }
+}
+
+function renderBracketVertical(matchMap) {
+    // 横向列顺序：R32左→R16左→QF左→SF左→决赛/三四名→SF右→QF右→R16右→R32右
+    var columns = [
+        { label: '32', side: 'left', matches: [73, 74, 75, 77, 81, 82, 83, 84] },
+        { label: '16', side: 'left', matches: [89, 90, 93, 94] },
+        { label: '8', side: 'left', matches: [97, 98] },
+        { label: '4', side: 'left', matches: [101] },
+        { label: 'F', side: 'center', matches: [104, 103] },
+        { label: '4', side: 'right', matches: [102] },
+        { label: '8', side: 'right', matches: [99, 100] },
+        { label: '16', side: 'right', matches: [91, 92, 95, 96] },
+        { label: '32', side: 'right', matches: [76, 78, 79, 80, 85, 86, 87, 88] }
+    ];
+
+    var html = '<div class="bracket-tree-vertical">';
+
+    columns.forEach(function(col) {
+        if (col.side === 'center') {
+            html += '<div class="btv-col center">';
+            var finalM = matchMap[104];
+            if (finalM) {
+                html += '<div class="btv-final-card">';
+                html += '<div class="btv-round-label">FINAL</div>';
+                html += renderMatchItem(finalM);
+                html += '</div>';
+            }
+            var thirdM = matchMap[103];
+            if (thirdM) {
+                html += '<div class="btv-third-card">';
+                html += '<div class="btv-round-label">3RD</div>';
+                html += renderMatchItem(thirdM);
+                html += '</div>';
+            }
+            html += '</div>';
+        } else {
+            html += '<div class="btv-col">';
+            html += '<div class="btv-col-label">' + col.label + '</div>';
+            col.matches.forEach(function(mn) {
+                var m = matchMap[mn];
+                if (m) html += renderMatchItem(m);
+            });
+            html += '</div>';
+        }
+    });
+
+    html += '</div>';
+    return html;
+}
+
+function renderMatchItem(m) {
+    var finished = m.status === '已结束';
+    var scoreHtml = finished
+        ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>'
+        : '<span class="btv-vs-mini">VS</span>';
+    var homeCode = getCountryCode(m.home_team.name);
+    var awayCode = getCountryCode(m.away_team.name);
+
+    var html = '<div class="btv-match-item' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
+    html += '<span class="flag-only">' + (m.home_team.flag || '🏳') + '</span>';
+    html += '<span class="btv-code">' + homeCode + '</span>';
+    html += scoreHtml;
+    html += '<span class="btv-code">' + awayCode + '</span>';
+    html += '<span class="flag-only">' + (m.away_team.flag || '🏳') + '</span>';
+    html += '</div>';
+    return html;
+}
+
+function renderKnockoutCalendar() {
+    var container = document.getElementById('knockout-calendar');
+    if (!container) return;
+    var koMatches = getKnockoutMatches();
+    if (koMatches.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+
+    var byDay = {};
+    koMatches.forEach(function(m) {
+        var day = m.date_cn;
+        if (!byDay[day]) byDay[day] = [];
+        byDay[day].push(m);
+    });
+    var days = Object.keys(byDay);
+    // 按日期排序
+    days.sort(function(a, b) {
+        var ma = a.match(/(\d+)月(\d+)日/);
+        var mb = b.match(/(\d+)月(\d+)日/);
+        if (!ma || !mb) return 0;
+        var da = parseInt(ma[1]) * 100 + parseInt(ma[2]);
+        var db = parseInt(mb[1]) * 100 + parseInt(mb[2]);
+        return da - db;
+    });
+
+    var html = '';
+    days.forEach(function(day) {
+        var dayMatches = byDay[day];
+        // 同一天内按时间排序
+        dayMatches.sort(function(a, b) {
+            var ta = (a.time_cn || '').split(':');
+            var tb = (b.time_cn || '').split(':');
+            var ma = parseInt(ta[0]) * 60 + parseInt(ta[1] || 0);
+            var mb = parseInt(tb[0]) * 60 + parseInt(tb[1] || 0);
+            return ma - mb;
+        });
+        html += '<div class="date-header"><span>📅 ' + day + '</span><span class="day-count">' + dayMatches.length + ' 场</span></div>';
+        dayMatches.forEach(function(m) {
+            var matchName = (m.home_team.flag || '🏳') + ' ' + m.home_team.name + ' vs ' + (m.away_team.flag || '🏳') + ' ' + m.away_team.name;
+            var scoreHtml = '';
+            if (m.status === '已结束') {
+                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+            }
+            html += '<div class="match-card">' +
+                '<div class="match-time">' + m.time_cn + '</div>' +
+                '<div class="match-info">' +
+                    '<div class="match-name">' + matchName + scoreHtml + '</div>' +
+                    '<div class="match-meta">📍 ' + m.venue + ' · ' + m.stadium + '</div>' +
+                '</div>' +
+                '<span class="group-badge">' + m.round + '</span>' +
+            '</div>';
+        });
+    });
+    container.innerHTML = html;
 }
 
 // ========== 射手榜 ==========
