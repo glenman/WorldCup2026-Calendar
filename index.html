@@ -911,8 +911,8 @@
             display: block;
         }
         .btv-trophy img {
-            width: 30px;
-            height: 45px;
+            width: 56px;
+            height: auto;
             object-fit: contain;
             display: block;
             margin: 0 auto;
@@ -1032,7 +1032,7 @@
         .btv-code { display: none; }
         .btv-flag-circle, .btv-center, .btv-stage,
         .btv-stage-label, .btv-gap, .btv-branch, .btv-capsule,
-        .btv-vs, .btv-connector, .btv-trophy { display: none; }
+        .btv-vs, .btv-connector { display: none; }
 
         /* ====== ≥500px（横屏手机 / 小平板）：显示 3 字母代码 ====== */
         @media (min-width: 500px) {
@@ -2790,6 +2790,7 @@ function renderBracketVertical(matchMap) {
             html += '<div class="btv-col center">';
             var finalM = matchMap[104];
             if (finalM) {
+                html += '<div class="btv-trophy"><img src="images/trophy.png" alt="大力神杯"></div>';
                 html += '<span class="btv-match-no">M104</span>';
                 html += '<div class="btv-final-card">';
                 html += '<div class="btv-round-label">FINAL</div>';
