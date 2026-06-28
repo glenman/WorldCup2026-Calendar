@@ -785,7 +785,7 @@ BEGIN:VEVENT
 UID:wc26-79@worldcup26
 DTSTART:20260701T010000Z
 DTEND:20260701T030000Z
-SUMMARY:🇲🇽 墨西哥 vs 🇬🇭 加纳 (1/16决赛)
+SUMMARY:🇲🇽 墨西哥 vs 🇪🇨 厄瓜多尔 (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Mexico City, Mexico
 LOCATION:Calz. de Tlalpan 3465, Santa Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX, Mexico
 GEO:19.3029;-99.1506
@@ -875,7 +875,7 @@ BEGIN:VEVENT
 UID:wc26-88@worldcup26
 DTSTART:20260704T013000Z
 DTEND:20260704T033000Z
-SUMMARY:🏳 K组第一 vs 🏳 小组第三(8) (1/16决赛)
+SUMMARY:🏳 K组第一 vs 🇬🇭 加纳 (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Kansas City, USA
 LOCATION:1 Arrowhead Dr, Kansas City, MO 64129, USA
 GEO:39.0489;-94.484
