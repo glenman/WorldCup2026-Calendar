@@ -2009,13 +2009,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M74胜者",
+      "name": "M73胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M77胜者",
+      "name": "M74胜者",
       "score": 0,
       "points": 0
     },
@@ -2032,13 +2032,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M73胜者",
+      "name": "M75胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M75胜者",
+      "name": "M76胜者",
       "score": 0,
       "points": 0
     },
@@ -2055,7 +2055,7 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M76胜者",
+      "name": "M77胜者",
       "score": 0,
       "points": 0
     },
@@ -2111,8 +2111,8 @@
       "score": 0,
       "points": 0
     },
-    "venue": "Arlington, USA",
-    "stadium": "AT&T球场",
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
     "status": "未开始"
   },
   {
@@ -2134,8 +2134,8 @@
       "score": 0,
       "points": 0
     },
-    "venue": "Seattle, USA",
-    "stadium": "卢门球场",
+    "venue": "Atlanta, USA",
+    "stadium": "梅赛德斯-奔驰球场",
     "status": "未开始"
   },
   {
@@ -2216,18 +2216,18 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M93胜者",
+      "name": "M91胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M94胜者",
+      "name": "M92胜者",
       "score": 0,
       "points": 0
     },
-    "venue": "Los Angeles, USA",
-    "stadium": "SoFi体育场",
+    "venue": "East Rutherford, USA",
+    "stadium": "大都会人寿球场",
     "status": "未开始"
   },
   {
@@ -2239,18 +2239,18 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M91胜者",
+      "name": "M93胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M92胜者",
+      "name": "M94胜者",
       "score": 0,
       "points": 0
     },
-    "venue": "Miami, USA",
-    "stadium": "硬石体育场",
+    "venue": "Arlington, USA",
+    "stadium": "AT&T球场",
     "status": "未开始"
   },
   {
@@ -2272,8 +2272,8 @@
       "score": 0,
       "points": 0
     },
-    "venue": "Kansas City, USA",
-    "stadium": "箭头体育场",
+    "venue": "Miami, USA",
+    "stadium": "硬石体育场",
     "status": "未开始"
   },
   {
