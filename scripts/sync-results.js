@@ -211,9 +211,9 @@ async function main() {
     fs.writeFileSync(MATCHES_PATH, JSON.stringify(allMatches, null, 2), 'utf8');
     console.log('[sync-results] matches.json 已更新');
 
-    // 运行 build.js 重新生成积分榜 + ICS
-    console.log('[sync-results] 执行 build.js...');
-    execSync('node ' + path.join(__dirname, 'build.js'), { cwd: ROOT_DIR, stdio: 'inherit' });
+    // 只更新 ICS 文件（不调用 build.js，不重建积分榜）
+    console.log('[sync-results] 执行 update-ics.js 更新日历...');
+    execSync('node ' + path.join(__dirname, 'update-ics.js'), { cwd: ROOT_DIR, stdio: 'inherit' });
 
     // 本地模式: 自动 git commit + push
     if (!IS_CI && updated > 0) {
