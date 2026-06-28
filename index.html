@@ -2377,10 +2377,14 @@ function switchTab(tab) {
         schedulePanel.style.display = '';
         schedulePanel.classList.remove('hidden');
         buttons[0].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = '';
     } else if (tab === 'knockout') {
         knockoutPanel.style.display = '';
         knockoutPanel.classList.remove('hidden');
         buttons[1].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = 'none';
         if (!window._knockoutLoaded) {
             renderBracket();
             renderKnockoutCalendar();
@@ -2390,6 +2394,8 @@ function switchTab(tab) {
         scorersPanel.style.display = '';
         scorersPanel.classList.remove('hidden');
         buttons[2].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = 'none';
         if (!window._scorersLoaded) {
             loadScorers();
             window._scorersLoaded = true;
