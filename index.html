@@ -1087,17 +1087,6 @@
                 font-size: 0.45rem;
                 width: 14px; height: 14px;
             }
-            /* 列间连接箭头 */
-            .btv-col:not(.center)::after {
-                content: '\203A';
-                position: absolute;
-                right: -7px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 1rem;
-                color: var(--card-border);
-                line-height: 1;
-            }
             .btv-col:last-child::after, .btv-col.center::after { display: none; }
             .tab-btn { padding: 12px 20px; font-size: 0.9rem; letter-spacing: 0.5px; }
         }
@@ -1117,7 +1106,6 @@
             .btv-match-item .btv-score { font-size: 0.65rem; }
             .flag-placeholder { font-size: 0.85rem; }
             .btv-round-label { font-size: 0.6rem; }
-            .btv-col:not(.center)::after { font-size: 1.2rem; right: -10px; }
         }
 </style>
 </head>
