@@ -170,9 +170,9 @@ function buildPlaceholderMap(standings, matches, flagMap) {
             console.log(`  [resolve] ${key} → ${team.team} (${team.group}, ${team.points}pt GD${team.gd >= 0 ? '+' + team.gd : team.gd})`);
         }
     } else {
-        // 有小组未完赛：只解析前 6 名（4pt+ 基本锁定），第 7/8 名可能被 J/K 组挤掉
+        // 有小组未完赛：只解析前 3 名（4pt GD0+ 锁定），第 4~8 名可能被 J/K 组挤掉
         const incomplete = GROUP_ORDER.filter(g => !isGroupComplete(standings, g));
-        const safeCutoff = 6; // 只解析小数第三(1)~(6)，(7)(8) 待定
+        const safeCutoff = 3; // 只解析小数第三(1)~(3)，(4)~(8) 待定
         const safeN = Math.min(safeCutoff, all3rd.length);
         for (let i = 0; i < safeN; i++) {
             const key = `小组第三(${i + 1})`;
@@ -180,7 +180,7 @@ function buildPlaceholderMap(standings, matches, flagMap) {
             map[key] = { flag: flagMap[team.team] || team.team, name: team.team };
             console.log(`  [resolve] ${key} → ${team.team} (${team.group}, ${team.points}pt GD${team.gd >= 0 ? '+' + team.gd : team.gd}) [locked]`);
         }
-        console.log(`  [resolve] ⚠ 小组第三(7)(8) 待定 — 以下小组未完赛: ${incomplete.join(', ')}，排名可能变动`);
+        console.log(`  [resolve] ⚠ 小组第三(4)~(8) 待定 — 以下小组未完赛: ${incomplete.join(', ')}，排名可能变动`);
     }
 
     // c) "MXX胜者"/"MXX负者" → 根据已完成淘汰赛的结果
