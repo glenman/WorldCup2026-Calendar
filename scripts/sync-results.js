@@ -142,8 +142,9 @@ async function main() {
     var skipped = 0;
 
     apiData.games.forEach(function (g) {
-        // 只处理小组赛且已结束的比赛
-        if (g.type !== 'group' || g.finished !== 'TRUE') return;
+        // 只处理小组赛且已完成的比赛（淘汰赛由手动更新）
+        if (g.type !== 'group') return;
+        if (g.finished !== 'TRUE') return;
 
         var m = findMatch(g, matchIndex);
         if (!m) return;

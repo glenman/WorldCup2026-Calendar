@@ -1804,7 +1804,7 @@
       "flag": "🏴",
       "name": "英格兰",
       "score": 0,
-      "points": 1
+      "points": 0
     },
     "away_team": {
       "flag": "🇨🇩",
@@ -1814,7 +1814,7 @@
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "已结束"
+    "status": "未开始"
   },
   {
     "match_number": 81,
