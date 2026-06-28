@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-27T23:49:28.738Z",
+  "updated_at": "2026-06-28T02:04:23.659Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 63,
-  "total_goals": 199,
+  "total_goals": 201,
   "goals": [
     {
       "match_number": 1,
@@ -1006,7 +1006,7 @@
       "away_team": "刚果(金)",
       "team": "刚果(金)",
       "team_en": "Democratic Republic of the Congo",
-      "scorer": "Y. Wissa",
+      "scorer": "Yoane Wissa",
       "minute": 50,
       "minute_display": "45'+5'",
       "own_goal": false,
@@ -3188,6 +3188,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 1
+    },
+    {
+      "match_number": 69,
+      "group": "K组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "刚果(金)",
+      "away_team": "乌兹别克斯坦",
+      "team": "刚果(金)",
+      "team_en": "Democratic Republic of the Congo",
+      "scorer": "Fistvn Mail",
+      "minute": 78,
+      "minute_display": "78'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 69,
+      "group": "K组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "刚果(金)",
+      "away_team": "乌兹别克斯坦",
+      "team": "刚果(金)",
+      "team_en": "Democratic Republic of the Congo",
+      "scorer": "Yoane Wissa",
+      "minute": 91,
+      "minute_display": "90'+1'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }

@@ -1573,18 +1573,18 @@
     "home_team": {
       "flag": "🇨🇩",
       "name": "刚果(金)",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇺🇿",
       "name": "乌兹别克斯坦",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 70,
@@ -1597,17 +1597,17 @@
       "flag": "🇨🇴",
       "name": "哥伦比亚",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇵🇹",
       "name": "葡萄牙",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Miami Gardens, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 71,
@@ -1893,8 +1893,8 @@
     "round": "1/16决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "K组第二",
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
       "score": 0,
       "points": 0
     },
@@ -2008,8 +2008,8 @@
     "round": "1/16决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "K组第一",
+      "flag": "🇨🇴",
+      "name": "哥伦比亚",
       "score": 0,
       "points": 0
     },
