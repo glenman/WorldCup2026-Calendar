@@ -830,6 +830,7 @@
 
         /* 对阵项 */
         .btv-match-item {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -840,6 +841,25 @@
             border-radius: 5px;
             cursor: pointer;
             line-height: 1;
+        }
+        .btv-match-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btv-match-no {
+            font-size: 0.4rem;
+            font-weight: 600;
+            color: rgba(200,168,78,0.5);
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .flag-placeholder {
+            font-size: 0.45rem;
+            font-weight: 700;
+            color: rgba(200,168,78,0.7);
+            line-height: 1.2;
+            white-space: nowrap;
         }
         .btv-match-item:hover, .btv-match-item:active {
             border-color: var(--gold);
@@ -852,22 +872,31 @@
             font-size: 1.05rem;
             line-height: 1.2;
         }
-        .btv-match-item .btv-vs-mini,
-        .btv-match-item .btv-score {
-            font-size: 0.42rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            min-height: 8px;
+        .btv-match-item .btv-vs-mini {
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: #f0c040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
             line-height: 1;
         }
-        .btv-match-item.finished .btv-score { color: var(--gold); }
+        .btv-match-item .btv-score {
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: #f0c040;
+            text-align: center;
+            min-width: 28px;
+        }
+        .btv-match-item.finished .btv-score { color: #f0c040; }
 
         /* 决赛列卡片 */
         .btv-final-card, .btv-third-card {
             background: linear-gradient(145deg, #1e1b0c, #1a1520);
             border: 1.5px solid var(--gold);
             border-radius: 8px;
-            padding: 5px 6px;
+            padding: 3px 5px;
             text-align: center;
             box-shadow: 0 0 10px rgba(200,168,78,0.08);
             width: 100%;
@@ -876,17 +905,119 @@
             border-color: rgba(200,168,78,0.3);
             box-shadow: 0 0 6px rgba(200,168,78,0.04);
         }
+        .btv-trophy {
+            text-align: center;
+            margin-bottom: 2px;
+            display: block;
+        }
+        .btv-trophy img {
+            width: 30px;
+            height: 45px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
         .btv-round-label {
             font-size: 0.38rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             color: var(--gold);
             opacity: 0.6;
-            margin-bottom: 3px;
+            margin-bottom: 1px;
             text-transform: uppercase;
         }
         .btv-final-card .btv-match-item,
         .btv-third-card .btv-match-item {
+            flex-direction: row;
+            gap: 2px;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 1px 0;
+        }
+        .btv-final-card .btv-match-item .btv-vs-mini,
+        .btv-third-card .btv-match-item .btv-vs-mini {
+            display: flex;
+            font-size: 0.38rem;
+            width: 10px; height: 10px;
+        }
+
+        /* ═══ 中心区域：FINAL ↑ SF←SF→ 3RD ↓ 重叠层叠布局 ═══ */
+        .btv-center-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex: 0 0 auto;
+            min-width: 100px;
+            max-width: 220px;
+            padding: 0 3px;
+            position: relative;
+        }
+        /* FINAL 卡 - 从上方覆盖 SF */
+        .btv-final-overlap {
+            background: linear-gradient(145deg, #1e1b0c, #1a1520);
+            border: 1.5px solid var(--gold);
+            border-radius: 8px;
+            padding: 5px 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(200,168,78,0.12);
+            width: 100%;
+            z-index: 3;
+            margin-bottom: 4px;
+        }
+        /* SF 行：两个横向卡片并排，左右分开 */
+        .btv-sf-row {
+            display: flex;
+            justify-content: space-around;
+            gap: 0;
+            width: 100%;
+            z-index: 2;
+            padding: 0 2px;
+        }
+        .btv-match-item-h {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            flex: 0 1 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 6px;
+            padding: 3px 5px;
+            min-width: 0;
+        }
+        .btv-match-item-h.finished {
+            border-color: rgba(200,168,78,0.2);
+        }
+        .btv-match-item-h .flag-only { font-size: 0.7rem; }
+        .btv-match-item-h .btv-code { font-size: 0.36rem; }
+        .btv-match-item-h .btv-score {
+            font-size: 0.48rem; font-weight: 700;
+            color: var(--gold); min-width: 20px; text-align: center;
+        }
+        .btv-match-item-h .btv-vs-mini {
+            font-size: 0.34rem; color: rgba(255,255,255,0.25);
+            display: flex; align-items: center; justify-content: center;
+            min-width: 14px; line-height: 1;
+        }
+        /* 3RD 卡 - 从下方覆盖 SF */
+        .btv-third-overlap {
+            background: linear-gradient(145deg, #1a1520, #1e1b0c);
+            border: 1px solid rgba(200,168,78,0.3);
+            border-radius: 8px;
+            padding: 5px 8px;
+            text-align: center;
+            box-shadow: 0 0 6px rgba(200,168,78,0.06);
+            width: 100%;
+            z-index: 3;
+            margin-top: 4px;
+        }
+        .btv-final-overlap .btv-match-item,
+        .btv-third-overlap .btv-match-item {
             flex-direction: row;
             gap: 3px;
             align-items: center;
@@ -896,18 +1027,12 @@
             border-radius: 0;
             padding: 2px 0;
         }
-        .btv-final-card .btv-match-item .btv-vs-mini,
-        .btv-third-card .btv-match-item .btv-vs-mini {
-            display: flex;
-            font-size: 0.38rem;
-            width: 10px; height: 10px;
-        }
 
         /* 竖屏默认：隐藏 3 字母代码 */
         .btv-code { display: none; }
         .btv-flag-circle, .btv-center, .btv-stage,
         .btv-stage-label, .btv-gap, .btv-branch, .btv-capsule,
-        .btv-vs, .btv-score, .btv-connector, .btv-trophy { display: none; }
+        .btv-vs, .btv-connector, .btv-trophy { display: none; }
 
         /* ====== ≥500px（横屏手机 / 小平板）：显示 3 字母代码 ====== */
         @media (min-width: 500px) {
@@ -921,11 +1046,16 @@
                 line-height: 1;
             }
             .btv-match-item { gap: 1px; padding: 3px 4px; }
+            .btv-match-item-h .btv-code { display: inline; }
+            .btv-match-item-h .flag-only { font-size: 0.9rem; }
+            .btv-center-zone { max-width: 260px; }
             .btv-col { min-width: 34px; }
             .btv-col.center { min-width: 90px; }
             .btv-col-label { font-size: 0.45rem; letter-spacing: 1px; }
+            .btv-match-no { font-size: 0.4rem; }
             .btv-match-item .btv-vs-mini,
             .btv-match-item .btv-score { font-size: 0.45rem; }
+            .flag-placeholder { font-size: 0.6rem; }
         }
 
         /* ====== ≥768px（平板 / PC）：放大 ====== */
@@ -935,11 +1065,17 @@
             .btv-col { gap: 3px; min-width: 48px; }
             .btv-col.center { min-width: 140px; gap: 8px; }
             .btv-col-label { font-size: 0.55rem; letter-spacing: 2px; margin-bottom: 3px; }
+            .btv-match-no { font-size: 0.5rem; }
             .btv-match-item { gap: 3px; padding: 5px 6px; border-radius: 8px; }
             .btv-match-item .flag-only { font-size: 1.4rem; }
             .btv-code { font-size: 0.55rem; }
             .btv-match-item .btv-vs-mini,
             .btv-match-item .btv-score { font-size: 0.55rem; min-height: 10px; }
+            .btv-match-item-h .flag-only { font-size: 1.2rem; }
+            .btv-match-item-h .btv-score { font-size: 0.55rem; }
+            .btv-match-item-h .btv-vs-mini { font-size: 0.4rem; }
+            .flag-placeholder { font-size: 0.75rem; }
+            .btv-center-zone { max-width: 320px; }
             .btv-final-card, .btv-third-card {
                 border-radius: 12px;
                 padding: 8px 12px;
@@ -971,11 +1107,13 @@
             .btv-col { gap: 4px; min-width: 64px; }
             .btv-col.center { min-width: 180px; gap: 12px; }
             .btv-col-label { font-size: 0.65rem; letter-spacing: 3px; }
+            .btv-match-no { font-size: 0.6rem; }
             .btv-match-item { gap: 4px; padding: 6px 8px; border-radius: 10px; border-width: 1.5px; }
             .btv-match-item .flag-only { font-size: 1.7rem; }
             .btv-code { font-size: 0.65rem; }
             .btv-match-item .btv-vs-mini,
             .btv-match-item .btv-score { font-size: 0.65rem; }
+            .flag-placeholder { font-size: 0.85rem; }
             .btv-round-label { font-size: 0.6rem; }
             .btv-col:not(.center)::after { font-size: 1.2rem; right: -10px; }
         }
@@ -1839,6 +1977,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(r) { return r.json(); })
         .then(function(matches) {
             ALL_MATCHES = matches;
+
             renderCalendar(null, 'all');
             initFromURL();
         })
@@ -2366,11 +2505,80 @@ function renderBracket() {
     tree.innerHTML = desktopHtml + mobileHtml;
 
     initRoundTabs(validRounds, defaultRoundIndex);
-    // 延迟绘制连接线（等待 DOM 渲染）
-    setTimeout(function() { drawBracketConnectors(matchMap); }, 100);
+    // 延迟：先对齐卡片位置，再绘制连接线
+    setTimeout(function() {
+        alignBracketCards();
+        drawBracketConnectors(matchMap);
+    }, 100);
 }
 
-function drawBracketConnectors(matchMap) {
+// ═══ 对阵图卡片垂直对齐 ═══
+    // 对阵晋级映射（供 align 和 connector 共用）
+    var BRACKET_PROGRESSION = {
+        89: [74, 77], 90: [73, 75], 93: [83, 84], 94: [81, 82],
+        97: [89, 90], 98: [93, 94],
+        101: [97, 98],
+        // 右侧
+        91: [76, 78], 92: [79, 80], 95: [86, 88], 96: [85, 87],
+        99: [91, 92], 100: [95, 96],
+        102: [99, 100]
+    };
+
+    function alignBracketCards() {
+        var container = document.querySelector('.bracket-tree-vertical');
+        if (!container) return;
+
+        var allCards = container.querySelectorAll('.btv-match-cell');
+        var cardY = {};
+
+        allCards.forEach(function(card) {
+            var mn = parseInt(card.getAttribute('data-match'));
+            var rect = card.getBoundingClientRect();
+            var containerRect = container.getBoundingClientRect();
+            cardY[mn] = rect.top + rect.height / 2 - containerRect.top;
+        });
+
+        // 对齐处理顺序：R16 → QF → SF（每层依赖前一层已对齐）
+        // 左右两侧各自从外到内处理，确保依赖层先对齐
+        var columns = [
+            [],                         // 0: R32-L (anchor)
+            [89, 90, 93, 94],          // 1: R16-L
+            [97, 98],                   // 2: QF-L
+            [101],                      // 3: SF-L
+            [],                         // 4: center (skip)
+            [91, 92, 95, 96],          // 5: R16-R
+            [99, 100],                  // 6: QF-R
+            [102],                      // 7: SF-R
+            []                          // 8: R32-R (anchor)
+        ];
+
+        columns.forEach(function(colMatches) {
+            colMatches.forEach(function(mn) {
+                var sources = BRACKET_PROGRESSION[mn];
+                if (!sources || sources.length < 2) return;
+                var sy0 = cardY[sources[0]], sy1 = cardY[sources[1]];
+                if (sy0 == null || sy1 == null) return;
+
+                var targetY = (sy0 + sy1) / 2;
+                var currentY = cardY[mn];
+                if (currentY != null && Math.abs(targetY - currentY) > 1) {
+                    var card = container.querySelector('.btv-match-cell[data-match="' + mn + '"]');
+                    if (card) {
+                        var offset = targetY - currentY;
+                        var currentTransform = card.style.transform || '';
+                        var currentYOffset = 0;
+                        var m = currentTransform.match(/translateY\((-?[\d.]+)px\)/);
+                        if (m) currentYOffset = parseFloat(m[1]);
+                        card.style.transform = 'translateY(' + (currentYOffset + offset) + 'px)';
+                        // 更新缓存 Y（后续列依赖此值）
+                        cardY[mn] = targetY;
+                    }
+                }
+            });
+        });
+    }
+
+    function drawBracketConnectors(matchMap) {
     var tree = document.getElementById('bracket-tree');
     if (!tree) return;
 
@@ -2378,8 +2586,7 @@ function drawBracketConnectors(matchMap) {
     var oldSvg = tree.querySelector('.bracket-connectors-svg');
     if (oldSvg) oldSvg.remove();
 
-    var cols = tree.querySelectorAll('.btv-col');
-    if (cols.length < 2) return;
+    // 不需要检查 btv-col 数量，新布局有混合容器
 
     // 创建 SVG 覆盖层
     var container = tree.querySelector('.bracket-tree-vertical');
@@ -2399,81 +2606,101 @@ function drawBracketConnectors(matchMap) {
     container.style.position = 'relative';
     container.appendChild(svg);
 
-    // 计算每个列中 match item 的中心 Y 位置 + 左右边缘
-    function getColMatchCenters(col) {
-        var items = col.querySelectorAll('.btv-match-item');
-        var centers = [];
-        items.forEach(function(item) {
-            var ir = item.getBoundingClientRect();
-            var cx = ir.left + ir.width / 2 - rect.left;
-            var cy = ir.top + ir.height / 2 - rect.top;
-            var rx = ir.right - rect.left;
-            var lx = ir.left - rect.left;
-            centers.push({ cx: cx, cy: cy, rx: rx, lx: lx, item: item });
-        });
-        return centers;
-    }
-
-    var colData = [];
-    cols.forEach(function(col, i) {
-        var data = getColMatchCenters(col);
-        var cr = col.getBoundingClientRect();
-        data._colLeft = cr.left - rect.left;
-        data._colRight = cr.right - rect.left;
-        data._isCenter = col.classList.contains('center');
-        colData.push(data);
+    // 收集所有卡片位置
+    var allItems = container.querySelectorAll('.btv-match-item');
+    var pos = {};
+    allItems.forEach(function(el) {
+        var cell = el.closest('.btv-match-cell');
+        var mn = cell ? parseInt(cell.getAttribute('data-match')) : 0;
+        if (mn) {
+            var r = el.getBoundingClientRect();
+            pos[mn] = {
+                l: r.left - rect.left,
+                r: r.right - rect.left,
+                t: r.top - rect.top,
+                b: r.bottom - rect.top,
+                cx: r.left + r.width / 2 - rect.left,
+                cy: r.top + r.height / 2 - rect.top
+            };
+        }
     });
 
-    function drawPath(x1, y1, x2, y2) {
-        var midX = (x1 + x2) / 2;
-        var d = 'M' + x1 + ',' + y1 + ' C' + midX + ',' + y1 + ' ' + midX + ',' + y2 + ' ' + x2 + ',' + y2;
+    function drawBracketPath(x1, y1, x2, y2, label, midXOverride) {
+        // 直角 bracket 风格：横→竖→横
+        var midX = midXOverride != null ? midXOverride : (x1 + x2) / 2;
+        var d = 'M' + x1 + ',' + y1
+            + ' L' + midX + ',' + y1
+            + ' L' + midX + ',' + y2
+            + ' L' + x2 + ',' + y2;
         var path = document.createElementNS(ns, 'path');
         path.setAttribute('d', d);
         path.setAttribute('fill', 'none');
-        path.setAttribute('stroke', 'rgba(200,168,78,0.35)');
+        path.setAttribute('stroke', 'rgba(200,168,78,0.45)');
         path.setAttribute('stroke-width', '0.8');
         path.setAttribute('stroke-linecap', 'round');
         path.setAttribute('stroke-linejoin', 'round');
         svg.appendChild(path);
+
     }
 
-    // 连接相邻列（从卡片右边缘 → 下一卡片左边缘）
-    for (var i = 0; i < colData.length - 1; i++) {
-        var left = colData[i];
-        var right = colData[i + 1];
-        if (left._isCenter || right._isCenter || left.length === 0 || right.length === 0) continue;
+    function drawStraightPath(x1, y1, x2, y2, label) {
+        var d = 'M' + x1 + ',' + y1 + ' L' + x2 + ',' + y2;
+        var path = document.createElementNS(ns, 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', 'rgba(200,168,78,0.35)');
+        path.setAttribute('stroke-width', '0.6');
+        path.setAttribute('stroke-linecap', 'round');
+        svg.appendChild(path);
 
-        var ratio = left.length / right.length;
-        for (var j = 0; j < left.length; j++) {
-            var targetIdx = Math.floor(j / ratio);
-            if (targetIdx < right.length) {
-                var x1 = left[j].rx;
-                var y1 = left[j].cy;
-                var x2 = right[targetIdx].lx;
-                var y2 = right[targetIdx].cy;
-                drawPath(x1, y1, x2, y2);
-            }
+    }
+
+    // ── 使用 BRACKET_PROGRESSION 绘制所有逐级连接线 ──
+    var allConns = [];
+    for (var key in BRACKET_PROGRESSION) {
+        var sources = BRACKET_PROGRESSION[key];
+        var target = parseInt(key);
+        sources.forEach(function(src) {
+            allConns.push({ from: src, to: target, type: 'bracket' });
+        });
+    }
+    function fmtDate(tm) {
+        if (!tm) return '';
+        var d = tm.date_cn || '';
+        var t = tm.time_cn || '';
+        d = d.replace('月', '/').replace('日', '');
+        if (t && t.split(':').length === 2) {
+            var tp = t.split(':');
+            t = (tp[0].length === 1 ? '0' : '') + tp[0] + ':' + tp[1];
         }
+        return (d + ' ' + t).trim();
     }
-
-    // 连接 SF 到 FINAL / 3RD
-    for (var k = 0; k < colData.length; k++) {
-        if (colData[k]._isCenter && colData[k].length >= 2) {
-            var finalItem = colData[k][0];
-            var thirdItem = colData[k][1];
-            if (k > 0 && colData[k - 1].length === 1) {
-                var sfL = colData[k - 1];
-                if (finalItem) drawPath(sfL[0].rx, sfL[0].cy, finalItem.lx, finalItem.cy);
-                if (thirdItem) drawPath(sfL[0].rx, sfL[0].cy, thirdItem.lx, thirdItem.cy);
-            }
-            if (k < colData.length - 1 && colData[k + 1].length === 1) {
-                var sfR = colData[k + 1];
-                if (finalItem) drawPath(sfR[0].lx, sfR[0].cy, finalItem.rx, finalItem.cy);
-                if (thirdItem) drawPath(sfR[0].lx, sfR[0].cy, thirdItem.rx, thirdItem.cy);
-            }
-            break;
+    var shownLabels = {};
+    // SF → Final / 3rd（直角折线，用卡片边缘，转折点外移避免重叠）
+    var finalConns = [
+        // SF-L(101) 右侧边 → Final/3rd 左侧边，转折点左移 6px
+        { from: 101, to: 104, x1: pos[101]?pos[101].r:0, x2: pos[104]?pos[104].l:0, midOff: -6 },
+        { from: 101, to: 103, x1: pos[101]?pos[101].r:0, x2: pos[103]?pos[103].l:0, midOff: -6 },
+        // SF-R(102) 左侧边 → Final/3rd 右侧边，转折点右移 6px
+        { from: 102, to: 104, x1: pos[102]?pos[102].l:0, x2: pos[104]?pos[104].r:0, midOff: +6 },
+        { from: 102, to: 103, x1: pos[102]?pos[102].l:0, x2: pos[103]?pos[103].r:0, midOff: +6 }
+    ];
+    finalConns.forEach(function(c) {
+        if (pos[c.from] && pos[c.to]) {
+            var midX = (c.x1 + c.x2) / 2 + c.midOff;
+            drawBracketPath(c.x1, pos[c.from].cy, c.x2, pos[c.to].cy, '', midX);
         }
-    }
+    });
+    allConns.forEach(function(c) {
+        if (pos[c.from] && pos[c.to]) {
+            var label = '';
+            if (!shownLabels[c.from]) {
+                label = fmtDate(matchMap[c.from]);
+                shownLabels[c.from] = true;
+            }
+            drawBracketPath(pos[c.from].cx, pos[c.from].cy, pos[c.to].cx, pos[c.to].cy, label);
+        }
+    });
 }
 
 function getCountryCode(name) {
@@ -2488,7 +2715,8 @@ function getCountryCode(name) {
         '新西兰': 'NZL', '喀麦隆': 'CMR', '智利': 'CHI', '秘鲁': 'PER',
         '比利时': 'BEL', '克罗地亚': 'CRO',
         '巴拉圭': 'PAR', '瑞典': 'SWE', '波黑': 'BIH',
-        '埃及': 'EGY', '佛得角': 'CPV'
+        '埃及': 'EGY', '佛得角': 'CPV',
+        '厄瓜多尔': 'ECU', '加纳': 'GHA'
     };
     if (codes[name]) return codes[name];
     if (name.indexOf('小组第一') > -1) return name.replace(/小组/, '').replace(/第一/, '1');
@@ -2504,10 +2732,10 @@ function renderCapsule(m, matchMap) {
     var vsBadge = finished ? '' : '<div class="btv-vs">VS</div>';
 
     var html = '<div class="btv-capsule' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
-    html += '<span class="flag-only">' + (m.home_team.flag || '🏳') + '</span>';
+    html += renderFlag(m.home_team);
     if (vsBadge) html += vsBadge;
     if (vsContent) html += vsContent;
-    html += '<span class="flag-only">' + (m.away_team.flag || '🏳') + '</span>';
+    html += renderFlag(m.away_team);
     html += '</div>';
     return html;
 }
@@ -2540,15 +2768,15 @@ function initRoundTabs(rounds, defaultIdx) {
 function renderBracketVertical(matchMap) {
     // 横向列顺序：R32左→R16左→QF左→SF左→决赛/三四名→SF右→QF右→R16右→R32右
     var columns = [
-        { label: '32', side: 'left', matches: [73, 74, 75, 77, 81, 82, 83, 84] },
+        { label: '32', side: 'left', matches: [73, 75, 74, 77, 81, 82, 83, 84] },
         { label: '16', side: 'left', matches: [89, 90, 93, 94] },
         { label: '8', side: 'left', matches: [97, 98] },
-        { label: '4', side: 'left', matches: [101] },
-        { label: 'F', side: 'center', matches: [104, 103] },
-        { label: '4', side: 'right', matches: [102] },
+        { label: '', side: 'sf', matches: [101] },
+        { label: '', side: 'center', matches: [104, 103] },
+        { label: '', side: 'sf', matches: [102] },
         { label: '8', side: 'right', matches: [99, 100] },
         { label: '16', side: 'right', matches: [91, 92, 95, 96] },
-        { label: '32', side: 'right', matches: [76, 78, 79, 80, 85, 86, 87, 88] }
+        { label: '32', side: 'right', matches: [76, 78, 79, 80, 85, 87, 86, 88] }
     ];
 
     var html = '<div class="bracket-tree-vertical">';
@@ -2558,22 +2786,23 @@ function renderBracketVertical(matchMap) {
             html += '<div class="btv-col center">';
             var finalM = matchMap[104];
             if (finalM) {
+                html += '<span class="btv-match-no">M104</span>';
                 html += '<div class="btv-final-card">';
                 html += '<div class="btv-round-label">FINAL</div>';
-                html += renderMatchItem(finalM);
+                html += renderMatchItem(finalM, true);
                 html += '</div>';
             }
             var thirdM = matchMap[103];
             if (thirdM) {
+                html += '<span class="btv-match-no">M103</span>';
                 html += '<div class="btv-third-card">';
                 html += '<div class="btv-round-label">3RD</div>';
-                html += renderMatchItem(thirdM);
+                html += renderMatchItem(thirdM, true);
                 html += '</div>';
             }
             html += '</div>';
         } else {
             html += '<div class="btv-col">';
-            html += '<div class="btv-col-label">' + col.label + '</div>';
             col.matches.forEach(function(mn) {
                 var m = matchMap[mn];
                 if (m) html += renderMatchItem(m);
@@ -2586,20 +2815,68 @@ function renderBracketVertical(matchMap) {
     return html;
 }
 
-function renderMatchItem(m) {
+function isPlaceholder(name) {
+    if (!name) return true;
+    return /胜者|负者|小组|待定/.test(name);
+}
+
+function getPlaceholderLabel(name) {
+    var m = name.match(/M(\d+)/);
+    if (m) return 'W' + m[1];
+    m = name.match(/小组第三\((\d+)\)/);
+    if (m) return 'L' + m[1];
+    return name;
+}
+
+function renderFlag(m) {
+    if (isPlaceholder(m.name)) {
+        return '<span class="flag-placeholder">' + getPlaceholderLabel(m.name) + '</span>';
+    }
+    return '<span class="flag-only">' + (m.flag || '🏳') + '</span>';
+}
+
+function renderMatchItem(m, hideLabel) {
+    var finished = m.status === '已结束';
+    var scoreHtml;
+    if (finished) {
+        scoreHtml = '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+    } else {
+        scoreHtml = '<span class="btv-vs-mini">VS</span>';
+    }
+    var homeCode = getCountryCode(m.home_team.name);
+    var awayCode = getCountryCode(m.away_team.name);
+    var homePh = isPlaceholder(m.home_team.name);
+    var awayPh = isPlaceholder(m.away_team.name);
+
+    var html = '<div class="btv-match-cell" data-match="' + m.match_number + '">';
+    if (!hideLabel) html += '<span class="btv-match-no">M' + m.match_number + '</span>';
+    html += '<div class="btv-match-item' + (finished ? ' finished' : '') + '">';
+    html += renderFlag(m.home_team);
+    if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
+    html += scoreHtml;
+    if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
+    html += renderFlag(m.away_team);
+    html += '</div></div>';
+    return html;
+}
+
+function renderMatchItemHorizontal(m, side) {
     var finished = m.status === '已结束';
     var scoreHtml = finished
         ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>'
         : '<span class="btv-vs-mini">VS</span>';
     var homeCode = getCountryCode(m.home_team.name);
     var awayCode = getCountryCode(m.away_team.name);
+    var homePh = isPlaceholder(m.home_team.name);
+    var awayPh = isPlaceholder(m.away_team.name);
 
-    var html = '<div class="btv-match-item' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
-    html += '<span class="flag-only">' + (m.home_team.flag || '🏳') + '</span>';
-    html += '<span class="btv-code">' + homeCode + '</span>';
+    var cls = 'btv-match-item-h' + (finished ? ' finished' : '') + ' btv-sf-' + side;
+    var html = '<div class="' + cls + '" data-match="' + m.match_number + '">';
+    html += renderFlag(m.home_team);
+    if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
     html += scoreHtml;
-    html += '<span class="btv-code">' + awayCode + '</span>';
-    html += '<span class="flag-only">' + (m.away_team.flag || '🏳') + '</span>';
+    if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
+    html += renderFlag(m.away_team);
     html += '</div>';
     return html;
 }
