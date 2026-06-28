@@ -15,10 +15,10 @@
       { "match_no": 82, "date_time": "2026-07-02 04:00", "home_team": "G1", "away_team": "3AEHIJ_Best_3rd", "city": "Seattle", "stadium": "Seattle Stadium" },
       { "match_no": 83, "date_time": "2026-07-03 07:00", "home_team": "K2", "away_team": "L2", "city": "Toronto", "stadium": "Toronto Stadium" },
       { "match_no": 84, "date_time": "2026-07-03 03:00", "home_team": "Spain (H1)", "away_team": "J2", "city": "Los Angeles", "stadium": "Los Angeles Stadium" },
-      { "match_no": 85, "date_time": "2026-07-03 11:00", "home_team": "Switzerland (B1)", "away_team": "3EFGIJ_Best_3rd", "city": "Vancouver", "stadium": "BC Place" },
+      { "match_no": 85, "date_time": "2026-07-03 11:00", "home_team": "Switzerland (B1)", "away_team": "Algeria (J3)", "city": "Vancouver", "stadium": "BC Place" },
       { "match_no": 86, "date_time": "2026-07-04 02:00", "home_team": "Australia (D2)", "away_team": "Egypt (G2)", "city": "Dallas", "stadium": "Dallas Stadium" },
       { "match_no": 87, "date_time": "2026-07-04 06:00", "home_team": "Argentina (J1)", "away_team": "Cape Verde (H2)", "city": "Miami", "stadium": "Hard Rock Stadium" },
-      { "match_no": 88, "date_time": "2026-07-04 09:30", "home_team": "K1", "away_team": "3DEIJL_Best_3rd", "city": "Kansas City", "stadium": "Arrowhead Stadium" }
+      { "match_no": 88, "date_time": "2026-07-04 09:30", "home_team": "Colombia (K1)", "away_team": "Ghana (L2)", "city": "Kansas City", "stadium": "Arrowhead Stadium" }
     ],
     "round_of_16": [
       { "match_no": 89, "date_time": "2026-07-05 05:00", "home_team": "W74", "away_team": "W77", "city": "Philadelphia", "stadium": "Philadelphia Stadium" },
@@ -27,7 +27,7 @@
       { "match_no": 92, "date_time": "2026-07-06 08:00", "home_team": "W79", "away_team": "W80", "city": "Mexico City", "stadium": "Estadio Azteca" },
       { "match_no": 93, "date_time": "2026-07-07 03:00", "home_team": "W83", "away_team": "W84", "city": "Dallas", "stadium": "Dallas Stadium" },
       { "match_no": 94, "date_time": "2026-07-07 08:00", "home_team": "W81", "away_team": "W82", "city": "Seattle", "stadium": "Seattle Stadium" },
-      { "match_no": 95, "date_time": "2026-07-08 00:00", "home_team": "W86", "away_team": "W88", "city": "Atlanta", "stadium": "Atlanta Stadium" },
+      { "match_no": 95, "date_time": "2026-07-08 00:00", "home_team": "W86", "away_team": "W88", "city": "Dallas", "stadium": "Dallas Stadium" },
       { "match_no": 96, "date_time": "2026-07-08 04:00", "home_team": "W85", "away_team": "W87", "city": "Vancouver", "stadium": "BC Place" }
     ],
     "quarter_finals": [
