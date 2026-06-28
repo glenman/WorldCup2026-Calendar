@@ -292,6 +292,12 @@ function resolveKnockoutPlaceholders(matches, standings, flagMap) {
 
 const flagMap = buildFlagMap(matches);
 const resolvedMatches = resolveKnockoutPlaceholders(matches, standings, flagMap);
+
+// 写回原始 matches.json（前端直接引用此文件，Action 也只提交此文件）
+fs.writeFileSync(matchesPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
+console.log('[build] worldcup2026-matches.json updated (placeholders resolved)');
+
+// 同时保留一份 resolved 副本便于调试
 fs.writeFileSync(resolvedPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
 console.log('[build] worldcup2026-matches-resolved.json updated');
 
