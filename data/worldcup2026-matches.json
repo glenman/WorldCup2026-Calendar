@@ -1527,18 +1527,18 @@
     "home_team": {
       "flag": "🇭🇷",
       "name": "克罗地亚",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇬🇭",
       "name": "加纳",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Philadelphia, USA",
     "stadium": "林肯金融球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 68,
@@ -1556,12 +1556,12 @@
     "away_team": {
       "flag": "🏴",
       "name": "英格兰",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "East Rutherford, USA",
     "stadium": "大都会人寿球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 69,
@@ -1807,8 +1807,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇧🇦",
-      "name": "波黑",
+      "flag": "🏳",
+      "name": "小组第三(3)",
       "score": 0,
       "points": 0
     },
@@ -1830,8 +1830,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇵🇾",
-      "name": "巴拉圭",
+      "flag": "🏳",
+      "name": "小组第三(4)",
       "score": 0,
       "points": 0
     },
@@ -1876,8 +1876,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇸🇳",
-      "name": "塞内加尔",
+      "flag": "🏳",
+      "name": "小组第三(5)",
       "score": 0,
       "points": 0
     },
@@ -1945,8 +1945,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇭🇷",
-      "name": "克罗地亚",
+      "flag": "🏳",
+      "name": "小组第三(7)",
       "score": 0,
       "points": 0
     },
@@ -2014,8 +2014,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇰🇷",
-      "name": "韩国",
+      "flag": "🏳",
+      "name": "小组第三(8)",
       "score": 0,
       "points": 0
     },
