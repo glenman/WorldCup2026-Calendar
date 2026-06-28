@@ -871,6 +871,7 @@
         .btv-match-item .flag-only {
             font-size: 1.05rem;
             line-height: 1.2;
+            cursor: pointer;
         }
         .btv-match-item .btv-vs-mini {
             font-size: 0.55rem;
@@ -916,6 +917,12 @@
             object-fit: contain;
             display: block;
             margin: 0 auto;
+        }
+        .trophy-winner-flag {
+            font-size: 1.5rem;
+            display: block;
+            text-align: center;
+            line-height: 1.2;
         }
         .btv-round-label {
             font-size: 0.38rem;
@@ -2410,9 +2417,10 @@ function renderBracket() {
         return;
     }
 
-    // 按轮次和比赛号索引
+    // 按轮次和比赛号索引（深拷贝，不影响原始数据）
     var matchMap = {};
-    koMatches.forEach(function(m) { matchMap[m.match_number] = m; });
+    koMatches.forEach(function(m) { matchMap[m.match_number] = JSON.parse(JSON.stringify(m)); });
+    window._knockoutMatchMap = matchMap;
 
     var displayOrder = ['1/16决赛', '1/8决赛', '1/4决赛', '半决赛', '季军赛', '决赛'];
     var validRounds = [];
@@ -2506,6 +2514,120 @@ function renderBracket() {
         alignBracketCards();
         drawBracketConnectors(matchMap);
     }, 100);
+
+    // 夺冠模拟器：点击国旗晋级
+    setupFlagClickDelegation();
+}
+
+// ═══ 夺冠模拟器 ═══
+function setupFlagClickDelegation() {
+    var tree = document.getElementById('bracket-tree');
+    if (!tree || tree._flagDelegationSet) return;
+    tree._flagDelegationSet = true;
+
+    tree.addEventListener('click', function(e) {
+        var flag = e.target.closest('.flag-only');
+        if (!flag) return;
+        var cell = flag.closest('.btv-match-cell');
+        if (!cell) return;
+        var matchNum = parseInt(cell.getAttribute('data-match'));
+        if (!matchNum) return;
+
+        var matchItem = flag.closest('.btv-match-item');
+        var flags = matchItem.querySelectorAll('.flag-only');
+        var side = (flags[0] === flag) ? 'home' : 'away';
+
+        advanceTeam(matchNum, side);
+    });
+}
+
+function advanceTeam(matchNum, side) {
+    var matchMap = window._knockoutMatchMap;
+    if (!matchMap) return;
+    
+    var m = matchMap[matchNum];
+    if (!m) return;
+
+    var winnerTeam = side === 'home' ? m.home_team : m.away_team;
+    var loserTeam = side === 'home' ? m.away_team : m.home_team;
+
+    // 更新当前比赛：标记已结束，设置比分
+    m.status = '已结束';
+    m.home_team.score = (side === 'home') ? 1 : 0;
+    m.away_team.score = (side === 'away') ? 1 : 0;
+
+    // 查找并更新下游比赛
+    // 半决赛特殊处理：胜者→决赛，败者→三四名
+    if (matchNum === 101 || matchNum === 102) {
+        var finalM = matchMap[104];
+        var thirdM = matchMap[103];
+        var finalSlot = (matchNum === 101) ? 'home_team' : 'away_team';
+        var thirdSlot = (matchNum === 101) ? 'home_team' : 'away_team';
+
+        if (finalM) {
+            finalM[finalSlot] = JSON.parse(JSON.stringify(winnerTeam));
+            finalM[finalSlot].score = null;
+        }
+        if (thirdM) {
+            thirdM[thirdSlot] = JSON.parse(JSON.stringify(loserTeam));
+            thirdM[thirdSlot].score = null;
+        }
+    }
+
+    // 常规晋级：查找所有目标比赛
+    for (var targetNum in BRACKET_PROGRESSION) {
+        var sources = BRACKET_PROGRESSION[targetNum];
+        var idx = sources.indexOf(matchNum);
+        if (idx === -1) continue;
+
+        // 跳过半决赛（上面已处理）
+        if (matchNum === 101 || matchNum === 102) continue;
+
+        var targetM = matchMap[targetNum];
+        if (!targetM) continue;
+
+        var targetSlot = (idx === 0) ? 'home_team' : 'away_team';
+        targetM[targetSlot] = JSON.parse(JSON.stringify(winnerTeam));
+        targetM[targetSlot].score = null;
+    }
+
+    // 决赛胜者：显示在奖杯上方
+    if (matchNum === 104) {
+        updateTrophyWinner(winnerTeam);
+    }
+
+    refreshBracketTree();
+}
+
+function updateTrophyWinner(winnerTeam) {
+    window._trophyWinner = winnerTeam;
+}
+
+function refreshBracketTree() {
+    var matchMap = window._knockoutMatchMap;
+    if (!matchMap) return;
+
+    // 重新渲染移动端对阵树
+    var mobileHtml = renderBracketVertical(matchMap);
+    var tree = document.getElementById('bracket-tree');
+    if (!tree) return;
+
+    // 找到并替换 bracket-tree-vertical（保留桌面端横向轮播不动）
+    var oldTree = tree.querySelector('.bracket-tree-vertical');
+    if (oldTree) {
+        var temp = document.createElement('div');
+        temp.innerHTML = mobileHtml;
+        var newTree = temp.querySelector('.bracket-tree-vertical');
+        if (newTree) {
+            oldTree.parentNode.replaceChild(newTree, oldTree);
+        }
+    }
+
+    // 重新对齐和连线
+    setTimeout(function() {
+        alignBracketCards();
+        drawBracketConnectors(matchMap);
+    }, 50);
 }
 
 // ═══ 对阵图卡片垂直对齐 ═══
@@ -2790,7 +2912,14 @@ function renderBracketVertical(matchMap) {
             html += '<div class="btv-col center">';
             var finalM = matchMap[104];
             if (finalM) {
-                html += '<div class="btv-trophy"><img src="images/trophy.png" alt="大力神杯"></div>';
+                html += '<div class="btv-trophy">';
+                var trophyWinner = window._trophyWinner;
+                if (trophyWinner) {
+                    var wFlag = COUNTRY_FLAGS[trophyWinner.name] || trophyWinner.flag || '🏳';
+                    html += '<span class="trophy-winner-flag">' + wFlag + '</span>';
+                }
+                html += '<img src="images/trophy.png" alt="大力神杯">';
+                html += '</div>';
                 html += '<span class="btv-match-no">M104</span>';
                 html += '<div class="btv-final-card">';
                 html += '<div class="btv-round-label">FINAL</div>';
