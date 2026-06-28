@@ -816,7 +816,7 @@
             gap: 1px;
             position: relative;
         }
-        .btv-col.center { flex: 0 0 auto; min-width: 72px; gap: 4px; }
+        .btv-col.center { flex: 0 0 auto; min-width: 60px; gap: 4px; }
         .btv-col-label {
             font-size: 0.4rem;
             font-weight: 700;
@@ -1050,7 +1050,7 @@
             .btv-match-item-h .flag-only { font-size: 0.9rem; }
             .btv-center-zone { max-width: 260px; }
             .btv-col { min-width: 34px; }
-            .btv-col.center { min-width: 90px; }
+            .btv-col.center { min-width: 75px; }
             .btv-col-label { font-size: 0.45rem; letter-spacing: 1px; }
             .btv-match-no { font-size: 0.4rem; }
             .btv-match-item .btv-vs-mini,
@@ -1063,7 +1063,7 @@
             .bracket-container { padding: 10px 0 20px; }
             .bracket-tree-vertical { gap: 2px; padding: 8px 2px 14px; }
             .btv-col { gap: 3px; min-width: 48px; }
-            .btv-col.center { min-width: 140px; gap: 8px; }
+            .btv-col.center { min-width: 110px; gap: 8px; }
             .btv-col-label { font-size: 0.55rem; letter-spacing: 2px; margin-bottom: 3px; }
             .btv-match-no { font-size: 0.5rem; }
             .btv-match-item { gap: 3px; padding: 5px 6px; border-radius: 8px; }
@@ -1107,7 +1107,7 @@
             .tab-btn { padding: 12px 28px; font-size: 1rem; letter-spacing: 1px; }
             .bracket-tree-vertical { gap: 4px; padding: 12px 4px 20px; max-width: 1100px; margin: 0 auto; }
             .btv-col { gap: 4px; min-width: 64px; }
-            .btv-col.center { min-width: 180px; gap: 12px; }
+            .btv-col.center { min-width: 150px; gap: 12px; }
             .btv-col-label { font-size: 0.65rem; letter-spacing: 3px; }
             .btv-match-no { font-size: 0.6rem; }
             .btv-match-item { gap: 4px; padding: 6px 8px; border-radius: 10px; border-width: 1.5px; }
@@ -2550,11 +2550,11 @@ function renderBracket() {
         // 左右两侧各自从外到内处理，确保依赖层先对齐
         var columns = [
             [],                         // 0: R32-L (anchor)
-            [89, 90, 93, 94],          // 1: R16-L
+            [90, 89, 94, 93],          // 1: R16-L
             [97, 98],                   // 2: QF-L
             [101],                      // 3: SF-L
             [],                         // 4: center (skip)
-            [91, 92, 95, 96],          // 5: R16-R
+            [91, 92, 96, 95],          // 5: R16-R
             [99, 100],                  // 6: QF-R
             [102],                      // 7: SF-R
             []                          // 8: R32-R (anchor)
@@ -2730,7 +2730,8 @@ function getCountryCode(name) {
         '比利时': 'BEL', '克罗地亚': 'CRO',
         '巴拉圭': 'PAR', '瑞典': 'SWE', '波黑': 'BIH',
         '埃及': 'EGY', '佛得角': 'CPV',
-        '厄瓜多尔': 'ECU', '加纳': 'GHA'
+        '厄瓜多尔': 'ECU', '加纳': 'GHA',
+        '阿尔及利亚': 'ALG'
     };
     if (codes[name]) return codes[name];
     if (name.indexOf('小组第一') > -1) return name.replace(/小组/, '').replace(/第一/, '1');
@@ -2782,15 +2783,15 @@ function initRoundTabs(rounds, defaultIdx) {
 function renderBracketVertical(matchMap) {
     // 横向列顺序：R32左→R16左→QF左→SF左→决赛/三四名→SF右→QF右→R16右→R32右
     var columns = [
-        { label: '32', side: 'left', matches: [73, 75, 74, 77, 81, 82, 83, 84] },
-        { label: '16', side: 'left', matches: [89, 90, 93, 94] },
+        { label: '32', side: 'left', matches: [74, 77, 73, 75, 83, 84, 81, 82] },
+        { label: '16', side: 'left', matches: [90, 89, 94, 93] },
         { label: '8', side: 'left', matches: [97, 98] },
         { label: '', side: 'sf', matches: [101] },
         { label: '', side: 'center', matches: [104, 103] },
         { label: '', side: 'sf', matches: [102] },
         { label: '8', side: 'right', matches: [99, 100] },
-        { label: '16', side: 'right', matches: [91, 92, 95, 96] },
-        { label: '32', side: 'right', matches: [76, 78, 79, 80, 85, 87, 86, 88] }
+        { label: '16', side: 'right', matches: [91, 92, 96, 95] },
+        { label: '32', side: 'right', matches: [76, 78, 79, 80, 86, 88, 85, 87] }
     ];
 
     var html = '<div class="bracket-tree-vertical">';
