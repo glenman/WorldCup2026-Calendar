@@ -515,15 +515,15 @@
         .tab-btn {
             flex: 1;
             max-width: 200px;
-            padding: 12px 28px;
-            font-size: 1rem;
+            padding: 10px 10px;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-muted);
             background: transparent;
             border: none;
             cursor: pointer;
             transition: all 0.25s;
-            letter-spacing: 1px;
+            letter-spacing: 0;
             white-space: nowrap;
         }
         .tab-btn:not(:last-child) { border-right: 1px solid var(--card-border); }
@@ -1099,10 +1099,12 @@
                 line-height: 1;
             }
             .btv-col:last-child::after, .btv-col.center::after { display: none; }
+            .tab-btn { padding: 12px 20px; font-size: 0.9rem; letter-spacing: 0.5px; }
         }
 
         /* ====== ≥1024px（大屏）：更宽松 ====== */
         @media (min-width: 1024px) {
+            .tab-btn { padding: 12px 28px; font-size: 1rem; letter-spacing: 1px; }
             .bracket-tree-vertical { gap: 4px; padding: 12px 4px 20px; max-width: 1100px; margin: 0 auto; }
             .btv-col { gap: 4px; min-width: 64px; }
             .btv-col.center { min-width: 180px; gap: 12px; }
@@ -2703,6 +2705,12 @@ function renderBracket() {
     });
 }
 
+var COUNTRY_FLAGS = {
+    '英格兰': String.fromCodePoint(0x1F3F4, 0xE0067, 0xE0062, 0xE0065, 0xE006E, 0xE0067, 0xE007F),
+    '苏格兰': String.fromCodePoint(0x1F3F4, 0xE0067, 0xE0062, 0xE0073, 0xE0063, 0xE0074, 0xE007F),
+    '威尔士': String.fromCodePoint(0x1F3F4, 0xE0067, 0xE0062, 0xE0077, 0xE006C, 0xE0073, 0xE007F)
+};
+
 function getCountryCode(name) {
     var codes = {
         '墨西哥': 'MEX', '南非': 'RSA', '加拿大': 'CAN', '瑞士': 'SUI',
@@ -2832,7 +2840,8 @@ function renderFlag(m) {
     if (isPlaceholder(m.name)) {
         return '<span class="flag-placeholder">' + getPlaceholderLabel(m.name) + '</span>';
     }
-    return '<span class="flag-only">' + (m.flag || '🏳') + '</span>';
+    var flag = COUNTRY_FLAGS[m.name] || m.flag || '🏳';
+    return '<span class="flag-only">' + flag + '</span>';
 }
 
 function renderMatchItem(m, hideLabel) {
