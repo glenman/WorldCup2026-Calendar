@@ -1035,29 +1035,6 @@
     "status": "已结束"
   },
   {
-    "match_number": 46,
-    "date_cn": "6月24日",
-    "time_cn": "4:00",
-    "match_type": "小组赛",
-    "round": "第2轮",
-    "group": "L组",
-    "home_team": {
-      "flag": "🏴",
-      "name": "英格兰",
-      "score": 0,
-      "points": 1
-    },
-    "away_team": {
-      "flag": "🇬🇭",
-      "name": "加纳",
-      "score": 0,
-      "points": 1
-    },
-    "venue": "Foxborough, USA",
-    "stadium": "吉列球场",
-    "status": "已结束"
-  },
-  {
     "match_number": 47,
     "date_cn": "6月24日",
     "time_cn": "7:00",
@@ -1573,18 +1550,18 @@
     "home_team": {
       "flag": "🇨🇩",
       "name": "刚果(金)",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇺🇿",
       "name": "乌兹别克斯坦",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Atlanta, USA, 梅赛德斯-奔驰球场",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 70,
@@ -1597,17 +1574,17 @@
       "flag": "🇨🇴",
       "name": "哥伦比亚",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇵🇹",
       "name": "葡萄牙",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Miami Gardens, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 71,
@@ -1619,18 +1596,18 @@
     "home_team": {
       "flag": "🇩🇿",
       "name": "阿尔及利亚",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 1
     },
     "away_team": {
       "flag": "🇦🇹",
       "name": "奥地利",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 1
     },
     "venue": "Houston, USA, NRG球场",
     "stadium": "NRG球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 72,
@@ -1642,18 +1619,18 @@
     "home_team": {
       "flag": "🇯🇴",
       "name": "约旦",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇦🇷",
       "name": "阿根廷",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "venue": "Seattle, USA",
     "stadium": "卢门球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 73,
@@ -1827,17 +1804,17 @@
       "flag": "🏴",
       "name": "英格兰",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "小组第三(4)",
+      "flag": "🇬🇭",
+      "name": "加纳",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 81,
@@ -1876,8 +1853,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "小组第三(5)",
+      "flag": "🇧🇦",
+      "name": "波黑",
       "score": 0,
       "points": 0
     },
@@ -1893,8 +1870,8 @@
     "round": "1/16决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "K组第二",
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
       "score": 0,
       "points": 0
     },
@@ -1922,8 +1899,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "J组第二",
+      "flag": "🇦🇹",
+      "name": "奥地利",
       "score": 0,
       "points": 0
     },
@@ -2106,8 +2083,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M80胜者",
+      "flag": "🇬🇭",
+      "name": "加纳",
       "score": 0,
       "points": 0
     },
