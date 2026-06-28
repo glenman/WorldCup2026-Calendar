@@ -1035,29 +1035,6 @@
     "status": "已结束"
   },
   {
-    "match_number": 46,
-    "date_cn": "6月24日",
-    "time_cn": "4:00",
-    "match_type": "小组赛",
-    "round": "第2轮",
-    "group": "L组",
-    "home_team": {
-      "flag": "🏴",
-      "name": "英格兰",
-      "score": 0,
-      "points": 1
-    },
-    "away_team": {
-      "flag": "🇬🇭",
-      "name": "加纳",
-      "score": 0,
-      "points": 1
-    },
-    "venue": "Foxborough, USA",
-    "stadium": "吉列球场",
-    "status": "已结束"
-  },
-  {
     "match_number": 47,
     "date_cn": "6月24日",
     "time_cn": "7:00",
@@ -1827,17 +1804,17 @@
       "flag": "🏴",
       "name": "英格兰",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "away_team": {
       "flag": "🇬🇭",
       "name": "加纳",
       "score": 0,
-      "points": 0
+      "points": 1
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 81,
@@ -2106,8 +2083,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M80胜者",
+      "flag": "🇬🇭",
+      "name": "加纳",
       "score": 0,
       "points": 0
     },

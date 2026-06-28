@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-28T04:01:09.138Z",
+  "updated_at": "2026-06-28T07:41:49.044Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 65,
-  "total_goals": 210,
+  "total_goals": 211,
   "goals": [
     {
       "match_number": 1,
@@ -3329,6 +3329,22 @@
       "scorer": "Jivani Lv Slsv",
       "minute": 19,
       "minute_display": "19'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 72,
+      "group": "J组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "约旦",
+      "away_team": "阿根廷",
+      "team": "阿根廷",
+      "team_en": "Argentina",
+      "scorer": "Lautaro Martínez",
+      "minute": 31,
+      "minute_display": "31'",
       "own_goal": false,
       "penalty": false,
       "half": 1

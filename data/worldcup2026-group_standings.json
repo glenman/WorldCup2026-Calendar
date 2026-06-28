@@ -587,14 +587,14 @@
     "teams": [
       {
         "team": "英格兰",
-        "played": 3,
+        "played": 2,
         "won": 2,
-        "drawn": 1,
+        "drawn": 0,
         "lost": 0,
         "gf": 6,
         "ga": 2,
         "gd": 4,
-        "points": 7,
+        "points": 6,
         "standing": 1
       },
       {
@@ -611,14 +611,14 @@
       },
       {
         "team": "加纳",
-        "played": 3,
+        "played": 2,
         "won": 1,
-        "drawn": 1,
+        "drawn": 0,
         "lost": 1,
         "gf": 2,
         "ga": 2,
         "gd": 0,
-        "points": 4,
+        "points": 3,
         "standing": 3
       },
       {
