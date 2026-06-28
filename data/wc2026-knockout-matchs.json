@@ -3,46 +3,240 @@
   "timezone": "Asia/Shanghai (CST)",
   "stages": {
     "round_of_32": [
-      { "match_no": 73, "date_time": "2026-06-29 03:00", "home_team": "South Africa (A2)", "away_team": "Canada (B2)", "city": "Los Angeles", "stadium": "Los Angeles Stadium" },
-      { "match_no": 74, "date_time": "2026-06-30 04:30", "home_team": "Germany (E1)", "away_team": "Paraguay (3ABCD)", "city": "Boston", "stadium": "Gillette Stadium" },
-      { "match_no": 75, "date_time": "2026-06-30 09:00", "home_team": "Netherlands (F1)", "away_team": "Morocco (C2)", "city": "Monterrey", "stadium": "Monterrey Stadium" },
-      { "match_no": 76, "date_time": "2026-06-30 01:00", "home_team": "Brazil (C1)", "away_team": "Japan (F2)", "city": "Houston", "stadium": "Houston Stadium" },
-      { "match_no": 77, "date_time": "2026-07-01 05:00", "home_team": "France (I1)", "away_team": "Sweden (3CDFG)", "city": "New York/New Jersey", "stadium": "New York New Jersey Stadium" },
-      { "match_no": 78, "date_time": "2026-07-01 01:00", "home_team": "Ivory Coast (E2)", "away_team": "Norway (I2)", "city": "Dallas", "stadium": "Dallas Stadium" },
-      { "match_no": 79, "date_time": "2026-07-01 09:00", "home_team": "Mexico (A1)", "away_team": "3CEFHI_Best_3rd", "city": "Mexico City", "stadium": "Estadio Azteca" },
-      { "match_no": 80, "date_time": "2026-07-02 00:00", "home_team": "L1", "away_team": "3EHIJK_Best_3rd", "city": "Atlanta", "stadium": "Atlanta Stadium" },
-      { "match_no": 81, "date_time": "2026-07-02 08:00", "home_team": "USA (D1)", "away_team": "Bosnia and Herzegovina (B3)", "city": "San Francisco Bay Area", "stadium": "San Francisco Bay Area Stadium" },
-      { "match_no": 82, "date_time": "2026-07-02 04:00", "home_team": "G1", "away_team": "3AEHIJ_Best_3rd", "city": "Seattle", "stadium": "Seattle Stadium" },
-      { "match_no": 83, "date_time": "2026-07-03 07:00", "home_team": "K2", "away_team": "L2", "city": "Toronto", "stadium": "Toronto Stadium" },
-      { "match_no": 84, "date_time": "2026-07-03 03:00", "home_team": "Spain (H1)", "away_team": "J2", "city": "Los Angeles", "stadium": "Los Angeles Stadium" },
-      { "match_no": 85, "date_time": "2026-07-03 11:00", "home_team": "Switzerland (B1)", "away_team": "Algeria (J3)", "city": "Vancouver", "stadium": "BC Place" },
-      { "match_no": 86, "date_time": "2026-07-04 02:00", "home_team": "Australia (D2)", "away_team": "Egypt (G2)", "city": "Dallas", "stadium": "Dallas Stadium" },
-      { "match_no": 87, "date_time": "2026-07-04 06:00", "home_team": "Argentina (J1)", "away_team": "Cape Verde (H2)", "city": "Miami", "stadium": "Hard Rock Stadium" },
-      { "match_no": 88, "date_time": "2026-07-04 09:30", "home_team": "Colombia (K1)", "away_team": "Ghana (L2)", "city": "Kansas City", "stadium": "Arrowhead Stadium" }
+      {
+        "match_no": 73,
+        "home_team": "South Africa (A2)",
+        "away_team": "Canada (B2)",
+        "city": "Los Angeles",
+        "stadium": "Los Angeles Stadium"
+      },
+      {
+        "match_no": 74,
+        "home_team": "Germany (E1)",
+        "away_team": "Paraguay (3ABCD)",
+        "city": "Boston",
+        "stadium": "Gillette Stadium"
+      },
+      {
+        "match_no": 75,
+        "home_team": "Netherlands (F1)",
+        "away_team": "Morocco (C2)",
+        "city": "Monterrey",
+        "stadium": "Monterrey Stadium"
+      },
+      {
+        "match_no": 76,
+        "home_team": "Brazil (C1)",
+        "away_team": "Japan (F2)",
+        "city": "Houston",
+        "stadium": "Houston Stadium"
+      },
+      {
+        "match_no": 77,
+        "home_team": "France (I1)",
+        "away_team": "Sweden (3CDFG)",
+        "city": "New York/New Jersey",
+        "stadium": "New York New Jersey Stadium"
+      },
+      {
+        "match_no": 78,
+        "home_team": "Ivory Coast (E2)",
+        "away_team": "Norway (I2)",
+        "city": "Dallas",
+        "stadium": "Dallas Stadium"
+      },
+      {
+        "match_no": 79,
+        "home_team": "Mexico (A1)",
+        "away_team": "Ecuador (3CEFHI_Best_3rd)",
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca"
+      },
+      {
+        "match_no": 80,
+        "home_team": "England (L1)",
+        "away_team": "DR Congo (3EHIJK_Best_3rd)",
+        "city": "Atlanta",
+        "stadium": "Atlanta Stadium"
+      },
+      {
+        "match_no": 81,
+        "home_team": "USA (D1)",
+        "away_team": "Bosnia and Herzegovina (B3)",
+        "city": "San Francisco Bay Area",
+        "stadium": "San Francisco Bay Area Stadium"
+      },
+      {
+        "match_no": 82,
+        "home_team": "Belgium (G1)",
+        "away_team": "Senegal (3AEHIJ_Best_3rd)",
+        "city": "Seattle",
+        "stadium": "Seattle Stadium"
+      },
+      {
+        "match_no": 83,
+        "home_team": "Portugal (K2)",
+        "away_team": "Croatia (L2)",
+        "city": "Toronto",
+        "stadium": "Toronto Stadium"
+      },
+      {
+        "match_no": 84,
+        "home_team": "Spain (H1)",
+        "away_team": "Austria (J2)",
+        "city": "Los Angeles",
+        "stadium": "Los Angeles Stadium"
+      },
+      {
+        "match_no": 85,
+        "home_team": "Switzerland (B1)",
+        "away_team": "Algeria (J3)",
+        "city": "Vancouver",
+        "stadium": "BC Place"
+      },
+      {
+        "match_no": 86,
+        "home_team": "Argentina (J1)",
+        "away_team": "Cape Verde (H2)",
+        "city": "Miami",
+        "stadium": "Hard Rock Stadium"
+      },
+      {
+        "match_no": 87,
+        "home_team": "Colombia (K1)",
+        "away_team": "Ghana (L2)",
+        "city": "Kansas City",
+        "stadium": "Arrowhead Stadium"
+      },
+      {
+        "match_no": 88,
+        "home_team": "Australia (D2)",
+        "away_team": "Egypt (G2)",
+        "city": "Dallas",
+        "stadium": "Dallas Stadium"
+      }
     ],
     "round_of_16": [
-      { "match_no": 89, "date_time": "2026-07-05 05:00", "home_team": "W74", "away_team": "W77", "city": "Philadelphia", "stadium": "Philadelphia Stadium" },
-      { "match_no": 90, "date_time": "2026-07-05 01:00", "home_team": "W73", "away_team": "W75", "city": "Houston", "stadium": "Houston Stadium" },
-      { "match_no": 91, "date_time": "2026-07-06 04:00", "home_team": "W76", "away_team": "W78", "city": "New York/New Jersey", "stadium": "New York New Jersey Stadium" },
-      { "match_no": 92, "date_time": "2026-07-06 08:00", "home_team": "W79", "away_team": "W80", "city": "Mexico City", "stadium": "Estadio Azteca" },
-      { "match_no": 93, "date_time": "2026-07-07 03:00", "home_team": "W83", "away_team": "W84", "city": "Dallas", "stadium": "Dallas Stadium" },
-      { "match_no": 94, "date_time": "2026-07-07 08:00", "home_team": "W81", "away_team": "W82", "city": "Seattle", "stadium": "Seattle Stadium" },
-      { "match_no": 95, "date_time": "2026-07-08 00:00", "home_team": "W86", "away_team": "W88", "city": "Dallas", "stadium": "Dallas Stadium" },
-      { "match_no": 96, "date_time": "2026-07-08 04:00", "home_team": "W85", "away_team": "W87", "city": "Vancouver", "stadium": "BC Place" }
+      {
+        "match_no": 89,
+        "home_team": "W73",
+        "away_team": "W74",
+        "city": "Philadelphia",
+        "stadium": "Philadelphia Stadium"
+      },
+      {
+        "match_no": 90,
+        "home_team": "W75",
+        "away_team": "W76",
+        "city": "Houston",
+        "stadium": "Houston Stadium"
+      },
+      {
+        "match_no": 91,
+        "home_team": "W77",
+        "away_team": "W78",
+        "city": "New York/New Jersey",
+        "stadium": "New York New Jersey Stadium"
+      },
+      {
+        "match_no": 92,
+        "home_team": "W79",
+        "away_team": "W80",
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca"
+      },
+      {
+        "match_no": 93,
+        "home_team": "W81",
+        "away_team": "W82",
+        "city": "Seattle",
+        "stadium": "Seattle Stadium"
+      },
+      {
+        "match_no": 94,
+        "home_team": "W83",
+        "away_team": "W84",
+        "city": "Atlanta",
+        "stadium": "Atlanta Stadium"
+      },
+      {
+        "match_no": 95,
+        "home_team": "W86",
+        "away_team": "W88",
+        "city": "Atlanta",
+        "stadium": "Atlanta Stadium"
+      },
+      {
+        "match_no": 96,
+        "home_team": "W85",
+        "away_team": "W87",
+        "city": "Vancouver",
+        "stadium": "BC Place"
+      }
     ],
     "quarter_finals": [
-      { "match_no": 97, "date_time": "2026-07-10 04:00", "home_team": "W89", "away_team": "W90", "city": "Boston", "stadium": "Gillette Stadium" },
-      { "match_no": 98, "date_time": "2026-07-11 03:00", "home_team": "W93", "away_team": "W94", "city": "Los Angeles", "stadium": "SoFi Stadium" },
-      { "match_no": 99, "date_time": "2026-07-12 05:00", "home_team": "W91", "away_team": "W92", "city": "Miami", "stadium": "Hard Rock Stadium" },
-      { "match_no": 100, "date_time": "2026-07-12 09:00", "home_team": "W95", "away_team": "W96", "city": "Kansas City", "stadium": "Arrowhead Stadium" }
+      {
+        "match_no": 97,
+        "home_team": "W89",
+        "away_team": "W90",
+        "city": "Boston",
+        "stadium": "Gillette Stadium"
+      },
+      {
+        "match_no": 98,
+        "home_team": "W91",
+        "away_team": "W92",
+        "city": "New York/New Jersey",
+        "stadium": "New York New Jersey Stadium"
+      },
+      {
+        "match_no": 99,
+        "home_team": "W93",
+        "away_team": "W94",
+        "city": "Dallas",
+        "stadium": "Dallas Stadium"
+      },
+      {
+        "match_no": 100,
+        "home_team": "W95",
+        "away_team": "W96",
+        "city": "Miami",
+        "stadium": "Hard Rock Stadium"
+      }
     ],
     "semi_finals": [
-      { "match_no": 101, "date_time": "2026-07-15 03:00", "home_team": "W97", "away_team": "W98", "city": "Dallas", "stadium": "Dallas Stadium" },
-      { "match_no": 102, "date_time": "2026-07-16 03:00", "home_team": "W99", "away_team": "W100", "city": "Atlanta", "stadium": "Atlanta Stadium" }
+      {
+        "match_no": 101,
+        "home_team": "W97",
+        "away_team": "W98",
+        "city": "Dallas",
+        "stadium": "Dallas Stadium"
+      },
+      {
+        "match_no": 102,
+        "home_team": "W99",
+        "away_team": "W100",
+        "city": "Vancouver",
+        "stadium": "BC Place"
+      }
     ],
     "finals": [
-      { "match_no": 103, "stage_name": "Third-Place Match", "date_time": "2026-07-19 05:00", "home_team": "L101", "away_team": "L102", "city": "Miami", "stadium": "Hard Rock Stadium" },
-      { "match_no": 104, "stage_name": "Final", "date_time": "2026-07-20 03:00", "home_team": "W101", "away_team": "W102", "city": "New York/New Jersey", "stadium": "MetLife Stadium" }
+      {
+        "match_no": 103,
+        "stage_name": "Third-Place Match",
+        "home_team": "L101",
+        "away_team": "L102",
+        "city": "Miami",
+        "stadium": "Hard Rock Stadium"
+      },
+      {
+        "match_no": 104,
+        "stage_name": "Final",
+        "home_team": "W101",
+        "away_team": "W102",
+        "city": "New York/New Jersey",
+        "stadium": "MetLife Stadium"
+      }
     ]
   }
 }
