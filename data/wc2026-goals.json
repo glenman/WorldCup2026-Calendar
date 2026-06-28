@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-28T03:45:48.717Z",
+  "updated_at": "2026-06-28T04:01:09.138Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 65,
-  "total_goals": 208,
+  "total_goals": 210,
   "goals": [
     {
       "match_number": 1,
@@ -3284,6 +3284,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 71,
+      "group": "J组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "阿尔及利亚",
+      "away_team": "奥地利",
+      "team": "阿尔及利亚",
+      "team_en": "Algeria",
+      "scorer": "Riyad Mahrez",
+      "minute": 93,
+      "minute_display": "90'+3'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
+    },
+    {
+      "match_number": 71,
+      "group": "J组",
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "阿尔及利亚",
+      "away_team": "奥地利",
+      "team": "奥地利",
+      "team_en": "Austria",
+      "scorer": "Saša Kalajdžić",
+      "minute": 96,
+      "minute_display": "90'+6'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     },
     {
       "match_number": 72,
