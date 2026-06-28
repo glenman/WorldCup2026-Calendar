@@ -785,7 +785,7 @@ BEGIN:VEVENT
 UID:wc26-79@worldcup26
 DTSTART:20260701T010000Z
 DTEND:20260701T030000Z
-SUMMARY:🇲🇽 墨西哥 vs 🇬🇭 加纳 (1/16决赛)
+SUMMARY:🇲🇽 墨西哥 vs 🏳 小组第三(3) (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Mexico City, Mexico
 LOCATION:Calz. de Tlalpan 3465, Santa Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX, Mexico
 GEO:19.3029;-99.1506
@@ -795,7 +795,7 @@ BEGIN:VEVENT
 UID:wc26-80@worldcup26
 DTSTART:20260701T160000Z
 DTEND:20260701T180000Z
-SUMMARY:🏴 英格兰 vs 🇧🇦 波黑 (1/16决赛)
+SUMMARY:🏴 英格兰 vs 🏳 小组第三(4) (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Atlanta, USA
 LOCATION:1 AMB Dr NW, Atlanta, GA 30313, USA
 GEO:33.7553;-84.4006
@@ -815,7 +815,7 @@ BEGIN:VEVENT
 UID:wc26-82@worldcup26
 DTSTART:20260701T200000Z
 DTEND:20260701T220000Z
-SUMMARY:🇧🇪 比利时 vs 🇵🇾 巴拉圭 (1/16决赛)
+SUMMARY:🇧🇪 比利时 vs 🏳 小组第三(5) (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Seattle, USA
 LOCATION:800 Occidental Ave S, Seattle, WA 98134, USA
 GEO:47.5952;-122.3316
@@ -845,7 +845,7 @@ BEGIN:VEVENT
 UID:wc26-85@worldcup26
 DTSTART:20260703T030000Z
 DTEND:20260703T050000Z
-SUMMARY:🇨🇭 瑞士 vs 🇮🇷 伊朗 (1/16决赛)
+SUMMARY:🇨🇭 瑞士 vs 🏳 小组第三(7) (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Vancouver, Canada
 LOCATION:777 Pacific Blvd, Vancouver, BC V6B 4Y8, Canada
 GEO:49.2766;-123.1119
@@ -875,7 +875,7 @@ BEGIN:VEVENT
 UID:wc26-88@worldcup26
 DTSTART:20260704T013000Z
 DTEND:20260704T033000Z
-SUMMARY:🏳 K组第一 vs 🇰🇷 韩国 (1/16决赛)
+SUMMARY:🏳 K组第一 vs 🏳 小组第三(8) (1/16决赛)
 DESCRIPTION:淘汰赛 1/16决赛 | 📍Kansas City, USA
 LOCATION:1 Arrowhead Dr, Kansas City, MO 64129, USA
 GEO:39.0489;-94.484

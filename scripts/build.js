@@ -148,26 +148,33 @@ function buildPlaceholderMap(standings, matches, flagMap) {
     }
 
     // b) "小组第三(N)" → 根据全部12组第三名排名
-    const all3rd = [];
-    for (const g of GROUP_ORDER) {
-        const teams = standings[g]?.teams || [];
-        if (teams.length >= 3) {
-            all3rd.push({ ...teams[2], group: g });
+    // 安全策略：只要还有小组未完成（J/K 组可能改排名），整个排名都不确定，暂停解析
+    const allGroupsComplete = GROUP_ORDER.every(g => isGroupComplete(standings, g));
+    if (allGroupsComplete) {
+        const all3rd = [];
+        for (const g of GROUP_ORDER) {
+            const teams = standings[g]?.teams || [];
+            if (teams.length >= 3) {
+                all3rd.push({ ...teams[2], group: g });
+            }
         }
-    }
-    // 排序：积分 → 净胜球 → 进球 → 红黄牌待定
-    all3rd.sort((a, b) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
+        // 排序：积分 → 净胜球 → 进球 → 红黄牌待定
+        all3rd.sort((a, b) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
 
-    // 只输出前8名（晋级淘汰赛的8个小组第三）
-    const top8 = all3rd.slice(0, 8);
-    for (let i = 0; i < top8.length; i++) {
-        const key = `小组第三(${i + 1})`;
-        const team = top8[i];
-        map[key] = {
-            flag: flagMap[team.team] || team.team,
-            name: team.team
-        };
-        console.log(`  [resolve] ${key} → ${team.team} (${team.group}, ${team.points}pt GD${team.gd >= 0 ? '+' + team.gd : team.gd})`);
+        // 只输出前8名（晋级淘汰赛的8个小组第三）
+        const top8 = all3rd.slice(0, 8);
+        for (let i = 0; i < top8.length; i++) {
+            const key = `小组第三(${i + 1})`;
+            const team = top8[i];
+            map[key] = {
+                flag: flagMap[team.team] || team.team,
+                name: team.team
+            };
+            console.log(`  [resolve] ${key} → ${team.team} (${team.group}, ${team.points}pt GD${team.gd >= 0 ? '+' + team.gd : team.gd})`);
+        }
+    } else {
+        const incomplete = GROUP_ORDER.filter(g => !isGroupComplete(standings, g));
+        console.log(`  [resolve] ⚠ 小组第三待定 — 以下小组未完赛: ${incomplete.join(', ')}，暂不解析小组第三占位符`);
     }
 
     // c) "MXX胜者"/"MXX负者" → 根据已完成淘汰赛的结果
