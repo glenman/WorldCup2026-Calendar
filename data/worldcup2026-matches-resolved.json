@@ -2083,8 +2083,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇬🇭",
-      "name": "加纳",
+      "flag": "🏳",
+      "name": "M80胜者",
       "score": 0,
       "points": 0
     },
@@ -2101,13 +2101,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M83胜者",
+      "name": "M81胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M84胜者",
+      "name": "M82胜者",
       "score": 0,
       "points": 0
     },
@@ -2124,13 +2124,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M81胜者",
+      "name": "M83胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M82胜者",
+      "name": "M84胜者",
       "score": 0,
       "points": 0
     },

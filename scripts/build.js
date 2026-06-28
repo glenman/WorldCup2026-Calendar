@@ -210,109 +210,19 @@ function buildPlaceholderMap(standings, matches, flagMap) {
     return map;
 }
 
-// 深拷贝 matches 并解析占位符
-function resolveKnockoutPlaceholders(matches, standings, flagMap) {
-    const resolved = JSON.parse(JSON.stringify(matches));
-    const placeholderMap = buildPlaceholderMap(standings, resolved, flagMap);
-
-    let resolvedCount = 0;
-
-    for (const m of resolved) {
-        if (m.match_type !== '淘汰赛') continue;
-
-        for (const side of ['home_team', 'away_team']) {
-            const team = m[side];
-            const name = team.name;
-
-            // 尝试直接匹配占位符
-            const r = placeholderMap[name];
-            if (r && r.name !== name) {
-                console.log(`  [apply] M${m.match_number} ${side}: "${name}" → "${r.name}" ${r.flag}`);
-                team.flag = r.flag;
-                team.name = r.name;
-                resolvedCount++;
-            }
-        }
-    }
-
-    // 对已解析的淘汰赛，重新计算胜者/负者映射（可能二级传递）
-    // 例如 M73 结束后 M90 的 "M73胜者" 才能解析
-    // 多次迭代直到没有更多解析
-    let changed = true;
-    let iterations = 0;
-    while (changed && iterations < 10) {
-        changed = false;
-        iterations++;
-        const matchById = {};
-        for (const m of resolved) {
-            matchById[m.match_number] = m;
-        }
-
-        for (const m of resolved) {
-            if (m.match_type !== '淘汰赛') continue;
-            if (m.status !== '已结束') continue;
-            const hs = m.home_team.score;
-            const as = m.away_team.score;
-            if (hs === null || hs === undefined || as === null || as === undefined) continue;
-
-            const isPlaceholder = (name) => name.startsWith('M') || name.includes('组') || name.includes('小组第三');
-
-            const winnerName = hs > as ? m.home_team.name : m.away_team.name;
-            const loserName = hs > as ? m.away_team.name : m.home_team.name;
-
-            if (!isPlaceholder(winnerName)) {
-                const wKey = `M${m.match_number}胜者`;
-                if (!placeholderMap[wKey] || placeholderMap[wKey].name !== winnerName) {
-                    placeholderMap[wKey] = {
-                        flag: hs > as ? m.home_team.flag : m.away_team.flag,
-                        name: winnerName
-                    };
-                    changed = true;
-                }
-            }
-            if (!isPlaceholder(loserName)) {
-                const lKey = `M${m.match_number}负者`;
-                if (!placeholderMap[lKey] || placeholderMap[lKey].name !== loserName) {
-                    placeholderMap[lKey] = {
-                        flag: hs > as ? m.away_team.flag : m.home_team.flag,
-                        name: loserName
-                    };
-                    changed = true;
-                }
-            }
-        }
-
-        // 再次应用
-        for (const m of resolved) {
-            if (m.match_type !== '淘汰赛') continue;
-            for (const side of ['home_team', 'away_team']) {
-                const team = m[side];
-                const r = placeholderMap[team.name];
-                if (r && r.name !== team.name) {
-                    console.log(`  [apply-iter${iterations}] M${m.match_number} ${side}: "${team.name}" → "${r.name}" ${r.flag}`);
-                    team.flag = r.flag;
-                    team.name = r.name;
-                    resolvedCount++;
-                    changed = true;
-                }
-            }
-        }
-    }
-
-    console.log(`  [resolve] Total placeholders resolved: ${resolvedCount}`);
-    return resolved;
-}
-
-const flagMap = buildFlagMap(matches);
-const resolvedMatches = resolveKnockoutPlaceholders(matches, standings, flagMap);
+// 淘汰赛占位符解析已禁用（2026-06-28）
+// 淘汰赛对阵已通过 API 和手动方式确定，后续通过 sync-results workflow 同步结果
+// 此处直接复制 matches.json 到 resolved 副本，不做任何占位符替换
+const resolvedMatches = JSON.parse(JSON.stringify(matches));
+console.log('[build] knockout placeholder resolution DISABLED — matches used as-is');
 
 // 写回原始 matches.json（前端直接引用此文件，Action 也只提交此文件）
-fs.writeFileSync(matchesPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches.json updated (placeholders resolved)');
+fs.writeFileSync(matchesPath, JSON.stringify(matches, null, 2), 'utf-8');
+console.log('[build] worldcup2026-matches.json written (unchanged)');
 
 // 同时保留一份 resolved 副本便于调试
 fs.writeFileSync(resolvedPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches-resolved.json updated');
+console.log('[build] worldcup2026-matches-resolved.json written (copy)');
 
 // ──────── 3. 生成 ICS（使用解析后的数据） ────────
 function generateICS(matches) {

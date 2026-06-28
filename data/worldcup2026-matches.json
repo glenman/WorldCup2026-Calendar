@@ -1807,10 +1807,10 @@
       "points": 1
     },
     "away_team": {
-      "flag": "🇬🇭",
-      "name": "加纳",
+      "flag": "🇨🇩",
+      "name": "刚果(金)",
       "score": 0,
-      "points": 1
+      "points": 0
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
@@ -1853,8 +1853,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇧🇦",
-      "name": "波黑",
+      "flag": "🇸🇳",
+      "name": "塞内加尔",
       "score": 0,
       "points": 0
     },
@@ -1922,8 +1922,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇵🇾",
-      "name": "巴拉圭",
+      "flag": "🇩🇿",
+      "name": "阿尔及利亚",
       "score": 0,
       "points": 0
     },
@@ -1935,29 +1935,6 @@
     "match_number": 86,
     "date_cn": "7月4日",
     "time_cn": "2:00",
-    "match_type": "淘汰赛",
-    "round": "1/16决赛",
-    "group": null,
-    "home_team": {
-      "flag": "🇦🇺",
-      "name": "澳大利亚",
-      "score": 0,
-      "points": 0
-    },
-    "away_team": {
-      "flag": "🇪🇬",
-      "name": "埃及",
-      "score": 0,
-      "points": 0
-    },
-    "venue": "Arlington, USA",
-    "stadium": "AT&T球场",
-    "status": "未开始"
-  },
-  {
-    "match_number": 87,
-    "date_cn": "7月4日",
-    "time_cn": "6:00",
     "match_type": "淘汰赛",
     "round": "1/16决赛",
     "group": null,
@@ -1978,9 +1955,9 @@
     "status": "未开始"
   },
   {
-    "match_number": 88,
+    "match_number": 87,
     "date_cn": "7月4日",
-    "time_cn": "9:30",
+    "time_cn": "6:00",
     "match_type": "淘汰赛",
     "round": "1/16决赛",
     "group": null,
@@ -1998,6 +1975,29 @@
     },
     "venue": "Kansas City, USA",
     "stadium": "箭头体育场",
+    "status": "未开始"
+  },
+  {
+    "match_number": 88,
+    "date_cn": "7月4日",
+    "time_cn": "9:30",
+    "match_type": "淘汰赛",
+    "round": "1/16决赛",
+    "group": null,
+    "home_team": {
+      "flag": "🇦🇺",
+      "name": "澳大利亚",
+      "score": 0,
+      "points": 0
+    },
+    "away_team": {
+      "flag": "🇪🇬",
+      "name": "埃及",
+      "score": 0,
+      "points": 0
+    },
+    "venue": "Arlington, USA",
+    "stadium": "AT&T球场",
     "status": "未开始"
   },
   {
@@ -2083,8 +2083,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🇬🇭",
-      "name": "加纳",
+      "flag": "🏳",
+      "name": "M80胜者",
       "score": 0,
       "points": 0
     },
@@ -2101,13 +2101,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M83胜者",
+      "name": "M81胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M84胜者",
+      "name": "M82胜者",
       "score": 0,
       "points": 0
     },
@@ -2124,13 +2124,13 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M81胜者",
+      "name": "M83胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M82胜者",
+      "name": "M84胜者",
       "score": 0,
       "points": 0
     },
