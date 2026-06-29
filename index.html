@@ -877,6 +877,9 @@
             line-height: 1.2;
             cursor: pointer;
         }
+        .btv-match-item.finished .flag-only { cursor: default; }
+        .btv-match-item .flag-only.winner { opacity: 1; filter: drop-shadow(0 0 4px rgba(240,192,64,0.6)); }
+        .btv-match-item .flag-only.loser  { opacity: 0.35; filter: grayscale(0.6); }
         .btv-match-item .btv-vs-mini {
             font-size: 0.55rem;
             font-weight: 800;
@@ -2538,6 +2541,10 @@ function setupFlagClickDelegation() {
         var matchNum = parseInt(cell.getAttribute('data-match'));
         if (!matchNum) return;
 
+        // 已完赛的场次不参与模拟，按实际赛果
+        var match = window._knockoutMatchMap[matchNum];
+        if (match && match.status === '已结束') return;
+
         var matchItem = flag.closest('.btv-match-item');
         var flags = matchItem.querySelectorAll('.flag-only');
         var side = (flags[0] === flag) ? 'home' : 'away';
@@ -2859,14 +2866,17 @@ function getCountryCode(name) {
 
 function renderCapsule(m, matchMap) {
     var finished = m.status === '已结束';
-    var vsContent = finished ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>' : '';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
+    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
+    var vsContent = finished ? '<span class="btv-score">' + hs + ':' + as + '</span>' : '';
     var vsBadge = finished ? '' : '<div class="btv-vs">VS</div>';
 
     var html = '<div class="btv-capsule' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (vsBadge) html += vsBadge;
     if (vsContent) html += vsContent;
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div>';
     return html;
 }
@@ -2967,19 +2977,22 @@ function getPlaceholderLabel(name) {
     return name;
 }
 
-function renderFlag(m) {
+function renderFlag(m, extraClass) {
     if (isPlaceholder(m.name)) {
         return '<span class="flag-placeholder">' + getPlaceholderLabel(m.name) + '</span>';
     }
     var flag = COUNTRY_FLAGS[m.name] || m.flag || '🏳';
-    return '<span class="flag-only">' + flag + '</span>';
+    return '<span class="flag-only' + (extraClass ? ' ' + extraClass : '') + '">' + flag + '</span>';
 }
 
 function renderMatchItem(m, hideLabel) {
     var finished = m.status === '已结束';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
+    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
     var scoreHtml;
     if (finished) {
-        scoreHtml = '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+        scoreHtml = '<span class="btv-score">' + hs + ':' + as + '</span>';
     } else {
         scoreHtml = '<span class="btv-vs-mini">VS</span>';
     }
@@ -2991,19 +3004,22 @@ function renderMatchItem(m, hideLabel) {
     var html = '<div class="btv-match-cell" data-match="' + m.match_number + '">';
     if (!hideLabel) html += '<span class="btv-match-no">M' + m.match_number + '</span>';
     html += '<div class="btv-match-item' + (finished ? ' finished' : '') + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
     html += scoreHtml;
     if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div></div>';
     return html;
 }
 
 function renderMatchItemHorizontal(m, side) {
     var finished = m.status === '已结束';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
+    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
     var scoreHtml = finished
-        ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>'
+        ? '<span class="btv-score">' + hs + ':' + as + '</span>'
         : '<span class="btv-vs-mini">VS</span>';
     var homeCode = getCountryCode(m.home_team.name);
     var awayCode = getCountryCode(m.away_team.name);
@@ -3012,11 +3028,11 @@ function renderMatchItemHorizontal(m, side) {
 
     var cls = 'btv-match-item-h' + (finished ? ' finished' : '') + ' btv-sf-' + side;
     var html = '<div class="' + cls + '" data-match="' + m.match_number + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
     html += scoreHtml;
     if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div>';
     return html;
 }

@@ -126,6 +126,56 @@ function fetchAPI() {
     });
 }
 
+// ====== 淘汰赛占位符解析 ======
+// 根据已完成的淘汰赛结果，将下游比赛的 "MXX胜者"/"MXX负者" 替换为实际球队
+function resolveKnockoutPlaceholders(matches) {
+    // 构建占位符 → {flag, name} 映射
+    var placeholderMap = {};
+    matches.forEach(function (m) {
+        if (m.match_type !== '淘汰赛') return;
+        if (m.status !== '已结束') return;
+        var hs = m.home_team.score;
+        var as = m.away_team.score;
+        if (hs === null || hs === undefined || as === null || as === undefined) return;
+
+        var winner = hs > as ? m.home_team : m.away_team;
+        var loser = hs > as ? m.away_team : m.home_team;
+
+        // 只有双方都是真实队名才记录（源数据必须确认）
+        function isPH(name) { return name.startsWith('M') || name.includes('组') || name.includes('小组第三'); }
+        if (!isPH(winner.name) && !isPH(loser.name)) {
+            placeholderMap['M' + m.match_number + '胜者'] = { flag: winner.flag, name: winner.name };
+            placeholderMap['M' + m.match_number + '负者'] = { flag: loser.flag, name: loser.name };
+            console.log('  🔗 M' + m.match_number + '胜者 → ' + winner.name + ', M' + m.match_number + '负者 → ' + loser.name);
+        }
+    });
+
+    if (Object.keys(placeholderMap).length === 0) {
+        console.log('  (无占位符需要解析)');
+        return 0;
+    }
+
+    // 应用占位符到下游比赛
+    var count = 0;
+    matches.forEach(function (m) {
+        ['home_team', 'away_team'].forEach(function (side) {
+            var t = m[side];
+            var key = t.name;
+            if (placeholderMap[key]) {
+                var resolved = placeholderMap[key];
+                if (t.name !== resolved.name) {
+                    console.log('  ✅ ' + key + ' → ' + resolved.flag + ' ' + resolved.name + ' (M' + m.match_number + ' ' + side + ')');
+                    t.flag = resolved.flag;
+                    t.name = resolved.name;
+                    count++;
+                }
+            }
+        });
+    });
+
+    return count;
+}
+
 // ====== 主流程 ======
 async function main() {
     console.log('[sync-results] 从 API 获取数据...');
@@ -142,8 +192,7 @@ async function main() {
     var skipped = 0;
 
     apiData.games.forEach(function (g) {
-        // 只处理小组赛且已完成的比赛（淘汰赛由手动更新）
-        if (g.type !== 'group') return;
+        // 只处理已完成的比赛（小组赛 + 淘汰赛）
         if (g.finished !== 'TRUE') return;
 
         var m = findMatch(g, matchIndex);
@@ -198,16 +247,29 @@ async function main() {
 
     console.log('[sync-results] 更新: ' + updated + ' 场, 跳过(无变化): ' + skipped + ' 场');
 
-    if (updated === 0 && !IS_CI) {
+    // ── 淘汰赛占位符解析 ──
+    var allMatches = [];
+    Object.keys(matchIndex).forEach(function (k) {
+        allMatches.push(matchIndex[k]);
+    });
+    allMatches.sort(function (a, b) { return a.match_number - b.match_number; });
+
+    var resolved = resolveKnockoutPlaceholders(allMatches);
+    if (resolved > 0) {
+        console.log('[sync-results] 淘汰赛占位符解析: ' + resolved + ' 处已更新');
+        // 回写到 matchIndex
+        allMatches.forEach(function (m) {
+            var key = m.home_team.name + '|' + m.away_team.name;
+            if (matchIndex[key]) matchIndex[key] = m;
+        });
+    }
+
+    if (updated === 0 && resolved === 0 && !IS_CI) {
         console.log('[sync-results] 没有比分变化');
         return;
     }
 
     // 写入 matches.json
-    var allMatches = [];
-    Object.keys(matchIndex).forEach(function (k) {
-        allMatches.push(matchIndex[k]);
-    });
     allMatches.sort(function (a, b) { return a.match_number - b.match_number; });
     fs.writeFileSync(MATCHES_PATH, JSON.stringify(allMatches, null, 2), 'utf8');
     console.log('[sync-results] matches.json 已更新');

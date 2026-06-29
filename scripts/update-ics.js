@@ -33,7 +33,7 @@ function generateICS(matches) {
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
     
     for (const m of matches) {
-        if (m.match_type === '小组赛') continue; // 只生成淘汰赛
+        // 生成全部比赛（小组赛 + 淘汰赛）
         
         const [h, min] = m.time_cn.split(':').map(Number);
         const dayMatch = m.date_cn.match(/(\d+)月(\d+)日/);
@@ -80,4 +80,4 @@ function generateICS(matches) {
 
 const ics = generateICS(matches);
 fs.writeFileSync(icsPath, ics, 'utf8');
-console.log(`[update-ics] Generated ICS with ${matches.filter(m => m.match_type === '淘汰赛').length} matches`);
+console.log(`[update-ics] Generated ICS with ${matches.length} matches (all rounds)`);

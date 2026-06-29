@@ -1648,12 +1648,12 @@
     "away_team": {
       "flag": "🇨🇦",
       "name": "加拿大",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Los Angeles, USA",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 74,
@@ -2031,8 +2031,8 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M73胜者",
+      "flag": "🇨🇦",
+      "name": "加拿大",
       "score": 0,
       "points": 0
     },
