@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-28T07:41:49.044Z",
+  "updated_at": "2026-06-29T01:27:14.521Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 65,
-  "total_goals": 211,
+  "matches_with_goals": 66,
+  "total_goals": 212,
   "goals": [
     {
       "match_number": 1,
@@ -3380,6 +3380,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 73,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "南非",
+      "away_team": "加拿大",
+      "team": "加拿大",
+      "team_en": "Canada",
+      "scorer": "Astfan Avstakviv",
+      "minute": 92,
+      "minute_display": "90'+2'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }
