@@ -2427,8 +2427,14 @@ function renderBracket() {
 
     // 按轮次和比赛号索引（深拷贝，不影响原始数据）
     var matchMap = {};
-    koMatches.forEach(function(m) { matchMap[m.match_number] = JSON.parse(JSON.stringify(m)); });
+    koMatches.forEach(function(m) {
+        var copy = JSON.parse(JSON.stringify(m));
+        copy._realFinished = (m.status === '已结束');
+        matchMap[m.match_number] = copy;
+    });
     window._knockoutMatchMap = matchMap;
+    // 保存原始深拷贝，用于重置模拟
+    window._knockoutOriginals = JSON.parse(JSON.stringify(matchMap));
 
     var displayOrder = ['1/16决赛', '1/8决赛', '1/4决赛', '半决赛', '季军赛', '决赛'];
     var validRounds = [];
@@ -2541,9 +2547,9 @@ function setupFlagClickDelegation() {
         var matchNum = parseInt(cell.getAttribute('data-match'));
         if (!matchNum) return;
 
-        // 已完赛的场次不参与模拟，按实际赛果
+        // 只有实际赛果已出的场次才锁定，用户模拟的可以切换
         var match = window._knockoutMatchMap[matchNum];
-        if (match && match.status === '已结束') return;
+        if (match && match._realFinished) return;
 
         var matchItem = flag.closest('.btv-match-item');
         var flags = matchItem.querySelectorAll('.flag-only');
@@ -2553,12 +2559,61 @@ function setupFlagClickDelegation() {
     });
 }
 
+// 反向晋级映射：source matchNum → [{targetNum, slot}, ...]
+function getDownstreamTargets(matchNum) {
+    var targets = [];
+    for (var targetNum in BRACKET_PROGRESSION) {
+        var sources = BRACKET_PROGRESSION[targetNum];
+        var idx = sources.indexOf(matchNum);
+        if (idx !== -1) {
+            targets.push({ targetNum: parseInt(targetNum), slot: idx === 0 ? 'home_team' : 'away_team' });
+        }
+    }
+    // 半决赛特殊：胜者→决赛(104)，负者→季军赛(103)
+    if (matchNum === 101 || matchNum === 102) {
+        targets.push({ targetNum: 104, slot: (matchNum === 101) ? 'home_team' : 'away_team' });
+        targets.push({ targetNum: 103, slot: (matchNum === 101) ? 'home_team' : 'away_team' });
+    }
+    return targets;
+}
+
+// 递归重置用户模拟的下游场次
+function resetSimulatedDownstream(matchNum, matchMap) {
+    var m = matchMap[matchNum];
+    if (!m || m._realFinished) return;
+
+    // 恢复此场到未开始状态
+    m.status = '未开始';
+    m.home_team.score = null;
+    m.away_team.score = null;
+
+    // 对每个下游目标：若被用户模拟过则递归重置
+    var targets = getDownstreamTargets(matchNum);
+    targets.forEach(function(t) {
+        var targetM = matchMap[t.targetNum];
+        if (!targetM) return;
+        if (targetM.status === '已结束' && !targetM._realFinished) {
+            resetSimulatedDownstream(t.targetNum, matchMap);
+        }
+        // 把被此场填充的 slot 恢复为原始占位符
+        var orig = window._knockoutOriginals[t.targetNum];
+        if (orig) {
+            targetM[t.slot] = JSON.parse(JSON.stringify(orig[t.slot]));
+        }
+    });
+}
+
 function advanceTeam(matchNum, side) {
     var matchMap = window._knockoutMatchMap;
     if (!matchMap) return;
     
     var m = matchMap[matchNum];
     if (!m) return;
+
+    // 如果用户已模拟过此场，先重置它及所有下游用户模拟的场次
+    if (m.status === '已结束' && !m._realFinished) {
+        resetSimulatedDownstream(matchNum, matchMap);
+    }
 
     var winnerTeam = side === 'home' ? m.home_team : m.away_team;
     var loserTeam = side === 'home' ? m.away_team : m.home_team;

@@ -1,14 +1,12 @@
 // build.js — 一站式构建脚本
 // 1. 从 matches.json 计算小组积分榜 → 写入 group_standings.json
-// 2. 解析淘汰赛占位符 → 写入 worldcup2026-matches-resolved.json
-// 3. 生成 worldcup2026.ics
+// 2. 生成 worldcup2026.ics
 
 const fs = require('fs');
 const path = require('path');
 
 const rootDir = path.join(__dirname, '..');
 const matchesPath = path.join(rootDir, 'data', 'worldcup2026-matches.json');
-const resolvedPath = path.join(rootDir, 'data', 'worldcup2026-matches-resolved.json');
 const standingsPath = path.join(rootDir, 'data', 'worldcup2026-group_standings.json');
 const icsPath = path.join(rootDir, 'worldcup2026.ics');
 
@@ -212,19 +210,9 @@ function buildPlaceholderMap(standings, matches, flagMap) {
 
 // 淘汰赛占位符解析已禁用（2026-06-28）
 // 淘汰赛对阵已通过 API 和手动方式确定，后续通过 sync-results workflow 同步结果
-// 此处直接复制 matches.json 到 resolved 副本，不做任何占位符替换
-const resolvedMatches = JSON.parse(JSON.stringify(matches));
-console.log('[build] knockout placeholder resolution DISABLED — matches used as-is');
+console.log('[build] knockout placeholder resolution DISABLED');
 
-// 写回原始 matches.json（前端直接引用此文件，Action 也只提交此文件）
-fs.writeFileSync(matchesPath, JSON.stringify(matches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches.json written (unchanged)');
-
-// 同时保留一份 resolved 副本便于调试
-fs.writeFileSync(resolvedPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches-resolved.json written (copy)');
-
-// ──────── 3. 生成 ICS（使用解析后的数据） ────────
+// ──────── 2. 生成 ICS ────────
 function generateICS(matches) {
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
 
@@ -272,13 +260,13 @@ function generateICS(matches) {
     return ics;
 }
 
-const ics = generateICS(resolvedMatches);
+const ics = generateICS(matches);
 fs.writeFileSync(icsPath, ics, 'utf-8');
 console.log('[build] worldcup2026.ics generated');
 
 // ──────── 统计输出 ────────
-const finished = resolvedMatches.filter(m => m.status === '已结束').length;
-console.log(`[build] Total: ${resolvedMatches.length} matches, ${finished} finished`);
+const finished = matches.filter(m => m.status === '已结束').length;
+console.log(`[build] Total: ${matches.length} matches, ${finished} finished`);
 
 for (const g of GROUP_ORDER) {
     const t = standings[g].teams;
