@@ -605,16 +605,16 @@ BEGIN:VEVENT
 UID:wc2026-match-77@worldcup26-calendar
 DTSTART:20260630T210000Z
 DTEND:20260630T230000Z
-SUMMARY:🇫🇷 法国 vs 🇸🇪 瑞典 (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍East Rutherford, USA
+SUMMARY:🇫🇷 法国 3:0 🇸🇪 瑞典 (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍East Rutherford, USA | 比分: 3:0
 LOCATION:East Rutherford, USA
 END:VEVENT
 BEGIN:VEVENT
 UID:wc2026-match-78@worldcup26-calendar
 DTSTART:20260630T170000Z
 DTEND:20260630T190000Z
-SUMMARY:🇨🇮 科特迪瓦 vs 🇳🇴 挪威 (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍Arlington, USA
+SUMMARY:🇨🇮 科特迪瓦 1:2 🇳🇴 挪威 (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍Arlington, USA | 比分: 1:2
 LOCATION:Arlington, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -701,7 +701,7 @@ BEGIN:VEVENT
 UID:wc2026-match-89@worldcup26-calendar
 DTSTART:20260704T210000Z
 DTEND:20260704T230000Z
-SUMMARY:🇵🇾 巴拉圭 vs 🏳 M77胜者 (1/8决赛)
+SUMMARY:🇵🇾 巴拉圭 vs 🇫🇷 法国 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍Philadelphia, USA
 LOCATION:Philadelphia, USA
 END:VEVENT
@@ -717,7 +717,7 @@ BEGIN:VEVENT
 UID:wc2026-match-91@worldcup26-calendar
 DTSTART:20260705T200000Z
 DTEND:20260705T220000Z
-SUMMARY:🇧🇷 巴西 vs 🏳 M78胜者 (1/8决赛)
+SUMMARY:🇧🇷 巴西 vs 🇳🇴 挪威 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍East Rutherford, USA
 LOCATION:East Rutherford, USA
 END:VEVENT
