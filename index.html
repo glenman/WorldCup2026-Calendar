@@ -2938,9 +2938,11 @@ function getCountryCode(name) {
 function renderCapsule(m, matchMap) {
     var finished = m.status === '已结束';
     var hs = m.home_team.score, as = m.away_team.score;
-    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
-    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
-    var vsContent = finished ? '<span class="btv-score">' + hs + ':' + as + '</span>' : '';
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
+    var vsContent = finished ? '<span class="btv-score">' + formatScore(m) + '</span>' : '';
     var vsBadge = finished ? '' : '<div class="btv-vs">VS</div>';
 
     var html = '<div class="btv-capsule' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
