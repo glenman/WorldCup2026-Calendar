@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-30T01:25:43.045Z",
+  "updated_at": "2026-06-30T03:57:42.901Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 68,
-  "total_goals": 217,
+  "matches_with_goals": 69,
+  "total_goals": 219,
   "goals": [
     {
       "match_number": 1,
@@ -3428,6 +3428,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 75,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "荷兰",
+      "away_team": "摩洛哥",
+      "team": "荷兰",
+      "team_en": "Netherlands",
+      "scorer": "Kvdi Khakpv",
+      "minute": 72,
+      "minute_display": "72'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 75,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "荷兰",
+      "away_team": "摩洛哥",
+      "team": "摩洛哥",
+      "team_en": "Morocco",
+      "scorer": "Issa Diop",
+      "minute": 91,
+      "minute_display": "90'+1'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     },
     {
       "match_number": 76,

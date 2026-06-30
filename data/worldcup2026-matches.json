@@ -1692,18 +1692,22 @@
     "home_team": {
       "flag": "🇳🇱",
       "name": "荷兰",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇲🇦",
       "name": "摩洛哥",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Monterrey, Mexico",
     "stadium": "BBVA球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": 2,
+      "away": 3
+    }
   },
   {
     "match_number": 76,
@@ -2041,8 +2045,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M75胜者",
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
       "score": 0,
       "points": 0
     },
