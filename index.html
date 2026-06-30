@@ -1132,13 +1132,13 @@
 
         <!-- Tab 切换栏 -->
         <div class="tab-bar">
-            <button class="tab-btn active" onclick="switchTab('schedule')">📅 小组赛程</button>
-            <button class="tab-btn" onclick="switchTab('knockout')">🏆 淘汰赛赛程</button>
+            <button class="tab-btn" onclick="switchTab('schedule')">📅 小组赛程</button>
+            <button class="tab-btn active" onclick="switchTab('knockout')">🏆 淘汰赛赛程</button>
             <button class="tab-btn" onclick="switchTab('scorers')">⚽ 射手榜</button>
         </div>
 
         <!-- 赛程面板 -->
-        <div id="tab-schedule" class="tab-panel">
+        <div id="tab-schedule" class="tab-panel hidden">
 
         <div class="summary-banner">
             <h2>📋 赛事概览</h2>
@@ -1612,7 +1612,7 @@ id="calendar-app"></div>
         </div><!-- /tab-schedule -->
 
         <!-- 淘汰赛面板 -->
-        <div id="tab-knockout" class="tab-panel hidden">
+        <div id="tab-knockout" class="tab-panel">
             <div class="knockout-banner">
                 <h2>🏆 淘汰赛对阵图</h2>
                 <div class="summary-grid">
@@ -1789,6 +1789,15 @@ let ALL_MATCHES = [];        // fetched from worldcup2026-matches.json
 let STANDINGS_DATA = {};     // fetched from worldcup2026-group_standings.json
 const GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
 
+// 格式化比分（淘汰赛含点球）
+function formatScore(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (m.penalty && m.penalty.home != null && m.penalty.away != null) {
+        return '(' + m.penalty.home + ')' + hs + ':' + as + '(' + m.penalty.away + ')';
+    }
+    return hs + ':' + as;
+}
+
 function getTeamMatches(teamName) {
     if (!ALL_MATCHES.length) return [];
     return ALL_MATCHES.filter(function(m) {
@@ -1822,7 +1831,7 @@ function generateICS(matches, teamName) {
         var flagH = m.home_team.flag || '';
         var flagA = m.away_team.flag || '';
         if (m.status === '已结束') {
-            summary = flagH + ' ' + m.home_team.name + ' ' + m.home_team.score + ':' + m.away_team.score + ' ' + flagA + ' ' + m.away_team.name;
+            summary = flagH + ' ' + m.home_team.name + ' ' + formatScore(m) + ' ' + flagA + ' ' + m.away_team.name;
         } else {
             summary = flagH + ' ' + m.home_team.name + ' vs ' + flagA + ' ' + m.away_team.name;
         }
@@ -1837,7 +1846,7 @@ function generateICS(matches, teamName) {
             desc = m.match_type + ' ' + (m.group || '') + ' | 📍' + (m.venue || '');
         }
         if (m.status === '已结束') {
-            desc += ' | 比分: ' + m.home_team.score + ':' + m.away_team.score;
+            desc += ' | 比分: ' + formatScore(m);
         }
         desc += '\\n场地: ' + m.stadium + '\\n' + (teamName || '') + '\\n';
         ics += 'SUMMARY:' + summary + '\r\n';
@@ -1931,7 +1940,7 @@ function renderCalendar(filteredMatches, teamName) {
             var matchName = m.home_team.flag + ' ' + m.home_team.name + ' vs ' + m.away_team.flag + ' ' + m.away_team.name;
             var scoreHtml = '';
             if (m.status === '已结束') {
-                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+                scoreHtml = ' <span class="match-score">' + formatScore(m) + '</span>';
             }
             html += '<div class="match-card">' +
                 '<div class="match-time">' + m.time_cn + '</div>' +
@@ -1984,6 +1993,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ALL_MATCHES = matches;
 
             renderCalendar(null, 'all');
+            switchTab('knockout');
             initFromURL();
         })
         .catch(function(err) {
@@ -2457,8 +2467,14 @@ function renderBracket() {
         roundHtml += '<div class="bracket-round-label">' + roundName + '</div>';
         matches.forEach(function(m) {
             var extraClass = m.status === '已结束' ? ' finished' : '';
-            var homeWin = m.status === '已结束' && m.home_team.score > m.away_team.score;
-            var awayWin = m.status === '已结束' && m.away_team.score > m.home_team.score;
+            var homeWin = m.status === '已结束' && (
+                m.home_team.score > m.away_team.score ||
+                (m.home_team.score === m.away_team.score && m.penalty && m.penalty.home > m.penalty.away)
+            );
+            var awayWin = m.status === '已结束' && (
+                m.away_team.score > m.home_team.score ||
+                (m.home_team.score === m.away_team.score && m.penalty && m.penalty.away > m.penalty.home)
+            );
 
             roundHtml += '<div class="bracket-match' + extraClass + '">';
             roundHtml += '<div class="matchup-row">';
@@ -2469,7 +2485,7 @@ function renderBracket() {
             roundHtml += '<span class="flag">' + (m.home_team.flag || '🏳') + '</span>';
             roundHtml += '</div>';
             if (m.status === '已结束') {
-                roundHtml += '<div class="vs-badge">' + m.home_team.score + ':' + m.away_team.score + '</div>';
+                roundHtml += '<div class="vs-badge">' + formatScore(m) + '</div>';
             } else {
                 roundHtml += '<div class="vs-badge">VS</div>';
             }
@@ -3043,11 +3059,13 @@ function renderFlag(m, extraClass) {
 function renderMatchItem(m, hideLabel) {
     var finished = m.status === '已结束';
     var hs = m.home_team.score, as = m.away_team.score;
-    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
-    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
     var scoreHtml;
     if (finished) {
-        scoreHtml = '<span class="btv-score">' + hs + ':' + as + '</span>';
+        scoreHtml = '<span class="btv-score">' + formatScore(m) + '</span>';
     } else {
         scoreHtml = '<span class="btv-vs-mini">VS</span>';
     }
@@ -3071,10 +3089,12 @@ function renderMatchItem(m, hideLabel) {
 function renderMatchItemHorizontal(m, side) {
     var finished = m.status === '已结束';
     var hs = m.home_team.score, as = m.away_team.score;
-    var homeCls = finished ? (hs > as ? 'winner' : as > hs ? 'loser' : '') : '';
-    var awayCls = finished ? (as > hs ? 'winner' : hs > as ? 'loser' : '') : '';
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
     var scoreHtml = finished
-        ? '<span class="btv-score">' + hs + ':' + as + '</span>'
+        ? '<span class="btv-score">' + formatScore(m) + '</span>'
         : '<span class="btv-vs-mini">VS</span>';
     var homeCode = getCountryCode(m.home_team.name);
     var awayCode = getCountryCode(m.away_team.name);
@@ -3134,7 +3154,7 @@ function renderKnockoutCalendar() {
             var matchName = (m.home_team.flag || '🏳') + ' ' + m.home_team.name + ' vs ' + (m.away_team.flag || '🏳') + ' ' + m.away_team.name;
             var scoreHtml = '';
             if (m.status === '已结束') {
-                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+                scoreHtml = ' <span class="match-score">' + formatScore(m) + '</span>';
             }
             html += '<div class="match-card">' +
                 '<div class="match-time">' + m.time_cn + '</div>' +

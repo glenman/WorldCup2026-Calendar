@@ -128,6 +128,21 @@ function fetchAPI() {
 
 // ====== 淘汰赛占位符解析 ======
 // 根据已完成的淘汰赛结果，将下游比赛的 "MXX胜者"/"MXX负者" 替换为实际球队
+// 胜者判断：常规赛分高者胜，若平局则看点球比分
+function KO_winner(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (hs === as && m.penalty) {
+        return m.penalty.home > m.penalty.away ? m.home_team : m.away_team;
+    }
+    return hs > as ? m.home_team : m.away_team;
+}
+function KO_loser(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (hs === as && m.penalty) {
+        return m.penalty.home > m.penalty.away ? m.away_team : m.home_team;
+    }
+    return hs > as ? m.away_team : m.home_team;
+}
 function resolveKnockoutPlaceholders(matches) {
     // 构建占位符 → {flag, name} 映射
     var placeholderMap = {};
@@ -138,8 +153,8 @@ function resolveKnockoutPlaceholders(matches) {
         var as = m.away_team.score;
         if (hs === null || hs === undefined || as === null || as === undefined) return;
 
-        var winner = hs > as ? m.home_team : m.away_team;
-        var loser = hs > as ? m.away_team : m.home_team;
+        var winner = KO_winner(m);
+        var loser = KO_loser(m);
 
         // 只有双方都是真实队名才记录（源数据必须确认）
         function isPH(name) { return name.startsWith('M') || name.includes('组') || name.includes('小组第三'); }
@@ -209,14 +224,23 @@ async function main() {
         var homeScore = parseInt(g.home_score) || 0;
         var awayScore = parseInt(g.away_score) || 0;
 
+        // 淘汰赛点球比分
+        var homePk = (g.home_penalty_score !== undefined && g.home_penalty_score !== null)
+            ? parseInt(g.home_penalty_score) : null;
+        var awayPk = (g.away_penalty_score !== undefined && g.away_penalty_score !== null)
+            ? parseInt(g.away_penalty_score) : null;
+
         var points = calcPoints(homeScore, awayScore);
 
-        // 检查是否需要更新
+        // 检查是否需要更新（含点球比分变化）
         var oldHomeScore = m.home_team.score;
         var oldAwayScore = m.away_team.score;
+        var oldPenalty = m.penalty;
+        var penaltyChanged = (homePk !== null || awayPk !== null) &&
+            (!oldPenalty || oldPenalty.home !== homePk || oldPenalty.away !== awayPk);
 
         if (isSameDirection) {
-            if (oldHomeScore === homeScore && oldAwayScore === awayScore && m.status === '已结束') {
+            if (oldHomeScore === homeScore && oldAwayScore === awayScore && !penaltyChanged && m.status === '已结束') {
                 skipped++;
                 return;
             }
@@ -226,7 +250,7 @@ async function main() {
             m.away_team.points = points.away;
         } else {
             // 方向相反: API 的 home ↔ 我们的 away
-            if (oldHomeScore === awayScore && oldAwayScore === homeScore && m.status === '已结束') {
+            if (oldHomeScore === awayScore && oldAwayScore === homeScore && !penaltyChanged && m.status === '已结束') {
                 skipped++;
                 return;
             }
@@ -234,14 +258,28 @@ async function main() {
             m.home_team.points = points.away;
             m.away_team.score = homeScore;
             m.away_team.points = points.home;
+            // 交换点球比分
+            var tmpPk = homePk; homePk = awayPk; awayPk = tmpPk;
+        }
+
+        // 存储点球比分（淘汰赛）
+        if (m.match_type === '淘汰赛') {
+            if (homePk !== null || awayPk !== null) {
+                if (!m.penalty) m.penalty = {};
+                m.penalty.home = homePk;
+                m.penalty.away = awayPk;
+            }
         }
 
         m.status = '已结束';
         updated++;
 
+        var pkStr = (homePk !== null && awayPk !== null)
+            ? ' (' + homePk + ':' + awayPk + ' PK)'
+            : '';
         console.log('  ✅ ' + m.home_team.flag + ' ' + m.home_team.name + ' ' +
             m.home_team.score + ':' + m.away_team.score + ' ' +
-            m.away_team.flag + ' ' + m.away_team.name +
+            m.away_team.flag + ' ' + m.away_team.name + pkStr +
             ' (' + m.group + ' ' + m.round + ')');
     });
 
