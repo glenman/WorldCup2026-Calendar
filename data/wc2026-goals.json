@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-01T01:33:43.174Z",
+  "updated_at": "2026-07-01T04:07:19.345Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 71,
-  "total_goals": 225,
+  "matches_with_goals": 72,
+  "total_goals": 227,
   "goals": [
     {
       "match_number": 1,
@@ -30,7 +30,7 @@
       "away_team": "南非",
       "team": "墨西哥",
       "team_en": "Mexico",
-      "scorer": "R. Jiménez",
+      "scorer": "Raúl Jiménez",
       "minute": 67,
       "minute_display": "67'",
       "own_goal": false,
@@ -3604,6 +3604,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 79,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "厄瓜多尔",
+      "team": "墨西哥",
+      "team_en": "Mexico",
+      "scorer": "Jvlian Kviinvnz",
+      "minute": 22,
+      "minute_display": "22'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 79,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "厄瓜多尔",
+      "team": "墨西哥",
+      "team_en": "Mexico",
+      "scorer": "Raúl Jiménez",
+      "minute": 31,
+      "minute_display": "31'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     }
   ]
 }

@@ -1796,8 +1796,8 @@
     "home_team": {
       "flag": "🇲🇽",
       "name": "墨西哥",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇪🇨",
@@ -1807,7 +1807,11 @@
     },
     "venue": "Mexico City, Mexico",
     "stadium": "阿兹特克球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 80,
@@ -2093,8 +2097,8 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M79胜者",
+      "flag": "🇲🇽",
+      "name": "墨西哥",
       "score": 0,
       "points": 0
     },
