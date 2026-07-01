@@ -629,8 +629,8 @@ BEGIN:VEVENT
 UID:wc2026-match-80@worldcup26-calendar
 DTSTART:20260701T160000Z
 DTEND:20260701T180000Z
-SUMMARY:🏴 英格兰 vs 🇨🇩 刚果(金) (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍Atlanta, USA
+SUMMARY:🏴 英格兰 2:1 🇨🇩 刚果(金) (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍Atlanta, USA | 比分: 2:1
 LOCATION:Atlanta, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -645,8 +645,8 @@ BEGIN:VEVENT
 UID:wc2026-match-82@worldcup26-calendar
 DTSTART:20260701T200000Z
 DTEND:20260701T220000Z
-SUMMARY:🇧🇪 比利时 vs 🇸🇳 塞内加尔 (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍Seattle, USA
+SUMMARY:🇧🇪 比利时 3:2 🇸🇳 塞内加尔 (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍Seattle, USA | 比分: 3:2
 LOCATION:Seattle, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -725,7 +725,7 @@ BEGIN:VEVENT
 UID:wc2026-match-92@worldcup26-calendar
 DTSTART:20260706T000000Z
 DTEND:20260706T020000Z
-SUMMARY:🇲🇽 墨西哥 vs 🏳 M80胜者 (1/8决赛)
+SUMMARY:🇲🇽 墨西哥 vs 🏴 英格兰 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍Mexico City, Mexico
 LOCATION:Mexico City, Mexico
 END:VEVENT
@@ -741,7 +741,7 @@ BEGIN:VEVENT
 UID:wc2026-match-94@worldcup26-calendar
 DTSTART:20260707T000000Z
 DTEND:20260707T020000Z
-SUMMARY:🏳 M81胜者 vs 🏳 M82胜者 (1/8决赛)
+SUMMARY:🏳 M81胜者 vs 🇧🇪 比利时 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍Seattle, USA
 LOCATION:Seattle, USA
 END:VEVENT
