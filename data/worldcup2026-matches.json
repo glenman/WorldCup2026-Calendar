@@ -1927,8 +1927,8 @@
     "home_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇦🇹",
@@ -1938,7 +1938,11 @@
     },
     "venue": "Los Angeles, USA",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 85,
@@ -2138,8 +2142,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M84胜者",
+      "flag": "🇪🇸",
+      "name": "西班牙",
       "score": 0,
       "points": 0
     },
