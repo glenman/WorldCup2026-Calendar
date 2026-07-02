@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-01T23:37:57.647Z",
+  "updated_at": "2026-07-02T01:26:03.729Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 74,
-  "total_goals": 234,
+  "matches_with_goals": 75,
+  "total_goals": 235,
   "goals": [
     {
       "match_number": 1,
@@ -3684,6 +3684,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 81,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "美国",
+      "away_team": "波黑",
+      "team": "美国",
+      "team_en": "United States",
+      "scorer": "Flvrin Balvgan",
+      "minute": 45,
+      "minute_display": "45'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     },
     {
       "match_number": 82,
