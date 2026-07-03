@@ -1904,18 +1904,22 @@
     "home_team": {
       "flag": "🇵🇹",
       "name": "葡萄牙",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇭🇷",
       "name": "克罗地亚",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Toronto, Canada",
     "stadium": "BMO球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 84,
@@ -2136,8 +2140,8 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M83胜者",
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
       "score": 0,
       "points": 0
     },

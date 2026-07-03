@@ -653,8 +653,8 @@ BEGIN:VEVENT
 UID:wc2026-match-83@worldcup26-calendar
 DTSTART:20260702T230000Z
 DTEND:20260703T010000Z
-SUMMARY:🇵🇹 葡萄牙 vs 🇭🇷 克罗地亚 (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍Toronto, Canada
+SUMMARY:🇵🇹 葡萄牙 2:1 🇭🇷 克罗地亚 (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍Toronto, Canada | 比分: 2:1
 LOCATION:Toronto, Canada
 END:VEVENT
 BEGIN:VEVENT
@@ -733,7 +733,7 @@ BEGIN:VEVENT
 UID:wc2026-match-93@worldcup26-calendar
 DTSTART:20260706T190000Z
 DTEND:20260706T210000Z
-SUMMARY:🏳 M83胜者 vs 🇪🇸 西班牙 (1/8决赛)
+SUMMARY:🇵🇹 葡萄牙 vs 🇪🇸 西班牙 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍Dallas, USA
 LOCATION:Dallas, USA
 END:VEVENT

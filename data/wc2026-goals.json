@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-03T00:19:27.929Z",
+  "updated_at": "2026-07-03T01:33:15.640Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 77,
-  "total_goals": 240,
+  "total_goals": 241,
   "goals": [
     {
       "match_number": 1,
@@ -3796,6 +3796,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 83,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "葡萄牙",
+      "away_team": "克罗地亚",
+      "team": "葡萄牙",
+      "team_en": "Portugal",
+      "scorer": "Gvnchalv Ramvs",
+      "minute": 94,
+      "minute_display": "90'+4'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     },
     {
       "match_number": 84,
