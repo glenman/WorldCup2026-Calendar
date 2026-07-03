@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-02T23:51:22.676Z",
+  "updated_at": "2026-07-03T00:19:27.929Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 76,
-  "total_goals": 239,
+  "matches_with_goals": 77,
+  "total_goals": 240,
   "goals": [
     {
       "match_number": 1,
@@ -3777,6 +3777,22 @@
       "scorer": "Youri Tielemans",
       "minute": 89,
       "minute_display": "89'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 83,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "葡萄牙",
+      "away_team": "克罗地亚",
+      "team": "克罗地亚",
+      "team_en": "Croatia",
+      "scorer": "Ivan Perišić",
+      "minute": 53,
+      "minute_display": "53'",
       "own_goal": false,
       "penalty": false,
       "half": 2
