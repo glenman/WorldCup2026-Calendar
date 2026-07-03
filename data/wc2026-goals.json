@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-03T01:33:15.640Z",
+  "updated_at": "2026-07-03T05:24:05.083Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 77,
-  "total_goals": 241,
+  "matches_with_goals": 78,
+  "total_goals": 243,
   "goals": [
     {
       "match_number": 1,
@@ -3857,6 +3857,38 @@
       "scorer": "Mikel Oyarzabal",
       "minute": 89,
       "minute_display": "89'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 85,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "瑞士",
+      "away_team": "阿尔及利亚",
+      "team": "瑞士",
+      "team_en": "Switzerland",
+      "scorer": "Breel Embolo",
+      "minute": 10,
+      "minute_display": "10'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 85,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "瑞士",
+      "away_team": "阿尔及利亚",
+      "team": "瑞士",
+      "team_en": "Switzerland",
+      "scorer": "Dn Andvi",
+      "minute": 46,
+      "minute_display": "46'",
       "own_goal": false,
       "penalty": false,
       "half": 2
