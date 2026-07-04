@@ -1648,12 +1648,12 @@
     "away_team": {
       "flag": "🇨🇦",
       "name": "加拿大",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Los Angeles, USA",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 74,
@@ -1665,18 +1665,22 @@
     "home_team": {
       "flag": "🇩🇪",
       "name": "德国",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇵🇾",
       "name": "巴拉圭",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Boston, USA",
     "stadium": "吉列球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": 3,
+      "away": 4
+    }
   },
   {
     "match_number": 75,
@@ -1688,18 +1692,22 @@
     "home_team": {
       "flag": "🇳🇱",
       "name": "荷兰",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇲🇦",
       "name": "摩洛哥",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Monterrey, Mexico",
     "stadium": "BBVA球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": 2,
+      "away": 3
+    }
   },
   {
     "match_number": 76,
@@ -1711,18 +1719,18 @@
     "home_team": {
       "flag": "🇧🇷",
       "name": "巴西",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇯🇵",
       "name": "日本",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Houston, USA",
     "stadium": "NRG球场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 77,
@@ -1734,8 +1742,8 @@
     "home_team": {
       "flag": "🇫🇷",
       "name": "法国",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇸🇪",
@@ -1745,7 +1753,11 @@
     },
     "venue": "East Rutherford, USA",
     "stadium": "大都会人寿球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 78,
@@ -1757,18 +1769,22 @@
     "home_team": {
       "flag": "🇨🇮",
       "name": "科特迪瓦",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇳🇴",
       "name": "挪威",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "Arlington, USA",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 79,
@@ -1780,8 +1796,8 @@
     "home_team": {
       "flag": "🇲🇽",
       "name": "墨西哥",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇪🇨",
@@ -1791,7 +1807,11 @@
     },
     "venue": "Mexico City, Mexico",
     "stadium": "阿兹特克球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 80,
@@ -1803,18 +1823,22 @@
     "home_team": {
       "flag": "🏴",
       "name": "英格兰",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇨🇩",
       "name": "刚果(金)",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 81,
@@ -1826,8 +1850,8 @@
     "home_team": {
       "flag": "🇺🇸",
       "name": "美国",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇧🇦",
@@ -1837,7 +1861,11 @@
     },
     "venue": "Santa Clara, USA",
     "stadium": "李维斯球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 82,
@@ -1849,18 +1877,22 @@
     "home_team": {
       "flag": "🇧🇪",
       "name": "比利时",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇸🇳",
       "name": "塞内加尔",
-      "score": 0,
+      "score": 2,
       "points": 0
     },
     "venue": "Seattle, USA",
     "stadium": "卢门球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 83,
@@ -1872,18 +1904,22 @@
     "home_team": {
       "flag": "🇵🇹",
       "name": "葡萄牙",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇭🇷",
       "name": "克罗地亚",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Toronto, Canada",
     "stadium": "BMO球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 84,
@@ -1895,8 +1931,8 @@
     "home_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇦🇹",
@@ -1906,7 +1942,11 @@
     },
     "venue": "Los Angeles, USA",
     "stadium": "SoFi体育场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 85,
@@ -1918,8 +1958,8 @@
     "home_team": {
       "flag": "🇨🇭",
       "name": "瑞士",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇩🇿",
@@ -1929,12 +1969,16 @@
     },
     "venue": "Vancouver, Canada",
     "stadium": "BC广场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 86,
     "date_cn": "7月4日",
-    "time_cn": "2:00",
+    "time_cn": "6:00",
     "match_type": "淘汰赛",
     "round": "1/16决赛",
     "group": null,
@@ -1952,12 +1996,16 @@
     },
     "venue": "Miami, USA",
     "stadium": "硬石体育场",
-    "status": "已结束"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 87,
     "date_cn": "7月4日",
-    "time_cn": "6:00",
+    "time_cn": "9:30",
     "match_type": "淘汰赛",
     "round": "1/16决赛",
     "group": null,
@@ -1980,25 +2028,29 @@
   {
     "match_number": 88,
     "date_cn": "7月4日",
-    "time_cn": "9:30",
+    "time_cn": "2:00",
     "match_type": "淘汰赛",
     "round": "1/16决赛",
     "group": null,
     "home_team": {
       "flag": "🇦🇺",
       "name": "澳大利亚",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇪🇬",
       "name": "埃及",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Arlington, USA",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": 2,
+      "away": 4
+    }
   },
   {
     "match_number": 89,
@@ -2008,14 +2060,14 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M73胜者",
+      "flag": "🇵🇾",
+      "name": "巴拉圭",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M74胜者",
+      "flag": "🇫🇷",
+      "name": "法国",
       "score": 0,
       "points": 0
     },
@@ -2031,14 +2083,14 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M75胜者",
+      "flag": "🇨🇦",
+      "name": "加拿大",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M76胜者",
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
       "score": 0,
       "points": 0
     },
@@ -2054,14 +2106,14 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M77胜者",
+      "flag": "🇧🇷",
+      "name": "巴西",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M78胜者",
+      "flag": "🇳🇴",
+      "name": "挪威",
       "score": 0,
       "points": 0
     },
@@ -2077,14 +2129,14 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M79胜者",
+      "flag": "🇲🇽",
+      "name": "墨西哥",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M80胜者",
+      "flag": "🏴",
+      "name": "英格兰",
       "score": 0,
       "points": 0
     },
@@ -2100,19 +2152,19 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M81胜者",
+      "flag": "🇵🇹",
+      "name": "葡萄牙",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M82胜者",
+      "flag": "🇪🇸",
+      "name": "西班牙",
       "score": 0,
       "points": 0
     },
-    "venue": "Seattle, USA",
-    "stadium": "卢门球场",
+    "venue": "Dallas, USA",
+    "stadium": "AT&T球场",
     "status": "未开始"
   },
   {
@@ -2123,19 +2175,19 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M83胜者",
+      "flag": "🇺🇸",
+      "name": "美国",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M84胜者",
+      "flag": "🇧🇪",
+      "name": "比利时",
       "score": 0,
       "points": 0
     },
-    "venue": "Atlanta, USA",
-    "stadium": "梅赛德斯-奔驰球场",
+    "venue": "Seattle, USA",
+    "stadium": "卢门球场",
     "status": "未开始"
   },
   {
@@ -2146,14 +2198,14 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M86胜者",
+      "flag": "🇦🇷",
+      "name": "阿根廷",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M88胜者",
+      "flag": "🇪🇬",
+      "name": "埃及",
       "score": 0,
       "points": 0
     },
@@ -2169,8 +2221,8 @@
     "round": "1/8决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M85胜者",
+      "flag": "🇨🇭",
+      "name": "瑞士",
       "score": 0,
       "points": 0
     },
@@ -2216,18 +2268,18 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M91胜者",
+      "name": "M93胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M92胜者",
+      "name": "M94胜者",
       "score": 0,
       "points": 0
     },
-    "venue": "East Rutherford, USA",
-    "stadium": "大都会人寿球场",
+    "venue": "Los Angeles, USA",
+    "stadium": "洛杉矶体育场",
     "status": "未开始"
   },
   {
@@ -2239,18 +2291,18 @@
     "group": null,
     "home_team": {
       "flag": "🏳",
-      "name": "M93胜者",
+      "name": "M91胜者",
       "score": 0,
       "points": 0
     },
     "away_team": {
       "flag": "🏳",
-      "name": "M94胜者",
+      "name": "M92胜者",
       "score": 0,
       "points": 0
     },
-    "venue": "Arlington, USA",
-    "stadium": "AT&T球场",
+    "venue": "Miami, USA",
+    "stadium": "硬石体育场",
     "status": "未开始"
   },
   {
@@ -2272,8 +2324,8 @@
       "score": 0,
       "points": 0
     },
-    "venue": "Miami, USA",
-    "stadium": "硬石体育场",
+    "venue": "Kansas City, USA",
+    "stadium": "箭头球场",
     "status": "未开始"
   },
   {
@@ -2318,8 +2370,8 @@
       "score": 0,
       "points": 0
     },
-    "venue": "Vancouver, Canada",
-    "stadium": "BC广场",
+    "venue": "Atlanta, USA",
+    "stadium": "梅赛德斯-奔驰球场",
     "status": "未开始"
   },
   {
