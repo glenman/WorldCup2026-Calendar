@@ -693,8 +693,8 @@ BEGIN:VEVENT
 UID:wc2026-match-88@worldcup26-calendar
 DTSTART:20260703T180000Z
 DTEND:20260703T200000Z
-SUMMARY:🇦🇺 澳大利亚 vs 🇪🇬 埃及 (1/16决赛)
-DESCRIPTION:淘汰赛 1/16决赛 | 📍Arlington, USA
+SUMMARY:🇦🇺 澳大利亚 (2)1:1(4) 🇪🇬 埃及 (1/16决赛)
+DESCRIPTION:淘汰赛 1/16决赛 | 📍Arlington, USA | 比分: (2)1:1(4)
 LOCATION:Arlington, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -749,7 +749,7 @@ BEGIN:VEVENT
 UID:wc2026-match-95@worldcup26-calendar
 DTSTART:20260707T160000Z
 DTEND:20260707T180000Z
-SUMMARY:🏳 M86胜者 vs 🏳 M88胜者 (1/8决赛)
+SUMMARY:🏳 M86胜者 vs 🇪🇬 埃及 (1/8决赛)
 DESCRIPTION:淘汰赛 1/8决赛 | 📍Atlanta, USA
 LOCATION:Atlanta, USA
 END:VEVENT

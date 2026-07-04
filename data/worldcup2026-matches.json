@@ -2031,18 +2031,22 @@
     "home_team": {
       "flag": "🇦🇺",
       "name": "澳大利亚",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "away_team": {
       "flag": "🇪🇬",
       "name": "埃及",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 1
     },
     "venue": "Arlington, USA",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": 2,
+      "away": 4
+    }
   },
   {
     "match_number": 89,
@@ -2196,8 +2200,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M88胜者",
+      "flag": "🇪🇬",
+      "name": "埃及",
       "score": 0,
       "points": 0
     },
