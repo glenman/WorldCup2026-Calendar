@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-04T00:18:00.473Z",
+  "updated_at": "2026-07-04T01:01:27.917Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 80,
-  "total_goals": 248,
+  "total_goals": 250,
   "goals": [
     {
       "match_number": 1,
@@ -3937,6 +3937,38 @@
       "scorer": "Lisandro Martínez",
       "minute": 92,
       "minute_display": "92'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
+    },
+    {
+      "match_number": 86,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "阿根廷",
+      "away_team": "佛得角",
+      "team": "佛得角",
+      "team_en": "Cape Verde",
+      "scorer": "Lvpz Kabral",
+      "minute": 103,
+      "minute_display": "103'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
+    },
+    {
+      "match_number": 86,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "阿根廷",
+      "away_team": "佛得角",
+      "team": "阿根廷",
+      "team_en": "Argentina",
+      "scorer": "Dini Bvrgs",
+      "minute": 111,
+      "minute_display": "111'",
       "own_goal": false,
       "penalty": false,
       "half": 3
