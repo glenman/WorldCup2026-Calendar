@@ -1941,18 +1941,18 @@
     "home_team": {
       "flag": "🇦🇷",
       "name": "阿根廷",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "away_team": {
       "flag": "🇨🇻",
       "name": "佛得角",
-      "score": 0,
+      "score": 2,
       "points": 0
     },
     "venue": "Miami, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 87,
