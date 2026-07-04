@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-04T01:20:20.468Z",
+  "updated_at": "2026-07-04T03:50:20.898Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 80,
-  "total_goals": 250,
+  "matches_with_goals": 81,
+  "total_goals": 251,
   "goals": [
     {
       "match_number": 1,
@@ -3972,6 +3972,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 87,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "哥伦比亚",
+      "away_team": "加纳",
+      "team": "哥伦比亚",
+      "team_en": "Colombia",
+      "scorer": "Jan Arias",
+      "minute": 14,
+      "minute_display": "14'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     },
     {
       "match_number": 88,
