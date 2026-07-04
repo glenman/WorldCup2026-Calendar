@@ -2072,12 +2072,16 @@
     "away_team": {
       "flag": "🇫🇷",
       "name": "法国",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Philadelphia, USA",
     "stadium": "林肯金融球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 90,
@@ -2095,12 +2099,16 @@
     "away_team": {
       "flag": "🇲🇦",
       "name": "摩洛哥",
-      "score": 0,
-      "points": 0
+      "score": 3,
+      "points": 3
     },
     "venue": "Houston, USA",
     "stadium": "NRG球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 91,
@@ -2248,14 +2256,14 @@
     "round": "1/4决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M89胜者",
+      "flag": "🇫🇷",
+      "name": "法国",
       "score": 0,
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M90胜者",
+      "flag": "🇲🇦",
+      "name": "摩洛哥",
       "score": 0,
       "points": 0
     },

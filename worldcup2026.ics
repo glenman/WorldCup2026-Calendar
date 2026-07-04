@@ -701,16 +701,16 @@ BEGIN:VEVENT
 UID:wc2026-match-89@worldcup26-calendar
 DTSTART:20260704T210000Z
 DTEND:20260704T230000Z
-SUMMARY:🇵🇾 巴拉圭 vs 🇫🇷 法国 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍Philadelphia, USA
+SUMMARY:🇵🇾 巴拉圭 0:1 🇫🇷 法国 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍Philadelphia, USA | 比分: 0:1
 LOCATION:Philadelphia, USA
 END:VEVENT
 BEGIN:VEVENT
 UID:wc2026-match-90@worldcup26-calendar
 DTSTART:20260704T170000Z
 DTEND:20260704T190000Z
-SUMMARY:🇨🇦 加拿大 vs 🇲🇦 摩洛哥 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍Houston, USA
+SUMMARY:🇨🇦 加拿大 0:3 🇲🇦 摩洛哥 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍Houston, USA | 比分: 0:3
 LOCATION:Houston, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -765,7 +765,7 @@ BEGIN:VEVENT
 UID:wc2026-match-97@worldcup26-calendar
 DTSTART:20260709T200000Z
 DTEND:20260709T220000Z
-SUMMARY:🏳 M89胜者 vs 🏳 M90胜者 (1/4决赛)
+SUMMARY:🇫🇷 法国 vs 🇲🇦 摩洛哥 (1/4决赛)
 DESCRIPTION:淘汰赛 1/4决赛 | 📍Boston, USA
 LOCATION:Boston, USA
 END:VEVENT

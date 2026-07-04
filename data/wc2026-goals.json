@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-04T07:16:23.602Z",
+  "updated_at": "2026-07-04T23:53:51.967Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 81,
-  "total_goals": 251,
+  "matches_with_goals": 82,
+  "total_goals": 254,
   "goals": [
     {
       "match_number": 1,
@@ -4020,6 +4020,54 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 90,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "加拿大",
+      "away_team": "摩洛哥",
+      "team": "摩洛哥",
+      "team_en": "Morocco",
+      "scorer": "Azdin Avnahi",
+      "minute": 50,
+      "minute_display": "50'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 90,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "加拿大",
+      "away_team": "摩洛哥",
+      "team": "摩洛哥",
+      "team_en": "Morocco",
+      "scorer": "Azdin Avnahi",
+      "minute": 82,
+      "minute_display": "82'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 90,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "加拿大",
+      "away_team": "摩洛哥",
+      "team": "摩洛哥",
+      "team_en": "Morocco",
+      "scorer": "Svfian Rhimi",
+      "minute": 98,
+      "minute_display": "90'+8'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }
