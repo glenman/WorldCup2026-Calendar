@@ -29,11 +29,19 @@ const venueGeo = {
     'Philadelphia Stadium': { lat: 39.9069, lng: -75.1665, address: 'Lincoln Financial Field, 1 Lincoln Financial Field Way, Philadelphia, PA 19148, USA' },
 };
 
+function formatScore(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (m.penalty && m.penalty.home !== null && m.penalty.away !== null) {
+        return '(' + m.penalty.home + ')' + hs + ':' + as + '(' + m.penalty.away + ')';
+    }
+    return hs + ':' + as;
+}
+
 function generateICS(matches) {
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
     
     for (const m of matches) {
-        if (m.match_type === '小组赛') continue; // 只生成淘汰赛
+        // 生成全部比赛（小组赛 + 淘汰赛）
         
         const [h, min] = m.time_cn.split(':').map(Number);
         const dayMatch = m.date_cn.match(/(\d+)月(\d+)日/);
@@ -45,12 +53,17 @@ function generateICS(matches) {
         const iso = new Date(utcDate).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
         
         const scoreStr = m.status === '已结束'
-            ? `${m.home_team.flag || ''} ${m.home_team.name} ${m.home_team.score}:${m.away_team.score} ${m.away_team.flag || ''} ${m.away_team.name}`
+            ? `${m.home_team.flag || ''} ${m.home_team.name} ${formatScore(m)} ${m.away_team.flag || ''} ${m.away_team.name}`
             : `${m.home_team.flag || ''} ${m.home_team.name} vs ${m.away_team.flag || ''} ${m.away_team.name}`;
         
         const summarySuffix = m.match_type === '淘汰赛' ? ` (${m.round})` : '';
         
-        let desc = `淘汰赛 ${m.round} | 📍${m.venue || ''}`;
+        let desc = m.match_type === '淘汰赛'
+            ? `淘汰赛 ${m.round} | 📍${m.venue || ''}`
+            : `${m.group || ''} | 📍${m.venue || ''}`;
+        if (m.status === '已结束') {
+            desc += ` | 比分: ${formatScore(m)}`;
+        }
         
         const venue = venueGeo[m.stadium];
         const location = m.venue || '';
@@ -80,4 +93,4 @@ function generateICS(matches) {
 
 const ics = generateICS(matches);
 fs.writeFileSync(icsPath, ics, 'utf8');
-console.log(`[update-ics] Generated ICS with ${matches.filter(m => m.match_type === '淘汰赛').length} matches`);
+console.log(`[update-ics] Generated ICS with ${matches.length} matches (all rounds)`);

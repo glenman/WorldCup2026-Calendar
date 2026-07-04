@@ -1,14 +1,12 @@
 // build.js — 一站式构建脚本
 // 1. 从 matches.json 计算小组积分榜 → 写入 group_standings.json
-// 2. 解析淘汰赛占位符 → 写入 worldcup2026-matches-resolved.json
-// 3. 生成 worldcup2026.ics
+// 2. 生成 worldcup2026.ics
 
 const fs = require('fs');
 const path = require('path');
 
 const rootDir = path.join(__dirname, '..');
 const matchesPath = path.join(rootDir, 'data', 'worldcup2026-matches.json');
-const resolvedPath = path.join(rootDir, 'data', 'worldcup2026-matches-resolved.json');
 const standingsPath = path.join(rootDir, 'data', 'worldcup2026-group_standings.json');
 const icsPath = path.join(rootDir, 'worldcup2026.ics');
 
@@ -195,8 +193,18 @@ function buildPlaceholderMap(standings, matches, flagMap) {
         const as = m.away_team.score;
         if (hs === null || hs === undefined || as === null || as === undefined) continue;
 
-        const winner = hs > as ? m.home_team : m.away_team;
-        const loser = hs > as ? m.away_team : m.home_team;
+        function KOwinner(m) {
+            var hs = m.home_team.score, as = m.away_team.score;
+            if (hs === as && m.penalty) return m.penalty.home > m.penalty.away ? m.home_team : m.away_team;
+            return hs > as ? m.home_team : m.away_team;
+        }
+        function KOloser(m) {
+            var hs = m.home_team.score, as = m.away_team.score;
+            if (hs === as && m.penalty) return m.penalty.home > m.penalty.away ? m.away_team : m.home_team;
+            return hs > as ? m.away_team : m.home_team;
+        }
+        const winner = KOwinner(m);
+        const loser = KOloser(m);
 
         // 只有双方都是真实队名（非占位符）才记录
         const isPlaceholder = (name) => name.startsWith('M') || name.includes('组') || name.includes('小组第三');
@@ -212,19 +220,18 @@ function buildPlaceholderMap(standings, matches, flagMap) {
 
 // 淘汰赛占位符解析已禁用（2026-06-28）
 // 淘汰赛对阵已通过 API 和手动方式确定，后续通过 sync-results workflow 同步结果
-// 此处直接复制 matches.json 到 resolved 副本，不做任何占位符替换
-const resolvedMatches = JSON.parse(JSON.stringify(matches));
-console.log('[build] knockout placeholder resolution DISABLED — matches used as-is');
+console.log('[build] knockout placeholder resolution DISABLED');
 
-// 写回原始 matches.json（前端直接引用此文件，Action 也只提交此文件）
-fs.writeFileSync(matchesPath, JSON.stringify(matches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches.json written (unchanged)');
+// ──────── 2. 生成 ICS ────────
+// 格式化比分（淘汰赛含点球）
+function formatScore(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (m.penalty && m.penalty.home !== null && m.penalty.away !== null) {
+        return '(' + m.penalty.home + ')' + hs + ':' + as + '(' + m.penalty.away + ')';
+    }
+    return hs + ':' + as;
+}
 
-// 同时保留一份 resolved 副本便于调试
-fs.writeFileSync(resolvedPath, JSON.stringify(resolvedMatches, null, 2), 'utf-8');
-console.log('[build] worldcup2026-matches-resolved.json written (copy)');
-
-// ──────── 3. 生成 ICS（使用解析后的数据） ────────
 function generateICS(matches) {
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WorldCup26//ZH\r\n';
 
@@ -239,7 +246,7 @@ function generateICS(matches) {
         const iso = new Date(utcDate).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
         const scoreStr = m.status === '已结束'
-            ? `${m.home_team.flag} ${m.home_team.name} ${m.home_team.score}:${m.away_team.score} ${m.away_team.flag} ${m.away_team.name}`
+            ? `${m.home_team.flag} ${m.home_team.name} ${formatScore(m)} ${m.away_team.flag} ${m.away_team.name}`
             : `${m.home_team.flag} ${m.home_team.name} vs ${m.away_team.flag} ${m.away_team.name}`;
 
         const summarySuffix = m.match_type === '淘汰赛' ? ` (${m.round})` : '';
@@ -248,7 +255,7 @@ function generateICS(matches) {
             ? `淘汰赛 ${m.round} | 📍${m.venue}`
             : `${m.match_type} ${m.group} | 📍${m.venue}`;
         if (m.status === '已结束') {
-            desc += ` | 比分: ${m.home_team.score}:${m.away_team.score}`;
+            desc += ` | 比分: ${formatScore(m)}`;
         }
 
         const geo = STADIUM_GEO[m.stadium];
@@ -272,13 +279,13 @@ function generateICS(matches) {
     return ics;
 }
 
-const ics = generateICS(resolvedMatches);
+const ics = generateICS(matches);
 fs.writeFileSync(icsPath, ics, 'utf-8');
 console.log('[build] worldcup2026.ics generated');
 
 // ──────── 统计输出 ────────
-const finished = resolvedMatches.filter(m => m.status === '已结束').length;
-console.log(`[build] Total: ${resolvedMatches.length} matches, ${finished} finished`);
+const finished = matches.filter(m => m.status === '已结束').length;
+console.log(`[build] Total: ${matches.length} matches, ${finished} finished`);
 
 for (const g of GROUP_ORDER) {
     const t = standings[g].teams;

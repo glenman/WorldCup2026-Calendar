@@ -614,6 +614,10 @@
             background: linear-gradient(90deg, var(--gold), #ff6b35, var(--gold));
         }
         .knockout-banner h2 { margin: 0 0 16px; color: var(--gold); font-size: 1.4rem; letter-spacing: 2px; }
+        .simulator-title {
+            margin: 0 0 8px; color: var(--gold); font-size: 1.1rem; letter-spacing: 2px;
+            font-weight: 700; text-align: left;
+        }
 
         .bracket-container {
             overflow-x: auto;
@@ -816,7 +820,7 @@
             gap: 1px;
             position: relative;
         }
-        .btv-col.center { flex: 0 0 auto; min-width: 72px; gap: 4px; }
+        .btv-col.center { flex: 0 0 auto; min-width: 50px; gap: 2px; }
         .btv-col-label {
             font-size: 0.4rem;
             font-weight: 700;
@@ -871,7 +875,11 @@
         .btv-match-item .flag-only {
             font-size: 1.05rem;
             line-height: 1.2;
+            cursor: pointer;
         }
+        .btv-match-item.finished .flag-only { cursor: default; }
+        .btv-match-item .flag-only.winner { opacity: 1; filter: drop-shadow(0 0 4px rgba(240,192,64,0.6)); }
+        .btv-match-item .flag-only.loser  { opacity: 0.35; filter: grayscale(0.6); }
         .btv-match-item .btv-vs-mini {
             font-size: 0.55rem;
             font-weight: 800;
@@ -893,6 +901,7 @@
 
         /* 决赛列卡片 */
         .btv-final-card, .btv-third-card {
+            position: relative;
             background: linear-gradient(145deg, #1e1b0c, #1a1520);
             border: 1.5px solid var(--gold);
             border-radius: 8px;
@@ -906,16 +915,28 @@
             box-shadow: 0 0 6px rgba(200,168,78,0.04);
         }
         .btv-trophy {
-            text-align: center;
-            margin-bottom: 2px;
-            display: block;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            pointer-events: none;
         }
         .btv-trophy img {
-            width: 30px;
-            height: 45px;
+            width: 56px;
+            height: auto;
             object-fit: contain;
             display: block;
             margin: 0 auto;
+        }
+        .trophy-winner-flag {
+            font-size: 1.5rem;
+            display: block;
+            text-align: center;
+            line-height: 1.2;
         }
         .btv-round-label {
             font-size: 0.38rem;
@@ -1032,7 +1053,7 @@
         .btv-code { display: none; }
         .btv-flag-circle, .btv-center, .btv-stage,
         .btv-stage-label, .btv-gap, .btv-branch, .btv-capsule,
-        .btv-vs, .btv-connector, .btv-trophy { display: none; }
+        .btv-vs, .btv-connector { display: none; }
 
         /* ====== ≥500px（横屏手机 / 小平板）：显示 3 字母代码 ====== */
         @media (min-width: 500px) {
@@ -1050,7 +1071,7 @@
             .btv-match-item-h .flag-only { font-size: 0.9rem; }
             .btv-center-zone { max-width: 260px; }
             .btv-col { min-width: 34px; }
-            .btv-col.center { min-width: 90px; }
+            .btv-col.center { min-width: 60px; }
             .btv-col-label { font-size: 0.45rem; letter-spacing: 1px; }
             .btv-match-no { font-size: 0.4rem; }
             .btv-match-item .btv-vs-mini,
@@ -1063,7 +1084,7 @@
             .bracket-container { padding: 10px 0 20px; }
             .bracket-tree-vertical { gap: 2px; padding: 8px 2px 14px; }
             .btv-col { gap: 3px; min-width: 48px; }
-            .btv-col.center { min-width: 140px; gap: 8px; }
+            .btv-col.center { min-width: 85px; gap: 4px; }
             .btv-col-label { font-size: 0.55rem; letter-spacing: 2px; margin-bottom: 3px; }
             .btv-match-no { font-size: 0.5rem; }
             .btv-match-item { gap: 3px; padding: 5px 6px; border-radius: 8px; }
@@ -1087,17 +1108,6 @@
                 font-size: 0.45rem;
                 width: 14px; height: 14px;
             }
-            /* 列间连接箭头 */
-            .btv-col:not(.center)::after {
-                content: '\203A';
-                position: absolute;
-                right: -7px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 1rem;
-                color: var(--card-border);
-                line-height: 1;
-            }
             .btv-col:last-child::after, .btv-col.center::after { display: none; }
             .tab-btn { padding: 12px 20px; font-size: 0.9rem; letter-spacing: 0.5px; }
         }
@@ -1107,7 +1117,7 @@
             .tab-btn { padding: 12px 28px; font-size: 1rem; letter-spacing: 1px; }
             .bracket-tree-vertical { gap: 4px; padding: 12px 4px 20px; max-width: 1100px; margin: 0 auto; }
             .btv-col { gap: 4px; min-width: 64px; }
-            .btv-col.center { min-width: 180px; gap: 12px; }
+            .btv-col.center { min-width: 120px; gap: 6px; }
             .btv-col-label { font-size: 0.65rem; letter-spacing: 3px; }
             .btv-match-no { font-size: 0.6rem; }
             .btv-match-item { gap: 4px; padding: 6px 8px; border-radius: 10px; border-width: 1.5px; }
@@ -1117,7 +1127,6 @@
             .btv-match-item .btv-score { font-size: 0.65rem; }
             .flag-placeholder { font-size: 0.85rem; }
             .btv-round-label { font-size: 0.6rem; }
-            .btv-col:not(.center)::after { font-size: 1.2rem; right: -10px; }
         }
 </style>
 </head>
@@ -1130,13 +1139,13 @@
 
         <!-- Tab 切换栏 -->
         <div class="tab-bar">
-            <button class="tab-btn active" onclick="switchTab('schedule')">📅 小组赛程</button>
-            <button class="tab-btn" onclick="switchTab('knockout')">🏆 淘汰赛</button>
+            <button class="tab-btn" onclick="switchTab('schedule')">📅 小组赛程</button>
+            <button class="tab-btn active" onclick="switchTab('knockout')">🏆 淘汰赛赛程</button>
             <button class="tab-btn" onclick="switchTab('scorers')">⚽ 射手榜</button>
         </div>
 
         <!-- 赛程面板 -->
-        <div id="tab-schedule" class="tab-panel">
+        <div id="tab-schedule" class="tab-panel hidden">
 
         <div class="summary-banner">
             <h2>📋 赛事概览</h2>
@@ -1610,7 +1619,7 @@ id="calendar-app"></div>
         </div><!-- /tab-schedule -->
 
         <!-- 淘汰赛面板 -->
-        <div id="tab-knockout" class="tab-panel hidden">
+        <div id="tab-knockout" class="tab-panel">
             <div class="knockout-banner">
                 <h2>🏆 淘汰赛对阵图</h2>
                 <div class="summary-grid">
@@ -1635,6 +1644,7 @@ id="calendar-app"></div>
             </div>
 
             <div class="bracket-container">
+                <h3 class="simulator-title">🏆 夺冠模拟器</h3>
                 <div class="bracket-tree" id="bracket-tree"></div>
             </div>
 
@@ -1786,6 +1796,15 @@ let ALL_MATCHES = [];        // fetched from worldcup2026-matches.json
 let STANDINGS_DATA = {};     // fetched from worldcup2026-group_standings.json
 const GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
 
+// 格式化比分（淘汰赛含点球）
+function formatScore(m) {
+    var hs = m.home_team.score, as = m.away_team.score;
+    if (m.penalty && m.penalty.home != null && m.penalty.away != null) {
+        return '(' + m.penalty.home + ')' + hs + ':' + as + '(' + m.penalty.away + ')';
+    }
+    return hs + ':' + as;
+}
+
 function getTeamMatches(teamName) {
     if (!ALL_MATCHES.length) return [];
     return ALL_MATCHES.filter(function(m) {
@@ -1819,7 +1838,7 @@ function generateICS(matches, teamName) {
         var flagH = m.home_team.flag || '';
         var flagA = m.away_team.flag || '';
         if (m.status === '已结束') {
-            summary = flagH + ' ' + m.home_team.name + ' ' + m.home_team.score + ':' + m.away_team.score + ' ' + flagA + ' ' + m.away_team.name;
+            summary = flagH + ' ' + m.home_team.name + ' ' + formatScore(m) + ' ' + flagA + ' ' + m.away_team.name;
         } else {
             summary = flagH + ' ' + m.home_team.name + ' vs ' + flagA + ' ' + m.away_team.name;
         }
@@ -1834,7 +1853,7 @@ function generateICS(matches, teamName) {
             desc = m.match_type + ' ' + (m.group || '') + ' | 📍' + (m.venue || '');
         }
         if (m.status === '已结束') {
-            desc += ' | 比分: ' + m.home_team.score + ':' + m.away_team.score;
+            desc += ' | 比分: ' + formatScore(m);
         }
         desc += '\\n场地: ' + m.stadium + '\\n' + (teamName || '') + '\\n';
         ics += 'SUMMARY:' + summary + '\r\n';
@@ -1928,7 +1947,7 @@ function renderCalendar(filteredMatches, teamName) {
             var matchName = m.home_team.flag + ' ' + m.home_team.name + ' vs ' + m.away_team.flag + ' ' + m.away_team.name;
             var scoreHtml = '';
             if (m.status === '已结束') {
-                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+                scoreHtml = ' <span class="match-score">' + formatScore(m) + '</span>';
             }
             html += '<div class="match-card">' +
                 '<div class="match-time">' + m.time_cn + '</div>' +
@@ -1981,6 +2000,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ALL_MATCHES = matches;
 
             renderCalendar(null, 'all');
+            switchTab('knockout');
             initFromURL();
         })
         .catch(function(err) {
@@ -2377,10 +2397,14 @@ function switchTab(tab) {
         schedulePanel.style.display = '';
         schedulePanel.classList.remove('hidden');
         buttons[0].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = '';
     } else if (tab === 'knockout') {
         knockoutPanel.style.display = '';
         knockoutPanel.classList.remove('hidden');
         buttons[1].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = 'none';
         if (!window._knockoutLoaded) {
             renderBracket();
             renderKnockoutCalendar();
@@ -2390,6 +2414,8 @@ function switchTab(tab) {
         scorersPanel.style.display = '';
         scorersPanel.classList.remove('hidden');
         buttons[2].classList.add('active');
+        var calApp = document.getElementById('calendar-app');
+        if (calApp) calApp.style.display = 'none';
         if (!window._scorersLoaded) {
             loadScorers();
             window._scorersLoaded = true;
@@ -2416,9 +2442,16 @@ function renderBracket() {
         return;
     }
 
-    // 按轮次和比赛号索引
+    // 按轮次和比赛号索引（深拷贝，不影响原始数据）
     var matchMap = {};
-    koMatches.forEach(function(m) { matchMap[m.match_number] = m; });
+    koMatches.forEach(function(m) {
+        var copy = JSON.parse(JSON.stringify(m));
+        copy._realFinished = (m.status === '已结束');
+        matchMap[m.match_number] = copy;
+    });
+    window._knockoutMatchMap = matchMap;
+    // 保存原始深拷贝，用于重置模拟
+    window._knockoutOriginals = JSON.parse(JSON.stringify(matchMap));
 
     var displayOrder = ['1/16决赛', '1/8决赛', '1/4决赛', '半决赛', '季军赛', '决赛'];
     var validRounds = [];
@@ -2441,8 +2474,14 @@ function renderBracket() {
         roundHtml += '<div class="bracket-round-label">' + roundName + '</div>';
         matches.forEach(function(m) {
             var extraClass = m.status === '已结束' ? ' finished' : '';
-            var homeWin = m.status === '已结束' && m.home_team.score > m.away_team.score;
-            var awayWin = m.status === '已结束' && m.away_team.score > m.home_team.score;
+            var homeWin = m.status === '已结束' && (
+                m.home_team.score > m.away_team.score ||
+                (m.home_team.score === m.away_team.score && m.penalty && m.penalty.home > m.penalty.away)
+            );
+            var awayWin = m.status === '已结束' && (
+                m.away_team.score > m.home_team.score ||
+                (m.home_team.score === m.away_team.score && m.penalty && m.penalty.away > m.penalty.home)
+            );
 
             roundHtml += '<div class="bracket-match' + extraClass + '">';
             roundHtml += '<div class="matchup-row">';
@@ -2453,7 +2492,7 @@ function renderBracket() {
             roundHtml += '<span class="flag">' + (m.home_team.flag || '🏳') + '</span>';
             roundHtml += '</div>';
             if (m.status === '已结束') {
-                roundHtml += '<div class="vs-badge">' + m.home_team.score + ':' + m.away_team.score + '</div>';
+                roundHtml += '<div class="vs-badge">' + formatScore(m) + '</div>';
             } else {
                 roundHtml += '<div class="vs-badge">VS</div>';
             }
@@ -2512,6 +2551,173 @@ function renderBracket() {
         alignBracketCards();
         drawBracketConnectors(matchMap);
     }, 100);
+
+    // 夺冠模拟器：点击国旗晋级
+    setupFlagClickDelegation();
+}
+
+// ═══ 夺冠模拟器 ═══
+function setupFlagClickDelegation() {
+    var tree = document.getElementById('bracket-tree');
+    if (!tree || tree._flagDelegationSet) return;
+    tree._flagDelegationSet = true;
+
+    tree.addEventListener('click', function(e) {
+        var flag = e.target.closest('.flag-only');
+        if (!flag) return;
+        var cell = flag.closest('.btv-match-cell');
+        if (!cell) return;
+        var matchNum = parseInt(cell.getAttribute('data-match'));
+        if (!matchNum) return;
+
+        // 只有实际赛果已出的场次才锁定，用户模拟的可以切换
+        var match = window._knockoutMatchMap[matchNum];
+        if (match && match._realFinished) return;
+
+        var matchItem = flag.closest('.btv-match-item');
+        var flags = matchItem.querySelectorAll('.flag-only');
+        var side = (flags[0] === flag) ? 'home' : 'away';
+
+        advanceTeam(matchNum, side);
+    });
+}
+
+// 反向晋级映射：source matchNum → [{targetNum, slot}, ...]
+function getDownstreamTargets(matchNum) {
+    var targets = [];
+    for (var targetNum in BRACKET_PROGRESSION) {
+        var sources = BRACKET_PROGRESSION[targetNum];
+        var idx = sources.indexOf(matchNum);
+        if (idx !== -1) {
+            targets.push({ targetNum: parseInt(targetNum), slot: idx === 0 ? 'home_team' : 'away_team' });
+        }
+    }
+    // 半决赛特殊：胜者→决赛(104)，负者→季军赛(103)
+    if (matchNum === 101 || matchNum === 102) {
+        targets.push({ targetNum: 104, slot: (matchNum === 101) ? 'home_team' : 'away_team' });
+        targets.push({ targetNum: 103, slot: (matchNum === 101) ? 'home_team' : 'away_team' });
+    }
+    return targets;
+}
+
+// 递归重置用户模拟的下游场次
+function resetSimulatedDownstream(matchNum, matchMap) {
+    var m = matchMap[matchNum];
+    if (!m || m._realFinished) return;
+
+    // 恢复此场到未开始状态
+    m.status = '未开始';
+    m.home_team.score = null;
+    m.away_team.score = null;
+
+    // 对每个下游目标：若被用户模拟过则递归重置
+    var targets = getDownstreamTargets(matchNum);
+    targets.forEach(function(t) {
+        var targetM = matchMap[t.targetNum];
+        if (!targetM) return;
+        if (targetM.status === '已结束' && !targetM._realFinished) {
+            resetSimulatedDownstream(t.targetNum, matchMap);
+        }
+        // 把被此场填充的 slot 恢复为原始占位符
+        var orig = window._knockoutOriginals[t.targetNum];
+        if (orig) {
+            targetM[t.slot] = JSON.parse(JSON.stringify(orig[t.slot]));
+        }
+    });
+}
+
+function advanceTeam(matchNum, side) {
+    var matchMap = window._knockoutMatchMap;
+    if (!matchMap) return;
+    
+    var m = matchMap[matchNum];
+    if (!m) return;
+
+    // 如果用户已模拟过此场，先重置它及所有下游用户模拟的场次
+    if (m.status === '已结束' && !m._realFinished) {
+        resetSimulatedDownstream(matchNum, matchMap);
+    }
+
+    var winnerTeam = side === 'home' ? m.home_team : m.away_team;
+    var loserTeam = side === 'home' ? m.away_team : m.home_team;
+
+    // 更新当前比赛：标记已结束，设置比分
+    m.status = '已结束';
+    m.home_team.score = (side === 'home') ? 1 : 0;
+    m.away_team.score = (side === 'away') ? 1 : 0;
+
+    // 查找并更新下游比赛
+    // 半决赛特殊处理：胜者→决赛，败者→三四名
+    if (matchNum === 101 || matchNum === 102) {
+        var finalM = matchMap[104];
+        var thirdM = matchMap[103];
+        var finalSlot = (matchNum === 101) ? 'home_team' : 'away_team';
+        var thirdSlot = (matchNum === 101) ? 'home_team' : 'away_team';
+
+        if (finalM) {
+            finalM[finalSlot] = JSON.parse(JSON.stringify(winnerTeam));
+            finalM[finalSlot].score = null;
+        }
+        if (thirdM) {
+            thirdM[thirdSlot] = JSON.parse(JSON.stringify(loserTeam));
+            thirdM[thirdSlot].score = null;
+        }
+    }
+
+    // 常规晋级：查找所有目标比赛
+    for (var targetNum in BRACKET_PROGRESSION) {
+        var sources = BRACKET_PROGRESSION[targetNum];
+        var idx = sources.indexOf(matchNum);
+        if (idx === -1) continue;
+
+        // 跳过半决赛（上面已处理）
+        if (matchNum === 101 || matchNum === 102) continue;
+
+        var targetM = matchMap[targetNum];
+        if (!targetM) continue;
+
+        var targetSlot = (idx === 0) ? 'home_team' : 'away_team';
+        targetM[targetSlot] = JSON.parse(JSON.stringify(winnerTeam));
+        targetM[targetSlot].score = null;
+    }
+
+    // 决赛胜者：显示在奖杯上方
+    if (matchNum === 104) {
+        updateTrophyWinner(winnerTeam);
+    }
+
+    refreshBracketTree();
+}
+
+function updateTrophyWinner(winnerTeam) {
+    window._trophyWinner = winnerTeam;
+}
+
+function refreshBracketTree() {
+    var matchMap = window._knockoutMatchMap;
+    if (!matchMap) return;
+
+    // 重新渲染移动端对阵树
+    var mobileHtml = renderBracketVertical(matchMap);
+    var tree = document.getElementById('bracket-tree');
+    if (!tree) return;
+
+    // 找到并替换 bracket-tree-vertical（保留桌面端横向轮播不动）
+    var oldTree = tree.querySelector('.bracket-tree-vertical');
+    if (oldTree) {
+        var temp = document.createElement('div');
+        temp.innerHTML = mobileHtml;
+        var newTree = temp.querySelector('.bracket-tree-vertical');
+        if (newTree) {
+            oldTree.parentNode.replaceChild(newTree, oldTree);
+        }
+    }
+
+    // 重新对齐和连线
+    setTimeout(function() {
+        alignBracketCards();
+        drawBracketConnectors(matchMap);
+    }, 50);
 }
 
 // ═══ 对阵图卡片垂直对齐 ═══
@@ -2544,11 +2750,11 @@ function renderBracket() {
         // 左右两侧各自从外到内处理，确保依赖层先对齐
         var columns = [
             [],                         // 0: R32-L (anchor)
-            [89, 90, 93, 94],          // 1: R16-L
+            [90, 89, 94, 93],          // 1: R16-L
             [97, 98],                   // 2: QF-L
             [101],                      // 3: SF-L
             [],                         // 4: center (skip)
-            [91, 92, 95, 96],          // 5: R16-R
+            [91, 92, 96, 95],          // 5: R16-R
             [99, 100],                  // 6: QF-R
             [102],                      // 7: SF-R
             []                          // 8: R32-R (anchor)
@@ -2724,7 +2930,9 @@ function getCountryCode(name) {
         '比利时': 'BEL', '克罗地亚': 'CRO',
         '巴拉圭': 'PAR', '瑞典': 'SWE', '波黑': 'BIH',
         '埃及': 'EGY', '佛得角': 'CPV',
-        '厄瓜多尔': 'ECU', '加纳': 'GHA'
+        '厄瓜多尔': 'ECU', '加纳': 'GHA',
+        '阿尔及利亚': 'ALG',
+        '刚果(金)': 'COD'
     };
     if (codes[name]) return codes[name];
     if (name.indexOf('小组第一') > -1) return name.replace(/小组/, '').replace(/第一/, '1');
@@ -2736,14 +2944,19 @@ function getCountryCode(name) {
 
 function renderCapsule(m, matchMap) {
     var finished = m.status === '已结束';
-    var vsContent = finished ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>' : '';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
+    var vsContent = finished ? '<span class="btv-score">' + formatScore(m) + '</span>' : '';
     var vsBadge = finished ? '' : '<div class="btv-vs">VS</div>';
 
     var html = '<div class="btv-capsule' + (finished ? ' finished' : '') + '" data-match="' + m.match_number + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (vsBadge) html += vsBadge;
     if (vsContent) html += vsContent;
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div>';
     return html;
 }
@@ -2776,15 +2989,15 @@ function initRoundTabs(rounds, defaultIdx) {
 function renderBracketVertical(matchMap) {
     // 横向列顺序：R32左→R16左→QF左→SF左→决赛/三四名→SF右→QF右→R16右→R32右
     var columns = [
-        { label: '32', side: 'left', matches: [73, 75, 74, 77, 81, 82, 83, 84] },
-        { label: '16', side: 'left', matches: [89, 90, 93, 94] },
+        { label: '32', side: 'left', matches: [74, 77, 73, 75, 83, 84, 81, 82] },
+        { label: '16', side: 'left', matches: [90, 89, 94, 93] },
         { label: '8', side: 'left', matches: [97, 98] },
         { label: '', side: 'sf', matches: [101] },
         { label: '', side: 'center', matches: [104, 103] },
         { label: '', side: 'sf', matches: [102] },
         { label: '8', side: 'right', matches: [99, 100] },
-        { label: '16', side: 'right', matches: [91, 92, 95, 96] },
-        { label: '32', side: 'right', matches: [76, 78, 79, 80, 85, 87, 86, 88] }
+        { label: '16', side: 'right', matches: [91, 92, 96, 95] },
+        { label: '32', side: 'right', matches: [76, 78, 79, 80, 86, 88, 85, 87] }
     ];
 
     var html = '<div class="bracket-tree-vertical">';
@@ -2796,6 +3009,15 @@ function renderBracketVertical(matchMap) {
             if (finalM) {
                 html += '<span class="btv-match-no">M104</span>';
                 html += '<div class="btv-final-card">';
+                // 奖杯放在决赛卡片上方（绝对定位，不影响布局）
+                html += '<div class="btv-trophy">';
+                var trophyWinner = window._trophyWinner;
+                if (trophyWinner) {
+                    var wFlag = COUNTRY_FLAGS[trophyWinner.name] || trophyWinner.flag || '🏳';
+                    html += '<span class="trophy-winner-flag">' + wFlag + '</span>';
+                }
+                html += '<img src="images/trophy.png" alt="大力神杯">';
+                html += '</div>';
                 html += '<div class="btv-round-label">FINAL</div>';
                 html += renderMatchItem(finalM, true);
                 html += '</div>';
@@ -2830,25 +3052,30 @@ function isPlaceholder(name) {
 
 function getPlaceholderLabel(name) {
     var m = name.match(/M(\d+)/);
-    if (m) return 'W' + m[1];
+    if (m) return (name.indexOf('负者') > -1 ? 'L' : 'W') + m[1];
     m = name.match(/小组第三\((\d+)\)/);
     if (m) return 'L' + m[1];
     return name;
 }
 
-function renderFlag(m) {
+function renderFlag(m, extraClass) {
     if (isPlaceholder(m.name)) {
         return '<span class="flag-placeholder">' + getPlaceholderLabel(m.name) + '</span>';
     }
     var flag = COUNTRY_FLAGS[m.name] || m.flag || '🏳';
-    return '<span class="flag-only">' + flag + '</span>';
+    return '<span class="flag-only' + (extraClass ? ' ' + extraClass : '') + '">' + flag + '</span>';
 }
 
 function renderMatchItem(m, hideLabel) {
     var finished = m.status === '已结束';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
     var scoreHtml;
     if (finished) {
-        scoreHtml = '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+        scoreHtml = '<span class="btv-score">' + formatScore(m) + '</span>';
     } else {
         scoreHtml = '<span class="btv-vs-mini">VS</span>';
     }
@@ -2860,19 +3087,24 @@ function renderMatchItem(m, hideLabel) {
     var html = '<div class="btv-match-cell" data-match="' + m.match_number + '">';
     if (!hideLabel) html += '<span class="btv-match-no">M' + m.match_number + '</span>';
     html += '<div class="btv-match-item' + (finished ? ' finished' : '') + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
     html += scoreHtml;
     if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div></div>';
     return html;
 }
 
 function renderMatchItemHorizontal(m, side) {
     var finished = m.status === '已结束';
+    var hs = m.home_team.score, as = m.away_team.score;
+    var homeWins = hs > as || (hs === as && m.penalty && m.penalty.home > m.penalty.away);
+    var awayWins = as > hs || (hs === as && m.penalty && m.penalty.away > m.penalty.home);
+    var homeCls = finished ? (homeWins ? 'winner' : awayWins ? 'loser' : '') : '';
+    var awayCls = finished ? (awayWins ? 'winner' : homeWins ? 'loser' : '') : '';
     var scoreHtml = finished
-        ? '<span class="btv-score">' + m.home_team.score + ':' + m.away_team.score + '</span>'
+        ? '<span class="btv-score">' + formatScore(m) + '</span>'
         : '<span class="btv-vs-mini">VS</span>';
     var homeCode = getCountryCode(m.home_team.name);
     var awayCode = getCountryCode(m.away_team.name);
@@ -2881,11 +3113,11 @@ function renderMatchItemHorizontal(m, side) {
 
     var cls = 'btv-match-item-h' + (finished ? ' finished' : '') + ' btv-sf-' + side;
     var html = '<div class="' + cls + '" data-match="' + m.match_number + '">';
-    html += renderFlag(m.home_team);
+    html += renderFlag(m.home_team, homeCls);
     if (!homePh) html += '<span class="btv-code">' + homeCode + '</span>';
     html += scoreHtml;
     if (!awayPh) html += '<span class="btv-code">' + awayCode + '</span>';
-    html += renderFlag(m.away_team);
+    html += renderFlag(m.away_team, awayCls);
     html += '</div>';
     return html;
 }
@@ -2932,7 +3164,7 @@ function renderKnockoutCalendar() {
             var matchName = (m.home_team.flag || '🏳') + ' ' + m.home_team.name + ' vs ' + (m.away_team.flag || '🏳') + ' ' + m.away_team.name;
             var scoreHtml = '';
             if (m.status === '已结束') {
-                scoreHtml = ' <span class="match-score">' + m.home_team.score + ':' + m.away_team.score + '</span>';
+                scoreHtml = ' <span class="match-score">' + formatScore(m) + '</span>';
             }
             html += '<div class="match-card">' +
                 '<div class="match-time">' + m.time_cn + '</div>' +
