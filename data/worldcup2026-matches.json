@@ -2120,18 +2120,22 @@
     "home_team": {
       "flag": "🇧🇷",
       "name": "巴西",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇳🇴",
       "name": "挪威",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "East Rutherford, USA",
     "stadium": "大都会人寿球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 92,
@@ -2302,8 +2306,8 @@
     "round": "1/4决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M91胜者",
+      "flag": "🇳🇴",
+      "name": "挪威",
       "score": 0,
       "points": 0
     },

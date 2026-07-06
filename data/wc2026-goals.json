@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-05T07:38:37.098Z",
+  "updated_at": "2026-07-06T00:17:24.655Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 82,
-  "total_goals": 254,
+  "matches_with_goals": 83,
+  "total_goals": 256,
   "goals": [
     {
       "match_number": 1,
@@ -4068,6 +4068,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 91,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "巴西",
+      "away_team": "挪威",
+      "team": "挪威",
+      "team_en": "Norway",
+      "scorer": "Erling Haaland",
+      "minute": 79,
+      "minute_display": "79'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 91,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "巴西",
+      "away_team": "挪威",
+      "team": "挪威",
+      "team_en": "Norway",
+      "scorer": "Erling Haaland",
+      "minute": 90,
+      "minute_display": "90'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
     }
   ]
 }

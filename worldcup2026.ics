@@ -717,8 +717,8 @@ BEGIN:VEVENT
 UID:wc2026-match-91@worldcup26-calendar
 DTSTART:20260705T200000Z
 DTEND:20260705T220000Z
-SUMMARY:🇧🇷 巴西 vs 🇳🇴 挪威 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍East Rutherford, USA
+SUMMARY:🇧🇷 巴西 1:2 🇳🇴 挪威 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍East Rutherford, USA | 比分: 1:2
 LOCATION:East Rutherford, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -781,7 +781,7 @@ BEGIN:VEVENT
 UID:wc2026-match-99@worldcup26-calendar
 DTSTART:20260711T210000Z
 DTEND:20260711T230000Z
-SUMMARY:🏳 M91胜者 vs 🏳 M92胜者 (1/4决赛)
+SUMMARY:🇳🇴 挪威 vs 🏳 M92胜者 (1/4决赛)
 DESCRIPTION:淘汰赛 1/4决赛 | 📍Miami, USA
 LOCATION:Miami, USA
 END:VEVENT
