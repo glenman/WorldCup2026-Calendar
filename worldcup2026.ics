@@ -725,8 +725,8 @@ BEGIN:VEVENT
 UID:wc2026-match-92@worldcup26-calendar
 DTSTART:20260706T000000Z
 DTEND:20260706T020000Z
-SUMMARY:🇲🇽 墨西哥 vs 🏴 英格兰 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍Mexico City, Mexico
+SUMMARY:🇲🇽 墨西哥 2:3 🏴 英格兰 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍Mexico City, Mexico | 比分: 2:3
 LOCATION:Mexico City, Mexico
 END:VEVENT
 BEGIN:VEVENT
@@ -781,7 +781,7 @@ BEGIN:VEVENT
 UID:wc2026-match-99@worldcup26-calendar
 DTSTART:20260711T210000Z
 DTEND:20260711T230000Z
-SUMMARY:🇳🇴 挪威 vs 🏳 M92胜者 (1/4决赛)
+SUMMARY:🇳🇴 挪威 vs 🏴 英格兰 (1/4决赛)
 DESCRIPTION:淘汰赛 1/4决赛 | 📍Miami, USA
 LOCATION:Miami, USA
 END:VEVENT
