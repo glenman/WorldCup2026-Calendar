@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-06T00:17:24.655Z",
+  "updated_at": "2026-07-06T02:02:50.263Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 83,
-  "total_goals": 256,
+  "matches_with_goals": 84,
+  "total_goals": 259,
   "goals": [
     {
       "match_number": 1,
@@ -4100,6 +4100,54 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 92,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Jvd Blingham",
+      "minute": 36,
+      "minute_display": "36'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 92,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Jvd Blingham",
+      "minute": 38,
+      "minute_display": "38'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 92,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
+      "team": "墨西哥",
+      "team_en": "Mexico",
+      "scorer": "Jvlian Kviinvnz",
+      "minute": 42,
+      "minute_display": "42'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
     }
   ]
 }
