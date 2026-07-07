@@ -2180,12 +2180,16 @@
     "away_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 1,
+      "points": 3
     },
     "venue": "Dallas, USA",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 94,
@@ -2287,8 +2291,8 @@
     "round": "1/4决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M93胜者",
+      "flag": "🇪🇸",
+      "name": "西班牙",
       "score": 0,
       "points": 0
     },
