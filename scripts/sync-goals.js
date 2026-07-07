@@ -521,6 +521,33 @@ async function main() {
         withScorers++;
     });
 
+    // ====== 手动补充: API 缺失的进球 ======
+    var MANUAL_GOALS = [
+        // M82: Belgium 3-2 Senegal — API 漏掉 Tielemans 第2球
+        { match_number: 82, group: null, round: '1/16决赛', match_type: '淘汰赛', home_team: '比利时', away_team: '塞内加尔', team: '比利时', team_en: 'Belgium', scorer: 'Youri Tielemans', minute: 65, minute_display: "65'", own_goal: false, penalty: false, half: 2 },
+        // M83: Portugal 2-1 Croatia — API 漏掉 C罗 点球
+        { match_number: 83, group: null, round: '1/16决赛', match_type: '淘汰赛', home_team: '葡萄牙', away_team: '克罗地亚', team: '葡萄牙', team_en: 'Portugal', scorer: 'Cristiano Ronaldo', minute: 35, minute_display: "35'(P)", own_goal: false, penalty: true, half: 1 },
+        // M89: Paraguay 0-1 France — API 漏掉 Mbappe 点球
+        { match_number: 89, group: null, round: '1/8决赛', match_type: '淘汰赛', home_team: '巴拉圭', away_team: '法国', team: '法国', team_en: 'France', scorer: 'Kylian Mbappé', minute: 60, minute_display: "60'(P)", own_goal: false, penalty: true, half: 2 },
+        // M91: Brazil 1-2 Norway — API 漏掉 内马尔 点球
+        { match_number: 91, group: null, round: '1/8决赛', match_type: '淘汰赛', home_team: '巴西', away_team: '挪威', team: '巴西', team_en: 'Brazil', scorer: 'Neymar', minute: 60, minute_display: "60'(P)", own_goal: false, penalty: true, half: 2 },
+        // M92: Mexico 2-3 England — API 漏掉 Kane 点球
+        { match_number: 92, group: null, round: '1/8决赛', match_type: '淘汰赛', home_team: '墨西哥', away_team: '英格兰', team: '英格兰', team_en: 'England', scorer: 'Harry Kane', minute: 55, minute_display: "55'(P)", own_goal: false, penalty: true, half: 2 },
+    ];
+
+    MANUAL_GOALS.forEach(function (mg) {
+        var dup = allGoals.some(function (g) {
+            return g.match_number === mg.match_number
+                && g.scorer === mg.scorer
+                && Math.abs(g.minute - mg.minute) <= 1;
+        });
+        if (!dup) {
+            allGoals.push(mg);
+            total++;
+            console.log('[sync-goals] 手动补充: M' + mg.match_number + ' ' + mg.scorer + ' ' + mg.minute_display);
+        }
+    });
+
     // 按 match_number 和时间排序
     allGoals.sort(function (a, b) {
         if (a.match_number !== b.match_number) return a.match_number - b.match_number;

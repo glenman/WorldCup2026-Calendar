@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-07T07:53:43.803Z",
+  "updated_at": "2026-07-07T11:22:57.553Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 86,
-  "total_goals": 265,
+  "total_goals": 270,
   "goals": [
     {
       "match_number": 1,
@@ -3758,6 +3758,22 @@
       "away_team": "塞内加尔",
       "team": "比利时",
       "team_en": "Belgium",
+      "scorer": "Youri Tielemans",
+      "minute": 65,
+      "minute_display": "65'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 82,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "比利时",
+      "away_team": "塞内加尔",
+      "team": "比利时",
+      "team_en": "Belgium",
       "scorer": "Romelu Lukaku",
       "minute": 86,
       "minute_display": "86'",
@@ -3780,6 +3796,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 83,
+      "group": null,
+      "round": "1/16决赛",
+      "match_type": "淘汰赛",
+      "home_team": "葡萄牙",
+      "away_team": "克罗地亚",
+      "team": "葡萄牙",
+      "team_en": "Portugal",
+      "scorer": "Cristiano Ronaldo",
+      "minute": 35,
+      "minute_display": "35'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 1
     },
     {
       "match_number": 83,
@@ -4022,6 +4054,22 @@
       "half": 2
     },
     {
+      "match_number": 89,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "巴拉圭",
+      "away_team": "法国",
+      "team": "法国",
+      "team_en": "France",
+      "scorer": "Kylian Mbappé",
+      "minute": 60,
+      "minute_display": "60'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 2
+    },
+    {
       "match_number": 90,
       "group": null,
       "round": "1/8决赛",
@@ -4068,6 +4116,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 91,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "巴西",
+      "away_team": "挪威",
+      "team": "巴西",
+      "team_en": "Brazil",
+      "scorer": "Neymar",
+      "minute": 60,
+      "minute_display": "60'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 2
     },
     {
       "match_number": 91,
@@ -4148,6 +4212,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 1
+    },
+    {
+      "match_number": 92,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Harry Kane",
+      "minute": 55,
+      "minute_display": "55'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 2
     },
     {
       "match_number": 93,
