@@ -9,16 +9,93 @@ const { execSync } = require('child_process');
 
 const IS_CI = process.argv.includes('--ci');
 
-// ====== 球员名归一化映射: API中同一个人可能有缩写/全名两种写法 ======
+// ====== 球员名归一化映射: API中同一个人可能有缩写/全名/乱码多种写法 ======
 const NAME_NORMALIZE = {
+    // 法国
     'K. Mbappé': 'Kylian Mbappé',
     'K. Mbappe': 'Kylian Mbappé',
+    // 德国
     'D. Undav': 'Deniz Undav',
     'Dniz Avndav': 'Deniz Undav',
+    // 加拿大
     'C. Larin': 'Cyle Larin',
     'Kail Larin': 'Cyle Larin',
+    'Prvmis Divid': 'Jonathan David',
+    'Astfan Avstakviv': 'Jonathan David',
+    // 摩洛哥
     'Asmaail Saibari': 'Ismaïla Saibari',
     'I. Saibari': 'Ismaïla Saibari',
+    // 英格兰
+    'H. Kane': 'Harry Kane',
+    'Hri Kin': 'Harry Kane',
+    'J. Bellingham': 'Jude Bellingham',
+    'Jvd Blingham': 'Jude Bellingham',
+    // 瑞士
+    'Rvbn Vargas': 'Rubén Vargas',
+    'Jvhan Mnzambi': 'Johan Manzambi',
+    'Dn Andvi': 'Dan Ndoye',
+    // 墨西哥
+    'J. Quiñones': 'Julián Quiñones',
+    'Jvlian Kviinvnz': 'Julián Quiñones',
+    // 美国
+    'F. Balogun': 'Folarin Balogun',
+    'Flvrin Balvgan': 'Folarin Balogun',
+    'Kamrvn Bargs': 'Cameron Burgess',
+    // 伊朗
+    'Ramin Rezaiian': 'Ramin Rezaeian',
+    // 荷兰
+    'Kvdi Khakpv': 'Cody Gakpo',
+    'Ian Fn Hkh': 'Ian Maatsen',
+    // 科特迪瓦
+    'Nikvlas Ph Ph': 'Nicolas Pépé',
+    // 塞内加尔
+    'Paph Gviih': 'Pape Gueye',
+    'Ailman Andiaih': 'Iliman Ndiaye',
+    // 阿根廷
+    'Jivani Lv Slsv': 'Giovani Lo Celso',
+    'Dini Bvrgs': 'Ángel Di María',
+    // 挪威
+    'Markvs Hlmgrn Pdrsn': 'Marcus Holmgren Pedersen',
+    'Aymen Hussein': 'Aymen Hussein',
+    // 伊拉克
+    // 'Aymen Hussein': 伊拉克的不同球员，保留原名 (上面挪威的 Aymen Hussein 也保留)
+    // 葡萄牙
+    'Nvnv Mndz': 'Nuno Mendes',
+    'Abdalvhid Namtvf': 'Abdal Wahid Namtov',
+    'Gvnchalv Ramvs': 'Gonçalo Ramos',
+    // 刚果(金)
+    'Fistvn Mail': 'Fiston Mayele',
+    'Braian Sipnga': 'Brian Sipunga',
+    // 加纳
+    'Kalb Iirnki': 'Khalib Iirnki',
+    'Drik Lvkasn': 'Drik Lukasn',
+    // 哥伦比亚
+    'Dnil Mvnvz': 'Daniel Muñoz',
+    'Lviiz Diaz': 'Luis Díaz',
+    'Khamintvn Kampaz': 'Khaminton Kampaz',
+    // 乌兹别克斯坦
+    'Abas Bk Fiz Allh Af': 'Abbosbek Fayzullaev',
+    'Aldvr Shvmvrvdvf': 'Eldor Shomurodov',
+    // 佛得角
+    'Hliv Varla': 'Hélio Varela',
+    'Drvi Dviart': 'Dércio Duarte',
+    'Lvpz Kabral': 'Lopez Cabral',
+    // 阿尔及利亚
+    'Nzir Bnbvali': 'Nazir Benbuali',
+    // 奥地利
+    'Rvmanv Ashmid': 'Romano Schmid',
+    'Izn Alarb': 'Izan Alarab',
+    // 约旦
+    'Ali Avlvan': 'Ali Olwan',
+    'Mvsi Altmari': 'Musa Al-Taamari',
+    // 厄瓜多尔
+    'Nilsvn Angvlv': 'Nilson Angulo',
+    'Gvnzalv Plata': 'Gonzalo Plata',
+    // 土耳其
+    'Baris Alpr Ailmaz': 'Barış Alper Yılmaz',
+    'Kan Aihan': 'Kaan Ayhan',
+    // 澳大利亚
+    'Mohamed Hany': 'Mohamed Hany',
 };
 
 function normalizeScorerName(name, team, allScorersInTeam) {
@@ -282,7 +359,7 @@ async function main() {
     console.log('[sync-goals] 共 ' + apiData.games.length + ' 场比赛');
     var matchIndex = loadMatchIndex();
 
-    // ====== 第一遍: 收集所有球队的进球者姓名 (用于缩写归一化) ======
+    // ====== 第一遍: 收集所有球队的进球者姓名 (先应用NAME_NORMALIZE, 用于缩写归一化) ======
     var teamAllScorers = {}; // {球队中文名: [scorerName, ...]}
     apiData.games.forEach(function (g) {
         var homeScorers = parseScorers(g.home_scorers, 'home');
@@ -293,8 +370,14 @@ async function main() {
         var awayZh = chi.away_zh;
         if (!teamAllScorers[homeZh]) teamAllScorers[homeZh] = [];
         if (!teamAllScorers[awayZh]) teamAllScorers[awayZh] = [];
-        homeScorers.forEach(function (s) { teamAllScorers[homeZh].push(s.scorer); });
-        awayScorers.forEach(function (s) { teamAllScorers[awayZh].push(s.scorer); });
+        homeScorers.forEach(function (s) {
+            var n = NAME_NORMALIZE[s.scorer] || s.scorer;
+            if (teamAllScorers[homeZh].indexOf(n) === -1) teamAllScorers[homeZh].push(n);
+        });
+        awayScorers.forEach(function (s) {
+            var n = NAME_NORMALIZE[s.scorer] || s.scorer;
+            if (teamAllScorers[awayZh].indexOf(n) === -1) teamAllScorers[awayZh].push(n);
+        });
     });
 
     // ====== 第二遍: 构建进球记录 (应用姓名归一化) ======
