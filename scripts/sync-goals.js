@@ -98,6 +98,75 @@ const NAME_NORMALIZE = {
     'Mohamed Hany': 'Mohamed Hany',
 };
 
+// ====== 辅音子序列相似度 (用于检测乱码名字) ======
+function extractConsonants(s) {
+    return s.toLowerCase().replace(/[^bcdfghjklmnpqrstvwxyz]/g, '');
+}
+
+function lcsLength(a, b) {
+    var m = a.length, n = b.length;
+    var prev = new Array(n + 1).fill(0);
+    for (var i = 1; i <= m; i++) {
+        var cur = new Array(n + 1).fill(0);
+        for (var j = 1; j <= n; j++) {
+            cur[j] = a[i - 1] === b[j - 1] ? prev[j - 1] + 1 : Math.max(prev[j], cur[j - 1]);
+        }
+        prev = cur;
+    }
+    return prev[n];
+}
+
+function consonantSimilarity(a, b) {
+    var consA = extractConsonants(a);
+    var consB = extractConsonants(b);
+    if (consA.length === 0 || consB.length === 0) return 0;
+    var lcs = lcsLength(consA, consB);
+    return (2.0 * lcs) / (consA.length + consB.length);
+}
+
+// 在已知名字列表中模糊匹配 (基于辅音相似度 + 姓/名分拆校验)
+function tryFuzzyMatch(name, knownNames) {
+    if (knownNames.length === 0) return null;
+    var nameWords = name.split(/\s+/);
+    if (nameWords.length < 2) return null;
+    var nameLast = nameWords[nameWords.length - 1].toLowerCase();
+    var nameFirst = nameWords[0].toLowerCase();
+
+    var bestScore = 0;
+    var bestMatch = null;
+
+    for (var i = 0; i < knownNames.length; i++) {
+        var candidate = knownNames[i];
+        if (candidate === name) return candidate;
+        // 跳过缩写名
+        if (/^[A-Z]\.\s/.test(candidate)) continue;
+        var candWords = candidate.split(/\s+/);
+        if (candWords.length < 2) continue;
+        // 单词数差异不能太大
+        if (Math.abs(nameWords.length - candWords.length) > 1) continue;
+
+        var candLast = candWords[candWords.length - 1].toLowerCase();
+        var candFirst = candWords[0].toLowerCase();
+
+        // 姓的辅音相似度必须很高
+        var lastScore = consonantSimilarity(nameLast, candLast);
+        if (lastScore < 0.8) continue;
+
+        // 名的辅音相似度
+        var firstScore = consonantSimilarity(nameFirst, candFirst);
+        if (firstScore < 0.55) continue;
+
+        // 综合分数: 姓权重更高
+        var score = lastScore * 0.7 + firstScore * 0.3;
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = candidate;
+        }
+    }
+
+    return bestScore >= 0.75 ? bestMatch : null;
+}
+
 function normalizeScorerName(name, team, allScorersInTeam) {
     // 1. 精确映射
     if (NAME_NORMALIZE[name]) return NAME_NORMALIZE[name];
@@ -119,6 +188,16 @@ function normalizeScorerName(name, team, allScorersInTeam) {
                     return other;
                 }
             }
+        }
+    }
+
+    // 3. 模糊匹配: 辅音子序列相似度检测乱码名
+    if (allScorersInTeam && allScorersInTeam.length > 0 && allScorersInTeam.indexOf(name) === -1) {
+        var bestFuzzy = tryFuzzyMatch(name, allScorersInTeam);
+        if (bestFuzzy) {
+            NAME_NORMALIZE[name] = bestFuzzy; // 缓存
+            console.log('  [fuzzy] ' + name + ' → ' + bestFuzzy + ' (' + team + ')');
+            return bestFuzzy;
         }
     }
 
