@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-07T01:08:32.534Z",
+  "updated_at": "2026-07-07T03:42:13.863Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 86,
-  "total_goals": 263,
+  "total_goals": 265,
   "goals": [
     {
       "match_number": 1,
@@ -4212,6 +4212,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 1
+    },
+    {
+      "match_number": 94,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "美国",
+      "away_team": "比利时",
+      "team": "比利时",
+      "team_en": "Belgium",
+      "scorer": "Hans Vanaken",
+      "minute": 57,
+      "minute_display": "57'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 94,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "美国",
+      "away_team": "比利时",
+      "team": "比利时",
+      "team_en": "Belgium",
+      "scorer": "Romelu Lukaku",
+      "minute": 93,
+      "minute_display": "90'+3'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }

@@ -2201,18 +2201,22 @@
     "home_team": {
       "flag": "🇺🇸",
       "name": "美国",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇧🇪",
       "name": "比利时",
-      "score": 0,
-      "points": 0
+      "score": 4,
+      "points": 3
     },
     "venue": "Seattle, USA",
     "stadium": "卢门球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 95,
@@ -2297,8 +2301,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M94胜者",
+      "flag": "🇧🇪",
+      "name": "比利时",
       "score": 0,
       "points": 0
     },

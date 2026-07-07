@@ -741,8 +741,8 @@ BEGIN:VEVENT
 UID:wc2026-match-94@worldcup26-calendar
 DTSTART:20260707T000000Z
 DTEND:20260707T020000Z
-SUMMARY:🇺🇸 美国 vs 🇧🇪 比利时 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍Seattle, USA
+SUMMARY:🇺🇸 美国 1:4 🇧🇪 比利时 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍Seattle, USA | 比分: 1:4
 LOCATION:Seattle, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -773,7 +773,7 @@ BEGIN:VEVENT
 UID:wc2026-match-98@worldcup26-calendar
 DTSTART:20260710T190000Z
 DTEND:20260710T210000Z
-SUMMARY:🇪🇸 西班牙 vs 🏳 M94胜者 (1/4决赛)
+SUMMARY:🇪🇸 西班牙 vs 🇧🇪 比利时 (1/4决赛)
 DESCRIPTION:淘汰赛 1/4决赛 | 📍Los Angeles, USA
 LOCATION:Los Angeles, USA
 END:VEVENT
