@@ -757,8 +757,8 @@ BEGIN:VEVENT
 UID:wc2026-match-96@worldcup26-calendar
 DTSTART:20260707T200000Z
 DTEND:20260707T220000Z
-SUMMARY:🇨🇭 瑞士 vs 🇨🇴 哥伦比亚 (1/8决赛)
-DESCRIPTION:淘汰赛 1/8决赛 | 📍Vancouver, Canada
+SUMMARY:🇨🇭 瑞士 (4)0:0(3) 🇨🇴 哥伦比亚 (1/8决赛)
+DESCRIPTION:淘汰赛 1/8决赛 | 📍Vancouver, Canada | 比分: (4)0:0(3)
 LOCATION:Vancouver, Canada
 END:VEVENT
 BEGIN:VEVENT
@@ -789,7 +789,7 @@ BEGIN:VEVENT
 UID:wc2026-match-100@worldcup26-calendar
 DTSTART:20260712T010000Z
 DTEND:20260712T030000Z
-SUMMARY:🇦🇷 阿根廷 vs 🏳 M96胜者 (1/4决赛)
+SUMMARY:🇦🇷 阿根廷 vs 🇨🇭 瑞士 (1/4决赛)
 DESCRIPTION:淘汰赛 1/4决赛 | 📍Kansas City, USA
 LOCATION:Kansas City, USA
 END:VEVENT
