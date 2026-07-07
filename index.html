@@ -3264,16 +3264,17 @@ function renderScorers() {
 
         var flag = FLAG_MAP[p.team] || '🏳';
 
-        var badges = '';
-        if (p.penaltyGoals > 0) badges += '<span class="penalty-badge">(' + p.penaltyGoals + '点球)</span>';
-        if (p.ownGoals > 0) badges += '<span class="og-badge">(' + p.ownGoals + '乌龙)</span>';
+        // 进球数格式：总进球（点球数）
+        var goalsStr = String(p.goals);
+        if (p.penaltyGoals > 0) {
+            goalsStr += '（' + p.penaltyGoals + '点球）';
+        }
 
         html += '<tr>' +
             '<td class="rank' + rankClass + '">' + rankDisplay + '</td>' +
             '<td class="player">' + p.scorer + '</td>' +
             '<td class="team-td"><span class="team-flag">' + flag + '</span>' + p.team + '</td>' +
-            '<td class="goals">' + p.goals +
-            (badges ? '<br>' + badges : '') +
+            '<td class="goals">' + goalsStr +
             '</td>' +
         '</tr>';
     });
