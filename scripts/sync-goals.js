@@ -20,8 +20,7 @@ const NAME_NORMALIZE = {
     // 加拿大
     'C. Larin': 'Cyle Larin',
     'Kail Larin': 'Cyle Larin',
-    'Prvmis Divid': 'Jonathan David',
-    'Astfan Avstakviv': 'Jonathan David',
+
     // 摩洛哥
     'Asmaail Saibari': 'Ismaïla Saibari',
     'I. Saibari': 'Ismaïla Saibari',
