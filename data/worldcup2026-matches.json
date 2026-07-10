@@ -2282,8 +2282,8 @@
     "home_team": {
       "flag": "🇫🇷",
       "name": "法国",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇲🇦",
@@ -2293,7 +2293,11 @@
     },
     "venue": "Boston, USA",
     "stadium": "吉列球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 98,
@@ -2372,8 +2376,8 @@
     "round": "半决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M97胜者",
+      "flag": "🇫🇷",
+      "name": "法国",
       "score": 0,
       "points": 0
     },

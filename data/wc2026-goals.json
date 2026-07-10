@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-09T07:53:56.164Z",
+  "updated_at": "2026-07-10T00:19:43.985Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 87,
-  "total_goals": 275,
+  "matches_with_goals": 88,
+  "total_goals": 277,
   "goals": [
     {
       "match_number": 1,
@@ -4404,6 +4404,38 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 97,
+      "group": null,
+      "round": "1/4决赛",
+      "match_type": "淘汰赛",
+      "home_team": "法国",
+      "away_team": "摩洛哥",
+      "team": "法国",
+      "team_en": "France",
+      "scorer": "Kylian Mbappé",
+      "minute": 60,
+      "minute_display": "60'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 97,
+      "group": null,
+      "round": "1/4决赛",
+      "match_type": "淘汰赛",
+      "home_team": "法国",
+      "away_team": "摩洛哥",
+      "team": "法国",
+      "team_en": "France",
+      "scorer": "Ousmane Dembélé",
+      "minute": 66,
+      "minute_display": "66'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
     }
   ]
 }

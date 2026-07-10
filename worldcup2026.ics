@@ -765,8 +765,8 @@ BEGIN:VEVENT
 UID:wc2026-match-97@worldcup26-calendar
 DTSTART:20260709T200000Z
 DTEND:20260709T220000Z
-SUMMARY:🇫🇷 法国 vs 🇲🇦 摩洛哥 (1/4决赛)
-DESCRIPTION:淘汰赛 1/4决赛 | 📍Boston, USA
+SUMMARY:🇫🇷 法国 2:0 🇲🇦 摩洛哥 (1/4决赛)
+DESCRIPTION:淘汰赛 1/4决赛 | 📍Boston, USA | 比分: 2:0
 LOCATION:Boston, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -797,7 +797,7 @@ BEGIN:VEVENT
 UID:wc2026-match-101@worldcup26-calendar
 DTSTART:20260714T190000Z
 DTEND:20260714T210000Z
-SUMMARY:🏳 M97胜者 vs 🏳 M98胜者 (半决赛)
+SUMMARY:🇫🇷 法国 vs 🏳 M98胜者 (半决赛)
 DESCRIPTION:淘汰赛 半决赛 | 📍Arlington, USA
 LOCATION:Arlington, USA
 END:VEVENT
