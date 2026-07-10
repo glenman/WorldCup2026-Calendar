@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-10T06:57:14.925Z",
+  "updated_at": "2026-07-10T07:53:16.525Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 88,
@@ -3191,6 +3191,11 @@
     },
     {
       "match_number": 69,
+      "group": null,
+      "round": "第3轮",
+      "match_type": "小组赛",
+      "home_team": "刚果(金)",
+      "away_team": "乌兹别克斯坦",
       "team": "刚果(金)",
       "team_en": "Democratic Republic of the Congo",
       "scorer": "Yoane Wissa",
@@ -4242,6 +4247,11 @@
     },
     {
       "match_number": 92,
+      "group": null,
+      "round": "1/8决赛",
+      "match_type": "淘汰赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
       "team": "墨西哥",
       "team_en": "Mexico",
       "scorer": "Raúl Jiménez",
