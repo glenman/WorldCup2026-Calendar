@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-10T06:43:16.523Z",
+  "updated_at": "2026-07-10T06:57:14.925Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
   "matches_with_goals": 88,
-  "total_goals": 277,
+  "total_goals": 279,
   "goals": [
     {
       "match_number": 1,
@@ -3054,7 +3054,7 @@
       "away_team": "比利时",
       "team": "新西兰",
       "team_en": "New Zealand",
-      "scorer": "Ali Jast",
+      "scorer": "Elijah Just",
       "minute": 84,
       "minute_display": "84'",
       "own_goal": false,
@@ -3188,6 +3188,17 @@
       "own_goal": false,
       "penalty": false,
       "half": 1
+    },
+    {
+      "match_number": 69,
+      "team": "刚果(金)",
+      "team_en": "Democratic Republic of the Congo",
+      "scorer": "Yoane Wissa",
+      "minute": 68,
+      "minute_display": "68'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 2
     },
     {
       "match_number": 69,
@@ -4225,6 +4236,17 @@
       "scorer": "Harry Kane",
       "minute": 55,
       "minute_display": "55'(P)",
+      "own_goal": false,
+      "penalty": true,
+      "half": 2
+    },
+    {
+      "match_number": 92,
+      "team": "墨西哥",
+      "team_en": "Mexico",
+      "scorer": "Raúl Jiménez",
+      "minute": 69,
+      "minute_display": "69'(P)",
       "own_goal": false,
       "penalty": true,
       "half": 2
