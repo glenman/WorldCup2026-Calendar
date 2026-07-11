@@ -2309,18 +2309,18 @@
     "home_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "away_team": {
       "flag": "🇧🇪",
       "name": "比利时",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "venue": "Los Angeles, USA",
     "stadium": "洛杉矶体育场",
-    "status": "未开始"
+    "status": "已结束"
   },
   {
     "match_number": 99,
@@ -2382,8 +2382,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M98胜者",
+      "flag": "🇪🇸",
+      "name": "西班牙",
       "score": 0,
       "points": 0
     },

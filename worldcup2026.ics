@@ -773,8 +773,8 @@ BEGIN:VEVENT
 UID:wc2026-match-98@worldcup26-calendar
 DTSTART:20260710T190000Z
 DTEND:20260710T210000Z
-SUMMARY:🇪🇸 西班牙 vs 🇧🇪 比利时 (1/4决赛)
-DESCRIPTION:淘汰赛 1/4决赛 | 📍Los Angeles, USA
+SUMMARY:🇪🇸 西班牙 2:1 🇧🇪 比利时 (1/4决赛)
+DESCRIPTION:淘汰赛 1/4决赛 | 📍Los Angeles, USA | 比分: 2:1
 LOCATION:Los Angeles, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -797,7 +797,7 @@ BEGIN:VEVENT
 UID:wc2026-match-101@worldcup26-calendar
 DTSTART:20260714T190000Z
 DTEND:20260714T210000Z
-SUMMARY:🇫🇷 法国 vs 🏳 M98胜者 (半决赛)
+SUMMARY:🇫🇷 法国 vs 🇪🇸 西班牙 (半决赛)
 DESCRIPTION:淘汰赛 半决赛 | 📍Arlington, USA
 LOCATION:Arlington, USA
 END:VEVENT
