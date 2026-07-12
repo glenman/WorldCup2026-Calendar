@@ -2332,18 +2332,22 @@
     "home_team": {
       "flag": "🇳🇴",
       "name": "挪威",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🏴",
       "name": "英格兰",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "Miami, USA",
     "stadium": "硬石体育场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 100,
@@ -2399,8 +2403,8 @@
     "round": "半决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M99胜者",
+      "flag": "🏴",
+      "name": "英格兰",
       "score": 0,
       "points": 0
     },

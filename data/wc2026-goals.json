@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-11T06:27:30.823Z",
+  "updated_at": "2026-07-12T00:11:50.224Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 89,
-  "total_goals": 282,
+  "matches_with_goals": 90,
+  "total_goals": 285,
   "goals": [
     {
       "match_number": 1,
@@ -4516,6 +4516,54 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 99,
+      "group": null,
+      "round": "1/4决赛",
+      "match_type": "淘汰赛",
+      "home_team": "挪威",
+      "away_team": "英格兰",
+      "team": "挪威",
+      "team_en": "Norway",
+      "scorer": "Andrias Shldrvp",
+      "minute": 36,
+      "minute_display": "36'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 1
+    },
+    {
+      "match_number": 99,
+      "group": null,
+      "round": "1/4决赛",
+      "match_type": "淘汰赛",
+      "home_team": "挪威",
+      "away_team": "英格兰",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Jude Bellingham",
+      "minute": 47,
+      "minute_display": "45'+2'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 99,
+      "group": null,
+      "round": "1/4决赛",
+      "match_type": "淘汰赛",
+      "home_team": "挪威",
+      "away_team": "英格兰",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Jude Bellingham",
+      "minute": 93,
+      "minute_display": "93'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }
