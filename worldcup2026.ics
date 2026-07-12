@@ -789,8 +789,8 @@ BEGIN:VEVENT
 UID:wc2026-match-100@worldcup26-calendar
 DTSTART:20260712T010000Z
 DTEND:20260712T030000Z
-SUMMARY:🇦🇷 阿根廷 vs 🇨🇭 瑞士 (1/4决赛)
-DESCRIPTION:淘汰赛 1/4决赛 | 📍Kansas City, USA
+SUMMARY:🇦🇷 阿根廷 3:1 🇨🇭 瑞士 (1/4决赛)
+DESCRIPTION:淘汰赛 1/4决赛 | 📍Kansas City, USA | 比分: 3:1
 LOCATION:Kansas City, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -805,7 +805,7 @@ BEGIN:VEVENT
 UID:wc2026-match-102@worldcup26-calendar
 DTSTART:20260715T190000Z
 DTEND:20260715T210000Z
-SUMMARY:🏴 英格兰 vs 🏳 M100胜者 (半决赛)
+SUMMARY:🏴 英格兰 vs 🇦🇷 阿根廷 (半决赛)
 DESCRIPTION:淘汰赛 半决赛 | 📍Atlanta, USA
 LOCATION:Atlanta, USA
 END:VEVENT
