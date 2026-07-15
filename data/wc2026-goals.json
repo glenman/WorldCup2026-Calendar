@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-15T06:29:00.644Z",
+  "updated_at": "2026-07-15T21:11:42.893Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 92,
-  "total_goals": 290,
+  "matches_with_goals": 93,
+  "total_goals": 293,
   "goals": [
     {
       "match_number": 1,
@@ -4644,6 +4644,54 @@
       "own_goal": false,
       "penalty": false,
       "half": 2
+    },
+    {
+      "match_number": 102,
+      "group": null,
+      "round": "半决赛",
+      "match_type": "淘汰赛",
+      "home_team": "英格兰",
+      "away_team": "阿根廷",
+      "team": "英格兰",
+      "team_en": "England",
+      "scorer": "Antvni Gvrdvn",
+      "minute": 55,
+      "minute_display": "55'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 102,
+      "group": null,
+      "round": "半决赛",
+      "match_type": "淘汰赛",
+      "home_team": "英格兰",
+      "away_team": "阿根廷",
+      "team": "阿根廷",
+      "team_en": "Argentina",
+      "scorer": "Enzo Fernández",
+      "minute": 85,
+      "minute_display": "85'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
+    },
+    {
+      "match_number": 102,
+      "group": null,
+      "round": "半决赛",
+      "match_type": "淘汰赛",
+      "home_team": "英格兰",
+      "away_team": "阿根廷",
+      "team": "阿根廷",
+      "team_en": "Argentina",
+      "scorer": "Lautaro Martínez",
+      "minute": 92,
+      "minute_display": "90'+2'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
     }
   ]
 }

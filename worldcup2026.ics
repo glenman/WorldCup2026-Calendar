@@ -805,15 +805,15 @@ BEGIN:VEVENT
 UID:wc2026-match-102@worldcup26-calendar
 DTSTART:20260715T190000Z
 DTEND:20260715T210000Z
-SUMMARY:🏴 英格兰 vs 🇦🇷 阿根廷 (半决赛)
-DESCRIPTION:淘汰赛 半决赛 | 📍Atlanta, USA
+SUMMARY:🏴 英格兰 1:2 🇦🇷 阿根廷 (半决赛)
+DESCRIPTION:淘汰赛 半决赛 | 📍Atlanta, USA | 比分: 1:2
 LOCATION:Atlanta, USA
 END:VEVENT
 BEGIN:VEVENT
 UID:wc2026-match-103@worldcup26-calendar
 DTSTART:20260718T210000Z
 DTEND:20260718T230000Z
-SUMMARY:🇫🇷 法国 vs 🏳 M102负者 (季军赛)
+SUMMARY:🇫🇷 法国 vs 🏴 英格兰 (季军赛)
 DESCRIPTION:淘汰赛 季军赛 | 📍Miami, USA
 LOCATION:Miami, USA
 END:VEVENT
@@ -821,7 +821,7 @@ BEGIN:VEVENT
 UID:wc2026-match-104@worldcup26-calendar
 DTSTART:20260719T190000Z
 DTEND:20260719T210000Z
-SUMMARY:🇪🇸 西班牙 vs 🏳 M102胜者 (决赛)
+SUMMARY:🇪🇸 西班牙 vs 🇦🇷 阿根廷 (决赛)
 DESCRIPTION:淘汰赛 决赛 | 📍East Rutherford, USA
 LOCATION:East Rutherford, USA
 END:VEVENT

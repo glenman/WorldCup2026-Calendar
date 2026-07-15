@@ -2409,18 +2409,22 @@
     "home_team": {
       "flag": "🏴",
       "name": "英格兰",
-      "score": 0,
+      "score": 1,
       "points": 0
     },
     "away_team": {
       "flag": "🇦🇷",
       "name": "阿根廷",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "Atlanta, USA",
     "stadium": "梅赛德斯-奔驰球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 103,
@@ -2436,8 +2440,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M102负者",
+      "flag": "🏴",
+      "name": "英格兰",
       "score": 0,
       "points": 0
     },
@@ -2459,8 +2463,8 @@
       "points": 0
     },
     "away_team": {
-      "flag": "🏳",
-      "name": "M102胜者",
+      "flag": "🇦🇷",
+      "name": "阿根廷",
       "score": 0,
       "points": 0
     },
