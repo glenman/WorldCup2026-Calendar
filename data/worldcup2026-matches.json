@@ -2388,12 +2388,16 @@
     "away_team": {
       "flag": "🇪🇸",
       "name": "西班牙",
-      "score": 0,
-      "points": 0
+      "score": 2,
+      "points": 3
     },
     "venue": "Arlington, USA",
     "stadium": "AT&T球场",
-    "status": "未开始"
+    "status": "已结束",
+    "penalty": {
+      "home": null,
+      "away": null
+    }
   },
   {
     "match_number": 102,
@@ -2426,8 +2430,8 @@
     "round": "季军赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M101负者",
+      "flag": "🇫🇷",
+      "name": "法国",
       "score": 0,
       "points": 0
     },
@@ -2449,8 +2453,8 @@
     "round": "决赛",
     "group": null,
     "home_team": {
-      "flag": "🏳",
-      "name": "M101胜者",
+      "flag": "🇪🇸",
+      "name": "西班牙",
       "score": 0,
       "points": 0
     },

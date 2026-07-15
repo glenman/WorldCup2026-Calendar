@@ -797,8 +797,8 @@ BEGIN:VEVENT
 UID:wc2026-match-101@worldcup26-calendar
 DTSTART:20260714T190000Z
 DTEND:20260714T210000Z
-SUMMARY:🇫🇷 法国 vs 🇪🇸 西班牙 (半决赛)
-DESCRIPTION:淘汰赛 半决赛 | 📍Arlington, USA
+SUMMARY:🇫🇷 法国 0:2 🇪🇸 西班牙 (半决赛)
+DESCRIPTION:淘汰赛 半决赛 | 📍Arlington, USA | 比分: 0:2
 LOCATION:Arlington, USA
 END:VEVENT
 BEGIN:VEVENT
@@ -813,7 +813,7 @@ BEGIN:VEVENT
 UID:wc2026-match-103@worldcup26-calendar
 DTSTART:20260718T210000Z
 DTEND:20260718T230000Z
-SUMMARY:🏳 M101负者 vs 🏳 M102负者 (季军赛)
+SUMMARY:🇫🇷 法国 vs 🏳 M102负者 (季军赛)
 DESCRIPTION:淘汰赛 季军赛 | 📍Miami, USA
 LOCATION:Miami, USA
 END:VEVENT
@@ -821,7 +821,7 @@ BEGIN:VEVENT
 UID:wc2026-match-104@worldcup26-calendar
 DTSTART:20260719T190000Z
 DTEND:20260719T210000Z
-SUMMARY:🏳 M101胜者 vs 🏳 M102胜者 (决赛)
+SUMMARY:🇪🇸 西班牙 vs 🏳 M102胜者 (决赛)
 DESCRIPTION:淘汰赛 决赛 | 📍East Rutherford, USA
 LOCATION:East Rutherford, USA
 END:VEVENT

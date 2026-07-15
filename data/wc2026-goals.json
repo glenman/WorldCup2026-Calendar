@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-14T06:26:23.406Z",
+  "updated_at": "2026-07-15T00:06:22.295Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 91,
-  "total_goals": 289,
+  "matches_with_goals": 92,
+  "total_goals": 290,
   "goals": [
     {
       "match_number": 1,
@@ -4628,6 +4628,22 @@
       "own_goal": false,
       "penalty": false,
       "half": 3
+    },
+    {
+      "match_number": 101,
+      "group": null,
+      "round": "半决赛",
+      "match_type": "淘汰赛",
+      "home_team": "法国",
+      "away_team": "西班牙",
+      "team": "西班牙",
+      "team_en": "Spain",
+      "scorer": "Pedro Porro",
+      "minute": 58,
+      "minute_display": "58'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 2
     }
   ]
 }
