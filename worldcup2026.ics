@@ -821,8 +821,8 @@ BEGIN:VEVENT
 UID:wc2026-match-104@worldcup26-calendar
 DTSTART:20260719T190000Z
 DTEND:20260719T210000Z
-SUMMARY:🇪🇸 西班牙 vs 🇦🇷 阿根廷 (决赛)
-DESCRIPTION:淘汰赛 决赛 | 📍East Rutherford, USA
+SUMMARY:🇪🇸 西班牙 1:0 🇦🇷 阿根廷 (决赛)
+DESCRIPTION:淘汰赛 决赛 | 📍East Rutherford, USA | 比分: 1:0
 LOCATION:East Rutherford, USA
 END:VEVENT
 END:VCALENDAR

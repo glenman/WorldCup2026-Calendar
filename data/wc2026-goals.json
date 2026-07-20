@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-19T06:43:43.958Z",
+  "updated_at": "2026-07-20T02:56:26.905Z",
   "source": "https://worldcup26.ir/get/games",
   "total_match_count": 104,
-  "matches_with_goals": 94,
-  "total_goals": 302,
+  "matches_with_goals": 95,
+  "total_goals": 303,
   "goals": [
     {
       "match_number": 1,
@@ -4833,6 +4833,22 @@
       "scorer": "Jude Bellingham",
       "minute": 98,
       "minute_display": "90'+8'",
+      "own_goal": false,
+      "penalty": false,
+      "half": 3
+    },
+    {
+      "match_number": 104,
+      "group": null,
+      "round": "决赛",
+      "match_type": "淘汰赛",
+      "home_team": "西班牙",
+      "away_team": "阿根廷",
+      "team": "西班牙",
+      "team_en": "Spain",
+      "scorer": "Ferran Torres",
+      "minute": 106,
+      "minute_display": "106'",
       "own_goal": false,
       "penalty": false,
       "half": 3
